@@ -17,7 +17,7 @@
 
 The After Effects script for creating parallax effects easily.
 
-### ✂ [OneTwoTrim](https://github.com/cumuloworks/OneTwoTrim)
+### ✂ [OneTwoTrim]()
 
 The After Effects script for trimming multiple layers at once.
 
