@@ -1,6 +1,10 @@
-# 🚀 Hello! I am Cumuloworks (Tomoya Eguchi)
+#
 
 <center>
+
+<div>
+    <img src="./public/typography_white.svg" alt="Cumuloworks" style="width: 50%;">
+</div>
 
 🎬️ **I am a freelance director, motion designer, and CG generalist based in Tokyo, Japan.**
 
@@ -8,21 +12,19 @@
 
 🔍️ Currently, I am focusing on developing my own video production project management software.
 
-
 </center>
 
-## 📺 Projects
+## 📺 Dev Projects
 
-### 📸 [autoParallax](https://cumuloworks.gumroad.com/l/autoparallax2)
+### 📸 [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
 
-The After Effects script for creating parallax effects easily.
+An After Effects script for creating parallax effects easily.
 
-### ✂ [OneTwoTrim]()
+### ✂ [OneTwoTrim](https://cumulo.works/downloads/onetwotrim)
 
-The After Effects script for trimming multiple layers at once.
+An After Effects script for trimming multiple layers at once.
 
-## 🌐 Socials:
-
+## 🌐 Socials
 
 [![Official Website](https://img.shields.io/badge/Official%20Website-000?logo=googlechrome&logoColor=fff&style=for-the-badge)](https://cumulo.works/)
 
@@ -30,9 +32,7 @@ The After Effects script for trimming multiple layers at once.
 [![X Badge](https://img.shields.io/badge/X-000?logo=x&logoColor=fff&style=for-the-badge)](https://x.com/cumuloworks)
 [![YouTube Badge](https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=fff&style=for-the-badge)](https://www.youtube.com/@cumuloworks)
 
-
-
-## 💻 Tech Stack I like
+## 💻 Tech Stack
 
 ![Adobe After Effects](https://img.shields.io/badge/Adobe%20After%20Effects-9999FF.svg?style=flat-square&logo=Adobe%20After%20Effects&logoColor=white)
 ![Cinema 4D Badge](https://img.shields.io/badge/Cinema%204D-011A6A?logo=cinema4d&logoColor=fff&style=flat-square)
@@ -43,3 +43,23 @@ The After Effects script for trimming multiple layers at once.
 ![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat-square&logo=svelte&logoColor=white)
 ![Electron Badge](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=fff&style=flat-square)
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat-square)
+
+## 📁 About [This Repository](https://github.com/cumuloworks/cumuloworks)
+
+This repo contains the source code for my portfolio site built with Astro, and also serves as my GitHub profile.
+
+`/src/content` contains the main content of the site in Markdown format.
+
+## 📝 License
+
+### Original Content
+
+All original content, including but not limited to text, images, and custom code, is the property of Cumuloworks, Inc. and/or its respective content owners. Any use without proper authorization is strictly prohibited.
+
+### Third-Party Libraries and Dependencies
+
+This project uses various third-party libraries and dependencies, each of which is covered by its own license. Please refer to the `package.json` file and the respective license files of each dependency for more information.
+
+### Astro and Other Open Source Components
+
+This site is built with [Astro](https://astro.build/), which is licensed under the [MIT License](https://github.com/withastro/astro/blob/main/LICENSE). Other open source components used in this project may have their own licenses. Please refer to their respective repositories for more information.
