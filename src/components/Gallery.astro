@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import { generateSequence } from "../utils/generateLayoutSequence";
+import Modal from "./Modal.astro";
+
+const { slug } = Astro.props;
+
+const images = import.meta.glob(
+    "/src/content/projects/**/*.(png|jpg|jpeg|gif|webp)",
+);
+
+const projectImages = Object.entries(images)
+    .filter(([path]) => path.includes(`/src/content/projects/${slug}/`))
+    .filter(([path]) => !path.endsWith("thumb.jpg"))
+    .map(([path, importFunc]) => ({ path, importFunc }));
+
+const layoutSequence = generateSequence(projectImages.length);
+
+let imageIndex = 0;
+---
+
+<div class="w-full space-y-1">
+    {
+        layoutSequence.map((numImages, rowIndex) => (
+            <div class="w-full flex gap-1">
+                {Array.from({ length: numImages }).map((_, colIndex) => {
+                    if (imageIndex >= projectImages.length) {
+                        return null;
+                    }
+                    const { path, importFunc } = projectImages[imageIndex];
+                    const imageId = `image-${imageIndex}`;
+                    imageIndex += 1;
+                    return (
+                        <div class="w-full">
+                            <Image
+                                src={importFunc()}
+                                alt={
+                                    path.split("/").pop()?.split(".")[0] ||
+                                    `gallery-${imageIndex}`
+                                }
+                                width={360}
+                                height={640}
+                                class="w-full cursor-pointer"
+                                loading={imageIndex < 8 ? "eager" : "lazy"}
+                                id={imageId}
+                            />
+                            <Modal id={`modal-${imageId}`}>
+                                <div class="relative">
+                                    <Image
+                                        src={importFunc()}
+                                        alt={
+                                            path
+                                                .split("/")
+                                                .pop()
+                                                ?.split(".")[0] ||
+                                            `gallery-${imageIndex}`
+                                        }
+                                        width={1080}
+                                        height={1920}
+                                        class="max-w-full max-h-[90vh]"
+                                    />
+                                    <button
+                                        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+                                        data-nav="prev"
+                                    >
+                                        &lt;
+                                    </button>
+                                    <button
+                                        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+                                        data-nav="next"
+                                    >
+                                        &gt;
+                                    </button>
+                                </div>
+                            </Modal>
+                        </div>
+                    );
+                })}
+            </div>
+        ))
+    }
+</div>
+
+<script>
+    const images = document.querySelectorAll('img[id^="image-"]');
+    const modals = document.querySelectorAll('dialog[id^="modal-image-"]');
+
+    images.forEach((img, index) => {
+        img.addEventListener("click", () => {
+            const modalId = `modal-${img.id}`;
+            const modal = document.getElementById(modalId);
+            if (modal instanceof HTMLDialogElement) {
+                modal.showModal();
+            }
+        });
+    });
+
+    modals.forEach((modal) => {
+        const prevButton = modal.querySelector('[data-nav="prev"]');
+        const nextButton = modal.querySelector('[data-nav="next"]');
+
+        prevButton.addEventListener("click", () => navigateImage(modal, -1));
+        nextButton.addEventListener("click", () => navigateImage(modal, 1));
+    });
+
+    function navigateImage(currentModal, direction) {
+        const currentIndex = Array.from(modals).indexOf(currentModal);
+        let newIndex = currentIndex + direction;
+
+        if (newIndex < 0) newIndex = modals.length - 1;
+        if (newIndex >= modals.length) newIndex = 0;
+
+        currentModal.close();
+        modals[newIndex].showModal();
+    }
+</script>

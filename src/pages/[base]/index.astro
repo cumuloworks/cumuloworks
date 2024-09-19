@@ -1,0 +1,71 @@
+---
+import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ItemGrid from "../../components/ItemGrid.astro";
+
+export async function getStaticPaths() {
+    const bases = ["projects", "blogs", "downloads"];
+    return bases.map((base) => ({
+        params: { base },
+        props: { base },
+    }));
+}
+
+const { base } = Astro.props;
+const items = await getItemsWithThumbnails(base);
+const categories = [...new Set(items.map((item) => item.data.category))];
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <title>{base.charAt(0).toUpperCase() + base.slice(1)}</title>
+    </head>
+    <body class="flex flex-col h-svh">
+        <Header />
+        <main class="flex-grow">
+            <h1>{base.charAt(0).toUpperCase() + base.slice(1)}</h1>
+            <div id="filter-controls">
+                <button id="all-filter">All</button>
+                {
+                    categories.map((category: string) => (
+                        <button
+                            class="border rounded-lg p-4 overflow-hidden shadow-md"
+                            id={`${category}-filter`}
+                        >
+                            {category.charAt(0).toUpperCase() +
+                                category.slice(1)}
+                        </button>
+                    ))
+                }
+            </div>
+            <ItemGrid base={base} items={items} columns={3} />
+        </main>
+        <Footer />
+        <script>
+            const filterButtons = document.querySelectorAll(
+                "#filter-controls button",
+            );
+            const gridItems = document.querySelectorAll(".grid-item");
+
+            filterButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const filter = button.id.replace("-filter", "");
+                    gridItems.forEach((item: HTMLElement) => {
+                        if (
+                            filter === "all" ||
+                            item.dataset.category === filter
+                        ) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

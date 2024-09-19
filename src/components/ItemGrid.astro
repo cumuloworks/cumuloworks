@@ -1,0 +1,24 @@
+---
+const { base, items, columns } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {
+        items.map((item) => (
+            <div class="grid-item" data-category={item.data.category}>
+                <a href={`/${base}/${item.slug}`}>
+                    <Image
+                        src={item.thumbnail}
+                        alt={item.data.title}
+                        width={960}
+                        height={540}
+                        class="aspect-video object-cover w-full h-auto"
+                        loading={items.indexOf(item) < 9 ? "eager" : "lazy"}
+                    />
+                    <h2>{item.data.title}</h2>
+                </a>
+            </div>
+        ))
+    }
+</div>

@@ -1,0 +1,65 @@
+---
+import Modal from "./Modal.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<div
+    class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 text-white"
+>
+    <img
+        src="/typography_white.svg"
+        alt="Cumuloworks"
+        class="max-w-screen-sm"
+    />
+    <p class="text-xl">Director / Motion Designer / CG Generalist</p>
+    <div class="text-white text-center gap-4 mt-10">
+        <button
+            id="showreelButton"
+            class="flex items-center text-xl border hover:bg-white hover:text-black rounded-full text-white font-bold py-2 px-8"
+        >
+            <Icon name="fa6-solid:play" class="mr-4" />
+            <p>PLAY SHOWREEL</p>
+        </button>
+    </div>
+    <div
+        class="absolute bottom-10 text-white text-4xl flex flex-col gap-4 justify-center items-center"
+    >
+        <p>RECENT WORK</p>
+        <button id="scrollDownButton">
+            <Icon name="fa6-solid:chevron-down" />
+        </button>
+    </div>
+</div>
+
+<Modal id="showreelModal">
+    <iframe
+        width="960px"
+        height="540px"
+        src="https://www.youtube.com/embed/ES8CtZN4e5g?si=QWCdv-hD9W1IeCL5"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        class="relative"></iframe>
+</Modal>
+
+<script>
+    const showreelButton = document.getElementById("showreelButton");
+    const showreelModal = document.getElementById("showreelModal");
+
+    if (showreelButton && showreelModal instanceof HTMLDialogElement) {
+        showreelButton.addEventListener("click", () => {
+            showreelModal.showModal();
+        });
+    }
+
+    const scrollDownButton = document.getElementById("scrollDownButton");
+    if (scrollDownButton) {
+        scrollDownButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: "smooth",
+            });
+        });
+    }
+</script>

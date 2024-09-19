@@ -1,0 +1,35 @@
+---
+const { id, open } = Astro.props;
+---
+
+<dialog id={id} open={open}>
+    <div class="modal-content">
+        <slot />
+        <button class="close-button">&times;</button>
+    </div>
+</dialog>
+
+<style>
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .close-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const closeButtons = document.querySelectorAll(".close-button");
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const dialog = button.closest("dialog");
+            if (dialog) dialog.close();
+        });
+    });
+</script>

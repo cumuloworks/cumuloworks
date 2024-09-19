@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header class="bg-gray-800 text-white p-4">
+    <nav class="mx-auto flex justify-between items-center">
+        <a href="/" class="text-xl font-bold flex items-center">
+            <Icon name="fa6-solid:house" class="w-8 h-8 mr-2" />
+            Cumuloworks
+        </a>
+        <ul class="flex space-x-4">
+            <li>
+                <a
+                    href="/projects"
+                    class="hover:text-gray-300 flex items-center"
+                    ><Icon name="fa6-solid:house" class="w-5 h-5 mr-1" /> Projects</a
+                >
+            </li>
+            <li>
+                <a href="/blogs" class="hover:text-gray-300 flex items-center"
+                    ><Icon name="fa6-solid:house" class="w-5 h-5 mr-1" /> Blogs</a
+                >
+            </li>
+            <li>
+                <a
+                    href="/downloads"
+                    class="hover:text-gray-300 flex items-center"
+                    ><Icon name="fa6-solid:house" class="w-5 h-5 mr-1" /> Downloads</a
+                >
+            </li>
+            <li>
+                <a href="/about" class="hover:text-gray-300 flex items-center"
+                    ><Icon name="fa6-solid:info" class="w-5 h-5 mr-1" /> About</a
+                >
+            </li>
+        </ul>
+    </nav>
+</header>

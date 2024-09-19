@@ -1,0 +1,26 @@
+---
+const { prevItem, nextItem, base } = Astro.props;
+---
+
+<div class="flex justify-between mt-8">
+    {
+        prevItem && (
+            <a
+                href={`/${base}/${prevItem.slug}`}
+                class="text-blue-600 hover:underline"
+            >
+                ← {prevItem.data.title}
+            </a>
+        )
+    }
+    {
+        nextItem && (
+            <a
+                href={`/${base}/${nextItem.slug}`}
+                class="text-blue-600 hover:underline"
+            >
+                {nextItem.data.title} →
+            </a>
+        )
+    }
+</div>
