@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import ItemGrid from "../../components/ItemGrid.astro";
 
+export const prerender = true;
 export async function getStaticPaths() {
     const bases = ["projects", "blogs", "downloads"];
     return bases.map((base) => ({

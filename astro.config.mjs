@@ -4,6 +4,9 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 
 export default defineConfig({
+	prefetch: {
+		prefetchAll: true,
+	},
 	integrations: [
 		tailwind(),
 		icon({
