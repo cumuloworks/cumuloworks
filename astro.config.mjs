@@ -4,6 +4,8 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import vercel from "@astrojs/vercel/serverless";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
@@ -14,6 +16,7 @@ export default defineConfig({
 			"fa6-solid": ["*"],
 			"fa6-brands": ["*"],
 		}),
+		sitemap(),
 	],
 	content: {
 		collections: [
