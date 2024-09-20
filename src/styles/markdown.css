@@ -57,5 +57,5 @@
 }
 
 .markdown-content pre {
-	@apply !bg-white !text-cumulodark shadow-lg p-4 text-sm rounded-lg leading-loose font-light;
+	@apply !bg-zinc-100 !text-cumulodark whitespace-pre-wrap p-4 text-sm rounded-lg leading-loose font-light;
 }

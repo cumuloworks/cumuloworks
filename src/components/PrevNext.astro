@@ -3,33 +3,31 @@ import { Icon } from "astro-icon/components";
 const { prevItem, nextItem, base } = Astro.props;
 ---
 
-<div
-    class="flex justify-between items-center h-20 space-x-4 text-cumulodark"
->
+<div class="flex justify-between items-center h-20 space-x-4 text-cumulodark">
     {
-        prevItem && (
+        nextItem && (
             <a
-                href={`/${base}/${prevItem.slug}`}
-                class="flex items-center  hover:text-cumulolight transition-colors ease-out-expo group"
+                href={`/${base}/${nextItem.slug}`}
+                class="flex items-center ease-in-out mr-auto group"
             >
                 <Icon
                     name="fa6-solid:arrow-left"
                     class="mr-2 size-5 group-hover:size-10 transition-all ease-out-expo"
                 />
                 <span class="text-sm md:text-base truncate max-w-48 md:max-w-96">
-                    {prevItem.data.title}
+                    {nextItem.data.title}
                 </span>
             </a>
         )
     }
     {
-        nextItem && (
+        prevItem && (
             <a
-                href={`/${base}/${nextItem.slug}`}
-                class="flex items-center ease-in-out ml-auto group"
+                href={`/${base}/${prevItem.slug}`}
+                class="flex items-center  hover:text-cumulolight transition-colors ease-out-expo group"
             >
                 <span class="text-sm md:text-base truncate max-w-48 md:max-w-96">
-                    {nextItem.data.title}
+                    {prevItem.data.title}
                 </span>
                 <Icon
                     name="fa6-solid:arrow-right"

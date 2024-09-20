@@ -4,9 +4,7 @@ export default {
 	darkMode: "class",
 	theme: {
 		fontFamily: {
-			head: ["Montserrat", `"M PLUS 1p"`, "sans-serif"],
 			sans: ["Inter", `"M PLUS 1p"`, "sans-serif"],
-			mono: ["Azeret Mono", "monospace"],
 		},
 		extend: {
 			brightness: {

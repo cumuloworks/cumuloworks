@@ -1,17 +1,17 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import ItemGrid from "../../components/ItemGrid.astro";
 import ItemList from "../../components/ItemList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 import "../../styles/markdown.css";
 
 export const prerender = true;
 export async function getStaticPaths() {
-    const bases = ["projects", "blogs", "downloads"];
-    return bases.map((base) => ({
-        params: { base },
-        props: { base },
-    }));
+	const bases = ["projects", "blogs", "downloads"];
+	return bases.map((base) => ({
+		params: { base },
+		props: { base },
+	}));
 }
 
 const { base } = Astro.props;

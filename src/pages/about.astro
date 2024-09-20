@@ -8,15 +8,16 @@ import { Image } from "astro:assets";
     <div class="markdown-content">
         <h1>About</h1>
         <div
-            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 shadow-xl h-full"
+            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 shadow-2xl h-full"
         >
             <div class="w-full lg:w-1/3">
                 <Image
                     src="/about/profile_pic.jpg"
                     class="rounded object-cover h-96 lg:h-full"
-                    alt="Profile Picture"
+                    alt="Profile"
                     width={1124}
                     height={1500}
+                    loading="eager"
                 />
             </div>
             <div class="2/3">
@@ -73,10 +74,9 @@ import { Image } from "astro:assets";
             production, allowing me to handle complex projects and those
             involving critical data.
         </p>
-        <h1 class="!my-20">Contact</h1>
+        <h1 class="!my-20" id="contact">Contact</h1>
         <div
-            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 shadow-xl h-full"
-            id="contact"
+            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 lg:p-10 shadow-2xl h-full"
         >
             <div class="w-1/2 text-center">
                 <a class="text-xl font-bold" href="mailto:mail@cumulo.works"
@@ -101,7 +101,7 @@ import { Image } from "astro:assets";
                         id="full-name"
                         placeholder="First and Last"
                         required=""
-                        class="border border-cumulodark rounded px-2 h-10"
+                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
                     />
                     <label for="email-address">Email Address</label>
                     <input
@@ -110,14 +110,14 @@ import { Image } from "astro:assets";
                         id="email-address"
                         placeholder="email@domain.tld"
                         required=""
-                        class="border border-cumulodark rounded px-2 h-10"
+                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
                     />
                     <label for="department">Department</label>
                     <select
                         name="department"
                         id="department"
                         required=""
-                        class="border border-cumulodark rounded px-2 h-10"
+                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
                     >
                         <option value="production"
                             >映像制作のご相談 / Production Inquiry</option
@@ -136,7 +136,7 @@ import { Image } from "astro:assets";
                         id="message"
                         placeholder="Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
                         required=""
-                        class="border border-cumulodark rounded px-2 h-60"
+                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-60"
                     ></textarea>
                     <input
                         type="hidden"
@@ -148,7 +148,7 @@ import { Image } from "astro:assets";
                 <input
                     type="submit"
                     value="Send Message"
-                    class="border border-cumulodark rounded px-2 h-10 mt-5"
+                    class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10 mt-5"
                 />
             </form>
         </div>
