@@ -1,49 +1,26 @@
 ---
 import { Icon } from "astro-icon/components";
 import Logo from "./Logo.astro";
+import SocialIcon from "./SocialIcon.astro";
+
+const SocialIcons = [
+    { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
+    { href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
+    { href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
+    { href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
+];
 ---
 
 <header class="flex bg-white text-cumulodark md:min-h-48 min-h-60">
     <nav
-        class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-10"
+        class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5"
     >
         <ul class="md:flex flex-1 gap-6 text-left hidden">
-            <li>
-                <a
-                    href="https://www.youtube.com/@cumuloworks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Icon
-                        name="fa6-brands:facebook"
-                        class="size-6 hover:text-cumulolight"
-                    />
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.youtube.com/@cumuloworks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Icon
-                        name="fa6-brands:x-twitter"
-                        class="size-6 hover:text-cumulolight"
-                    />
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.youtube.com/@cumuloworks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Icon
-                        name="fa6-brands:youtube"
-                        class="size-6 hover:text-cumulolight"
-                    />
-                </a>
-            </li>
+            {
+                SocialIcons.map((link) => (
+                    <SocialIcon href={link.href} icon={link.icon} />
+                ))
+            }
         </ul>
         <div class="flex flex-col items-center mx-auto">
             <a href="/">
@@ -73,42 +50,11 @@ import Logo from "./Logo.astro";
                 </li>
             </ul>
             <ul class="md:hidden flex-1 gap-6 text-left flex mt-6">
-                <li>
-                    <a
-                        href="https://www.youtube.com/@cumuloworks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Icon
-                            name="fa6-brands:facebook"
-                            class="size-6 hover:text-cumulolight"
-                        />
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="https://www.youtube.com/@cumuloworks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Icon
-                            name="fa6-brands:x-twitter"
-                            class="size-6 hover:text-cumulolight"
-                        />
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="https://www.youtube.com/@cumuloworks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Icon
-                            name="fa6-brands:youtube"
-                            class="size-6 hover:text-cumulolight"
-                        />
-                    </a>
-                </li>
+                {
+                    SocialIcons.map((link) => (
+                        <SocialIcon href={link.href} icon={link.icon} />
+                    ))
+                }
                 <li>
                     <a
                         href="/about#contact"
