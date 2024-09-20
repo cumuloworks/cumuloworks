@@ -71,7 +71,7 @@ const slideshowImages = getImagesFromFolder(folderPath);
     }
 
     function startAutoSlide() {
-        intervalId = setInterval(nextSlide, 4000); // 4秒ごとに次のスライドへ
+        intervalId = setInterval(nextSlide, 4000); 
     }
 
     function stopAutoSlide() {
@@ -81,15 +81,15 @@ const slideshowImages = getImagesFromFolder(folderPath);
     prevButton.addEventListener("click", () => {
         prevSlide();
         stopAutoSlide();
-        startAutoSlide(); // クリック後に自動スライドを再開
+        startAutoSlide(); 
     });
 
     nextButton.addEventListener("click", () => {
         nextSlide();
         stopAutoSlide();
-        startAutoSlide(); // クリック後に自動スライドを再開
+        startAutoSlide(); 
     });
 
-    // 自動スライドの開始
+    
     startAutoSlide();
 </script>

@@ -35,7 +35,6 @@ const nextItem = items[currentIndex - 1] || null;
 
 const galleryFolderPath = `/src/content/${base}/${entry.slug}/`;
 
-// Add this line to get the thumbnail URL
 const thumbnailUrl = new URL(
 	items[currentIndex].thumbnail.src,
 	Astro.url,
