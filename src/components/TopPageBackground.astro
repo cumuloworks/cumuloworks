@@ -1,4 +1,5 @@
 <video
+    id="background-video"
     src="/top_video.mp4"
     autoplay
     muted
@@ -6,3 +7,34 @@
     class="absolute top-0 left-0 w-full h-full object-cover z-0 brightness-50"
 >
 </video>
+
+<script>
+    function setRandomTime(video) {
+        if (video.readyState >= 2) {
+            const randomTime = Math.random() * video.duration;
+            video.currentTime = randomTime;
+        } else {
+            setTimeout(() => setRandomTime(video), 100);
+        }
+    }
+
+    function initVideo() {
+        const video = document.getElementById("background-video");
+        if (video instanceof HTMLVideoElement) {
+            if (video.readyState >= 2) {
+                setRandomTime(video);
+            } else {
+                video.addEventListener("loadeddata", () =>
+                    setRandomTime(video),
+                );
+                setTimeout(() => setRandomTime(video), 1000);
+            }
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVideo);
+    } else {
+        initVideo();
+    }
+</script>
