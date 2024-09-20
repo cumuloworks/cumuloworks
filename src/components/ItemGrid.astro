@@ -17,7 +17,7 @@ import { Image } from "astro:assets";
                         width={960}
                         height={540}
                         class="object-cover aspect-video w-full h-auto brightness-100 group-hover:brightness-25  transition-all ease-out-expo"
-                        loading={items.indexOf(item) < 9 ? "eager" : "lazy"}
+                        loading={items.indexOf(item) < 12 ? "eager" : "lazy"}
                     />
                     <p class="w-full p-2 text-center whitespace-pre-wrap break-words font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
                         {item.data.title}
