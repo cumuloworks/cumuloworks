@@ -42,6 +42,21 @@ for (const category of Object.keys(projectsByCategory)) {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Cumuloworks</title>
+
+		<meta
+			property="og:title"
+			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta
+			property="og:description"
+			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
+		/>
+		<meta
+			property="og:image"
+			content={new URL("/default_ogp.jpg", Astro.url)}
+		/>
 	</head>
 	<body
 		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b"

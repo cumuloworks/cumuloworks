@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/globals.css";
 
-const { title, limit = true } = Astro.props;
+const { title, description, limit = true, ogImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -13,6 +13,18 @@ const { title, limit = true } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta
+            property="og:description"
+            content={description ? description : title}
+        />
+        <meta
+            property="og:image"
+            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+        />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         <Header />

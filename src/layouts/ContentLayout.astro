@@ -4,18 +4,19 @@ import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
 
 const {
-	title,
-	description,
-	category,
-	date,
-	prevItem,
-	nextItem,
-	base,
-	isContentPage = true,
+    title,
+    description,
+    category,
+    date,
+    prevItem,
+    nextItem,
+    base,
+    isContentPage = true,
+    ogImage, // Add this prop
 } = Astro.props;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} , description={description} ogImage={ogImage}>
     <article class="w-full">
         <slot name="hero" />
         <div class="h-12"></div>
