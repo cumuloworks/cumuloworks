@@ -1,6 +1,10 @@
-# 🚀 Hello! I am Cumuloworks (Tomoya Eguchi)
+#
 
 <center>
+
+<div>
+    <img src="./public/typography_white.svg" alt="Cumuloworks" style="width: 50%;">
+</div>
 
 🎬️ **I am a freelance director, motion designer, and CG generalist based in Tokyo, Japan.**
 
@@ -10,15 +14,15 @@
 
 </center>
 
-## 📺 Projects
+## 📺 Dev Projects
 
 ### 📸 [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
 
-The After Effects script for creating parallax effects easily.
+An After Effects script for creating parallax effects easily.
 
 ### ✂ [OneTwoTrim](https://cumulo.works/downloads/onetwotrim)
 
-The After Effects script for trimming multiple layers at once.
+An After Effects script for trimming multiple layers at once.
 
 ## 🌐 Socials
 
@@ -40,10 +44,22 @@ The After Effects script for trimming multiple layers at once.
 ![Electron Badge](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=fff&style=flat-square)
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat-square)
 
-## 📁 About This Repository
+## 📁 About [This Repository](https://github.com/cumuloworks/cumuloworks)
 
 This repo contains the source code for my portfolio site built with Astro, and also serves as my GitHub profile.
 
+`/src/content` contains the main content of the site in Markdown format.
+
 ## 📝 License
 
-All content is the property of Cumuloworks, Inc. and/or its respective content owners. Any use without proper authorization is strictly prohibited.
+### Original Content
+
+All original content, including but not limited to text, images, and custom code, is the property of Cumuloworks, Inc. and/or its respective content owners. Any use without proper authorization is strictly prohibited.
+
+### Third-Party Libraries and Dependencies
+
+This project uses various third-party libraries and dependencies, each of which is covered by its own license. Please refer to the `package.json` file and the respective license files of each dependency for more information.
+
+### Astro and Other Open Source Components
+
+This site is built with [Astro](https://astro.build/), which is licensed under the [MIT License](https://github.com/withastro/astro/blob/main/LICENSE). Other open source components used in this project may have their own licenses. Please refer to their respective repositories for more information.
