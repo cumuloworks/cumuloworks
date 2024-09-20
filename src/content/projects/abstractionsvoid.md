@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=4enMG7U5pv4"
 ---
 
-# 幸祜 - Abstractions Void
 
 Shiguのディレクションの下、一部モーションデザインなどを担当いたしました。
 

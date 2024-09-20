@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=YGZXZaGK8GE"
 ---
 
-# すとぷり ゆらゆら Music Video
 
 すとぷり “ゆらゆら” のミュージックビデオのディレクション・CG・コンポジットを担当しました。
 

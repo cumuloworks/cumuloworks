@@ -5,8 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=Lvg4SUna5xw"
 ---
 
-# Prelude #holoENPrelude
-
 
 ```plaintext
 Soundtrack: Laur (@LAUR1200)

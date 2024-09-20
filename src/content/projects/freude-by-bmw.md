@@ -5,8 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-# FREUDE by BMW
-
 
 ```plaintext
 Motion Graphics: Tomoya Eguchi (Cumuloworks, Inc.)

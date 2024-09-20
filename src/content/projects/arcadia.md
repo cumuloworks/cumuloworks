@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=KMvUdCyIVxw"
 ---
 
-# ヰ世界情緒 ARCADIA MV
 
 "ARCADIA"
 

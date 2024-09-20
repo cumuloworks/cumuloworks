@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-# FUTURE-EXPERIMENT VOL.04
 
 株式会社ナナメにて、docomo×Perfume『FUTURE-EXPERIMENT VOL.04　その瞬間を共有せよ。』のCGグラフィック部分を担当しました。
 

@@ -1,8 +1,9 @@
 ---
-import { getItemsWithThumbnails } from "../../utils/contentUtils";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import ItemGrid from "../../components/ItemGrid.astro";
+import ItemList from "../../components/ItemList.astro";
+import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import "../../styles/markdown.css";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -16,25 +17,30 @@ export async function getStaticPaths() {
 const { base } = Astro.props;
 const items = await getItemsWithThumbnails(base);
 const categories = [...new Set(items.map((item) => item.data.category))];
+const title = base.charAt(0).toUpperCase() + base.slice(1);
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-        <title>{base.charAt(0).toUpperCase() + base.slice(1)}</title>
-    </head>
-    <body class="flex flex-col h-svh">
-        <Header />
-        <main class="flex-grow">
-            <h1>{base.charAt(0).toUpperCase() + base.slice(1)}</h1>
-            <div id="filter-controls">
-                <button id="all-filter">All</button>
+<BaseLayout title={title}>
+    <div class="w-full max-w-screen-xl mx-auto mb-10">
+        <div
+            class="w-full flex flex-col md:flex-row items-center justify-between mb-10 gap-5"
+        >
+            <h1 class="text-center uppercase text-4xl font-bold">
+                {title}
+            </h1>
+            <div
+                id="filter-controls"
+                class="rounded-full border border-cumulo-inactive text-sm"
+            >
+                <button
+                    id="all-filter"
+                    class="px-5 py-1 rounded-full transition-colors ease-out-expo"
+                    >All</button
+                >
                 {
                     categories.map((category: string) => (
                         <button
-                            class="border rounded-lg p-4 overflow-hidden shadow-md"
+                            class="px-5 py-1 rounded-full transition-colors ease-out-expo"
                             id={`${category}-filter`}
                         >
                             {category.charAt(0).toUpperCase() +
@@ -43,30 +49,47 @@ const categories = [...new Set(items.map((item) => item.data.category))];
                     ))
                 }
             </div>
-            <ItemGrid base={base} items={items} columns={3} />
-        </main>
-        <Footer />
-        <script>
-            const filterButtons = document.querySelectorAll(
-                "#filter-controls button",
-            );
-            const gridItems = document.querySelectorAll(".grid-item");
+        </div>
+        {
+            base === "projects" ? (
+                <ItemGrid base={base} items={items} />
+            ) : (
+                <ItemList base={base} items={items} />
+            )
+        }
+    </div>
+</BaseLayout>
 
-            filterButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const filter = button.id.replace("-filter", "");
-                    gridItems.forEach((item: HTMLElement) => {
-                        if (
-                            filter === "all" ||
-                            item.dataset.category === filter
-                        ) {
-                            item.style.display = "block";
-                        } else {
-                            item.style.display = "none";
-                        }
-                    });
-                });
-            });
-        </script>
-    </body>
-</html>
+<style>
+    #filter-controls button.active {
+        @apply bg-cumulodark text-active;
+    }
+</style>
+
+<script>
+    const filterButtons = document.querySelectorAll("#filter-controls button");
+    const gridItems = document.querySelectorAll(".grid-item");
+    const allFilterButton = document.getElementById("all-filter");
+
+    function setActiveFilter(button) {
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.id.replace("-filter", "");
+        gridItems.forEach((item) => {
+            if (filter === "all" || item.dataset.category === filter) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => setActiveFilter(button));
+    });
+
+    if (allFilterButton) {
+        setActiveFilter(allFilterButton);
+    }
+</script>

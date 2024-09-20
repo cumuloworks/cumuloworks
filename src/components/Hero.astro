@@ -1,28 +1,31 @@
 ---
 import { Image } from "astro:assets";
+
 const { item } = Astro.props;
 const id = item.data.embed ? item.data.embed.split("v=")[1] : null;
 const thumbnail = item.thumbnail;
 ---
 
-{
-    item.data.embed ? (
-        <iframe
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${id}`}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-        />
-    ) : (
-        <Image
-            src={thumbnail}
-            alt={item.data.title || "Project thumbnail"}
-            width={1280}
-            height={720}
-            class="w-full h-auto aspect-video object-cover"
-            loading="eager"
-        />
-    )
-}
+<div class="w-full aspect-video">
+    {
+        item.data.embed ? (
+            <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${id}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="bg-black"
+            />
+        ) : (
+            <Image
+                src={thumbnail}
+                alt={item.data.title || "Project thumbnail"}
+                width={1920}
+                height={1080}
+                class="w-full h-full object-cover"
+                loading="eager"
+            />
+        )
+    }
+</div>

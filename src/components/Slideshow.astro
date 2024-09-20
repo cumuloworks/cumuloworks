@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getImagesFromFolder } from "../utils/getImagesFromFolder";
+
+const { folderPath } = Astro.props;
+
+const slideshowImages = getImagesFromFolder(folderPath);
+---
+
+<div
+    class="slideshow-container relative w-full h-[600px] my-10 overflow-hidden group"
+>
+    {
+        slideshowImages.map(({ path, importFunc }, index) => (
+            <div
+                class={`slideshow-item absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === 0 ? "opacity-100" : "opacity-0"}`}
+            >
+                <Image
+                    src={importFunc()}
+                    alt={
+                        path.split("/").pop()?.split(".")[0] ||
+                        `slideshow-${index}`
+                    }
+                    width={1920}
+                    height={1080}
+                    class="w-full h-full object-cover"
+                    loading={index < 8 ? "eager" : "lazy"}
+                    id={`image-${index}`}
+                />
+            </div>
+        ))
+    }
+    <button
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ease-out-expo duration-1000 delay-500"
+        id="prevButton"
+    >
+        <Icon name="fa6-solid:chevron-left" class="w-6 h-6 text-black" />
+    </button>
+    <button
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ease-out-expo duration-1000 delay-500"
+        id="nextButton"
+    >
+        <Icon name="fa6-solid:chevron-right" class="w-6 h-6 text-black" />
+    </button>
+</div>
+
+<script>
+    const slideshowItems = document.querySelectorAll(".slideshow-item");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let currentIndex = 0;
+    let intervalId;
+
+    function showSlide(index) {
+        slideshowItems.forEach((item, i) => {
+            item.classList.toggle("opacity-0", i !== index);
+            item.classList.toggle("opacity-100", i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideshowItems.length;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex =
+            (currentIndex - 1 + slideshowItems.length) % slideshowItems.length;
+        showSlide(currentIndex);
+    }
+
+    function startAutoSlide() {
+        intervalId = setInterval(nextSlide, 4000); // 4秒ごとに次のスライドへ
+    }
+
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+
+    prevButton.addEventListener("click", () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide(); // クリック後に自動スライドを再開
+    });
+
+    nextButton.addEventListener("click", () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide(); // クリック後に自動スライドを再開
+    });
+
+    // 自動スライドの開始
+    startAutoSlide();
+</script>

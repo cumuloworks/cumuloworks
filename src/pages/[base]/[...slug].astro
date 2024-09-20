@@ -1,27 +1,28 @@
 ---
 import { getCollection } from "astro:content";
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import Gallery from "../../components/Gallery.astro";
-import { getItemsWithThumbnails } from "../../utils/contentUtils";
-import Hero from "../../components/Hero.astro";
 import type { ContentEntryMap } from "astro:content";
+import Gallery from "../../components/Gallery.astro";
+import Hero from "../../components/Hero.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import "../../styles/globals.css";
 
 export const prerender = true;
 export async function getStaticPaths() {
-    const bases = ["projects", "blogs", "downloads"];
-    const allPaths = await Promise.all(
-        bases.map(async (base) => {
-            const items = await getCollection(base as keyof ContentEntryMap);
-            return items.map((entry) => ({
-                params: {
-                    base,
-                    slug: entry.slug,
-                },
-                props: { entry, base },
-            }));
-        }),
-    );
-    return allPaths.flat();
+	const bases = ["projects", "blogs", "downloads"];
+	const allPaths = await Promise.all(
+		bases.map(async (base) => {
+			const items = await getCollection(base as keyof ContentEntryMap);
+			return items.map((entry) => ({
+				params: {
+					base,
+					slug: entry.slug,
+				},
+				props: { entry, base },
+			}));
+		}),
+	);
+	return allPaths.flat();
 }
 
 const { entry, base } = Astro.props;
@@ -31,19 +32,24 @@ const items = await getItemsWithThumbnails(base);
 const currentIndex = items.findIndex((item) => item.slug === entry.slug);
 const prevItem = items[currentIndex + 1] || null;
 const nextItem = items[currentIndex - 1] || null;
+
+const galleryFolderPath = `/src/content/${base}/${entry.slug}/`;
 ---
 
 <ContentLayout
-    title={entry.data.title}
-    prevItem={prevItem}
-    nextItem={nextItem}
-    base={base}
+	title={entry.data.title}
+	description={entry.data.description}
+	category={entry.data.category}
+	date={entry.data.date}
+	prevItem={prevItem}
+	nextItem={nextItem}
+	base={base}
 >
-    <Content />
-    <div slot="hero">
-        <Hero item={items[currentIndex]} />
-    </div>
-    <div slot="additional-content">
-        {base === "projects" && <Gallery slug={entry.slug} />}
-    </div>
+	<Content />
+	<div slot="hero">
+		<Hero item={items[currentIndex]} />
+	</div>
+	<div slot="additional-content">
+		{base === "projects" && <Gallery folderPath={galleryFolderPath} />}
+	</div>
 </ContentLayout>

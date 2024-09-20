@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=vLzeqAWoA50"
 ---
 
-# PLAYBACK
 
 動画エディター育成スクール＆スタジオ「PLAYBACK」のプロモーション映像を制作しました。
 

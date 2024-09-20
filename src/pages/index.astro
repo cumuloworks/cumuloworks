@@ -1,24 +1,34 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { Image } from "astro:assets";
-import { getItemsWithThumbnails } from "../utils/contentUtils";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import TopPageBackground from "../components/TopPageBackground.astro";
 import TopPageInteractions from "../components/TopPageInteractions.astro";
+import { getItemsWithThumbnails } from "../utils/contentUtils";
+import "../styles/globals.css";
 
 const projects = await getItemsWithThumbnails("projects");
+
+const categoryDescriptions = {
+	"Ads / Corporate": "Advertisements and promotional videos for businesses.",
+	Entertainment: "Music videos, live productions, etc.",
+};
 
 const projectsByCategory = projects.reduce((acc, project) => {
 	const category = project.data.category || "Uncategorized";
 	if (!acc[category]) {
-		acc[category] = [];
+		acc[category] = {
+			projects: [],
+			description:
+				categoryDescriptions[category] || "Projects in this category",
+		};
 	}
-	acc[category].push(project);
+	acc[category].projects.push(project);
 	return acc;
 }, {});
 
 for (const category of Object.keys(projectsByCategory)) {
-	projectsByCategory[category].sort(
+	projectsByCategory[category].projects.sort(
 		(a, b) =>
 			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 	);
@@ -33,75 +43,64 @@ for (const category of Object.keys(projectsByCategory)) {
 		<meta name="generator" content={Astro.generator} />
 		<title>Cumuloworks</title>
 	</head>
-	<body class="flex flex-col h-svh">
+	<body
+		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b"
+	>
 		<!-- <Header /> -->
 		<main class="flex-grow">
-			<section class="w-full h-svh bg-black relative">
+			<section class="w-full h-svh bg-cumulodark relative snap-start">
 				<TopPageBackground />
 				<TopPageInteractions />
 			</section>
-			<section>
-				<h2 class="text-2xl font-semibold mb-6">Projects</h2>
-				{
-					Object.entries(projectsByCategory).map(
-						([category, categoryProjects]) => (
-							<div class="mb-8">
-								<h3 class="text-xl font-semibold mb-4">
-									{category}
-								</h3>
-								<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-									{categoryProjects
-										.slice(0, 3)
-										.map((project) => (
-											<div class="border rounded-lg overflow-hidden shadow-md">
-												{project.thumbnail && (
-													<Image
-														src={project.thumbnail}
-														alt={`Thumbnail for ${project.data.title}`}
-														width={400}
-														height={300}
-														class="w-full h-48 object-cover"
-													/>
-												)}
-												<div class="p-4">
-													<h4 class="text-lg font-semibold mb-2">
-														{project.data.title}
-													</h4>
-													<p class="text-sm text-gray-600 mb-2">
-														{new Date(
-															project.data.date,
-														).toLocaleDateString()}
-													</p>
-													<p class="text-sm mb-4">
-														{
-															project.data
-																.description
-														}
-													</p>
-													<a
-														href={`/projects/${project.slug}`}
-														class="text-blue-600 hover:underline"
-													>
-														Read more
-													</a>
-												</div>
-											</div>
-										))}
+			<section
+				class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive"
+			>
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20"
+				>
+					{
+						Object.entries(projectsByCategory).map(
+							([
+								category,
+								{ projects: categoryProjects, description },
+							]) => (
+								<div>
+									<h2 class="text-4xl  hover:text-active uppercase mb-2">
+										{category}
+									</h2>
+									<p class="mb-8">{description}</p>
+									<div class="grid grid-cols-2 gap-4">
+										{categoryProjects
+											.slice(0, 6)
+											.map((project) => (
+												<a
+													href={`/projects/${project.slug}`}
+													class="relative group"
+												>
+													{project.thumbnail && (
+														<Image
+															src={
+																project.thumbnail
+															}
+															alt={`Thumbnail for ${project.data.title}`}
+															width={400}
+															height={300}
+															class="w-full aspect-video object-cover brightness-100 group-hover:brightness-50 transition-all"
+														/>
+													)}
+													<div class="opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 right-0} text-white p-2">
+														<h4 class="text-sm font-semibold">
+															{project.data.title}
+														</h4>
+													</div>
+												</a>
+											))}
+									</div>
 								</div>
-								{categoryProjects.length > 3 && (
-									<p class="mt-4">
-										<a
-											href="/projects"
-											class="text-blue-600 hover:underline"
-										>
-											View more {category} projects...
-										</a>
-									</p>
-								)}
-							</div>
-						),
-					)
-				}
+							),
+						)
+					}
+				</div>
 			</section>
 		</main>
 		<Footer />

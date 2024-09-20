@@ -5,18 +5,10 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-# TOKYO NODE Digital Signage
 
 TOKYO NODE サイネージロゴモーションをNANAME.INCと制作しました。
 
 主にAfter Effectsでの動的なグラフィック生成の開発を行いました。
-
-
-![](./tokyonode/6ren_D.jpg)
-
-![](./tokyonode/6ren_A.jpg)
-
-![](./tokyonode/6ren_B.jpg)
 
 ```plaintext
 Client: Mori Building Co., Ltd.

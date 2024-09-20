@@ -1,0 +1,40 @@
+---
+const { base, items } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<div class="grid grid-cols-1 gap-4 text-cumulodark">
+    {
+        items.map((item) => (
+            <div class="grid-item" data-category={item.data.category}>
+                <a
+                    href={`/${base}/${item.slug}`}
+                    class="flex flex-col md:flex-row h-48 relative"
+                    data-category={item.data.category}
+                >
+                    <Image
+                        src={item.thumbnail}
+                        alt={item.data.title}
+                        width={960}
+                        height={540}
+                        class="aspect-video object-cover h-full w-auto brightness-25 md:brightness-100 transition-all ease-out-expo"
+                        loading={items.indexOf(item) < 9 ? "eager" : "lazy"}
+                    />
+                    <div class="hidden md:flex flex-col justify-center items-left flex-grow p-10">
+                        <p class="font-bold text-xl">{item.data.title}</p>
+                        <p class="text-sm mt-4">
+                            {item.data.date} | {item.data.category}
+                        </p>
+                        <p class="text-sm mt-4">{item.data.description}</p>
+                    </div>
+                    <div class="text-inactive w-full p-2 text-center flex md:hidden flex-col justify-center items-center flex-grow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <p class="font-bold text-lg">{item.data.title}</p>
+                        <p>
+                            {item.data.date} | {item.data.category}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        ))
+    }
+</div>

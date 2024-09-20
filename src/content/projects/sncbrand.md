@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=AYhTG3OHEQU"
 ---
 
-# Sony Network Communications ビジョン・ムービー
 
 Sony Network Communicationsの新しいビジョン・ムービー「人類の変化を支える、インフラへ。」の一部CGIを担当しました。
 

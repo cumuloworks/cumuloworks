@@ -2,12 +2,9 @@
 title: "autoRect"
 date: "2023-08-07"
 category: "After Effects"
+description: "autoRect is a script for After Effects that creates shape layers matching the size of selected layers with a single click. It enhances workflow for creating text boxes, footage frames, and track mattes, offering improved usability and functionality over its predecessor, Fit Shape."
 ---
 
-# autoRect
-
-autoRectとは
-----------
 
 autoRectは、After Effectsで選択したレイヤーにマッチしたサイズのシェイプレイヤーをワンクリックで作成できるスクリプトです。
 
@@ -19,11 +16,9 @@ autoRectはプラグインではなく、数行のエクスプレッションが
 
 60秒の説明動画を見て、どのように動作するかをご覧ください！
 
-
 ![](./autorect/gif_202208171629.gif)
 
-
-**Fit Shape からのアップグレードは無料です。**
+Fit Shape からの## アップグレードは無料です。
 
 Gumroadで購入した方のアップグレード方法
 
@@ -32,7 +27,6 @@ Gumroadで購入した方のアップグレード方法
 BOOTHで購入した方のアップグレード方法
 
 商品ページからautoRectをダウンロードして、注文番号を使ってライセンス認証してください。
-
 
 インストール
 
@@ -50,12 +44,11 @@ Gumroadで購入した方 … 購入時にメールで送られてくるライ�
 
 BOOTHで購入した方 … 購入時にメールで送られてくる注文番号を入力してください。
 
-
 ![](./autorect/CLIP_220818_213023.jpg)
 
 各部名称
 
-**autoRectボタン**
+## autoRectボタン
 
 このボタンをクリックすると、選択しているレイヤーの下に同サイズのシェイプレイヤーが作成されます。（調整レイヤー・トラックマットスイッチが両方オフの場合）
 
@@ -65,43 +58,43 @@ Shift+クリックで、選択しているレイヤーの上にシェイプレ�
 
 autoRectを作成できないレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**調整レイヤー スイッチ**
+## 調整レイヤー スイッチ
 
 このスイッチがONのときにautoRectボタンを押すと、選択しているレイヤーの上にautoRectが作成され、調整レイヤーになります。
 
-**トラックマット スイッチ**
+## トラックマット スイッチ
 
 このスイッチがONのときにautoRectボタンをクリックすると、選択しているレイヤーの上にautoRectが作成され、選択していたレイヤーのアルファマットに設定されます。
 
-**親とリンク スイッチ**
+## 親とリンク スイッチ
 
 このスイッチがONのときにautoRectを作成すると、選択していたレイヤーの子に設定されます。
 
-**範囲拡張設定**
+## 範囲拡張設定
 
 作成するautoRectの範囲拡張を設定します。範囲拡張は、autoRect pseudoエフェクトから作成後でも変更できます。
 
 右側のリセットボタンをクリックすることで、デフォルトの値にリセットします。 リセットボタンをShift+クリックすると、現在入力されている値をデフォルトとして設定します。
 
-**Freezeボタン**
+## Freezeボタン
 
 autoRectするレイヤーのサイズが変化する場合(例えば、テキストがアニメーションしている場合）、現在の時間のサイズに固定することができます。マーカーが作成され、そのタイミングで固定されます。もう一度クリックすると、固定を解除できます。
 
 autoRectではないレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**Bakeボタン**
+## Bakeボタン
 
 このボタンをクリックすると、autoRectが現在の状態で通常のシェイプレイヤーに変換されます。
 
 autoRectではないレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**ライセンス・設定ボタン**
+## ライセンス・設定ボタン
 
 クリックしてautoRectの設定を開きます。
 
 Shift+クリックすることで、ライセンスキー入力画面を強制的に表示させます。
 
-**ステータスメッセージ**
+## ステータスメッセージ
 
 エラーやステータスの表示は、ここに表示されます。
 
@@ -123,8 +116,7 @@ Layer X, skipped. (E12) … レイヤーXはautoRectではないので、Freeze�
 
 Layer X, skipped. (E13) … レイヤーXはautoRectではないので、Bakeボタンは使えません。
 
-
-**Settings Panel | 設定画面**
+## Settings Panel | 設定画面
 
 ![](./autorect/CLIP_220818_213033.jpg)
 
@@ -152,8 +144,7 @@ Toggles whether the adjustment layer switch, track matte switch, and parent and 
 
 autoRect作成後、調整レイヤースイッチ・トラックマットスイッチ・親とリンクスイッチの状態を維持するか(OFF)、毎回OFFにするか(ON)を切り替えます。
 
-
-**autoRect pseudo effect | autoRect pseudoエフェクト**
+## autoRect pseudo effect | autoRect pseudoエフェクト
 
 ![](./autorect/CLIP_220818_213040.jpg)
 
@@ -194,4 +185,3 @@ Toggles whether to include extents, primarily for paragraph text.
 主に段落テキストにおいて、余白部分を対象にするかどうかを切り替えます。
 
 (see: [Layer Sub-objects — After Effects Expression Reference 0.0.3 documentation (](https://ae-expressions.docsforadobe.dev/layer-sub.html#layer-sourcerectattime-t-time-includeextents-false)[docsforadobe.dev](http://docsforadobe.dev)[)](https://ae-expressions.docsforadobe.dev/layer-sub.html#layer-sourcerectattime-t-time-includeextents-false)
-

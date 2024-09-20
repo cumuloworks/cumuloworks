@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=irsOzMyTTBo"
 ---
 
-# Tama Art University "INTEGRATED"
 
 多摩美術大学 統合デザイン学科 オープンキャンパスでの、デジタルサイネージコンテンツを制作しました。
 

@@ -5,7 +5,6 @@ date: "2020-10-12"
 category: "Announcement"
 ---
 
-# PLAYCRAFT PLAY01 “STAY” に参加しました。
 
 Dentsu Craft Tokyoが立ち上げた、クリエイターたちのあそび場「PLAYCRAFT」に、Cumuloworksも参加しています。
 
@@ -16,4 +15,3 @@ Solid ［しっかりとした/堅実な/中身の詰まった/頑丈な\]とい
 本サイトにて、計61名のクリエーターの作品を見ることができます。
 
 [PLAYCRAFT サイト](https://playcraft.tokyo/play01/)
-

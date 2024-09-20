@@ -12,13 +12,23 @@ export async function getItemsWithThumbnails(base) {
 			const thumbnailPath = Object.keys(images).find(
 				(path) =>
 					path.includes(`/src/content/${base}/${item.slug}/thumb.`) &&
-					(path.endsWith(".jpg") || path.endsWith(".png")),
+					(path.endsWith(".jpg") ||
+						path.endsWith(".png") ||
+						path.endsWith(".webp")),
 			);
 			let thumbnail = placeholderImage;
 			if (thumbnailPath) {
 				thumbnail = (await images[thumbnailPath]()).default;
 			}
-			return { ...item, thumbnail, base };
+			const title = item.data.title || "Untitled";
+			const category = item.data.category || "Uncategorized";
+			const date = item.data.date || "2100-12-31";
+			return {
+				...item,
+				data: { ...item.data, title, category, date },
+				thumbnail,
+				base,
+			};
 		}),
 	);
 

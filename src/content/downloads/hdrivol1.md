@@ -2,9 +2,8 @@
 title: "Illustrated HDRI vol.1 by SaH₂O"
 date: "2023-08-07"
 category: "Others"
+description: "A collection of 360-degree panoramic HDRIs illustrated by artist SaH2O. Includes 6 different scenes in 8K resolution, suitable for use as backgrounds and lighting in most CG software."
 ---
-
-# Illustrated HDRI vol.1 by SaH₂O
 
 ![](./hdrivol1/samplescene_aurora_default.jpg)
 
@@ -30,21 +29,20 @@ category: "Others"
 
 ![](./hdrivol1/samplescene_sunset_sky.jpg)
 
-**イラストレーター天野さほによって描かれた、360度パノラマHDRI。**
+## イラストレーター天野さほによって描かれた、360度パノラマHDRI
 
 通常のHDRIのように設定するだけで、背景としても照明としても使用できます。
 
 Vol.1のフルバージョンには8K解像度の'sunny', 'coldfront', 'overcast', 'aurora', 'sunset', 'drawing'の6種類が収録されています。
 
-**Gumroadにてsunnyの4Kが収録された無料バージョンを入手できます**
+[Gumroadにてsunnyの4Kが収録された無料バージョンを入手できます](https://cumuloworks.gumroad.com/l/cwhdrivol1)
 
 ほとんどのCGソフトやレンダラーで使用できます。サンプルはCinema 4D用のOctaneRenderでレンダリングされています。
 
-**ルール**
+## ルール
 
 商用・非商用に関わらず使用可能です。
 
 制作物に合わせて改変することができます。
 
 再配布は禁止です。
-

@@ -5,8 +5,6 @@ category: "Entertainment"
 embed: ""
 ---
 
-# ヰ世界情緒 1st ONE-MAN LIVE 「Anima」
-
 
 ```plaintext
 Director, CG, Composite: Shigu

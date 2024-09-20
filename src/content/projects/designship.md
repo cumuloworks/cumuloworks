@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=6PFSNJ29ybc"
 ---
 
-# Designship 2020
 
 I had the opportunity to participate in the opening movie project for the Designship event, and was in charge of the motion graphics of the key visuals and the first cut.
 

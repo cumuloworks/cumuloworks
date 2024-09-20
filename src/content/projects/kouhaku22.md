@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: ""
 ---
 
-# ウタ - 新時代 NHK紅白歌合戦
 
 第73回紅白歌合戦において、ウタ - 新時代の背景LED演出を担当させていただきました
 

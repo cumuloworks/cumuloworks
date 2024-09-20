@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=krlr_ucg2YU"
 ---
 
-# Mori Calliope - Holy嫉妬 Music Video
 
 Mori Calliopeの”Holy嫉妬”ミュージックビデオの制作を担当しました。
 

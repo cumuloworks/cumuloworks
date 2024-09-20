@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=llG2lX0_Sjg"
 ---
 
-# ヰ世界情緒 ANGELIC
 
 ヰ世界情緒「ANGELIC」のミュージックビデオの制作を担当させていただきました。
 

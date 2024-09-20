@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=tEKzvT41Gvg"
 ---
 
-# #36daysoftype
 
 This is my [#36daysoftype](http://www.36daysoftype.com/) !
 

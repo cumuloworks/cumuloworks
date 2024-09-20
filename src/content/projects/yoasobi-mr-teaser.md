@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=mz3bCm-Kh9A"
 ---
 
-# YOASOBI 「ミスター」 teaser
 
 YOASOBI 「ミスター」 teaserのディレクション・モーションデザイン・サウンドデザインを担当いたしました。
 

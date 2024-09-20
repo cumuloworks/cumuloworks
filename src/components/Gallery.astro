@@ -1,33 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import { generateSequence } from "../utils/generateLayoutSequence";
+import { generateGallerySequence } from "../utils/generateGallerySequence";
 import Modal from "./Modal.astro";
+import { Icon } from "astro-icon/components";
+import {getImagesFromFolder} from "../utils/getImagesFromFolder"
 
-const { slug } = Astro.props;
+const { folderPath } = Astro.props;
 
-const images = import.meta.glob(
-    "/src/content/projects/**/*.(png|jpg|jpeg|gif|webp)",
-);
+const galleryImages = getImagesFromFolder(folderPath);
 
-const projectImages = Object.entries(images)
-    .filter(([path]) => path.includes(`/src/content/projects/${slug}/`))
-    .filter(([path]) => !path.endsWith("thumb.jpg"))
-    .map(([path, importFunc]) => ({ path, importFunc }));
+const layoutSequence = generateGallerySequence(galleryImages.length);
 
-const layoutSequence = generateSequence(projectImages.length);
-
+// biome-ignore lint/style/useConst: <explanation>
 let imageIndex = 0;
 ---
 
-<div class="w-full space-y-1">
+<div class="w-full space-y-1 my-10">
     {
         layoutSequence.map((numImages, rowIndex) => (
             <div class="w-full flex gap-1">
                 {Array.from({ length: numImages }).map((_, colIndex) => {
-                    if (imageIndex >= projectImages.length) {
+                    if (imageIndex >= galleryImages.length) {
                         return null;
                     }
-                    const { path, importFunc } = projectImages[imageIndex];
+                    const { path, importFunc } = galleryImages[imageIndex];
                     const imageId = `image-${imageIndex}`;
                     imageIndex += 1;
                     return (
@@ -38,14 +34,14 @@ let imageIndex = 0;
                                     path.split("/").pop()?.split(".")[0] ||
                                     `gallery-${imageIndex}`
                                 }
-                                width={360}
-                                height={640}
-                                class="w-full cursor-pointer"
+                                width={1920}
+                                height={1080}
+                                class="w-full h-full object-cover cursor-pointer"
                                 loading={imageIndex < 8 ? "eager" : "lazy"}
                                 id={imageId}
                             />
                             <Modal id={`modal-${imageId}`}>
-                                <div class="relative">
+                                <div class="relative w-full h-full">
                                     <Image
                                         src={importFunc()}
                                         alt={
@@ -55,21 +51,21 @@ let imageIndex = 0;
                                                 ?.split(".")[0] ||
                                             `gallery-${imageIndex}`
                                         }
-                                        width={1080}
-                                        height={1920}
-                                        class="max-w-full max-h-[90vh]"
+                                        width={1920}
+                                        height={1080}
+                                        class="w-full h-full object-cover"
                                     />
                                     <button
-                                        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+                                        class="absolute -left-16 size-10  top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
                                         data-nav="prev"
                                     >
-                                        &lt;
+                                        <Icon name="fa6-solid:chevron-left" class="w-full text-white">
                                     </button>
                                     <button
-                                        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+                                        class="absolute -right-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
                                         data-nav="next"
                                     >
-                                        &gt;
+                                        <Icon name="fa6-solid:chevron-right" class="w-full text-white">
                                     </button>
                                 </div>
                             </Modal>

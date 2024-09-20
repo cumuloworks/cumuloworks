@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=Wnk37gJlvOw"
 ---
 
-# EneKey「サイドストーリー」 山崎まさよし×ともわか篇
 
 EneKey 2周年キャンペーン「サイドストーリー」の背景CGの制作を担当しました。
 

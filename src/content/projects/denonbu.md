@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=5AKsx5LXbCA"
 ---
 
-# 電音部PV vol.0
 
 電音部PV vol.0のモーショングラフィックスを制作しました。
 

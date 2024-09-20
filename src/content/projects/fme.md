@@ -5,7 +5,6 @@ category: 'Ads / Corporate'
 embed: "https://www.youtube.com/watch?v=JbuBvTomS5g"
 ---
 
-# AMEI "FME World"
 
  "Future MIDI Expansion" プロモーションビデオを制作いたしました。
 

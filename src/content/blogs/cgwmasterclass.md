@@ -5,7 +5,6 @@ date: "2021-02-14"
 category: "Announcement"
 ---
 
-# CGWORLD MASTERCLASS ONLINE に登壇します
 
 ![](./cgwmasterclass/image-1.png)
 

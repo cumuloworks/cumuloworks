@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=FUR-gbG1deo"
 ---
 
-# 永遠の畔でお茶会を
 
 ヴァンパイアップル「永遠の畔でお茶会を」の映像制作を担当いたしました。
 

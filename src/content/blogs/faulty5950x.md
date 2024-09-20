@@ -5,31 +5,24 @@ date: "2024-07-18"
 category: "Technology / Tips"
 ---
 
-# Ryzen 9 5950X 初期不良を引いた話。
 
 Ryzen 9 5950Xで初期不良を引いたときのログ。
 
 結局トラブルシューティングが終わるまで1ヶ月かかり、夜も眠れない日が続いたのだった…。
 
-Specification
--------------
+## Specification
 
-CHA : Fractal Design Define 7 XL Black Light TG
-
+```plaintext
+CHA : Fractal Design Define 7 XL cumulo Light TG
 CPU : AMD Ryzen 9 5950X
-
 M/B : MSI Prestige X570 CREATION E-ATX
-
 RAM : 128GB (4x 32GB DDR4-3600MHz CL18)
-
 GPU : 2x NVIDIA GeForce RTX 3090 (24GB)
-
 SSD : CORSAIR M.2 SSD Force MP600 2TB
-
 PSU : Corsair AX1600i (1600W)
+```
 
-Symptom
--------
+## Symptom
 
 The machine restarts several minutes after Windows 10 startup without BSOD.
 
@@ -51,12 +44,7 @@ The details view of this entry contains further information.
 
 （APIC IDというのはCPUのコアのIDのことで、12や0で多く発生した。）
 
-View fullsize
-
-Untitled (3).png
-
-Trouble Shooting
-----------------
+## Trouble Shooting
 
 ### BIOS
 
@@ -88,13 +76,12 @@ Trouble Shooting
 
 この段階で、マザーの不具合でCPUの電圧・クロックのコントロールがなにかおかしいか、CPUそのものがおかしいかという2択になった。
 
-### CPUに確定
+## CPUに確定
 
 さらにその友人にお古のRyzen 9 3950Xを借りて載せ替えてみたところ、問題なく動作した。
 
 Ryzen 9 3950XとRyzen 9 5950Xはスペックがかなり似ているので、マザーの不具合ならば同じ症状が出てもおかしくないはずで、これによりCPUの初期不良が確定した。
 
-### その後...
+## その後
 
 販売店へ返送・交換手続きを行ってからは問題なく動作している。（マジで初期不良を引いたんか...）
-

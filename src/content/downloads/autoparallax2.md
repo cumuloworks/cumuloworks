@@ -2,11 +2,11 @@
 title: "autoParallax 2"
 date: "2023-08-01"
 category: "After Effects"
+description: "A script for After Effects that simplifies creating parallax effect animations using 3D layers. It maintains the original layout by canceling apparent size changes when moving along the Z-axis, allowing for easy creation of parallax effects."
 ---
 
-# autoParallax 2
 
-### autoParallaxとは
+## autoParallaxとは
 
 autoParallax 2は、After Effectsで3Dレイヤーを使ったパララックス効果のアニメーションを簡単に作成するスクリプトです。
 
@@ -20,24 +20,22 @@ After EffectsでZ座標を動かしたとき、通常は見かけのスケール
 
 ![](./autoparallax2/gif_202207171545.gif)
 
+### autoParallax (初代) からのアップグレードは無料です
 
-### **autoParallax (初代) からのアップグレードは無料です。**
-
-#### Gumroadで購入した方のアップグレード方法
+## Gumroadで購入した方のアップグレード方法
 
 メールでお送りした100%ディスカウントコードを使って、autoParallax 2を新規購入・ダウンロードしてください。ライセンスキーがメールで送られてきます。
 
-#### BOOTHで購入した方のアップグレード方法
+## BOOTHで購入した方のアップグレード方法
 
 商品ページからv2をダウンロードして、注文番号を使ってライセンス認証してください。
 
-
-#### インストール
+## インストール
 
 1. After Effectsを起動し、ファイル > スクリプト > ScriptUIパネルをインストール を選択。ダウンロードしたjsxbinファイルを選択します。
 2. After Effectsを再起動してください。
 
-#### 初回起動・ライセンス認証
+## 初回起動・ライセンス認証
 
 1. まず、環境設定の「スクリプトによるファイルへの書き込みとネットワークへのアクセスを許可」にチェックが入っていることを確認してください。
 2. ウィンドウ > autoParallax2.jsxbinを選択します。
@@ -50,18 +48,17 @@ BOOTHで購入した方 … 購入時にメールで送られてくる注文番�
 
 E2, E4エラーでライセンス認証が失敗する場合、多くはセキュリティソフトが原因です。一時的に無効にしてお試しください。
 
-
 ![](./autoparallax2/autoParallax_names.png)
 
-#### 各部名称
+## 各部名称
 
-**autoParallaxボタン**
+### autoParallaxボタン
 
 ここをクリックすることで、選択したレイヤーにautoParallaxが適用されます。事前にアクティブなカメラを作っておく必要があります。
 
 autoParallaxが適用不可能なレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**Z位置設定フィールド**
+### Z位置設定フィールド
 
 ここにautoParallax適用後のZ位置を設定できます。エクスプレッションの形式で入力することも可能で、例として
 
@@ -73,13 +70,13 @@ random(-1024, 512) (-1024から512の間でランダム配置)
 
 などが可能です。
 
-**Z位置リセットボタン**
+### Z位置リセットボタン
 
 ここをクリックすることで、Z位置設定フィールドに入力した内容をリセットすることができます。
 
 Shiftを押しながらクリックすることで、現在Z位置設定フィールドに入力されている内容をデフォルトとして設定します。
 
-**次元分割スイッチ**
+### 次元分割スイッチ
 
 ここをクリックすることで、レイヤーの位置の次元分割を切り替えます。
 
@@ -93,13 +90,13 @@ Shiftを押しながらクリックすることで、現在Z位置設定フィ�
 
 次元分割が不可能なレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**削除ボタン**
+### 削除ボタン
 
 autoParallaxボタンで適用したautoParallaxを削除します。
 
 autoParallaxではないレイヤーはスキップされ、スキップされたレイヤーはステータスメッセージに表示されます。
 
-**ステータスメッセージ**
+### ステータスメッセージ
 
 エラーやステータスの表示は、ここに表示されます。
 
@@ -115,9 +112,8 @@ Activation Failure (E3) … Boothの注文番号が間違っています。
 
 Activation Failure (E4) … Boothの注文番号の問い合わせに失敗しました。
 
-**設定ボタン**
+### 設定ボタン
 
 将来、ここにautoParallaxの設定が追加されます。
 
 Shiftを押しながらクリックすることで、ライセンスキー入力の画面を強制的に表示させることができます。
-

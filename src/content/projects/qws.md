@@ -5,8 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-# SHIBUYA QWS
-
 
 ```plaintext
 Advertising Agency : Loftwork Inc.

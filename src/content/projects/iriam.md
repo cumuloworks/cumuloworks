@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=bzgd6V_Y1Yc"
 ---
 
-# IRIAM リニューアル
 
 キャラライブアプリ「IRIAM」のリニューアルにあたり、ロゴアニメーション・コンセプトムービーのモーショングラフィックスを担当しました。
 

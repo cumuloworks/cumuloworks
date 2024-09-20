@@ -5,7 +5,6 @@ date: "2022-09-08"
 category: "Announcement"
 ---
 
-# CGWORLD 290号に掲載されました
 
 ![](./cgworld-290/cgw.jpg)
 
@@ -18,4 +17,3 @@ CGアーティスト Shigu、Houdiniアーティスト Letheと共に、普段�
 [ARCADIA MV を見る](https://cumulo.works/projects/arcadia)
 
 [CGWORLD 290号 詳細](https://cgworld.jp/magazine/cgw290.html)
-

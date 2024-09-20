@@ -1,33 +1,41 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "./BaseLayout.astro";
 import PrevNext from "../components/PrevNext.astro";
 import "../styles/markdown.css";
 
-const { title, prevItem, nextItem, base } = Astro.props;
+const {
+    title,
+    description,
+    category,
+    date,
+    prevItem,
+    nextItem,
+    base,
+    isContentPage = true,
+} = Astro.props;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-    </head>
-    <body class="flex flex-col h-svh">
-        <Header />
-        <main class="mx-auto mt-8 max-w-screen-md flex-grow">
-            <article>
-                <!-- <h1>{title}</h1> -->
-                <slot name="hero" />
-                <div class="markdown-content">
-                    <slot />
-                </div>
-                <slot name="additional-content" />
+<BaseLayout title={title}>
+    <article class="w-full">
+        <slot name="hero" />
+        <div class="h-12"></div>
+        <div class="markdown-content max-w-screen-md mx-auto">
+            <div class="mt-10 mb-20">
+                <h1>{title}</h1>
+                <p
+                    class="font-bold text-xl text-center text-cumulolight space-x-4"
+                >
+                    <span> {date}</span>
+                    <span> {category}</span>
+                </p>
+            </div>
+            <slot />
+        </div>
+        <slot name="additional-content" />
+        {
+            isContentPage && (
                 <PrevNext prevItem={prevItem} nextItem={nextItem} base={base} />
-            </article>
-        </main>
-        <Footer />
-    </body>
-</html>
+            )
+        }
+    </article>
+</BaseLayout>

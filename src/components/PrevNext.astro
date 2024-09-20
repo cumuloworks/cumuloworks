@@ -1,15 +1,24 @@
 ---
+import { Icon } from "astro-icon/components";
 const { prevItem, nextItem, base } = Astro.props;
 ---
 
-<div class="flex justify-between mt-8">
+<div
+    class="flex justify-between items-center h-20 space-x-4 text-cumulodark"
+>
     {
         prevItem && (
             <a
                 href={`/${base}/${prevItem.slug}`}
-                class="text-blue-600 hover:underline"
+                class="flex items-center  hover:text-cumulolight transition-colors ease-out-expo group"
             >
-                ← {prevItem.data.title}
+                <Icon
+                    name="fa6-solid:arrow-left"
+                    class="mr-2 size-5 group-hover:size-10 transition-all ease-out-expo"
+                />
+                <span class="text-sm md:text-base truncate max-w-48 md:max-w-96">
+                    {prevItem.data.title}
+                </span>
             </a>
         )
     }
@@ -17,9 +26,15 @@ const { prevItem, nextItem, base } = Astro.props;
         nextItem && (
             <a
                 href={`/${base}/${nextItem.slug}`}
-                class="text-blue-600 hover:underline"
+                class="flex items-center ease-in-out ml-auto group"
             >
-                {nextItem.data.title} →
+                <span class="text-sm md:text-base truncate max-w-48 md:max-w-96">
+                    {nextItem.data.title}
+                </span>
+                <Icon
+                    name="fa6-solid:arrow-right"
+                    class="ml-2 size-5 group-hover:size-10 transition-all ease-out-expo"
+                />
             </a>
         )
     }

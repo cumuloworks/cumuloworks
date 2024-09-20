@@ -5,8 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=QdLYsbPq7Ic"
 ---
 
-# IRIAM #バーチャルなってみた
-
 
 ```plaintext
 Client : 株式会社IRIAM

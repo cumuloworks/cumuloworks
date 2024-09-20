@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=TSncomnvyfc"
 ---
 
-# amazarashi リビングデッド MV
 
 朗読演奏実験空間「新言語秩序」
 
