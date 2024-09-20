@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=mz3bCm-Kh9A"
 ---
 
-
 YOASOBI 「ミスター」 teaserのディレクション・モーションデザイン・サウンドデザインを担当いたしました。
 
 2月8日朝のフジテレビ「めざましテレビ」にて初公開されました。

@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=nLFi_zEUXOs"
 ---
 
-
 理芽 1st ONE-MAN LIVE「ニューロマンス」にて、オリジナル楽曲「やさしくしないで」の映像演出・MV制作を担当しました。
 
 ```plaintext

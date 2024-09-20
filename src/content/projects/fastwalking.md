@@ -6,7 +6,6 @@ embed: "https://www.youtube.com/watch?v=6nmGby8O5tw"
 ---
 
 
-
 ```plaintext
 Client: ASICS Corporation
 Agency: Taki Corporation

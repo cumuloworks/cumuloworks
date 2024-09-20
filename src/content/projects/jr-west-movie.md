@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=7jFnuMLcm24"
 ---
 
-
 JR西日本グループ コンセプトムービー：モビリティサービス篇・ライフデザイン篇の一部モーショングラフィック・CGを制作いたしました。
 
 ```plaintext

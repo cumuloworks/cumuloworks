@@ -5,7 +5,6 @@ date: "2020-09-15"
 category: "Announcement"
 ---
 
-
 CumuloworksによるCinema 4Dの日本語チュートリアルが、CGWORLD様にて購入・視聴できるようになりました！
 
 MoGraph、Dynamics、Octane Renderなどを詳細に解説しています。

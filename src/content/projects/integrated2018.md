@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=irsOzMyTTBo"
 ---
 
-
 多摩美術大学 統合デザイン学科 オープンキャンパスでの、デジタルサイネージコンテンツを制作しました。
 
 ```plaintext

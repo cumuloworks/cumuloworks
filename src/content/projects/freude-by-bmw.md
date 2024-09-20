@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-
 ```plaintext
 Motion Graphics: Tomoya Eguchi (Cumuloworks, Inc.)
 ```

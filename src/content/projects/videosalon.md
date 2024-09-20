@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: ""
 ---
 
-
 VIDEOSALON 2020年5月号の表紙・中表紙のグラフィックを提供させていただきました。
 
 ```plaintext

@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=W1zmV4511cI"
 ---
 
-
 pixivコミックインディーズのムービーをディレクション・制作しました。
 
 ```plaintext

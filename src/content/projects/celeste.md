@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=GJkYU3PHYvU"
 ---
 
-
 モーションデザインの一部をお手伝いさせていただきました。
 
 ```plaintext

@@ -5,7 +5,6 @@ date: "2020-10-12"
 category: "Announcement"
 ---
 
-
 Dentsu Craft Tokyoが立ち上げた、クリエイターたちのあそび場「PLAYCRAFT」に、Cumuloworksも参加しています。
 
 お題は”Stay \_\_\_\_\_”。

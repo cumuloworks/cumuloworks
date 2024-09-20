@@ -5,7 +5,6 @@ category: "After Effects"
 description: "A script for After Effects to switch interface languages. Easily change the UI language with a simple dropdown selection. (Windows Only)"
 ---
 
-
 ## Installation
 
 Run or install from the After Effects’ file menu. \*This script is not ScriptUI panel script.

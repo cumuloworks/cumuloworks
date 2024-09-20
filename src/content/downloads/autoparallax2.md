@@ -5,7 +5,6 @@ category: "After Effects"
 description: "A script for After Effects that simplifies creating parallax effect animations using 3D layers. It maintains the original layout by canceling apparent size changes when moving along the Z-axis, allowing for easy creation of parallax effects."
 ---
 
-
 ## autoParallaxとは
 
 autoParallax 2は、After Effectsで3Dレイヤーを使ったパララックス効果のアニメーションを簡単に作成するスクリプトです。

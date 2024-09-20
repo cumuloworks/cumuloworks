@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=Yhs1YWsy5II"
 ---
 
-
 EneKey 2周年キャンペーン「サイドストーリー」の背景CGの制作を担当しました。
 
 ```plaintext

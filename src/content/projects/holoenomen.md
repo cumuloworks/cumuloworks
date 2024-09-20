@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=BOWi6Pclr48"
 ---
 
-
 ```plaintext
 Soundtrack: Laur (@LAUR1200)
 Director: Shinoda Toshitaka (IJIGEN TOKYO)

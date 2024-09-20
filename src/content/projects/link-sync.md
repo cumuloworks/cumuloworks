@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=1fo7RCvVt80"
 ---
 
-
 OMRON LINK-SYNCの映像を制作いたしました。
 
 ```plaintext

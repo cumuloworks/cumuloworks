@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-
 TOKYO NODE サイネージロゴモーションをNANAME.INCと制作しました。
 
 主にAfter Effectsでの動的なグラフィック生成の開発を行いました。

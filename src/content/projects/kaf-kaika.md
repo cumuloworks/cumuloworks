@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=Cg0YFMXTxmU"
 ---
 
-
 花譜 4th ONE-MAN LIVE「怪歌」にて、「廻花」誕生のムービーのVFXを担当いたしました。
 
 ```plaintext

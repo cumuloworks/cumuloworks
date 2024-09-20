@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: ""
 ---
 
-
 ```plaintext
 Advertising Agency : Loftwork Inc.
 Producer : Kenjiro Matsuoka(NANAME Inc.)

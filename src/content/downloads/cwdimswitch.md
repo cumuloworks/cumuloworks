@@ -5,7 +5,6 @@ category: "After Effects"
 description: "CW Dim Switch is an After Effects script that mimics DaVinci Resolve's dim switch functionality. It allows users to quickly lower the audio levels of all layers containing audio to 20% with a single click, and revert back to the original levels just as easily."
 ---
 
-
 ![](./cwdimswitch/l74bs07in4wxglx2sehcht4lao2d.jpg)
 
 AE does not have that wonderful switch DaVinci Resolve has. So, me, Cumuloworks made it for you. You're welcome!

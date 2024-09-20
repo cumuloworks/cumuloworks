@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=TSncomnvyfc"
 ---
 
-
 朗読演奏実験空間「新言語秩序」
 
 歌詞のタイポグラフィのアニメーションの一部を担当いたしました。文字が検閲されるアニメーションをAfter Effectsスクリプトで実装・自動化。

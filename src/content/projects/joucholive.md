@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: ""
 ---
 
-
 ```plaintext
 Director, CG, Composite: Shigu
 Cinematographer: Reflex

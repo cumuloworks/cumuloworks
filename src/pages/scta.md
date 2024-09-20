@@ -3,7 +3,6 @@ title: 特定商取引法に基づく表示
 layout: ../layouts/ContentLayout.astro
 ---
 
-
 ## 販売業社の名称
 
 合同会社キュムロワークス

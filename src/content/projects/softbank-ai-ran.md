@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=GnAfHItaads"
 ---
 
-
 Softbank 第37回定時株主総会にて使用された、AI-RANの紹介ムービーを制作いたしました。
 
 ```plaintext

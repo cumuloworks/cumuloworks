@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: ""
 ---
 
-
 amazarashiのライブ「ロストボーイズ」内の楽曲「ロストボーイズ」の映像演出を担当させていただきました。
 
 ```plaintext

@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=QdLYsbPq7Ic"
 ---
 
-
 ```plaintext
 Client : 株式会社IRIAM
 Creative Planner : Mao Shimojo

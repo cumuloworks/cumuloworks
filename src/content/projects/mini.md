@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=Df4o82Q-j4Q"
 ---
 
-
 MINI JOHN COOPER WORKSのムービーの一部VFXを担当しました。
 
 ```plaintext

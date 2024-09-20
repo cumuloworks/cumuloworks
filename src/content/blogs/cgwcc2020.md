@@ -5,7 +5,6 @@ date: "2020-10-02"
 category: "Announcement"
 ---
 
-
 CGWORLD 2020 クリエイティブカンファレンスにて、After Effects スクリプトについて講演します。
 
 イベントは11月7日～8日にオンライン開催で、Cumuloworksは1日目(7日)12:30～のセッションです。

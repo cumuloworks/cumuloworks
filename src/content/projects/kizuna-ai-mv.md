@@ -5,7 +5,6 @@ category: "Entertainment"
 embed: "https://www.youtube.com/watch?v=Ved99aUuNwk"
 ---
 
-
 中国绊爱「化身星海」のMVの一部シーンを制作しました。
 
 ```plaintext

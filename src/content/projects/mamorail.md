@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=Yg9mANMGAac"
 ---
 
-
 子ども見守りサービス「まもレール」エリア拡大入会キャンペーン映像のアニメーションを株式会社ナナメで担当しました。
 
 ```plaintext

@@ -5,7 +5,6 @@ category: "Ads / Corporate"
 embed: "https://www.youtube.com/watch?v=BHCOvooEdy8"
 ---
 
-
 Panasonic 『Make New 「オープニング」篇』に、グラフィッククリエイターとして参加しました。
 
 ```plaintext
