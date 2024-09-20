@@ -29,7 +29,8 @@ const projectsByCategory = projects.reduce((acc, project) => {
 
 for (const category of Object.keys(projectsByCategory)) {
 	projectsByCategory[category].projects.sort(
-		(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+		(a, b) =>
+			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 	);
 }
 ---
@@ -45,7 +46,6 @@ for (const category of Object.keys(projectsByCategory)) {
 	<body
 		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b"
 	>
-		<!-- <Header /> -->
 		<main class="flex-grow">
 			<section class="w-full h-svh bg-cumulodark relative snap-start">
 				<TopPageBackground />
