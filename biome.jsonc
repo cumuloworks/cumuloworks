@@ -1,0 +1,13 @@
+{
+	"javascript": {
+		"globals": ["Astro"],
+		"formatter": {
+			"bracketSameLine": true
+		}
+	},
+	"linter": {
+		"rules": {
+			"nursery": { "useSortedClasses": "warn" }
+		}
+	}
+}

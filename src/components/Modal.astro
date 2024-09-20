@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+const { id, open } = Astro.props;
+---
+
+<dialog id={id} open={open} class="w-full max-w-screen-xl bg-transparent">
+    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40">
+    </div>
+    <div class="relative overflow-hidden p-20 z-50">
+        <div
+            class="loading-spinner absolute inset-0 flex items-center justify-center -z-10 m-20"
+        >
+            <Icon
+                name="fa6-solid:circle-notch"
+                class="text-white animate-spin"
+            />
+        </div>
+        <slot />
+    </div>
+    <button
+        class="close-button transition-all duration-300 ease-out-expo hover:scale-110 text-2xl rounded-full opacity-50 hover:opacity-100 text-white size-10 border absolute bottom-4 left-1/2 -translate-x-1/2 z-50"
+        >&times;</button
+    >
+</dialog>
+
+<script>
+    const closeButtons = document.querySelectorAll(".close-button");
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const dialog = button.closest("dialog");
+            dialog.dispatchEvent(new CustomEvent("modal-closed"));
+            dialog.close();
+        });
+    });
+</script>

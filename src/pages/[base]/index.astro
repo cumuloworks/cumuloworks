@@ -1,0 +1,95 @@
+---
+import ItemGrid from "../../components/ItemGrid.astro";
+import ItemList from "../../components/ItemList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import "../../styles/markdown.css";
+
+export const prerender = true;
+export async function getStaticPaths() {
+	const bases = ["projects", "blogs", "downloads"];
+	return bases.map((base) => ({
+		params: { base },
+		props: { base },
+	}));
+}
+
+const { base } = Astro.props;
+const items = await getItemsWithThumbnails(base);
+const categories = [...new Set(items.map((item) => item.data.category))];
+const title = base.charAt(0).toUpperCase() + base.slice(1);
+---
+
+<BaseLayout title={title}>
+    <div class="w-full max-w-screen-xl mx-auto mb-10">
+        <div
+            class="w-full flex flex-col md:flex-row items-center justify-between mb-10 gap-5"
+        >
+            <h1 class="text-center uppercase text-4xl font-bold">
+                {title}
+            </h1>
+            <div
+                id="filter-controls"
+                class="rounded-full border border-cumulo-inactive text-sm"
+            >
+                <button
+                    id="all-filter"
+                    class="px-5 py-1 rounded-full transition-colors ease-out-expo"
+                    >All</button
+                >
+                {
+                    categories.map((category: string) => (
+                        <button
+                            class="px-5 py-1 rounded-full transition-colors ease-out-expo"
+                            id={`${category}-filter`}
+                        >
+                            {category.charAt(0).toUpperCase() +
+                                category.slice(1)}
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+        {
+            base === "projects" ? (
+                <ItemGrid base={base} items={items} />
+            ) : (
+                <ItemList base={base} items={items} />
+            )
+        }
+    </div>
+</BaseLayout>
+
+<style>
+    #filter-controls button.active {
+        @apply bg-cumulodark text-active;
+    }
+</style>
+
+<script>
+    const filterButtons = document.querySelectorAll("#filter-controls button");
+    const gridItems = document.querySelectorAll(".grid-item");
+    const allFilterButton = document.getElementById("all-filter");
+
+    function setActiveFilter(button) {
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.id.replace("-filter", "");
+        gridItems.forEach((item) => {
+            if (filter === "all" || item.dataset.category === filter) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => setActiveFilter(button));
+    });
+
+    if (allFilterButton) {
+        setActiveFilter(allFilterButton);
+    }
+</script>

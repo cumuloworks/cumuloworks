@@ -1,0 +1,44 @@
+---
+import PrevNext from "../components/PrevNext.astro";
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/markdown.css";
+
+const {
+    title,
+    description,
+    category,
+    date,
+    prevItem,
+    nextItem,
+    base,
+    isContentPage = true,
+    ogImage, // Add this prop
+} = Astro.props;
+---
+
+<BaseLayout title={title} , description={description} ogImage={ogImage}>
+    <article class="w-full">
+        <slot name="hero" />
+        <div class="h-12"></div>
+        <div class="markdown-content">
+            <div class="mt-10 mb-20">
+                <h1>{title}</h1>
+                <p
+                    class="font-bold text-xl text-center text-cumulolight space-x-4"
+                >
+                    <span> {date}</span>
+                    <span> {category}</span>
+                </p>
+            </div>
+            <div class="max-w-screen-md mx-auto">
+                <slot />
+            </div>
+        </div>
+        <slot name="additional-content" />
+        {
+            isContentPage && (
+                <PrevNext prevItem={prevItem} nextItem={nextItem} base={base} />
+            )
+        }
+    </article>
+</BaseLayout>
