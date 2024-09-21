@@ -8,26 +8,13 @@
 </video>
 
 <script>
-    function setRandomTime(video) {
-        if (video.readyState >= 2) {
-            const randomTime = Math.random() * video.duration;
-            video.currentTime = randomTime;
-        } else {
-            setTimeout(() => setRandomTime(video), 100);
-        }
-    }
-
     function initVideo() {
         const video = document.getElementById("background-video");
         if (video instanceof HTMLVideoElement) {
-            if (video.readyState >= 2) {
-                setRandomTime(video);
-            } else {
-                video.addEventListener("loadeddata", () =>
-                    setRandomTime(video),
-                );
-                setTimeout(() => setRandomTime(video), 1000);
-            }
+            video.addEventListener("loadedmetadata", () => {
+                const randomTime = Math.random() * video.duration;
+                video.currentTime = randomTime;
+            });
         }
     }
 
