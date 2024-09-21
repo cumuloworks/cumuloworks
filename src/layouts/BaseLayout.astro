@@ -42,8 +42,7 @@ const pageTitle = `${title} | Cumuloworks`;
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         <Header />
         <main
-            class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}
-        >
+            class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}>
             <slot />
         </main>
         <Footer />

@@ -10,8 +10,7 @@ import { Image } from "astro:assets";
                 <a
                     href={`/${base}/${item.slug}`}
                     class="flex flex-col md:flex-row h-48 relative hover:translate-x-1 transition-transform ease-out-expo"
-                    data-category={item.data.category}
-                >
+                    data-category={item.data.category}>
                     <Image
                         src={item.thumbnail}
                         alt={item.data.title}

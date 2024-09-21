@@ -4,14 +4,14 @@ import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
 
 const {
-	title,
-	description,
-	category,
-	date,
-	prevItem,
-	nextItem,
-	base,
-	ogImage,
+    title,
+    description,
+    category,
+    date,
+    prevItem,
+    nextItem,
+    base,
+    ogImage,
 } = Astro.props;
 ---
 
@@ -23,8 +23,7 @@ const {
             <div class="mt-10 mb-20">
                 <h1>{title}</h1>
                 <p
-                    class="font-bold text-xl text-center text-cumulolight space-x-4"
-                >
+                    class="font-bold text-xl text-center text-cumulolight space-x-4">
                     <span> {date}</span>
                     <span> {category}</span>
                 </p>

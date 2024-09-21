@@ -32,14 +32,15 @@ const projectsByCategory = projects.reduce((acc, project) => {
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
+		/>
 		<title>Cumuloworks</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
-		<meta property="og:title" content="Cumuloworks" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
 		<meta
 			property="og:description"
 			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
@@ -48,31 +49,28 @@ const projectsByCategory = projects.reduce((acc, project) => {
 			property="og:image"
 			content={new URL("/default_ogp.jpg", Astro.url)}
 		/>
+		<meta property="og:site_name" content="Cumuloworks" />
+		<meta property="og:title" content="Cumuloworks" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+
+		<meta property="twitter:card" content="summary_large_image" />
 		<meta
 			property="twitter:image"
 			content={new URL("/default_ogp.jpg", Astro.url)}
 		/>
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta
-			property="description"
-			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
-		/>
-		<meta property="og:site_name" content="Cumuloworks" />
 	</head>
 	<body
-		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b"
-	>
+		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b">
 		<main class="flex-grow">
 			<section class="w-full h-svh bg-cumulodark relative snap-start">
 				<TopPageBackground />
 				<TopPageInteractions />
 			</section>
 			<section
-				class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive"
-			>
+				class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive">
 				<div
-					class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20"
-				>
+					class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20">
 					{
 						Object.entries(projectsByCategory).map(
 							([
