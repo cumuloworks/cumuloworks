@@ -14,8 +14,6 @@ import { Image } from "astro:assets";
                     <Image
                         src={item.thumbnail}
                         alt={item.data.title}
-                        width={960}
-                        height={540}
                         class="aspect-video object-cover h-full w-auto brightness-25 md:brightness-100 transition-all ease-out-expo"
                         loading={items.indexOf(item) < 9 ? "eager" : "lazy"}
                     />

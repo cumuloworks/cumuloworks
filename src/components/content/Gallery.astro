@@ -39,8 +39,6 @@ const preparedImages = await Promise.all(
                             <Image
                                 src={image.src}
                                 alt={image.alt}
-                                width={1920}
-                                height={1080}
                                 class="w-full h-full object-cover cursor-pointer"
                                 loading={imageIndex < 8 ? "eager" : "lazy"}
                                 id={image.id}
@@ -61,8 +59,6 @@ const preparedImages = await Promise.all(
                 <Image
                     src={image.src}
                     alt={image.alt}
-                    width={1920}
-                    height={1080}
                     class="w-full h-full object-cover"
                 />
                 <button

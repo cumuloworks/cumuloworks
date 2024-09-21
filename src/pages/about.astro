@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
+import profilePic from "../assets/profile_pic.jpg";
 
 const title = "About";
 const description =
@@ -15,11 +16,9 @@ const description =
             class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 shadow-2xl h-full">
             <div class="w-full lg:w-1/3">
                 <Image
-                    src="/about/profile_pic.jpg"
+                    src={profilePic}
                     class="rounded object-cover h-96 lg:h-full"
                     alt="Profile"
-                    width={1124}
-                    height={1500}
                     loading="eager"
                 />
             </div>

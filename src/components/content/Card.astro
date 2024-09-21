@@ -8,8 +8,6 @@ const { base, item } = Astro.props;
         <Image
             src={item.thumbnail}
             alt={item.data.title}
-            width={960}
-            height={540}
             class="object-cover aspect-video w-full h-auto brightness-100 group-hover:brightness-25 transition-all ease-out-expo"
             loading="lazy"
         />

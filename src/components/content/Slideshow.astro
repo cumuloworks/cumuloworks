@@ -20,8 +20,6 @@ const slideshowImages = getImagesFromFolder(folderPath);
                         path.split("/").pop()?.split(".")[0] ||
                         `slideshow-${index}`
                     }
-                    width={1920}
-                    height={1080}
                     class="w-full h-full object-cover"
                     loading={index < 8 ? "eager" : "lazy"}
                     id={`image-${index}`}
