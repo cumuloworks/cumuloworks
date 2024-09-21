@@ -42,6 +42,11 @@ const pageTitle = `${title} | Cumuloworks`;
             content={description ? description : title}
         />
         <meta property="og:site_name" content="Cumuloworks" />
+        <script
+            is:inline
+            defer
+            data-domain="cumulo.works"
+            src="https://plausible.io/js/script.js"></script>
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         {header ? <Header /> : null}
