@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import { Icon } from "astro-icon/components";
 import TopPageBackground from "../components/TopPageBackground.astro";
 import TopPageInteractions from "../components/TopPageInteractions.astro";
 import { getItemsWithThumbnails } from "../utils/contentUtils";
@@ -29,7 +29,8 @@ const projectsByCategory = projects.reduce((acc, project) => {
 
 for (const category of Object.keys(projectsByCategory)) {
 	projectsByCategory[category].projects.sort(
-		(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+		(a, b) =>
+			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 	);
 }
 ---
@@ -78,7 +79,7 @@ for (const category of Object.keys(projectsByCategory)) {
 								{ projects: categoryProjects, description },
 							]) => (
 								<div>
-									<h2 class="text-4xl  hover:text-active uppercase mb-2">
+									<h2 class="text-3xl md:text-4xl  hover:text-active uppercase mb-2">
 										{category}
 									</h2>
 									<p class="mb-8">{description}</p>
@@ -114,6 +115,12 @@ for (const category of Object.keys(projectsByCategory)) {
 						)
 					}
 				</div>
+				<a
+					href="/projects"
+					class="flex items-center gap-5 justify-center md:justify-end uppercase mb-5 group h-10"
+					>Show more projects
+					<Icon name="fa6-solid:chevron-right" class="size-5 group-hover:size-10 transition-all ease-out-expo" />
+				</a>
 			</section>
 		</main>
 		<Footer />

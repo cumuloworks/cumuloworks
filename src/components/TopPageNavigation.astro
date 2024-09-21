@@ -2,25 +2,21 @@
 import SocialIcon from "./SocialIcon.astro";
 
 const SocialIcons = [
-	{ href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
-	{ href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
-	{ href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
-	{ href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
+    { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
+    { href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
+    { href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
+    { href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
 ];
 ---
 
 <nav class="font-bold uppercase">
     <div class="absolute left-10 md:left-20 bottom-24">
         <ul
-            class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-inactive"
+            class="grid grid-cols-2 md:grid-cols-4 gap-5 text-center text-inactive"
         >
             {
                 SocialIcons.map((link) => (
-                    <SocialIcon
-                        href={link.href}
-                        icon={link.icon}
-                        dark={true}
-                    />
+                    <SocialIcon href={link.href} icon={link.icon} dark={true} />
                 ))
             }
         </ul>
@@ -38,11 +34,14 @@ const SocialIcons = [
             <li>
                 <a href="/downloads" class="hover:text-active">Downloads</a>
             </li>
+            <li class="inline md:hidden">
+                <a href="/about" class="hover:text-active">About</a>
+            </li>
         </ul>
     </div>
     <div class="absolute right-10 md:right-20 bottom-24">
         <ul
-            class="flex flex-col md:flex-row w-full gap-4 text-right text-inactive"
+            class="hidden md:flex flex-col md:flex-row w-full gap-4 text-right text-inactive"
         >
             <li>
                 <a href="/about" class="hover:text-active">About</a>
@@ -51,5 +50,12 @@ const SocialIcons = [
                 <a href="/about#contact" class="hover:text-active">Contact</a>
             </li>
         </ul>
+        <div class="inline md:hidden list-none">
+            <SocialIcon
+                href={"mailto:mail@cumulo.works"}
+                icon={"fa6-solid:envelope"}
+                dark={true}
+            />
+        </div>
     </div>
 </nav>
