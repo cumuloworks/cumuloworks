@@ -1,10 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-import Footer from "../components/layout/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import TopPageBackground from "../components/toppage/TopPageBackground.astro";
 import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
 import { getItemsWithThumbnails } from "../utils/contentUtils";
-import "../styles/globals.css";
 import TopPageGallery from "../components/toppage/TopPageGallery.astro";
 
 const projects = await getItemsWithThumbnails("projects");
@@ -29,71 +28,42 @@ const projectsByCategory = projects.reduce((acc, project) => {
 }, {});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
-		/>
-		<title>Cumuloworks</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-
-		<meta
-			property="og:description"
-			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
-		/>
-		<meta
-			property="og:image"
-			content={new URL("/default_ogp.jpg", Astro.url)}
-		/>
-		<meta property="og:site_name" content="Cumuloworks" />
-		<meta property="og:title" content="Cumuloworks" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
-
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta
-			property="twitter:image"
-			content={new URL("/default_ogp.jpg", Astro.url)}
-		/>
-	</head>
-	<body
+<BaseLayout
+	title="Home"
+	description="Cumuloworks | Director / Motion Grapher / CG Generalist"
+	limit={false}
+	header={false}>
+	<div
 		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b">
-		<main class="flex-grow">
-			<section class="w-full h-svh bg-cumulodark relative snap-start">
-				<TopPageBackground />
-				<TopPageInteractions />
-			</section>
-			<section
-				class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive">
-				<div
-					class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20">
-					{
-						Object.entries(projectsByCategory).map(
-							([category, projectsData]) => (
-								<TopPageGallery
-									category={category}
-									description={projectsData.description}
-									projects={projectsData.projects}
-								/>
-							),
-						)
-					}
-				</div>
-				<a
-					href="/projects"
-					class="flex items-center gap-5 justify-center md:justify-end uppercase mb-5 group h-10"
-					>Show more projects
-					<Icon
-						name="fa6-solid:chevron-right"
-						class="size-5 group-hover:size-10 transition-all ease-out-expo"
-					/>
-				</a>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+		<section class="w-full h-svh bg-cumulodark relative snap-start">
+			<TopPageBackground />
+			<TopPageInteractions />
+		</section>
+		<section
+			class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive">
+			<div
+				class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20">
+				{
+					Object.entries(projectsByCategory).map(
+						([category, projectsData]) => (
+							<TopPageGallery
+								category={category}
+								description={projectsData.description}
+								projects={projectsData.projects}
+							/>
+						),
+					)
+				}
+			</div>
+			<a
+				href="/projects"
+				class="flex items-center gap-5 justify-center md:justify-end uppercase mb-5 group h-10"
+				>Show more projects
+				<Icon
+					name="fa6-solid:chevron-right"
+					class="size-5 group-hover:size-10 transition-all ease-out-expo"
+				/>
+			</a>
+		</section>
+	</div>
+</BaseLayout>
