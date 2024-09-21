@@ -1,10 +1,11 @@
 <video
     id="background-video"
-    src="/top_video.mp4"
     autoplay
     muted
     loop
     class="absolute top-0 left-0 w-full h-full object-cover z-0 brightness-50 bg-black">
+    <source src="/top_video_av1.mp4" type="video/mp4; codecs=av01.0.05M.08" />
+    <source src="/top_video_h264.mp4" type="video/mp4" />
 </video>
 
 <script>
@@ -18,9 +19,5 @@
         }
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initVideo);
-    } else {
-        initVideo();
-    }
+    document.addEventListener("DOMContentLoaded", initVideo);
 </script>
