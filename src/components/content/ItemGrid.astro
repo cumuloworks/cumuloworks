@@ -1,35 +1,16 @@
 ---
 const { base, items } = Astro.props;
-import { Image } from "astro:assets";
+import Card from "./Card.astro";
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 text-inactive">
     {
-        items.map((item) => (
-            <div
-                class="grid-item group relative "
-                data-category={item.data.category}
-            >
-                <a href={`/${base}/${item.slug}`} class="relative">
-                    <Image
-                        src={item.thumbnail}
-                        alt={item.data.title}
-                        width={960}
-                        height={540}
-                        class="object-cover aspect-video w-full h-auto brightness-100 group-hover:brightness-25  transition-all ease-out-expo"
-                        loading={items.indexOf(item) < 12 ? "eager" : "lazy"}
-                    />
-                    <p class="w-full p-2 text-center whitespace-pre-wrap break-words font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
-                        {item.data.title}
-                    </p>
-                    <p class="whitespace-nowrap tracking-tighter text-xs absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
-                        {item.data.date}
-                    </p>
-                    <p class="whitespace-nowrap text-xs absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
-                        {item.data.category}
-                    </p>
-                </a>
-            </div>
+        items.map((item, index) => (
+            <Card
+                base={base}
+                item={item}
+                loading={index < 12 ? "eager" : "lazy"}
+            />
         ))
     }
 </div>

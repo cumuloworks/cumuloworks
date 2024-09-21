@@ -56,14 +56,11 @@ const SocialIcons = [
                         <SocialIcon href={link.href} icon={link.icon} />
                     ))
                 }
-                <li>
-                    <a href="/about#contact">
-                        <Icon
-                            name="fa6-solid:envelope"
-                            class="size-6 hover:text-cumulolight"
-                        />
-                    </a>
-                </li>
+                <SocialIcon
+                    href="/about#contact"
+                    icon="fa6-solid:envelope"
+                    newtab={false}
+                />
             </ul>
         </div>
         <ul
