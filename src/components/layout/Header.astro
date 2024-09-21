@@ -4,18 +4,18 @@ import Logo from "../atoms/Logo.astro";
 import SocialIcon from "../atoms/SocialIcon.astro";
 
 const SocialIcons = [
-	{ href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
-	{ href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
-	{ href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
-	{ href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
+    { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
+    { href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
+    { href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
+    { href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
 ];
 ---
 
-<header class="flex bg-white text-cumulodark md:min-h-48 min-h-60">
+<header class="flex bg-white text-cumulodark md:min-h-60 min-h-60">
     <nav
         class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5"
     >
-        <ul class="md:flex flex-1 gap-6 text-left hidden">
+        <ul class="md:flex flex-1 gap-5 text-left hidden">
             {
                 SocialIcons.map((link) => (
                     <SocialIcon href={link.href} icon={link.icon} />
@@ -31,7 +31,7 @@ const SocialIcons = [
                     <Logo />
                 </svg>
             </a>
-            <ul class="flex gap-4">
+            <ul class="flex gap-5">
                 <li>
                     <a href="/projects" class="hover:text-cumulolight">
                         Projects
@@ -49,7 +49,7 @@ const SocialIcons = [
                     <a href="/about" class="hover:text-cumulolight">About</a>
                 </li>
             </ul>
-            <ul class="md:hidden flex-1 gap-6 text-left flex mt-6">
+            <ul class="md:hidden flex-1 gap-5 text-left flex mt-6">
                 {
                     SocialIcons.map((link) => (
                         <SocialIcon href={link.href} icon={link.icon} />
@@ -70,7 +70,7 @@ const SocialIcons = [
             </ul>
         </div>
         <ul
-            class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-4 text-right"
+            class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-5 text-right"
         >
             <li>
                 <a href="/about" class="hover:text-cumulolight">About</a>

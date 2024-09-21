@@ -11,9 +11,10 @@ const projects = await getItemsWithThumbnails("projects");
 
 const categoryDescriptions = {
 	"Ads / Corporate": "Advertisements and promotional videos for businesses.",
-	Entertainment: "Music videos, live productions, etc.",
+	Entertainment: "Music videos, live productions, and other entertainment content.",
 	Uncategorized: "Projects in this category",
 };
+
 
 const projectsByCategory = projects.reduce((acc, project) => {
 	const category = project.data.category || "Uncategorized";
@@ -76,7 +77,7 @@ const projectsByCategory = projects.reduce((acc, project) => {
 										{category}
 									</h2>
 									<p class="mb-8">{description}</p>
-									<div class="grid grid-cols-2 gap-4">
+									<div class="grid grid-cols-2 gap-1">
 										{categoryProjects
 											.slice(0, 6)
 											.map((project) => (
