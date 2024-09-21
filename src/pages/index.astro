@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Footer from "../components/layout/Footer.astro";
 import TopPageBackground from "../components/toppage/TopPageBackground.astro";
 import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
 import { getItemsWithThumbnails } from "../utils/contentUtils";
 import "../styles/globals.css";
+import TopPageGallery from "../components/toppage/TopPageGallery.astro";
 
 const projects = await getItemsWithThumbnails("projects");
 
@@ -79,39 +79,11 @@ const projectsByCategory = projects.reduce((acc, project) => {
 								category,
 								{ projects: categoryProjects, description },
 							]) => (
-								<div>
-									<h2 class="text-3xl md:text-4xl  hover:text-active uppercase mb-2">
-										{category}
-									</h2>
-									<p class="mb-8">{description}</p>
-									<div class="grid grid-cols-2 gap-1">
-										{categoryProjects
-											.slice(0, 6)
-											.map((project) => (
-												<a
-													href={`/projects/${project.slug}`}
-													class="relative group"
-												>
-													{project.thumbnail && (
-														<Image
-															src={
-																project.thumbnail
-															}
-															alt={`Thumbnail for ${project.data.title}`}
-															width={400}
-															height={300}
-															class="w-full aspect-video object-cover brightness-100 group-hover:brightness-50 transition-all"
-														/>
-													)}
-													<div class="opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 right-0} text-white p-2">
-														<h4 class="text-sm font-semibold">
-															{project.data.title}
-														</h4>
-													</div>
-												</a>
-											))}
-									</div>
-								</div>
+								<TopPageGallery
+									category={category}
+									description={description}
+									projects={categoryProjects}
+								/>
 							),
 						)
 					}
