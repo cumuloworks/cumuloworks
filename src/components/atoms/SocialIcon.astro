@@ -1,14 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { href, icon, dark = false } = Astro.props;
+const { href, icon, dark = false, newtab = true } = Astro.props;
 ---
 
 <li>
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a
+        href={href}
+        {...newtab ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+    >
         <Icon
             name={icon}
-            class={`size-6 ${dark ? 'text-inactive hover:text-active' : 'text-cumulodark hover:text-cumulolight'}`}
+            class={`size-6 ${dark ? "text-inactive hover:text-active" : "text-cumulodark hover:text-cumulolight"}`}
         />
     </a>
 </li>
