@@ -3,7 +3,7 @@ const { base, items } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
-<div class="grid grid-cols-1 gap-4 text-cumulodark">
+<div class="grid grid-cols-1 gap-5 text-cumulodark">
     {
         items.map((item) => (
             <div class="grid-item" data-category={item.data.category}>

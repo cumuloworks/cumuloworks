@@ -1,9 +1,10 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
 import "../styles/globals.css";
 
 const { title, description, limit = true, ogImage } = Astro.props;
+const pageTitle = `${title} | Cumuloworks`;
 ---
 
 <html lang="en">
@@ -12,9 +13,9 @@ const { title, description, limit = true, ogImage } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <title>{pageTitle}</title>
 
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={pageTitle} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
         <meta
@@ -25,6 +26,16 @@ const { title, description, limit = true, ogImage } = Astro.props;
             property="og:image"
             content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
         />
+        <meta
+            property="twitter:image"
+            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="description"
+            content={description ? description : title}
+        />
+        <meta property="og:site_name" content="Cumuloworks" />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         <Header />

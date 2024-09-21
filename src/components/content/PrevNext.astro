@@ -4,9 +4,10 @@ const { prevItem, nextItem, base } = Astro.props;
 ---
 
 <div
-    class="flex flex-col md:flex-row justify-between items-center h-20 space-x-5 text-cumulodark"
+    class="flex flex-col md:flex-row justify-between items-end w-full h-20 mb-10 space-x-5 text-cumulodark"
 >
     {
+
         nextItem && (
             <a
                 href={`/${base}/${nextItem.slug}`}

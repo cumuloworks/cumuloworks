@@ -2,9 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
+
+const title = "About";
+const description =
+    "Cumuloworks (Tomoya Eguchi) is a freelance director, motion designer, and CG generalist based in Tokyo, Japan.";
 ---
 
-<BaseLayout title="Company">
+<BaseLayout title={title} description={description}>
     <div class="markdown-content">
         <h1>About</h1>
         <div
@@ -76,7 +80,7 @@ import { Image } from "astro:assets";
         </p>
         <h1 class="!my-20" id="contact">Contact</h1>
         <div
-            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 lg:p-10 shadow-2xl h-full"
+            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 px-5 py-10 lg:p-10 shadow-2xl h-full"
         >
             <div class="w-1/2 text-center">
                 <a class="text-xl font-bold" href="mailto:mail@cumulo.works"
@@ -89,7 +93,7 @@ import { Image } from "astro:assets";
                 id="fs-frm"
                 name="department-contact-form"
                 accept-charset="utf-8"
-                action="https://formspree.io/f/{form_id}"
+                action="https://formspree.io/f/xeqbeynz"
                 method="post"
                 class="w-full lg:w-1/2"
             >
