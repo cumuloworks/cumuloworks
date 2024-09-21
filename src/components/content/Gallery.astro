@@ -8,11 +8,21 @@ import Modal from "../atoms/Modal.astro";
 const { folderPath } = Astro.props;
 
 const galleryImages = getImagesFromFolder(folderPath);
-
 const layoutSequence = generateGallerySequence(galleryImages.length);
 
-// biome-ignore lint/style/useConst: <explanation>
-let imageIndex = 0;
+const preparedImages = await Promise.all(
+    galleryImages.map(async (image, index) => {
+        const importedImage = await image.importFunc();
+        return {
+            src: importedImage.default,
+            alt:
+                image.path.split("/").pop()?.split(".")[0] ||
+                `gallery-${index}`,
+            id: `image-${index}`,
+            modalId: `modal-image-${index}`,
+        };
+    }),
+);
 ---
 
 <div class="w-full space-y-1 my-10">
@@ -20,55 +30,22 @@ let imageIndex = 0;
         layoutSequence.map((numImages, rowIndex) => (
             <div class="w-full flex gap-1">
                 {Array.from({ length: numImages }).map((_, colIndex) => {
-                    if (imageIndex >= galleryImages.length) {
-                        return null;
-                    }
-                    const { path, importFunc } = galleryImages[imageIndex];
-                    const imageId = `image-${imageIndex}`;
-                    imageIndex += 1;
+                    const imageIndex =
+                        rowIndex * Math.max(...layoutSequence) + colIndex;
+                    if (imageIndex >= preparedImages.length) return null;
+                    const image = preparedImages[imageIndex];
                     return (
                         <div class="w-full">
                             <Image
-                                src={importFunc()}
-                                alt={
-                                    path.split("/").pop()?.split(".")[0] ||
-                                    `gallery-${imageIndex}`
-                                }
+                                src={image.src}
+                                alt={image.alt}
                                 width={1920}
                                 height={1080}
                                 class="w-full h-full object-cover cursor-pointer"
                                 loading={imageIndex < 8 ? "eager" : "lazy"}
-                                id={imageId}
+                                id={image.id}
+                                data-modal-target={image.modalId}
                             />
-                            <Modal id={`modal-${imageId}`}>
-                                <div class="relative w-full h-full">
-                                    <Image
-                                        src={importFunc()}
-                                        alt={
-                                            path
-                                                .split("/")
-                                                .pop()
-                                                ?.split(".")[0] ||
-                                            `gallery-${imageIndex}`
-                                        }
-                                        width={1920}
-                                        height={1080}
-                                        class="w-full h-full object-cover"
-                                    />
-                                    <button
-                                        class="absolute -left-16 size-10  top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
-                                        data-nav="prev"
-                                    >
-                                        <Icon name="fa6-solid:chevron-left" class="w-full text-white">
-                                    </button>
-                                    <button
-                                        class="absolute -right-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
-                                        data-nav="next"
-                                    >
-                                        <Icon name="fa6-solid:chevron-right" class="w-full text-white">
-                                    </button>
-                                </div>
-                            </Modal>
                         </div>
                     );
                 })}
@@ -77,13 +54,49 @@ let imageIndex = 0;
     }
 </div>
 
+{
+    preparedImages.map((image, index) => (
+        <Modal id={image.modalId}>
+            <div class="relative w-full h-full">
+                <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={1920}
+                    height={1080}
+                    class="w-full h-full object-cover"
+                />
+                <button
+                    class="absolute -left-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
+                    data-nav="prev"
+                    data-index={index}
+                >
+                    <Icon
+                        name="fa6-solid:chevron-left"
+                        class="w-full text-white"
+                    />
+                </button>
+                <button
+                    class="absolute -right-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
+                    data-nav="next"
+                    data-index={index}
+                >
+                    <Icon
+                        name="fa6-solid:chevron-right"
+                        class="w-full text-white"
+                    />
+                </button>
+            </div>
+        </Modal>
+    ))
+}
+
 <script>
     const images = document.querySelectorAll('img[id^="image-"]');
     const modals = document.querySelectorAll('dialog[id^="modal-image-"]');
 
-    images.forEach((img, index) => {
+    images.forEach((img) => {
         img.addEventListener("click", () => {
-            const modalId = `modal-${img.id}`;
+            const modalId = img.dataset.modalTarget;
             const modal = document.getElementById(modalId);
             if (modal instanceof HTMLDialogElement) {
                 modal.showModal();
@@ -91,22 +104,17 @@ let imageIndex = 0;
         });
     });
 
-    modals.forEach((modal) => {
-        const prevButton = modal.querySelector('[data-nav="prev"]');
-        const nextButton = modal.querySelector('[data-nav="next"]');
+    document.querySelectorAll("[data-nav]").forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const direction = button.dataset.nav === "prev" ? -1 : 1;
+            const currentIndex = parseInt(button.dataset.index);
+            let newIndex = currentIndex + direction;
 
-        prevButton.addEventListener("click", () => navigateImage(modal, -1));
-        nextButton.addEventListener("click", () => navigateImage(modal, 1));
+            if (newIndex < 0) newIndex = modals.length - 1;
+            if (newIndex >= modals.length) newIndex = 0;
+
+            modals[currentIndex].close();
+            modals[newIndex].showModal();
+        });
     });
-
-    function navigateImage(currentModal, direction) {
-        const currentIndex = Array.from(modals).indexOf(currentModal);
-        let newIndex = currentIndex + direction;
-
-        if (newIndex < 0) newIndex = modals.length - 1;
-        if (newIndex >= modals.length) newIndex = 0;
-
-        currentModal.close();
-        modals[newIndex].showModal();
-    }
 </script>
