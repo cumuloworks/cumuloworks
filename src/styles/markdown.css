@@ -16,7 +16,7 @@
 }
 
 .markdown-content h1 {
-	@apply text-4xl text-center mt-0;
+	@apply text-3xl md:text-4xl text-center mt-0;
 }
 
 .markdown-content h2 {
