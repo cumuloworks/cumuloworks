@@ -4,18 +4,17 @@ import Logo from "../atoms/Logo.astro";
 import SocialIcon from "../atoms/SocialIcon.astro";
 
 const SocialIcons = [
-	{ href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
-	{ href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
-	{ href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
-	{ href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
-	{ href: "https://github.com/cumuloworks", icon: "fa6-brands:github" },
+    { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
+    { href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
+    { href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
+    { href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
+    { href: "https://github.com/cumuloworks", icon: "fa6-brands:github" },
 ];
 ---
 
 <header class="flex bg-white text-cumulodark md:min-h-60 min-h-60">
     <nav
-        class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5"
-    >
+        class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5">
         <ul class="md:flex flex-1 gap-5 text-left hidden">
             {
                 SocialIcons.map((link) => (
@@ -27,8 +26,7 @@ const SocialIcons = [
             <a href="/">
                 <svg
                     class="w-96 fill-cumulodark hover:fill-cumulolight -mt-5"
-                    viewBox="0 0 1059.27 244.1"
-                >
+                    viewBox="0 0 1059.27 244.1">
                     <Logo />
                 </svg>
             </a>
@@ -64,8 +62,7 @@ const SocialIcons = [
             </ul>
         </div>
         <ul
-            class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-5 text-right"
-        >
+            class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-5 text-right">
             <li>
                 <a href="/about" class="hover:text-cumulolight">About</a>
             </li>

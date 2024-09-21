@@ -9,21 +9,17 @@ const slideshowImages = getImagesFromFolder(folderPath);
 ---
 
 <div
-    class="slideshow-container relative w-full h-[600px] my-10 overflow-hidden group"
->
+    class="slideshow-container relative w-full h-[600px] my-10 overflow-hidden group">
     {
         slideshowImages.map(({ path, importFunc }, index) => (
             <div
-                class={`slideshow-item absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === 0 ? "opacity-100" : "opacity-0"}`}
-            >
+                class={`slideshow-item absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === 0 ? "opacity-100" : "opacity-0"}`}>
                 <Image
                     src={importFunc()}
                     alt={
                         path.split("/").pop()?.split(".")[0] ||
                         `slideshow-${index}`
                     }
-                    width={1920}
-                    height={1080}
                     class="w-full h-full object-cover"
                     loading={index < 8 ? "eager" : "lazy"}
                     id={`image-${index}`}
@@ -33,14 +29,12 @@ const slideshowImages = getImagesFromFolder(folderPath);
     }
     <button
         class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ease-out-expo duration-1000 delay-500"
-        id="prevButton"
-    >
+        id="prevButton">
         <Icon name="fa6-solid:chevron-left" class="w-6 h-6 text-black" />
     </button>
     <button
         class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ease-out-expo duration-1000 delay-500"
-        id="nextButton"
-    >
+        id="nextButton">
         <Icon name="fa6-solid:chevron-right" class="w-6 h-6 text-black" />
     </button>
 </div>
@@ -71,7 +65,7 @@ const slideshowImages = getImagesFromFolder(folderPath);
     }
 
     function startAutoSlide() {
-        intervalId = setInterval(nextSlide, 4000); 
+        intervalId = setInterval(nextSlide, 4000);
     }
 
     function stopAutoSlide() {
@@ -81,15 +75,14 @@ const slideshowImages = getImagesFromFolder(folderPath);
     prevButton.addEventListener("click", () => {
         prevSlide();
         stopAutoSlide();
-        startAutoSlide(); 
+        startAutoSlide();
     });
 
     nextButton.addEventListener("click", () => {
         nextSlide();
         stopAutoSlide();
-        startAutoSlide(); 
+        startAutoSlide();
     });
 
-    
     startAutoSlide();
 </script>

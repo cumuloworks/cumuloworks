@@ -1,10 +1,15 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
 import Footer from "../components/layout/Footer.astro";
 import Header from "../components/layout/Header.astro";
 import "../styles/globals.css";
 
-const { title, description, limit = true, ogImage } = Astro.props;
+const {
+    title,
+    description,
+    limit = true,
+    ogImage,
+    header = true,
+} = Astro.props;
 const pageTitle = `${title} | Cumuloworks`;
 ---
 
@@ -37,13 +42,16 @@ const pageTitle = `${title} | Cumuloworks`;
             content={description ? description : title}
         />
         <meta property="og:site_name" content="Cumuloworks" />
-        <SpeedInsights />
+        <script
+            is:inline
+            defer
+            data-domain="cumulo.works"
+            src="https://plausible.io/js/script.js"></script>
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
-        <Header />
+        {header ? <Header /> : null}
         <main
-            class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}
-        >
+            class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}>
             <slot />
         </main>
         <Footer />

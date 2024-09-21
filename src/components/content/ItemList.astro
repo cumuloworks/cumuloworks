@@ -10,13 +10,10 @@ import { Image } from "astro:assets";
                 <a
                     href={`/${base}/${item.slug}`}
                     class="flex flex-col md:flex-row h-48 relative hover:translate-x-1 transition-transform ease-out-expo"
-                    data-category={item.data.category}
-                >
+                    data-category={item.data.category}>
                     <Image
                         src={item.thumbnail}
                         alt={item.data.title}
-                        width={960}
-                        height={540}
                         class="aspect-video object-cover h-full w-auto brightness-25 md:brightness-100 transition-all ease-out-expo"
                         loading={items.indexOf(item) < 9 ? "eager" : "lazy"}
                     />

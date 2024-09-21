@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/serverless";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -39,8 +38,6 @@ export default defineConfig({
 			entrypoint: "astro/assets/services/sharp",
 		},
 	},
-	output: "server",
-	adapter: vercel({
-		webAnalytics: { enabled: true },
-	}),
+	output: "static",
+	site: "https://cumulo.works",
 });

@@ -2,19 +2,18 @@
 import SocialIcon from "../atoms/SocialIcon.astro";
 
 const SocialIcons = [
-	{ href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
-	{ href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
-	{ href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
-	{ href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
-	{ href: "https://github.com/cumuloworks", icon: "fa6-brands:github" },
+    { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
+    { href: "https://facebook.com/cumuloworks", icon: "fa6-brands:facebook" },
+    { href: "https://instagram.com/cumuloworks", icon: "fa6-brands:instagram" },
+    { href: "https://www.youtube.com/cumuloworks", icon: "fa6-brands:youtube" },
+    { href: "https://github.com/cumuloworks", icon: "fa6-brands:github" },
 ];
 ---
 
 <nav class="font-bold uppercase">
     <div class="absolute left-10 lg:left-20 bottom-24">
         <ul
-            class="grid grid-cols-2 lg:grid-cols-5 gap-5 text-center text-inactive"
-        >
+            class="grid grid-cols-2 lg:grid-cols-5 gap-5 text-center text-inactive">
             {
                 SocialIcons.map((link) => (
                     <SocialIcon href={link.href} icon={link.icon} dark={true} />
@@ -24,8 +23,7 @@ const SocialIcons = [
     </div>
     <div class="absolute left-1/2 -translate-x-1/2 bottom-24">
         <ul
-            class="flex flex-col lg:flex-row w-full gap-5 text-center text-inactive"
-        >
+            class="flex flex-col lg:flex-row w-full gap-5 text-center text-inactive">
             <li>
                 <a href="/projects" class="hover:text-active">Projects</a>
             </li>
@@ -42,8 +40,7 @@ const SocialIcons = [
     </div>
     <div class="absolute right-10 lg:right-20 bottom-24">
         <ul
-            class="hidden lg:flex flex-col lg:flex-row w-full gap-5 text-right text-inactive"
-        >
+            class="hidden lg:flex flex-col lg:flex-row w-full gap-5 text-right text-inactive">
             <li>
                 <a href="/about" class="hover:text-active">About</a>
             </li>

@@ -39,8 +39,6 @@ const preparedImages = await Promise.all(
                             <Image
                                 src={image.src}
                                 alt={image.alt}
-                                width={1920}
-                                height={1080}
                                 class="w-full h-full object-cover cursor-pointer"
                                 loading={imageIndex < 8 ? "eager" : "lazy"}
                                 id={image.id}
@@ -61,15 +59,12 @@ const preparedImages = await Promise.all(
                 <Image
                     src={image.src}
                     alt={image.alt}
-                    width={1920}
-                    height={1080}
                     class="w-full h-full object-cover"
                 />
                 <button
                     class="absolute -left-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
                     data-nav="prev"
-                    data-index={index}
-                >
+                    data-index={index}>
                     <Icon
                         name="fa6-solid:chevron-left"
                         class="w-full text-white"
@@ -78,8 +73,7 @@ const preparedImages = await Promise.all(
                 <button
                     class="absolute -right-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
                     data-nav="next"
-                    data-index={index}
-                >
+                    data-index={index}>
                     <Icon
                         name="fa6-solid:chevron-right"
                         class="w-full text-white"
