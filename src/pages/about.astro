@@ -2,9 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
+
+const title = "About";
+const description =
+    "Cumuloworks (Tomoya Eguchi) is a freelance director, motion designer, and CG generalist based in Tokyo, Japan.";
 ---
 
-<BaseLayout title="Company">
+<BaseLayout title={title} description={description}>
     <div class="markdown-content">
         <h1>About</h1>
         <div

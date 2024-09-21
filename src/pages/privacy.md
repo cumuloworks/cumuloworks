@@ -1,6 +1,7 @@
 ---
 title: "Privacy Policy"
 layout: ../layouts/SinglePageLayout.astro
+description: "It is Cumulowork’s policy to respect your privacy regarding any information we may collect while operating our website."
 ---
 
 ## General
