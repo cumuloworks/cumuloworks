@@ -1,5 +1,4 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
 import Footer from "../components/layout/Footer.astro";
 import Header from "../components/layout/Header.astro";
 import "../styles/globals.css";
@@ -43,7 +42,6 @@ const pageTitle = `${title} | Cumuloworks`;
             content={description ? description : title}
         />
         <meta property="og:site_name" content="Cumuloworks" />
-        <SpeedInsights />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         {header ? <Header /> : null}

@@ -7,7 +7,6 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 import "../../styles/globals.css";
 
-export const prerender = true;
 export async function getStaticPaths() {
 	const bases = ["projects", "blogs", "downloads"];
 	const allPaths = await Promise.all(

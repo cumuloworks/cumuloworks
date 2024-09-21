@@ -6,7 +6,6 @@ import { getItemsWithThumbnails } from "../../utils/contentUtils";
 import "../../styles/markdown.css";
 import { Icon } from "astro-icon/components";
 
-export const prerender = true;
 export async function getStaticPaths() {
     const bases = ["projects", "blogs", "downloads"];
     return bases.map((base) => ({
