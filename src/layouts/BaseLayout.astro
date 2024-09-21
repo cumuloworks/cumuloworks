@@ -25,6 +25,16 @@ const { title, description, limit = true, ogImage } = Astro.props;
             property="og:image"
             content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
         />
+        <meta
+            property="twitter:image"
+            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="description"
+            content={description ? description : title}
+        />
+        <meta property="og:site_name" content="Cumuloworks" />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         <Header />

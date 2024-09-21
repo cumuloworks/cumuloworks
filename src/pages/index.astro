@@ -11,10 +11,10 @@ const projects = await getItemsWithThumbnails("projects");
 
 const categoryDescriptions = {
 	"Ads / Corporate": "Advertisements and promotional videos for businesses.",
-	Entertainment: "Music videos, live productions, and other entertainment content.",
+	Entertainment:
+		"Music videos, live productions, and other entertainment content.",
 	Uncategorized: "Projects in this category",
 };
-
 
 const projectsByCategory = projects.reduce((acc, project) => {
 	const category = project.data.category || "Uncategorized";
@@ -37,10 +37,7 @@ const projectsByCategory = projects.reduce((acc, project) => {
 		<meta name="generator" content={Astro.generator} />
 		<title>Cumuloworks</title>
 
-		<meta
-			property="og:title"
-			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
-		/>
+		<meta property="og:title" content="Cumuloworks" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
 		<meta
@@ -51,6 +48,16 @@ const projectsByCategory = projects.reduce((acc, project) => {
 			property="og:image"
 			content={new URL("/default_ogp.jpg", Astro.url)}
 		/>
+		<meta
+			property="twitter:image"
+			content={new URL("/default_ogp.jpg", Astro.url)}
+		/>
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="description"
+			content="Cumuloworks | Director / Motion Grapher / CG Generalist"
+		/>
+		<meta property="og:site_name" content="Cumuloworks" />
 	</head>
 	<body
 		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b"
