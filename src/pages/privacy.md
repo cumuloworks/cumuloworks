@@ -1,6 +1,6 @@
 ---
-title: プライバシーポリシー
-layout: ../layouts/ContentLayout.astro
+title: "Privacy Policy"
+layout: ../layouts/SinglePageLayout.astro
 ---
 
 ## General
