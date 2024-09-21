@@ -2,9 +2,7 @@
 
 <center>
 
-<div>
-    <img src="./public/typography_white.svg" alt="Cumuloworks" style="width: 50%;">
-</div>
+![Cumuloworks](./public/typography_white.svg)
 
 🎬️ **I am a freelance director, motion designer, and CG generalist based in Tokyo, Japan.**
 
