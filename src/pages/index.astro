@@ -12,6 +12,7 @@ const projects = await getItemsWithThumbnails("projects");
 const categoryDescriptions = {
 	"Ads / Corporate": "Advertisements and promotional videos for businesses.",
 	Entertainment: "Music videos, live productions, etc.",
+	Uncategorized: "Projects in this category",
 };
 
 const projectsByCategory = projects.reduce((acc, project) => {
@@ -19,20 +20,12 @@ const projectsByCategory = projects.reduce((acc, project) => {
 	if (!acc[category]) {
 		acc[category] = {
 			projects: [],
-			description:
-				categoryDescriptions[category] || "Projects in this category",
+			description: categoryDescriptions[category],
 		};
 	}
 	acc[category].projects.push(project);
 	return acc;
 }, {});
-
-for (const category of Object.keys(projectsByCategory)) {
-	projectsByCategory[category].projects.sort(
-		(a, b) =>
-			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-	);
-}
 ---
 
 <html lang="en">
