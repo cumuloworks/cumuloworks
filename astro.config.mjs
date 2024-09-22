@@ -17,21 +17,16 @@ export default defineConfig({
 		}),
 		sitemap(),
 	],
-	content: {
-		collections: [
-			{
-				name: "projects",
-				type: "content",
-			},
-			{
-				name: "blogs",
-				type: "content",
-			},
-			{
-				name: "downloads",
-				type: "content",
-			},
-		],
+	contentCollections: {
+		projects: {
+			type: "content",
+		},
+		blogs: {
+			type: "content",
+		},
+		downloads: {
+			type: "content",
+		},
 	},
 	image: {
 		service: {
