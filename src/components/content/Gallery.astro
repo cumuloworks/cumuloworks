@@ -54,32 +54,12 @@ const preparedImages = await Promise.all(
 
 {
     preparedImages.map((image, index) => (
-        <Modal id={image.modalId}>
-            <div class="relative w-full h-full">
-                <Image
-                    src={image.src}
-                    alt={image.alt}
-                    class="w-full h-full object-cover"
-                />
-                <button
-                    class="absolute -left-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
-                    data-nav="prev"
-                    data-index={index}>
-                    <Icon
-                        name="fa6-solid:chevron-left"
-                        class="w-full text-white"
-                    />
-                </button>
-                <button
-                    class="absolute -right-16 size-10 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-50 hover:opacity-100"
-                    data-nav="next"
-                    data-index={index}>
-                    <Icon
-                        name="fa6-solid:chevron-right"
-                        class="w-full text-white"
-                    />
-                </button>
-            </div>
+        <Modal id={image.modalId} showNavigation={true}>
+            <Image
+                src={image.src}
+                alt={image.alt}
+                class="w-full h-full object-contain "
+            />
         </Modal>
     ))
 }
@@ -98,16 +78,15 @@ const preparedImages = await Promise.all(
         });
     });
 
-    document.querySelectorAll("[data-nav]").forEach((button) => {
-        button.addEventListener("click", (e) => {
-            const direction = button.dataset.nav === "prev" ? -1 : 1;
-            const currentIndex = parseInt(button.dataset.index);
-            let newIndex = currentIndex + direction;
+    modals.forEach((modal, index) => {
+        modal.addEventListener("navigate", (e) => {
+            const direction = e.detail.direction;
+            let newIndex = index + direction;
 
             if (newIndex < 0) newIndex = modals.length - 1;
             if (newIndex >= modals.length) newIndex = 0;
 
-            modals[currentIndex].close();
+            modal.close();
             modals[newIndex].showModal();
         });
     });

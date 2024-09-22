@@ -1,34 +1,73 @@
 ---
 import { Icon } from "astro-icon/components";
-const { id, open } = Astro.props;
+const { id, open, showNavigation = false } = Astro.props;
 ---
 
-<dialog id={id} open={open} class="w-full max-w-screen-xl bg-transparent">
-    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40">
-    </div>
-    <div class="relative overflow-hidden p-20 z-50">
+<dialog
+    id={id}
+    open={open}
+    class="modal-dialog close fixed inset-0 w-full h-full max-w-none max-h-none backdrop-blur-sm bg-black bg-opacity-50 hidden">
+    <div
+        class="modal-content flex items-center justify-center p-10 w-full h-full">
         <div
-            class="loading-spinner absolute inset-0 flex items-center justify-center -z-10 m-20">
+            class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <Icon
                 name="fa6-solid:circle-notch"
-                class="text-white animate-spin"
+                class="size-5 text-white animate-spin"
             />
         </div>
-        <slot />
+        <div
+            class="relative w-full flex items-center justify-center group border">
+            <slot />
+            {
+                showNavigation && (
+                    <>
+                        <button
+                            class="absolute hover:scale-110 left-4 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-25 group-hover:opacity-50 hover:opacity-100 z-30 bg-white transition-all duration-1000 ease-out-expo"
+                            data-nav="prev">
+                            <Icon
+                                name="fa6-solid:chevron-left"
+                                class="w-6 h-6 text-black"
+                            />
+                        </button>
+                        <button
+                            class="absolute hover:scale-110 right-4 top-1/2 transform -translate-y-1/2 border p-2 rounded-full opacity-25 group-hover:opacity-50 hover:opacity-100 z-30 bg-white transition-all duration-1000 ease-out-expo"
+                            data-nav="next">
+                            <Icon
+                                name="fa6-solid:chevron-right"
+                                class="w-6 h-6 text-black"
+                            />
+                        </button>
+                    </>
+                )
+            }
+        </div>
     </div>
-    <button
-        class="close-button transition-all duration-300 ease-out-expo hover:scale-110 text-2xl rounded-full opacity-50 hover:opacity-100 text-white size-10 border absolute bottom-4 left-1/2 -translate-x-1/2 z-50"
-        >&times;</button
-    >
 </dialog>
 
+<style>
+    .modal-dialog[open] {
+        display: block;
+    }
+</style>
+
 <script>
-    const closeButtons = document.querySelectorAll(".close-button");
+    const closeButtons = document.querySelectorAll(".close");
     closeButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const dialog = button.closest("dialog");
             dialog.dispatchEvent(new CustomEvent("modal-closed"));
             dialog.close();
+        });
+    });
+
+    document.querySelectorAll("[data-nav]").forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const direction = button.dataset.nav === "prev" ? -1 : 1;
+            const dialog = button.closest("dialog");
+            dialog.dispatchEvent(
+                new CustomEvent("navigate", { detail: { direction } }),
+            );
         });
     });
 </script>
