@@ -11,7 +11,7 @@ const SocialIcons = [
 ---
 
 <nav class="font-bold uppercase">
-    <div class="absolute left-10 lg:left-20 bottom-24">
+    <div class="absolute left-8 lg:left-20 bottom-8 lg:bottom-24">
         <ul
             class="grid grid-cols-2 lg:grid-cols-5 gap-5 text-center text-inactive">
             {
@@ -19,11 +19,20 @@ const SocialIcons = [
                     <SocialIcon href={link.href} icon={link.icon} dark={true} />
                 ))
             }
+            <div class="lg:hidden list-none">
+                <SocialIcon
+                    href={"/about#contact"}
+                    icon={"fa6-solid:envelope"}
+                    dark={true}
+                    newtab={false}
+                />
+            </div>
         </ul>
     </div>
-    <div class="absolute left-1/2 -translate-x-1/2 bottom-24">
+    <div
+        class="absolute right-8 lg:right-1/2 lg:translate-x-1/2 bottom-8 lg:bottom-24">
         <ul
-            class="flex flex-col lg:flex-row w-full gap-5 text-center text-inactive">
+            class="flex flex-col lg:flex-row w-full gap-5 lg:gap-5 text-right lg:text-center text-inactive">
             <li>
                 <a href="/projects" class="hover:text-active">Projects</a>
             </li>
@@ -33,12 +42,12 @@ const SocialIcons = [
             <li>
                 <a href="/downloads" class="hover:text-active">Downloads</a>
             </li>
-            <li class="inline lg:hidden">
+            <li class="lg:hidden">
                 <a href="/about" class="hover:text-active">About</a>
             </li>
         </ul>
     </div>
-    <div class="absolute right-10 lg:right-20 bottom-24">
+    <div class="absolute right-8 lg:right-20 bottom-8 lg:bottom-24">
         <ul
             class="hidden lg:flex flex-col lg:flex-row w-full gap-5 text-right text-inactive">
             <li>
@@ -48,13 +57,5 @@ const SocialIcons = [
                 <a href="/about#contact" class="hover:text-active">Contact</a>
             </li>
         </ul>
-        <div class="inline lg:hidden list-none">
-            <SocialIcon
-                href={"/about#contact"}
-                icon={"fa6-solid:envelope"}
-                dark={true}
-                newtab={false}
-            />
-        </div>
     </div>
 </nav>
