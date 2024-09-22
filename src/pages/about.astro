@@ -3,17 +3,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
 import profilePic from "../assets/profile_pic.jpg";
+import ContactForm from "../components/elements/ContactForm.astro";
+import Card from "../components/content/Card.astro";
+import { getItemWithThumbnail } from "../utils/contentUtils";
 
 const title = "About";
 const description =
     "Cumuloworks (Tomoya Eguchi) is a freelance director, motion designer, and CG generalist based in Tokyo, Japan.";
+
+const directionProject = await getItemWithThumbnail("projects", "angelic");
+const motionProject = await getItemWithThumbnail("projects", "holoenprelude");
+const threedProject = await getItemWithThumbnail("projects", "mentos-duo");
+const toonProject = await getItemWithThumbnail("projects", "enekey-2");
+const productProject = await getItemWithThumbnail(
+    "projects",
+    "panasonic-viera",
+);
+const vfxProject = await getItemWithThumbnail("projects", "kaf-kaika");
 ---
 
 <BaseLayout title={title} description={description}>
     <div class="markdown-content">
         <h1>About</h1>
         <div
-            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 p-5 shadow-2xl h-full">
+            class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 mt-10 mb-20 p-5 shadow-2xl h-full">
             <div class="w-full lg:w-1/3">
                 <Image
                     src={profilePic}
@@ -22,13 +35,13 @@ const description =
                     loading="eager"
                 />
             </div>
-            <div class="2/3">
+            <div class="w-2/3">
                 <h2>Cumuloworks (Tomoya Eguchi)</h2>
                 <h3 class="text-cumulolight">
                     Directror / Motion Designer / CG Generalist
                 </h3>
                 <p>
-                    I am a freelance director, motion designer, and CG
+                    Hello! I am a freelance director, motion designer, and CG
                     generalist based in Tokyo, Japan.
                 </p>
                 <p>
@@ -49,33 +62,115 @@ const description =
                 </p>
             </div>
         </div>
+
         <h2>Areas of Expertise</h2>
-        <h3>Direction</h3>
-        <p>
-            With years of experience in Japanese production industry, I handle a
-            wide range of projects, from corporate promotional videos to virtual
-            content.
-        </p>
-        <h3>Motion Graphics</h3>
-        <p>
-            I specialize in creating story-driven motion graphics, collaborating
-            with various designers.
-        </p>
-        <h3>3D</h3>
-        <p>
-            With an established workflow, I can produce everything from scene
-            creation to compositing in a one-stop process.
-        </p>
-        <p>
-            I'm also proficient in creating anime-style visuals using Octane
-            Render.
-        </p>
-        <h3>Development</h3>
-        <p>
-            I conduct research on hardware and develop software related to video
-            production, allowing me to handle complex projects and those
-            involving critical data.
-        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="mb-5">
+                <Card base="projects" item={directionProject} />
+                <h3>Direction</h3>
+                <p>From corporate promotional videos to virtual content.</p>
+            </div>
+            <div class="mb-5">
+                <Card base="projects" item={motionProject} />
+                <h3>Motion Graphics</h3>
+                <p>
+                    Story-driven motion graphics, collaborating with various
+                    designers.
+                </p>
+            </div>
+            <div class="mb-5">
+                <Card base="projects" item={threedProject} />
+                <h3>3D</h3>
+                <p>
+                    From scene creation to compositing in a one-stop, with
+                    established workflow.
+                </p>
+            </div>
+            <div class="mb-5">
+                <Card base="projects" item={productProject} />
+                <h3>Product Visualization</h3>
+                <p>Photo-realistic product visualization and animation.</p>
+            </div>
+            <div class="mb-5">
+                <Card base="projects" item={vfxProject} />
+                <h3>VFX / Compositing</h3>
+                <p>VFX and compositing for advertisements and music videos.</p>
+            </div>
+            <div class="mb-5">
+                <Card base="projects" item={toonProject} />
+                <h3>Toon / Anime Style</h3>
+                <p>Unique anime-style rendering.</p>
+            </div>
+        </div>
+
+        <h2>Main Tools</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li>
+                <span class="font-semibold">DCC</span> - Maxon Cinema 4D
+            </li>
+            <li>
+                <span class="font-semibold"
+                    >Motion Graphics and Compositing</span
+                > - Adobe After Effects
+            </li>
+            <li>
+                <span class="font-semibold">Rendering</span> - Otoy Octane Render
+            </li>
+            <li>
+                <span class="font-semibold">Editing and Color Grading</span> - Blackmagic
+                Design DaVinci Resolve
+            </li>
+        </ul>
+
+        <h2>Talks and Interviews</h2><ul>
+            <li>
+                VIDEOGRAPHERS TOKYO 2024 <a
+                    href="http://cumulo.works/blogs/vgt2024"
+                    target="_blank"
+                    rel="noopener noreferrer">「快適な制作環境の作り方」</a
+                > (2024)
+            </li>
+            <li>
+                Vook <a
+                    href="https://vook.vc/n/7157"
+                    target="_blank"
+                    rel="noopener noreferrer">「裏（バックエンド）を聞く」</a
+                > (2024)
+            </li>
+            <li>
+                <a
+                    href="https://motion-plus-design.com/events/main/event/36"
+                    target="_blank"
+                    rel="noopener noreferrer">Motion Plus Design Tokyo 2024</a
+                > スポンサー (2024)
+            </li>
+            <li>
+                CGWORLD vol.290 <a
+                    href="https://cgworld.jp/magazine/cgw290.html"
+                    target="_blank"
+                    rel="noopener noreferrer">「新世代クリエイター」</a
+                > ヰ世界情緒『ARCADIA』MV (2022)
+            </li>
+            <li>
+                CGWORLD <a
+                    href="https://cgworld.jp/special/promo/bakusokuamd/2021/07/30/%E3%80%8C%E6%89%8B%E3%81%AB%E5%85%A5%E3%82%8B%E6%9C%80%E3%82%82%E9%AB%98%E3%81%84%E3%82%B9%E3%83%9A%E3%83%83%E3%82%AF%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E3%80%8D-cumuloworks-%E6%B1%9F/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >「AMD爆速ラボ - 「手に入る最も高いスペックを実現する」
+                    cumuloworks 江口氏の 趣味とロマンが詰まった制作環境とは」</a
+                > (2021)
+            </li>
+            <li>
+                CGWORLD 2020 クリエイティブカンファレンス <a
+                    href="https://cgworld.jp/special/cgwcc2020/schedule/cumuloworks/index.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >「After
+                    Effectsスクリプトを書いて、制作を楽しく効率化しよう。」</a
+                > (2020)
+            </li>
+        </ul>
+
         <h1 class="!my-20" id="contact">Contact</h1>
         <div
             class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 my-10 px-5 py-10 lg:p-10 shadow-2xl h-full">
@@ -86,70 +181,7 @@ const description =
                 <p>Please feel free to contact me via email, form, or SNS.</p>
                 <p>I will reply to you within 2 business days.</p>
             </div>
-            <form
-                id="fs-frm"
-                name="department-contact-form"
-                accept-charset="utf-8"
-                action="https://formspree.io/f/xeqbeynz"
-                method="post"
-                class="w-full lg:w-1/2">
-                <fieldset id="fs-frm-inputs" class="flex flex-col">
-                    <label for="full-name">Full Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="full-name"
-                        placeholder="First and Last"
-                        required=""
-                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
-                    />
-                    <label for="email-address">Email Address</label>
-                    <input
-                        type="email"
-                        name="_replyto"
-                        id="email-address"
-                        placeholder="email@domain.tld"
-                        required=""
-                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
-                    />
-                    <label for="department">Department</label>
-                    <select
-                        name="department"
-                        id="department"
-                        required=""
-                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10">
-                        <option value="production"
-                            >映像制作のご相談 / Production Inquiry</option
-                        >
-                        <option value="Customer Care"
-                            >スクリプトのサポート / Script Support</option
-                        >
-                        <option value="Shipping Receiving"
-                            >その他のご相談 / Other Messages</option
-                        >
-                    </select>
-                    <label for="message">Message</label>
-                    <textarea
-                        rows="5"
-                        name="message"
-                        id="message"
-                        placeholder="Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
-                        required=""
-                        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-60"
-                    ></textarea>
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        id="email-subject"
-                        value="Department Contact Form Submission"
-                    />
-                </fieldset>
-                <input
-                    type="submit"
-                    value="Send Message"
-                    class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10 mt-5"
-                />
-            </form>
+            <ContactForm />
         </div>
     </div>
 </BaseLayout>

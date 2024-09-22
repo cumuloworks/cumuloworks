@@ -12,15 +12,15 @@ const { base, item } = Astro.props;
             loading="lazy"
         />
         <p
-            class="w-full p-2 text-center whitespace-pre-wrap break-words font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
+            class="text-white !m-0 w-full p-2 text-center whitespace-pre-wrap break-words font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
             {item.data.title}
         </p>
         <p
-            class="whitespace-nowrap tracking-tighter text-xs absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
+            class="text-white !m-0 whitespace-nowrap tracking-tighter text-xs absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
             {item.data.date}
         </p>
         <p
-            class="whitespace-nowrap text-xs absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
+            class="text-white !m-0 whitespace-nowrap text-xs absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
             {item.data.category}
         </p>
     </a>

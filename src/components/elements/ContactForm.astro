@@ -1,0 +1,64 @@
+<form
+    id="fs-frm"
+    name="department-contact-form"
+    accept-charset="utf-8"
+    action="https://formspree.io/f/xeqbeynz"
+    method="post"
+    class="w-full lg:w-1/2">
+    <fieldset id="fs-frm-inputs" class="flex flex-col">
+        <label for="full-name">Full Name</label>
+        <input
+            type="text"
+            name="name"
+            id="full-name"
+            placeholder="First and Last"
+            required=""
+            class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
+        />
+        <label for="email-address">Email Address</label>
+        <input
+            type="email"
+            name="_replyto"
+            id="email-address"
+            placeholder="email@domain.tld"
+            required=""
+            class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10"
+        />
+        <label for="department">Department</label>
+        <select
+            name="department"
+            id="department"
+            required=""
+            class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10">
+            <option value="production"
+                >映像制作のご相談 / Production Inquiry</option
+            >
+            <option value="Customer Care"
+                >スクリプトのサポート / Script Support</option
+            >
+            <option value="Shipping Receiving"
+                >その他のご相談 / Other Messages</option
+            >
+        </select>
+        <label for="message">Message</label>
+        <textarea
+            rows="5"
+            name="message"
+            id="message"
+            placeholder="お問い合わせ内容をご記入ください。映像制作のご相談の場合、スケジュール・ご予算を含めて頂けますとスムーズです。"
+            required=""
+            class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-60"
+        ></textarea>
+        <input
+            type="hidden"
+            name="_subject"
+            id="email-subject"
+            value="Department Contact Form Submission"
+        />
+    </fieldset>
+    <input
+        type="submit"
+        value="Send Message"
+        class="bg-zinc-100 bg-zinc-100-cumulodark rounded px-2 h-10 mt-5 !cursor-pointer"
+    />
+</form>
