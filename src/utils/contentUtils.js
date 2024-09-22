@@ -1,11 +1,12 @@
 import { getCollection } from "astro:content";
+import defaultThumb from "../assets/default_thumb.jpg";
 
 export async function getItemsWithThumbnails(base) {
 	const items = await getCollection(base);
 
 	const images = import.meta.glob("/src/content/**/*.(png|jpg|jpeg|gif|webp)");
 
-	const placeholderImage = "/default_thumb.jpg";
+	const placeholderImage = defaultThumb;
 
 	const itemsWithThumbnails = await Promise.all(
 		items.map(async (item) => {
