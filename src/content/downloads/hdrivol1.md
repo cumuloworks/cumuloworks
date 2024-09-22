@@ -5,6 +5,10 @@ category: "Others"
 description: "A collection of 360-degree panoramic HDRIs illustrated by artist SaH2O. Includes 6 different scenes in 8K resolution, suitable for use as backgrounds and lighting in most CG software."
 ---
 
+[<img src="https://asset.booth.pm/static-images/banner/200x40_01.png" alt="autoParallax 2">](https://cumuloworks.booth.pm/items/3027685)
+
+[![Gumroad Badge](https://img.shields.io/badge/Gumroad-FF90E8?logo=gumroad&logoColor=fff&style=for-the-badge)](https://cumuloworks.gumroad.com/l/cwhdrivol1)
+
 ![](./hdrivol1/samplescene_aurora_default.jpg)
 
 ![](./hdrivol1/samplescene_aurora_sky.jpg)

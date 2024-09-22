@@ -5,6 +5,8 @@ category: "After Effects"
 description: "A script for After Effects to switch interface languages. Easily change the UI language with a simple dropdown selection. (Windows Only)"
 ---
 
+[![Gumroad Badge](https://img.shields.io/badge/Gumroad-FF90E8?logo=gumroad&logoColor=fff&style=for-the-badge)](https://cumuloworks.gumroad.com/l/cwswitchlang)
+
 ## Installation
 
 Run or install from the After Effects’ file menu. \*This script is not ScriptUI panel script.
