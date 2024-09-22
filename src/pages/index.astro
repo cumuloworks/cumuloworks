@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import TopPageBackground from "../components/toppage/TopPageBackground.astro";
-import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
-import { getItemsWithThumbnails } from "../utils/contentUtils";
 import TopPageGallery from "../components/toppage/TopPageGallery.astro";
+import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getItemsWithThumbnails } from "../utils/contentUtils";
 
 const projects = await getItemsWithThumbnails("projects");
 

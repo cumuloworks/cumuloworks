@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
 import profilePic from "../assets/profile_pic.jpg";
-import ContactForm from "../components/elements/ContactForm.astro";
 import Card from "../components/content/Card.astro";
+import ContactForm from "../components/elements/ContactForm.astro";
 import { getItemWithThumbnail } from "../utils/contentUtils";
 
 const title = "About";
@@ -122,7 +122,8 @@ const vfxProject = await getItemWithThumbnail("projects", "kaf-kaika");
             </li>
         </ul>
 
-        <h2>Talks and Interviews</h2><ul>
+        <h2>Talks and Interviews</h2>
+        <ul class="list-disc pl-5 space-y-2">
             <li>
                 VIDEOGRAPHERS TOKYO 2024 <a
                     href="http://cumulo.works/blogs/vgt2024"
