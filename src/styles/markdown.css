@@ -3,7 +3,7 @@
 }
 
 .markdown-content p {
-	@apply my-4;
+	@apply my-2;
 }
 
 .markdown-content h1,
@@ -12,7 +12,7 @@
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-	@apply font-bold mt-4 mb-4;
+	@apply font-bold mt-5 mb-5;
 }
 
 .markdown-content h1 {
