@@ -35,4 +35,9 @@ export default defineConfig({
 	},
 	output: "static",
 	site: "https://cumulo.works",
+	markdown: {
+		shikiConfig: {
+			theme: "github-light",
+		},
+	},
 });
