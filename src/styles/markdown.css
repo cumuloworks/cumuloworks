@@ -57,5 +57,26 @@
 }
 
 .markdown-content pre {
-	@apply !bg-zinc-100 !text-cumulodark whitespace-pre-wrap p-4 text-sm rounded-lg leading-loose font-light;
+	@apply !bg-zinc-100 whitespace-pre-wrap p-4 text-sm rounded leading-loose font-light;
+}
+
+.markdown-content code {
+	@apply bg-zinc-100 px-1 py-0.5 rounded;
+}
+
+.markdown-content blockquote {
+	@apply border-l-2 border-cumulolight pl-4 py-2;
+}
+
+.markdown-content hr {
+	@apply my-10 border-t border-cumulolight;
+}
+
+.markdown-content p:has(> img) {
+	@apply flex flex-col md:flex-row justify-center items-center mx-auto gap-1 mb-5;
+}
+
+.markdown-content p:has(> img) img {
+	@apply w-full h-auto object-cover;
+	min-width: 0;
 }
