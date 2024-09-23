@@ -248,6 +248,24 @@ Markdownlintを使用して各記事のMarkdownをLintしている。
 
 いくつかの項目は`/.markdownlint.json`で無効化している。インラインHTMLを許可したりなど。
 
+## PageSpeed Insights
+
+### トップページ モバイル
+
+![alt text](./website-astro/image-9.png)
+
+### トップページ デスクトップ
+
+![alt text](./website-astro/image-10.png)
+
+### プロジェクトページ モバイル
+
+![alt text](./website-astro/image-11.png)
+
+### プロジェクトページ デスクトップ
+
+![alt text](./website-astro/image-12.png)
+
 ## 今後
 
 - 各部分のコンポーネント化を更に進める
