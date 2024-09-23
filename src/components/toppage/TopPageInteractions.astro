@@ -7,11 +7,12 @@ import TopPageNavigation from "./TopPageNavigation.astro";
 
 <header
     class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 text-white">
-    <a href="/" class="w-5/6 max-w-screen-sm">
-        <svg class="fill-white" viewBox="0 0 1059.27 244.1">
+    <a href="/" class="w-5/6 max-w-screen-sm" aria-label="Cumuloworks Home">
+        <svg class="fill-white" viewBox="0 0 1059.27 244.1" aria-hidden="true">
             <Logo />
-        </svg></a
-    >
+        </svg>
+        <span class="sr-only">Cumuloworks</span>
+    </a>
     <a href="/about" class="font-bold md:text-xl">
         Director / Motion Designer / CG Generalist
     </a>
@@ -24,7 +25,10 @@ import TopPageNavigation from "./TopPageNavigation.astro";
         </button>
     </div>
     <TopPageNavigation />
-    <button id="scrollDownButton" class="absolute bottom-8 lg:bottom-10">
+    <button
+        id="scrollDownButton"
+        class="absolute bottom-8 lg:bottom-10"
+        aria-label="Scroll down">
         <Icon
             name="fa6-solid:chevron-down"
             class="size-5 hover:size-10 transition-all ease-out-expo"

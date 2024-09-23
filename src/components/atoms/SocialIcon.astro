@@ -7,10 +7,16 @@ const { href, icon, dark = false, newtab = true } = Astro.props;
 <li>
     <a
         href={href}
-        {...newtab ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
+        {...newtab ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+        aria-label={`Visit ${icon.split(":")[1].replace("fa6-brands:", "")} page`}
+        class="inline-block">
         <Icon
             name={icon}
             class={`size-6 ${dark ? "text-inactive hover:text-active" : "text-cumulodark hover:text-cumulolight"}`}
+            aria-hidden="true"
         />
+        <span class="sr-only"
+            >{icon.split(":")[1].replace("fa6-brands:", "")}</span
+        >
     </a>
 </li>
