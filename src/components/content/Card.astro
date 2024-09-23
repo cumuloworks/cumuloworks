@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { categoryDictionary } from "../../utils/categoryNameDictionary";
-const { base, item } = Astro.props;
+const { base, item, loading = "eager" } = Astro.props;
 ---
 
 <div class="grid-item group relative" data-category={item.data.category}>
@@ -12,7 +12,7 @@ const { base, item } = Astro.props;
             src={item.thumbnail}
             alt={item.data.title}
             class="object-cover aspect-video w-full h-auto"
-            loading="lazy"
+            loading={loading}
         />
         <div
             class="absolute w-full h-full bg-black bg-opacity-0 group-hover:bg-opacity-75 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">

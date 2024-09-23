@@ -5,12 +5,15 @@ import Card from "./Card.astro";
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 text-inactive">
     {
-        items.map((item, index) => (
-            <Card
-                base={base}
-                item={item}
-                loading={index < 12 ? "eager" : "lazy"}
-            />
-        ))
+        items.map((item, index) => {
+            const eagerLoadCount = Math.ceil(items.length / 3);
+            return (
+                <Card
+                    base={base}
+                    item={item}
+                    loading={index < eagerLoadCount ? "eager" : "lazy"}
+                />
+            );
+        })
     }
 </div>
