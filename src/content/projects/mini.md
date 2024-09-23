@@ -1,7 +1,7 @@
 ---
 title: "MINI JOHN COOPER WORKS"
 date: "2022-10-24"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=Df4o82Q-j4Q"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "SHIBUYA QWS"
 date: "2019-08-30"
-category: "Ads / Corporate"
+category: "ads"
 embed: ""
 ---
 

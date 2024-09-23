@@ -1,37 +1,13 @@
 ---
 title: "Illustrated HDRI vol.1 by SaH₂O"
 date: "2023-08-07"
-category: "Others"
+category: "others"
 description: "A collection of 360-degree panoramic HDRIs illustrated by artist SaH2O. Includes 6 different scenes in 8K resolution, suitable for use as backgrounds and lighting in most CG software."
 ---
 
 [<img src="https://asset.booth.pm/static-images/banner/200x40_01.png" alt="autoParallax 2">](https://cumuloworks.booth.pm/items/3027685)
 
 [![Gumroad Badge](https://img.shields.io/badge/Gumroad-FF90E8?logo=gumroad&logoColor=fff&style=for-the-badge)](https://cumuloworks.gumroad.com/l/cwhdrivol1)
-
-![](./hdrivol1/samplescene_aurora_default.jpg)
-
-![](./hdrivol1/samplescene_aurora_sky.jpg)
-
-![](./hdrivol1/samplescene_coldfront_default.jpg)
-
-![](./hdrivol1/samplescene_coldfront_sky.jpg)
-
-![](./hdrivol1/samplescene_drawing_default.jpg)
-
-![](./hdrivol1/samplescene_drawing_sky.jpg)
-
-![](./hdrivol1/samplescene_overcast_default.jpg)
-
-![](./hdrivol1/samplescene_overcast_sky.jpg)
-
-![](./hdrivol1/samplescene_sunny_default.jpg)
-
-![](./hdrivol1/samplescene_sunny_sky.jpg)
-
-![](./hdrivol1/samplescene_sunset_default.jpg)
-
-![](./hdrivol1/samplescene_sunset_sky.jpg)
 
 ## イラストレーター天野さほによって描かれた、360度パノラマHDRI
 
@@ -50,3 +26,20 @@ Vol.1のフルバージョンには8K解像度の'sunny', 'coldfront', 'overcast
 制作物に合わせて改変することができます。
 
 再配布は禁止です。
+
+![](./hdrivol1/samplescene_aurora_default.jpg)
+![](./hdrivol1/samplescene_aurora_sky.jpg)
+
+![](./hdrivol1/samplescene_coldfront_default.jpg)
+![](./hdrivol1/samplescene_coldfront_sky.jpg)
+![](./hdrivol1/samplescene_drawing_default.jpg)
+
+![](./hdrivol1/samplescene_drawing_sky.jpg)
+![](./hdrivol1/samplescene_overcast_default.jpg)
+
+![](./hdrivol1/samplescene_overcast_sky.jpg)
+![](./hdrivol1/samplescene_sunny_default.jpg)
+![](./hdrivol1/samplescene_sunny_sky.jpg)
+
+![](./hdrivol1/samplescene_sunset_default.jpg)
+![](./hdrivol1/samplescene_sunset_sky.jpg)

@@ -2,7 +2,7 @@
 title: "CGWORLD ONLINE チュートリアル"
 description: "CumuloworksによるCinema 4Dの日本語チュートリアルが、CGWORLD様にて購入・視聴できるようになりました！"
 date: "2020-09-15"
-category: "Announcement"
+category: "announcement"
 ---
 
 CumuloworksによるCinema 4Dの日本語チュートリアルが、CGWORLD様にて購入・視聴できるようになりました！

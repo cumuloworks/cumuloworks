@@ -1,7 +1,7 @@
 ---
 title: "FUTURE-EXPERIMENT VOL.04"
 date: "2018-12-30"
-category: "Ads / Corporate"
+category: "ads"
 embed: ""
 ---
 

@@ -1,22 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import TopPageBackground from "../components/toppage/TopPageBackground.astro";
-import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
-import { getItemsWithThumbnails } from "../utils/contentUtils";
 import TopPageGallery from "../components/toppage/TopPageGallery.astro";
+import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { categoryDictionary } from "../utils/categoryNameDictionary";
+import { getItemsWithThumbnails } from "../utils/contentUtils";
 
 const projects = await getItemsWithThumbnails("projects");
 
 const categoryDescriptions = {
-	"Ads / Corporate": "Advertisements and promotional videos for businesses.",
-	Entertainment:
+	ads: "Advertisements and promotional videos for businesses.",
+	entertainment:
 		"Music videos, live productions, and other entertainment content.",
-	Uncategorized: "Projects in this category",
+	uncategorized: "Projects in this category",
 };
 
 const projectsByCategory = projects.reduce((acc, project) => {
-	const category = project.data.category || "Uncategorized";
+	const category = project.data.category || "uncategorized";
 	if (!acc[category]) {
 		acc[category] = {
 			projects: [],
@@ -47,7 +48,7 @@ const projectsByCategory = projects.reduce((acc, project) => {
 					Object.entries(projectsByCategory).map(
 						([category, projectsData]) => (
 							<TopPageGallery
-								category={category}
+								category={categoryDictionary[category]}
 								description={projectsData.description}
 								projects={projectsData.projects}
 							/>

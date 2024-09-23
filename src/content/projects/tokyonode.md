@@ -1,7 +1,7 @@
 ---
 title: "TOKYO NODE Digital Signage"
 date: "2023-10-06"
-category: "Ads / Corporate"
+category: "ads"
 embed: ""
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Sony Network Communications ビジョン・ムービー"
 date: "2022-05-25"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=AYhTG3OHEQU"
 ---
 

@@ -2,7 +2,7 @@
 title: "Ryzen 9 5950X 初期不良を引いた話。"
 description: "Ryzen 9 5950Xで初期不良を引いたときのログ。"
 date: "2024-07-18"
-category: "Technology / Tips"
+category: "techtips"
 ---
 
 Ryzen 9 5950Xで初期不良を引いたときのログ。

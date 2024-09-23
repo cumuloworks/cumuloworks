@@ -1,7 +1,7 @@
 ---
 title: "Prelude #holoENPrelude"
 date: "2021-07-31"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=Lvg4SUna5xw"
 ---
 

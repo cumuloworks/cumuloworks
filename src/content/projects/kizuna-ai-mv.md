@@ -1,7 +1,7 @@
 ---
 title: "中国绊爱 化身星海 MV"
 date: "2020-07-09"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=Ved99aUuNwk"
 ---
 

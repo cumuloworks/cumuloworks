@@ -1,7 +1,7 @@
 ---
 title: "FREUDE by BMW"
 date: "2024-07-23"
-category: "Ads / Corporate"
+category: "ads"
 embed: ""
 ---
 

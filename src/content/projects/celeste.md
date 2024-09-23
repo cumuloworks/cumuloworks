@@ -1,7 +1,7 @@
 ---
 title: "菅原圭 - celeste feat. 春野 (Official Video)"
 date: "2022-10-26"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=GJkYU3PHYvU"
 ---
 

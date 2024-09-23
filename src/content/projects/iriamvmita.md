@@ -1,7 +1,7 @@
 ---
 title: "IRIAM #バーチャルなってみた"
 date: "2020-12-07"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=QdLYsbPq7Ic"
 ---
 

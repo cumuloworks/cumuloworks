@@ -1,7 +1,7 @@
 ---
 title: "autoParallax 2"
 date: "2023-08-01"
-category: "After Effects"
+category: "ae"
 description: "A script for After Effects that simplifies creating parallax effect animations using 3D layers. It maintains the original layout by canceling apparent size changes when moving along the Z-axis, allowing for easy creation of parallax effects."
 ---
 

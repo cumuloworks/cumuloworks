@@ -2,7 +2,7 @@
 title: "CGWORLD MASTERCLASS ONLINE に登壇します"
 description: "3月20日(土)に開催される、CGWORLD MASTERCLASS ONLINE vol.3に登壇します。"
 date: "2021-02-14"
-category: "Announcement"
+category: "announcement"
 ---
 
 ![](./cgwmasterclass/image-1.png)
