@@ -77,6 +77,10 @@
 }
 
 .markdown-content p:has(> img) img {
-	@apply w-full h-auto object-cover my-5;
+	@apply w-full h-auto my-5 object-cover;
 	min-width: 0;
+}
+
+.markdown-content iframe {
+	@apply aspect-video w-full h-full;
 }

@@ -2,14 +2,14 @@
 title: "サイトのコードをAstroで書き直しました"
 description: "サイトのコードをAstroで書き直しました。"
 date: "2024-09-23"
-category: "Technology / Tips"
+category: "techtips"
 ---
 
 ## Webサイトをリニューアルしました
 
 今までも色々とサービスを乗り換えたり(e.g. WordPress, Squarespace)、Next.jsで作ってみたりしてきたが、ようやく納得できる形に出来たのでしばらくはこれで落ち着きそう。
 
->⚠️⚠️⚠️ 以下は、技術記事というよりは個人の感想・日記みたいなものだと思ってお読みください。当然、正確性だとか、妥当性だとかは全く保証できません。
+>⚠️⚠️⚠️ 以下は、技術記事というよりは個人の感想・日記みたいなものだと思ってお読みください。映像クリエイターが適当にやっているもので、当然、正確性だとか、妥当性だとかは全く保証できません。
 
 <hr>
 
@@ -21,9 +21,18 @@ category: "Technology / Tips"
 
 もはや静的なHTMLでも良いくらいだと思ったりもしたが、画像の自動最適化やコンポーネントの使用など最低限の機能は欲しかった。
 
-Astroを使うと、シンプルなHTMLから徐々にコンポーネント化や最適化を行っていけるらしい&Markdownで記事を書いていくのに向いているらしいということを知り、1週間弱かけてコードをイチから書き直した。
+Astroを使うと、シンプルなHTMLから徐々にコンポーネント化や最適化を行っていけるらしい & Markdownで記事を書いていくのに向いているらしいということを知り、1週間弱かけてコードをイチから書き直した。
 
 (あと、Astroは最近名前をよく聞くので、ずっと試してみたかった。ポートフォリオはちょうどいい題材になると思った。)
+
+#### ちょっと古いけど多分Astroの雰囲気がわかる動画
+
+ちなみに今回は`client:load`ディレクティブとかは使っていない。
+
+<div class="flex flex-col md:flex-row gap-1">
+<iframe width="960" height="315" src="https://www.youtube.com/embed/dsTXcSeAZq8?si=X9_HaGXmkjzbyZiQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gxBkghlglTg?si=k0FXcosR6LwvmufY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ### 2. 記事データをCMSからGitHub・Markdownに移行
 
@@ -59,9 +68,11 @@ src/
     └── index.astro -> トップページ。
 ```
 
-今回の更新で、各記事・画像ファイルとWebサイトのコードを1つのリポジトリで管理できるようになり、デプロイが楽になった。
+今回の更新により
 
-これまでの、CMSで記事更新 → Vercelでリビルド・デプロイというプロセスが不要になり、サイトの構造変更であっても記事の更新であってもGitHubへのPushで完結できるようになった。
+1. 記事、画像ファイル、Webサイトのコードを1つのリポジトリで一元管理できるようになった。
+2. これまでのデプロイプロセス（CMSで記事更新 → Vercelでリビルド・デプロイ）が不要になった。
+3. サイトの構造変更や記事の更新など、すべての変更をGitHubへのプッシュで完結できるようになった。
 
 記事自体も自分の好みのエディターで書けるし、必要に応じてHTMLをMarkdownに埋め込むことも出来る。
 
@@ -92,7 +103,7 @@ Markdownは、冒頭にfrontmatterでメタデータを記述しておく。
 title: "記事タイトル"
 description: "記事の短い説明"
 date: "2024-09-23"
-category: "Technology / Tips"
+category: "techtips"
 ---
 
 ## Heading 2
@@ -132,21 +143,33 @@ VercelのAnalyticsは、SSRが必須なので(多分トラッキングのコー�
 
 と記述するだけでOKらしく、簡単に設定できて嬉しかった。
 
+こういう部分の設定が簡単で、ドキュメントも分かりやすいのがとても助かった。
+
 ### 画像最適化
 
 画像は、HTML標準の`<img>`タグではなく、Astroの`<Image>`コンポーネントを利用することで、ビルド時にWebP変換やリサイズなどいろいろな最適化を行ってくれるらしい。
 
 `width`、`height`を省略すると、自動で画像の解像度が設定される。これは軽量化にもなるし、CLS対策にもなる。
 
-一番画像が多いGallery部分は、スマホだと最初からビューポートの範囲内になるので、各プロジェクトページの最初10枚弱には`eager`、それ以下には`lazy`を指定した。
+一番画像が多いGallery部分はについて、特にスマホだと最初からビューポートの範囲内になるので、各プロジェクトページの最初10枚弱には`eager`、それ以下には`lazy`を指定した。
 
-ちなみに、このサイトは全記事で600枚くらいの画像があり、初回のビルドは20分以上かかった。ローカル環境でもビルドにはそれなりに時間がかかる。
+ちなみに、このサイトは全記事で600枚くらいの画像があり、Vercelでの初回のビルドは20分以上かかった。2回目以降はキャッシュが効いて差分のみの処理となり、30秒以内にビルドが終わる。
 
-2回目以降はVercelがキャッシュを使ってくれるので、差分のみの処理となり、30秒以内にビルドが終わる。
+![alt text](./website-astro/image-5.png)
+
+### ページネーションの排除
+
+以前のサイトではページネーションを実装していたが、現状そこまでの記事数ではないので一旦排除した。
+
+実装がシンプルになったし、SSG的な恩恵もあると思う。
+
+### カテゴリフィルター
+
+この記事を書いている途中に気づいたが、カテゴリのフィルタリングをクライアントサイドのJavaScriptで行うよりも、CSSでフィルタリングしたほうが軽量になりそう（というかそうしないとダメ？）ということで、ついでに実装した。
 
 ### YouTubeのiframe
 
-各プロジェクト記事の冒頭には動画再生のためのYouTube iframeを配置するが、これがロードを重くする原因になっていた。
+以前まで、各プロジェクト記事の冒頭には動画再生のためのYouTube iframeを配置していたが、これがロードを重くする原因になっていた。
 
 特に、ページ上部にあるのでロードの遅延が非常に目立つ。
 
@@ -162,13 +185,11 @@ VercelのAnalyticsは、SSRが必須なので(多分トラッキングのコー�
 
 トップページの背景には絶対動画を入れたいので、極力軽量化したものを`<video>`タグで挿入している。
 
-AV1を使うと、3分の動画でも10MB程度になった。モバイル回線以外ではほぼ瞬間的にロードされると思う。
+AV1を使うと、3分@720pの動画でも10MB程度になった。モバイル回線以外ではほぼ瞬間的にロードされると思う。
 
 SafariはAV1をサポートしていないので、H.264版にフォールバックするようにした。（その場合、動画のサイズは20MB程度になる。）
 
 ロードするたびにJavaScriptで再生位置がランダムになるので、過去4年に制作した映像がランダムで見られるような仕組みになっている。
-
-最悪動画がロードされなかった場合でも、黒画面になるだけなので見た目にはほとんど影響がない。
 
 ![alt text](./website-astro/image-3.png)
 
@@ -178,11 +199,20 @@ SafariはAV1をサポートしていないので、H.264版にフォールバッ
 
 ギャラリーは、単に画像がグリッドに並ぶのではなく、ある程度ランダム性を持ったレイアウトで表示されるようにしている。
 
-JavaScriptで[1,3,2,3,1,2,3]というようなランダムな配列を作り、それに応じてflex boxを生成している。
+JavaScriptで、画像の総数をターゲットに[1,3,2,3,1,2,3]というようなランダムな配列を作り、それに応じてflexboxを生成している。
+
+これは以前にReactで実装した時のコードをほぼそのまま流用している。
+
+![alt text](./website-astro/image-4.png)
+![alt text](./website-astro/image-1.png)
 
 シンプルなモーダルもつけた。
 
-![alt text](./website-astro/image-1.png)
+### トップページのSHOWREELの再生
+
+ギャラリーのモーダルを流用し、トップページのモーダルの中でYouTubeのSHOWREELが再生できるようにした。
+
+モバイルでは画面が小さくなりすぎるので、モーダルの代わりに直接YouTubeのアプリが開く。
 
 ### OGP
 
@@ -195,6 +225,12 @@ JavaScriptで[1,3,2,3,1,2,3]というようなランダムな配列を作り、�
 Sitemapは、Astroの`@astrojs/sitemap`を使って自動生成出来た。
 
 SEO的に良いらしい。
+
+### 問い合わせフォーム
+
+前回から引き続き、[FormSpree](https://formspree.io/)を使用している。
+
+送信後のフィードバックは、前回はReactを使ってページ内で完結するように実装していたが、結局分かりづらいので今回はFormSpreeのサイトにただリダイレクトするのみとした。
 
 ### MarkdownのLinting
 
