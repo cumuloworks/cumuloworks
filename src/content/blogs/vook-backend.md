@@ -1,7 +1,7 @@
 ---
 title: "Vook 裏（バックエンド）を聞く"
 date: "2024-02-27"
-category: "Announcement"
+category: "announcement"
 description: 映像制作に使用しているサーバー機材などについて取材をしていただきました。
 ---
 

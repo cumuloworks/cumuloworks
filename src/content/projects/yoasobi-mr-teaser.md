@@ -1,7 +1,7 @@
 ---
 title: "YOASOBI 「ミスター」 teaser"
 date: "2022-02-07"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=mz3bCm-Kh9A"
 ---
 

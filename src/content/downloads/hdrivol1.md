@@ -1,7 +1,7 @@
 ---
 title: "Illustrated HDRI vol.1 by SaH₂O"
 date: "2023-08-07"
-category: "Others"
+category: "others"
 description: "A collection of 360-degree panoramic HDRIs illustrated by artist SaH2O. Includes 6 different scenes in 8K resolution, suitable for use as backgrounds and lighting in most CG software."
 ---
 

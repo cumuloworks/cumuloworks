@@ -1,7 +1,7 @@
 ---
 title: "花譜 不可解弐Q1 「彷徨い」"
 date: "2020-10-09"
-category: "Entertainment"
+category: "entertainment"
 embed: ""
 ---
 

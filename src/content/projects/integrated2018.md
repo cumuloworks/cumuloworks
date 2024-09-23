@@ -1,7 +1,7 @@
 ---
 title: 'Tama Art University "INTEGRATED"'
 date: "2018-07-14"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=irsOzMyTTBo"
 ---
 

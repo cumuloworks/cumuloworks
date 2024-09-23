@@ -1,7 +1,7 @@
 ---
 title: "花譜 4th ONE-MAN LIVE「怪歌」"
 date: "2024-01-14"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=Cg0YFMXTxmU"
 ---
 

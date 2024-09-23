@@ -1,6 +1,7 @@
 ---
 const { base, items } = Astro.props;
 import { Image } from "astro:assets";
+import { categoryDictionary } from "../../utils/categoryNameDictionary";
 ---
 
 <div class="grid grid-cols-1 gap-5 text-cumulodark">
@@ -20,14 +21,16 @@ import { Image } from "astro:assets";
                     <div class="hidden md:flex flex-col justify-center items-left flex-grow p-10">
                         <p class="font-bold text-xl">{item.data.title}</p>
                         <p class="text-sm mt-4">
-                            {item.data.date} | {item.data.category}
+                            {item.data.date} |{" "}
+                            {categoryDictionary[item.data.category]}
                         </p>
                         <p class="text-sm mt-4">{item.data.description}</p>
                     </div>
                     <div class="text-inactive w-full p-2 text-center flex md:hidden flex-col justify-center items-center flex-grow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <p class="font-bold text-lg">{item.data.title}</p>
                         <p>
-                            {item.data.date} | {item.data.category}
+                            {item.data.date} |{" "}
+                            {categoryDictionary[item.data.category]}
                         </p>
                     </div>
                 </a>

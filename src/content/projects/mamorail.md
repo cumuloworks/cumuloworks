@@ -1,7 +1,7 @@
 ---
 title: "まもレール"
 date: "2020-02-23"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=Yg9mANMGAac"
 ---
 

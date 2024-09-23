@@ -1,7 +1,7 @@
 ---
 title: "Mori Calliope - Holy嫉妬 Music Video"
 date: "2022-06-26"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=krlr_ucg2YU"
 ---
 

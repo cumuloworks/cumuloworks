@@ -1,7 +1,7 @@
 ---
 title: "LINK-SYNC"
 date: "2019-05-26"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=1fo7RCvVt80"
 ---
 

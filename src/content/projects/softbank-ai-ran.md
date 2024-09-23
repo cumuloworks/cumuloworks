@@ -1,7 +1,7 @@
 ---
 title: "Softbank AI-RAN"
 date: "2023-07-26"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=GnAfHItaads"
 ---
 

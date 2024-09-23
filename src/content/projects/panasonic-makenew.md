@@ -1,7 +1,7 @@
 ---
 title: "Panasonic 『Make New 「オープニング」篇』"
 date: "2022-05-13"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=BHCOvooEdy8"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "OneTwoTrim"
 date: "2023-08-07"
-category: "After Effects"
+category: "ae"
 description: "An After Effects script that trims multiple selected layers to match the length of the first selected layer. Streamline your editing process with this simple yet powerful tool."
 ---
 

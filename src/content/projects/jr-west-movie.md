@@ -1,7 +1,7 @@
 ---
 title: "JR西日本グループ コンセプトムービー"
 date: "2024-06-18"
-category: "Ads / Corporate"
+category: "ads"
 embed: "https://www.youtube.com/watch?v=7jFnuMLcm24"
 ---
 

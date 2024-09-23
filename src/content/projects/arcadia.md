@@ -1,7 +1,7 @@
 ---
 title: "ヰ世界情緒 ARCADIA MV"
 date: "2022-05-20"
-category: "Entertainment"
+category: "entertainment"
 embed: "https://www.youtube.com/watch?v=KMvUdCyIVxw"
 ---
 

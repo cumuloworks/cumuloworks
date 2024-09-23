@@ -1,6 +1,6 @@
 ---
-title: "Aviutl 扇クリッピングR"
-category: "Aviutl"
+title: "aviutl 扇クリッピングR"
+category: "aviutl"
 date: "2015-07-03"
 ---
 
