@@ -13,11 +13,7 @@ const { category, description, projects, base = "projects" } = Astro.props;
             projects
                 .slice(0, 6)
                 .map((project, index) => (
-                    <Card
-                        base={base}
-                        item={project}
-                        loading={index < 6 ? "eager" : "lazy"}
-                    />
+                    <Card base={base} item={project} loading="lazy" />
                 ))
         }
     </div>
