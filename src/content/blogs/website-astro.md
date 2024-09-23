@@ -27,12 +27,12 @@ Astroを使うと、シンプルなHTMLから徐々にコンポーネント化�
 
 #### ちょっと古いけど多分Astroの雰囲気がわかる動画
 
-ちなみに今回は`client:load`ディレクティブとかは使っていない。
-
 <div class="flex flex-col md:flex-row gap-1">
 <iframe width="960" height="315" src="https://www.youtube.com/embed/dsTXcSeAZq8?si=X9_HaGXmkjzbyZiQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gxBkghlglTg?si=k0FXcosR6LwvmufY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+ちなみに今回は`client:load`ディレクティブとかは使っていない。
 
 ### 2. 記事データをCMSからGitHub・Markdownに移行
 
@@ -94,7 +94,7 @@ MicroCMSからデータをエクスポートする方法は公式に用意され
 
 #### Markdownの内容
 
-astro.config.mjsに設定をしておくことで、`/src/content/`内のファイルを記事として取得して、CMS的に使える。
+`astro.config.mjs`に設定をしておくことで、`/src/content/`内のファイルを記事として取得して、CMS的に使える。
 
 Markdownは、冒頭にfrontmatterでメタデータを記述しておく。
 
@@ -125,9 +125,9 @@ Paragraph...
 
 と記述するだけでOKらしい。
 
-VercelのAnalyticsは、SSRが必須なので(多分トラッキングのコードをインジェクションするため？)、↑のオプションとは併用できないらしい。
+ちなみに、VercelのAnalyticsはSSRが必須なので(多分トラッキングのコードをインジェクションするため？)、↑のオプションとは併用できないらしい。
 
-そのため、今回は代わりに[Plausible](https://plausible.io/)を使用してみている。（のちに変えるかも）
+そのため、今回Analyticsには代わりに[Plausible](https://plausible.io/)を使用してみている。（のちに変えるかも）
 
 ### Prefetching
 
@@ -143,7 +143,7 @@ VercelのAnalyticsは、SSRが必須なので(多分トラッキングのコー�
 
 と記述するだけでOKらしく、簡単に設定できて嬉しかった。
 
-こういう部分の設定が簡単で、ドキュメントも分かりやすいのがとても助かった。
+こういう部分の設定が簡単で、ドキュメントも分かりやすいのがとても助かった。ただし、設定項目の記述方法や各関数の使い方とかは結構頻繁にアップデートされるらしく、注意が必要そう。
 
 ### 画像最適化
 
@@ -151,7 +151,7 @@ VercelのAnalyticsは、SSRが必須なので(多分トラッキングのコー�
 
 `width`、`height`を省略すると、自動で画像の解像度が設定される。これは軽量化にもなるし、CLS対策にもなる。
 
-一番画像が多いGallery部分はについて、特にスマホだと最初からビューポートの範囲内になるので、各プロジェクトページの最初10枚弱には`eager`、それ以下には`lazy`を指定した。
+一番画像が多いギャラリー部分はについて、特にスマホだと最初からビューポートの範囲内になるので、各プロジェクトページの最初10枚弱には`eager`、それ以下には`lazy`を指定した。
 
 ちなみに、このサイトは全記事で600枚くらいの画像があり、Vercelでの初回のビルドは20分以上かかった。2回目以降はキャッシュが効いて差分のみの処理となり、30秒以内にビルドが終わる。
 
@@ -220,6 +220,10 @@ JavaScriptで、画像の総数をターゲットに[1,3,2,3,1,2,3]というよ�
 
 基本的にMarkdownから取得した内容を反映し、画像は各記事のサムネイルか、それ以外ではデフォルト画像になるように設定した。
 
+![alt text](./website-astro/image-6.png)
+![alt text](./website-astro/image-7.png)
+![alt text](./website-astro/image-8.png)
+
 ### サイトマップ
 
 Sitemapは、Astroの`@astrojs/sitemap`を使って自動生成出来た。
@@ -242,7 +246,7 @@ Markdownlintを使用して各記事のMarkdownをLintしている。
 
 （例えば、改行の使い方、ヘディングの使い方など。例えば、# の直後に ### が来ると警告になる。）
 
-いくつかの項目は`/markdownlint.json`で無効化している。インラインHTMLを許可したりなど。
+いくつかの項目は`/.markdownlint.json`で無効化している。インラインHTMLを許可したりなど。
 
 ## 今後
 
