@@ -57,7 +57,7 @@
 }
 
 .markdown-content pre {
-	@apply !bg-zinc-100 whitespace-pre-wrap p-4 text-sm rounded leading-loose font-light;
+	@apply !bg-zinc-100 whitespace-pre-wrap p-4 text-sm rounded leading-loose font-light my-5;
 }
 
 .markdown-content code {
@@ -77,6 +77,6 @@
 }
 
 .markdown-content p:has(> img) img {
-	@apply w-full h-auto object-cover;
+	@apply w-full h-auto object-cover my-5;
 	min-width: 0;
 }
