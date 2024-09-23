@@ -13,20 +13,19 @@ const SocialIcons = [
 <nav class="font-bold uppercase">
     <div class="absolute left-8 lg:left-20 bottom-8 lg:bottom-24">
         <ul
-            class="grid grid-cols-2 lg:grid-cols-5 gap-5 text-center text-inactive">
+            class="grid grid-cols-2 lg:grid-cols-6 gap-5 text-center text-inactive">
             {
                 SocialIcons.map((link) => (
                     <SocialIcon href={link.href} icon={link.icon} dark={true} />
                 ))
             }
-            <li class="lg:hidden list-none">
-                <SocialIcon
-                    href={"/about#contact"}
-                    icon={"fa6-solid:envelope"}
-                    dark={true}
-                    newtab={false}
-                />
-            </li>
+            <SocialIcon
+                href={"/about#contact"}
+                icon={"fa6-solid:envelope"}
+                dark={true}
+                newtab={false}
+                customClass="lg:hidden"
+            />
         </ul>
     </div>
     <div

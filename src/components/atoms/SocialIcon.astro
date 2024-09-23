@@ -1,10 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { href, icon, dark = false, newtab = true } = Astro.props;
+const {
+    href,
+    icon,
+    dark = false,
+    newtab = true,
+    customClass = "",
+} = Astro.props;
 ---
 
-<li>
+<li class={customClass}>
     <a
         href={href}
         {...newtab ? { target: "_blank", rel: "noopener noreferrer" } : {}}
