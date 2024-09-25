@@ -1,8 +1,6 @@
 import { defineConfig } from "astro/config";
-
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
@@ -17,17 +15,6 @@ export default defineConfig({
 		}),
 		sitemap(),
 	],
-	contentCollections: {
-		projects: {
-			type: "content",
-		},
-		blogs: {
-			type: "content",
-		},
-		downloads: {
-			type: "content",
-		},
-	},
 	image: {
 		service: {
 			entrypoint: "astro/assets/services/sharp",
