@@ -12,7 +12,7 @@ Ryzen 9 5950Xで初期不良を引いたときのログ。
 ## Specification
 
 ```plaintext
-CHA : Fractal Design Define 7 XL cumulo Light TG
+CHA : Fractal Design Define 7 XL Light TG
 CPU : AMD Ryzen 9 5950X
 M/B : MSI Prestige X570 CREATION E-ATX
 RAM : 128GB (4x 32GB DDR4-3600MHz CL18)
