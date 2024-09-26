@@ -1,7 +1,7 @@
 ---
 const { base, items } = Astro.props;
 import { Image } from "astro:assets";
-import { categoryDictionary } from "../../utils/categoryNameDictionary";
+import { categoryDictionary } from "../../utils/categoryDictionary";
 ---
 
 <div class="grid grid-cols-1 gap-5 text-cumulodark">
@@ -22,7 +22,7 @@ import { categoryDictionary } from "../../utils/categoryNameDictionary";
                         <p class="font-bold text-xl">{item.data.title}</p>
                         <p class="text-sm mt-4">
                             {item.data.date} |{" "}
-                            {categoryDictionary[item.data.category]}
+                            {categoryDictionary[item.data.category].name}
                         </p>
                         <p class="text-sm mt-4">{item.data.description}</p>
                     </div>
@@ -30,7 +30,7 @@ import { categoryDictionary } from "../../utils/categoryNameDictionary";
                         <p class="font-bold text-lg">{item.data.title}</p>
                         <p>
                             {item.data.date} |{" "}
-                            {categoryDictionary[item.data.category]}
+                            {categoryDictionary[item.data.category].name}
                         </p>
                     </div>
                 </a>

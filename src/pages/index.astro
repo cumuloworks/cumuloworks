@@ -4,24 +4,17 @@ import TopPageBackground from "../components/toppage/TopPageBackground.astro";
 import TopPageGallery from "../components/toppage/TopPageGallery.astro";
 import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { categoryDictionary } from "../utils/categoryNameDictionary";
+import { categoryDictionary } from "../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../utils/contentUtils";
 
 const projects = await getItemsWithThumbnails("projects");
-
-const categoryDescriptions = {
-	ads: "Advertisements and promotional videos for businesses.",
-	entertainment:
-		"Music videos, live productions, and other entertainment content.",
-	uncategorized: "Projects in this category",
-};
 
 const projectsByCategory = projects.reduce((acc, project) => {
 	const category = project.data.category || "uncategorized";
 	if (!acc[category]) {
 		acc[category] = {
 			projects: [],
-			description: categoryDescriptions[category],
+			description: categoryDictionary[category].description,
 		};
 	}
 	acc[category].projects.push(project);
@@ -48,8 +41,10 @@ const projectsByCategory = projects.reduce((acc, project) => {
 					Object.entries(projectsByCategory).map(
 						([category, projectsData]) => (
 							<TopPageGallery
-								category={categoryDictionary[category]}
-								description={projectsData.description}
+								category={categoryDictionary[category].name}
+								description={
+									categoryDictionary[category].description
+								}
 								projects={projectsData.projects}
 							/>
 						),

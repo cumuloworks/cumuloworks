@@ -5,7 +5,7 @@ import Gallery from "../../components/content/Gallery.astro";
 import Hero from "../../components/content/Hero.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import "../../styles/globals.css";
-import { categoryDictionary } from "../../utils/categoryNameDictionary";
+import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 
 export async function getStaticPaths() {
@@ -44,7 +44,7 @@ const thumbnailUrl = new URL(
 <ContentLayout
 	title={entry.data.title}
 	description={entry.data.description}
-	category={categoryDictionary[entry.data.category]}
+	category={categoryDictionary[entry.data.category].name}
 	date={entry.data.date}
 	prevItem={prevItem}
 	nextItem={nextItem}

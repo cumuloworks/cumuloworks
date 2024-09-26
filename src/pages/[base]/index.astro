@@ -4,7 +4,7 @@ import ItemGrid from "../../components/content/ItemGrid.astro";
 import ItemList from "../../components/content/ItemList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/markdown.css";
-import { categoryDictionary } from "../../utils/categoryNameDictionary";
+import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 
 export async function getStaticPaths() {
@@ -52,7 +52,7 @@ function generateCategoryStyles(categories: string[]) {
                         <button
                             data-filter={category}
                             class="filter-button px-5 py-1 rounded-full transition-all ease-out-expo hover:scale-105">
-                            {categoryDictionary[category]}
+                            {categoryDictionary[category].name}
                         </button>
                     ))
                 }
