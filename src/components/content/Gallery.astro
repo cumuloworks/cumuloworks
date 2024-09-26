@@ -6,17 +6,15 @@ import Modal from "../atoms/Modal.astro";
 
 const { folderPath } = Astro.props;
 
-const galleryImages = getImagesFromFolder(folderPath);
+const galleryImages = await getImagesFromFolder(folderPath);
 const layoutSequence = generateGallerySequence(galleryImages.length);
 
 const preparedImages = await Promise.all(
     galleryImages.map(async (image, index) => {
-        const importedImage = await image.importFunc();
         return {
-            src: importedImage.default,
+            src: image,
             alt:
-                image.path.split("/").pop()?.split(".")[0] ||
-                `gallery-${index}`,
+                image.src.split("/").pop()?.split(".")[0] || `gallery-${index}`,
             id: `image-${index}`,
             modalId: `modal-image-${index}`,
         };

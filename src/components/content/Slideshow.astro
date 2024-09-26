@@ -4,20 +4,19 @@ import { Icon } from "astro-icon/components";
 import { getImagesFromFolder } from "../../utils/getImagesFromFolder";
 
 const { folderPath } = Astro.props;
-
-const slideshowImages = getImagesFromFolder(folderPath);
+const slideshowImages = await getImagesFromFolder(folderPath);
 ---
 
 <div
     class="slideshow-container relative w-full h-[600px] my-10 overflow-hidden group">
     {
-        slideshowImages.map(({ path, importFunc }, index) => (
+        slideshowImages.map((image, index) => (
             <div
                 class={`slideshow-item absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === 0 ? "opacity-100" : "opacity-0"}`}>
                 <Image
-                    src={importFunc()}
+                    src={image}
                     alt={
-                        path.split("/").pop()?.split(".")[0] ||
+                        image.src.split("/").pop()?.split(".")[0] ||
                         `slideshow-${index}`
                     }
                     class="w-full h-full object-cover"
