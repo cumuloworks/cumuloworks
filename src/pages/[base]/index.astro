@@ -92,30 +92,38 @@ function generateCategoryStyles(categories: string[]) {
 <style is:global set:html={generateCategoryStyles(categories)}></style>
 
 <script>
-    const filterButtons = document.querySelectorAll(".filter-button");
-    const itemsContainer = document.getElementById("items-container");
-    const backToTopButton = document.getElementById("backToTopButton");
+    function setupEventListeners() {
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const itemsContainer = document.getElementById("items-container");
+        const backToTopButton = document.getElementById("backToTopButton");
 
-    function setActiveFilter(button) {
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-        itemsContainer.dataset.filter = button.dataset.filter;
-    }
+        function setActiveFilter(button) {
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            itemsContainer.dataset.filter = button.dataset.filter;
+        }
 
-    filterButtons.forEach((button) => {
-        button.addEventListener("click", () => setActiveFilter(button));
-    });
-
-    setActiveFilter(
-        document.querySelector('.filter-button[data-filter="all"]'),
-    );
-
-    if (backToTopButton) {
-        backToTopButton.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => setActiveFilter(button));
         });
+
+        setActiveFilter(
+            document.querySelector('.filter-button[data-filter="all"]'),
+        );
+
+        if (backToTopButton) {
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            });
+        }
     }
+
+    // Initial setup
+    setupEventListeners();
+
+    // Re-run setup after view transitions
+    document.addEventListener("astro:page-load", setupEventListeners);
 </script>

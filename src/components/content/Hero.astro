@@ -1,17 +1,20 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import { ViewTransitions } from "astro:transitions";
 const { item } = Astro.props;
 const id = item.data.embed ? item.data.embed.split("v=")[1] : null;
 const thumbnail = item.thumbnail;
 ---
 
 <div class="w-full aspect-video relative youtube-embed" data-youtube-id={id}>
+    <ViewTransitions />
     <Image
         src={thumbnail}
         alt={item.data.title || "Thumbnail"}
         class={`w-full h-full object-cover ${id ? "cursor-pointer" : ""}`}
         loading="eager"
+        transition:name={`thumbnail-${item.slug}`}
     />
     {
         id && (

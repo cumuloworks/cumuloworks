@@ -1,10 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { categoryDictionary } from "../../utils/categoryDictionary";
+import { ViewTransitions } from "astro:transitions";
 const { base, item, loading = "eager" } = Astro.props;
 ---
 
 <div class="grid-item group relative" data-category={item.data.category}>
+    <ViewTransitions />
     <a
         href={`/${base}/${item.slug}`}
         class="relative flex justify-center items-center">
@@ -13,6 +15,7 @@ const { base, item, loading = "eager" } = Astro.props;
             alt={item.data.title}
             class="object-cover aspect-video w-full h-auto"
             loading={loading}
+            transition:name={`thumbnail-${item.slug}`}
         />
         <div
             class="absolute w-full h-full bg-black bg-opacity-0 group-hover:bg-opacity-75 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
