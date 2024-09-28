@@ -22,6 +22,7 @@ const slideshowImages = await getImagesFromFolder(folderPath);
                     class="w-full h-full object-cover"
                     loading={index < 8 ? "eager" : "lazy"}
                     id={`image-${index}`}
+                    width={1280}
                 />
             </div>
         ))

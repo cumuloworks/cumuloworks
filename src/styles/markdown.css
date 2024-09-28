@@ -12,7 +12,7 @@
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-	@apply font-bold mt-5 mb-5;
+	@apply font-bold mt-10 mb-5;
 }
 
 .markdown-content h1 {
@@ -65,7 +65,7 @@
 }
 
 .markdown-content code {
-	@apply bg-zinc-100 px-1 py-0.5 rounded;
+	@apply bg-zinc-100 py-0.5 rounded;
 }
 
 .markdown-content blockquote {
@@ -77,14 +77,23 @@
 }
 
 .markdown-content p:has(> img) {
-	@apply flex flex-col md:flex-row justify-center items-center mx-auto gap-1 mb-5;
+	@apply flex flex-col md:flex-row justify-center items-center mx-auto gap-1 my-5;
 }
 
 .markdown-content p:has(> img) img {
-	@apply w-full h-auto my-5 object-cover;
+	@apply w-full h-auto my-0 object-cover;
 	min-width: 0;
 }
 
 .markdown-content iframe {
 	@apply aspect-video w-full h-full;
+}
+
+.markdown-content table {
+	@apply w-full my-5;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+	@apply px-4 py-2 border border-zinc-200;
 }

@@ -40,6 +40,7 @@ const preparedImages = await Promise.all(
                                 loading={imageIndex < 8 ? "eager" : "lazy"}
                                 id={image.id}
                                 data-modal-target={image.modalId}
+                                width={1280}
                             />
                         </div>
                     );
