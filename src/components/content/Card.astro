@@ -13,6 +13,7 @@ const { base, item, loading = "eager" } = Astro.props;
             alt={item.data.title}
             class="object-cover aspect-video w-full h-auto"
             loading={loading}
+            width={640}
         />
         <div
             class="absolute w-full h-full bg-black bg-opacity-0 group-hover:bg-opacity-75 opacity-0 group-hover:opacity-100 transition-all ease-out-expo">
