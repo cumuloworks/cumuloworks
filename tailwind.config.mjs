@@ -5,6 +5,7 @@ export default {
 	theme: {
 		fontFamily: {
 			sans: ["Inter", `"M PLUS 1p"`, "sans-serif"],
+			mono: ["monospace"],
 		},
 		extend: {
 			brightness: {
