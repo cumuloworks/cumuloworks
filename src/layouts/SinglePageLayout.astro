@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
 <BaseLayout title={frontmatter.title}>
     <article class="w-full">
         <div class="markdown-content">
-            <h1 class="!mb-10">{frontmatter.title}</h1>
+            <h1 class="!mb-20 !mt-0">{frontmatter.title}</h1>
             <div class="max-w-screen-md mx-auto mb-10">
                 <slot />
             </div>

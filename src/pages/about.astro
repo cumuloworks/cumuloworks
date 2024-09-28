@@ -24,7 +24,7 @@ const vfxProject = await getItemWithThumbnail("projects", "kaf-kaika");
 
 <BaseLayout title={title} description={description}>
     <div class="markdown-content">
-        <h1>About</h1>
+        <h1 class="!mt-0">About</h1>
         <div
             class="w-full flex flex-col lg:flex-row items-center rounded-lg leading-loose gap-8 mt-10 mb-20 p-5 shadow-2xl h-full">
             <div class="w-full lg:w-1/3">
@@ -66,41 +66,47 @@ const vfxProject = await getItemWithThumbnail("projects", "kaf-kaika");
 
         <h2>Areas of Expertise</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">Direction</h3>
                 <Card base="projects" item={directionProject} />
-                <h3>Direction</h3>
-                <p>From corporate promotional videos to virtual content.</p>
+                <p class="mt-5">
+                    From corporate promotional videos to virtual content.
+                </p>
             </div>
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">Motion Graphics</h3>
                 <Card base="projects" item={motionProject} />
-                <h3>Motion Graphics</h3>
-                <p>
+                <p class="mt-5">
                     Story-driven motion graphics, collaborating with various
                     designers.
                 </p>
             </div>
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">3D</h3>
                 <Card base="projects" item={threedProject} />
-                <h3>3D</h3>
-                <p>
+                <p class="mt-5">
                     From scene creation to compositing in a one-stop, with
                     established workflow.
                 </p>
             </div>
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">Product Visualization</h3>
                 <Card base="projects" item={productProject} />
-                <h3>Product Visualization</h3>
-                <p>Photo-realistic product visualization and animation.</p>
+                <p class="mt-5 ">
+                    Photo-realistic product visualization and animation.
+                </p>
             </div>
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">VFX / Compositing</h3>
                 <Card base="projects" item={vfxProject} />
-                <h3>VFX / Compositing</h3>
-                <p>VFX and compositing for advertisements and music videos.</p>
+                <p class="mt-5">
+                    VFX and compositing for advertisements and music videos.
+                </p>
             </div>
-            <div class="mb-5">
+            <div class="mb-5 !mb-0">
+                <h3 class="!mt-0">Toon / Anime Style</h3>
                 <Card base="projects" item={toonProject} />
-                <h3>Toon / Anime Style</h3>
-                <p>Unique anime-style rendering.</p>
+                <p class="mt-5">Unique anime-style rendering.</p>
             </div>
         </div>
 
