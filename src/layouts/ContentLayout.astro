@@ -2,7 +2,7 @@
 import PrevNext from "../components/content/PrevNext.astro";
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
-
+import ShareButtons from "../components/content/ShareButtons.astro";
 const {
     title,
     description,
@@ -16,23 +16,21 @@ const {
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage}>
-    <article class="w-full">
+    <article class="w-full flex flex-col gap-20">
         <slot name="hero" />
-        <div class="h-12"></div>
-        <div class="markdown-content">
-            <div class="mt-10 mb-20">
-                <h1>{title}</h1>
-                <p
-                    class="font-bold text-xl text-center text-cumulolight space-x-4">
-                    <span> {date}</span>
-                    <span> {category}</span>
-                </p>
-            </div>
-            <div class="max-w-screen-md mx-auto mb-20">
-                <slot />
+        <div>
+            <h1 class="text-3xl font-bold text-center mb-5">{title}</h1>
+            <div
+                class="flex justify-center items-center font-bold text-xl text-center text-cumulolight space-x-4">
+                <p>{date}</p>
+                <p>{category}</p>
             </div>
         </div>
-        <slot name="additional-content" />
+        <ShareButtons title={title} url={Astro.url} />
+        <div class="markdown-content max-w-screen-2xl mx-auto">
+            <slot />
+        </div>
+        <ShareButtons title={title} url={Astro.url} />
         <PrevNext prevItem={prevItem} nextItem={nextItem} base={base} />
     </article>
 </BaseLayout>

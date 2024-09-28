@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, url } = Astro.props;
+const encodedTitle = encodeURIComponent(title);
+const encodedUrl = encodeURIComponent(url);
+---
+
+<div class="flex justify-center items-center gap-2.5">
+    <div class="h-5 font-bold">
+        <p>Share on:</p>
+    </div>
+    <a
+        href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=cumuloworks`}
+        target="_blank"
+        aria-label="Share on X (Twitter)">
+        <Icon
+            name="fa6-brands:x-twitter"
+            class="w-5 h-5 text-cumulodark hover:text-cumulolight"
+        />
+    </a>
+    <a
+        href={`https://line.me/R/msg/text/?${encodedTitle}%0A${encodedUrl}`}
+        target="_blank"
+        aria-label="Share on LINE">
+        <Icon
+            name="fa6-brands:line"
+            class="w-5 h-5 text-cumulodark hover:text-cumulolight"
+        />
+    </a>
+    <button id="shareButton">
+        <Icon
+            name="fa6-solid:share"
+            class="w-5 h-5 text-cumulodark hover:text-cumulolight"
+        />
+    </button>
+
+    <script>
+        const shareButton = document.getElementById("shareButton");
+
+        if (navigator.share) {
+            shareButton.classList.remove("hidden");
+            shareButton.addEventListener("click", async () => {
+                try {
+                    await navigator.share({
+                        title: "{title}",
+                        url: "{url}",
+                    });
+                    console.log("Content shared successfully");
+                } catch (err) {
+                    console.error("Error sharing:", err);
+                }
+            });
+        }
+    </script>
+</div>

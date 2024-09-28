@@ -50,11 +50,13 @@ const thumbnailUrl = new URL(
 	nextItem={nextItem}
 	base={base}
 	ogImage={thumbnailUrl}>
-	<Content />
 	<div slot="hero">
 		<Hero item={items[currentIndex]} />
 	</div>
-	<div slot="additional-content">
+	<div class="max-w-screen-md mx-auto">
+		<Content />
+	</div>
+	<div>
 		{base === "projects" && <Gallery folderPath={galleryFolderPath} />}
 	</div>
 </ContentLayout>
