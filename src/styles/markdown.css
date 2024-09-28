@@ -73,7 +73,7 @@
 }
 
 .markdown-content hr {
-	@apply border-t border-cumulolight mb-5 mt-10 -mx-20 border-dashed;
+	@apply border-t border-cumulolight mb-5 mt-10 border-dashed;
 }
 
 .markdown-content p:has(> img) {
