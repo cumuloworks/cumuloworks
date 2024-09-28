@@ -20,5 +20,6 @@
 		"Threadripper",
 		"toppage",
 		"Uncategorized"
-	]
+	],
+	"css.lint.unknownAtRules": "ignore"
 }

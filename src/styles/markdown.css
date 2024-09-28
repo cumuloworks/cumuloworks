@@ -3,7 +3,7 @@
 }
 
 .markdown-content p {
-	@apply my-2;
+	@apply mb-5;
 }
 
 .markdown-content h1,
@@ -12,11 +12,11 @@
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-	@apply font-bold mt-10 mb-5;
+	@apply font-bold mb-5 mt-10;
 }
 
 .markdown-content h1 {
-	@apply text-3xl md:text-4xl text-center mt-0;
+	@apply text-3xl md:text-4xl text-center;
 }
 
 .markdown-content h2 {
@@ -33,7 +33,7 @@
 
 .markdown-content ul,
 .markdown-content ol {
-	@apply my-4 pl-6;
+	@apply pl-6;
 }
 
 .markdown-content ul {
@@ -57,7 +57,7 @@
 }
 
 .markdown-content pre {
-	@apply !bg-zinc-100 whitespace-pre-wrap p-4 text-sm rounded leading-loose font-light my-5;
+	@apply !bg-zinc-100 whitespace-pre-wrap p-4 text-sm rounded leading-loose font-light mb-5;
 }
 
 .markdown-content pre[data-language="plaintext"] code {
@@ -69,28 +69,28 @@
 }
 
 .markdown-content blockquote {
-	@apply border-l-2 border-cumulolight pl-4 py-2;
+	@apply border-l-2 border-cumulolight pl-5;
 }
 
 .markdown-content hr {
-	@apply my-10 border-t border-cumulolight;
+	@apply border-t border-cumulolight mb-5 mt-10 -mx-20 border-dashed;
 }
 
 .markdown-content p:has(> img) {
-	@apply flex flex-col md:flex-row justify-center items-center mx-auto gap-1 my-5;
+	@apply flex flex-col md:flex-row justify-center items-center mx-auto gap-1;
 }
 
 .markdown-content p:has(> img) img {
-	@apply w-full h-auto my-0 object-cover;
+	@apply w-full h-auto object-cover;
 	min-width: 0;
 }
 
 .markdown-content iframe {
-	@apply aspect-video w-full h-full;
+	@apply aspect-video w-full h-full mb-5;
 }
 
 .markdown-content table {
-	@apply w-full my-5;
+	@apply w-full mb-5;
 }
 
 .markdown-content table th,
