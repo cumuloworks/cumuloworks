@@ -4,18 +4,19 @@ import defaultThumb from "../assets/default_thumb.jpg";
 export async function getItemsWithThumbnails(base) {
 	const items = await getCollection(base);
 
-	const images = import.meta.glob("/src/content/**/*.(png|jpg|jpeg|gif|webp)");
-
+	const images = import.meta.glob(
+		"/src/content/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
+	);
 	const placeholderImage = defaultThumb;
 
 	const itemsWithThumbnails = await Promise.all(
 		items.map(async (item) => {
 			const thumbnailPath = Object.keys(images).find(
 				(path) =>
-					path.includes(`/src/content/${base}/${item.slug}/thumb.`) &&
-					(path.endsWith(".jpg") ||
-						path.endsWith(".png") ||
-						path.endsWith(".webp")),
+					path
+						.toLowerCase()
+						.includes(`/src/content/${base}/${item.slug}/thumb.`) &&
+					/(jpe?g|png|webp)$/i.test(path),
 			);
 			let thumbnail = placeholderImage;
 			if (thumbnailPath) {
@@ -42,15 +43,15 @@ export async function getItemWithThumbnail(base, slug) {
 	const item = await getEntry(base, slug);
 	if (!item) return null;
 
-	const images = import.meta.glob("/src/content/**/*.(png|jpg|jpeg|gif|webp)");
+	const images = import.meta.glob(
+		"/src/content/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
+	);
 	const placeholderImage = defaultThumb;
 
 	const thumbnailPath = Object.keys(images).find(
 		(path) =>
-			path.includes(`/src/content/${base}/${slug}/thumb.`) &&
-			(path.endsWith(".jpg") ||
-				path.endsWith(".png") ||
-				path.endsWith(".webp")),
+			path.toLowerCase().includes(`/src/content/${base}/${slug}/thumb.`) &&
+			/(jpe?g|png|webp)$/i.test(path),
 	);
 
 	let thumbnail = placeholderImage;
