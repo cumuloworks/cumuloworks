@@ -47,7 +47,18 @@ const pageTitle = `${title} | Cumuloworks`;
             is:inline
             defer
             data-domain="cumulo.works"
-            src="https://plausible.io/js/script.js"></script>
+            src="https://plausible.io/js/script.file-downloads.outbound-links.js"
+        ></script>
+        <script>
+            window.plausible =
+                window.plausible ||
+                function () {
+                    (window.plausible.q = window.plausible.q || []).push(
+                        arguments,
+                    );
+                };
+        </script>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
