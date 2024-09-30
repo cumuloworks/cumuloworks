@@ -33,7 +33,7 @@
 
 .markdown-content ul,
 .markdown-content ol {
-	@apply pl-6;
+	@apply pl-6 mb-5;
 }
 
 .markdown-content ul {

@@ -19,7 +19,8 @@
 		"techtips",
 		"Threadripper",
 		"toppage",
-		"Uncategorized"
+		"Uncategorized",
+		"Vook"
 	],
 	"css.lint.unknownAtRules": "ignore"
 }
