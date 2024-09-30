@@ -12,7 +12,15 @@
 
 </center>
 
+## 🎨 Motion Design and CG Projects
+
+[![SHOWREEL](https://img.youtube.com/vi/ES8CtZN4e5g/maxresdefault.jpg)](https://youtu.be/ES8CtZN4e5g?si=bq9CFslZCCK27PAy)
+
 ## 📺 Dev Projects
+
+### ✏️ [Portfolio Website (cumulo.works)](https://cumulo.works/)
+
+My portfolio site built with Astro.
 
 ### 📸 [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
 
@@ -22,9 +30,13 @@ An After Effects script for creating parallax effects easily.
 
 An After Effects script for trimming multiple layers at once.
 
-## 🌐 Socials
+## 🔗 Links
 
-[![Official Website](https://img.shields.io/badge/Official%20Website-000?logo=googlechrome&logoColor=fff&style=for-the-badge)](https://cumulo.works/)
+### 🌐 Official Website
+
+[![Official Website](https://img.shields.io/badge/cumulo.works-1d3744?logo=googlechrome&logoColor=fff&style=for-the-badge)](https://cumulo.works/)
+
+### 💬 Socials
 
 [![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fff&style=for-the-badge)](https://instagram.com/cumuloworks)
 [![X Badge](https://img.shields.io/badge/X-000?logo=x&logoColor=fff&style=for-the-badge)](https://x.com/cumuloworks)
