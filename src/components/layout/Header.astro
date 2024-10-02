@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import Logo from "../atoms/Logo.astro";
 import SocialIcon from "../atoms/SocialIcon.astro";
 
@@ -15,7 +14,7 @@ const SocialIcons = [
 <header class="flex bg-white text-cumulodark md:min-h-60 min-h-60">
     <nav
         class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5">
-        <ul class="md:flex flex-1 gap-5 text-left hidden">
+        <ul class="md:flex flex-1 gap-5 text-left hidden" id="nav-links">
             {
                 SocialIcons.map((link) => (
                     <SocialIcon href={link.href} icon={link.icon} />
@@ -33,7 +32,7 @@ const SocialIcons = [
                     <Logo />
                 </svg>
             </a>
-            <ul class="flex gap-5">
+            <ul class="flex gap-5" id="page-links">
                 <li>
                     <a href="/projects" class="hover:text-cumulolight">
                         Projects
@@ -43,9 +42,9 @@ const SocialIcons = [
                     <a href="/blogs" class="hover:text-cumulolight">Blogs</a>
                 </li>
                 <li>
-                    <a href="/downloads" class="hover:text-cumulolight"
-                        >Downloads</a
-                    >
+                    <a href="/downloads" class="hover:text-cumulolight">
+                        Downloads
+                    </a>
                 </li>
                 <li class="block md:hidden">
                     <a href="/about" class="hover:text-cumulolight">About</a>
@@ -65,6 +64,7 @@ const SocialIcons = [
             </ul>
         </div>
         <ul
+            id="page-links"
             class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-5 text-right">
             <li>
                 <a href="/about" class="hover:text-cumulolight">About</a>
@@ -77,3 +77,24 @@ const SocialIcons = [
         </ul>
     </nav>
 </header>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentPath = window.location.pathname;
+        const links = document.querySelectorAll("#page-links a");
+        links.forEach((link) => {
+            if (link.getAttribute("href") === currentPath) {
+                link.classList.add("underdot");
+            }
+        });
+    });
+</script>
+
+<style>
+    .underdot {
+        position: relative;
+    }
+    .underdot::after {
+        @apply content-['']  size-[5px] bg-cumulodark rounded-full absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 animate-pulse;
+    }
+</style>
