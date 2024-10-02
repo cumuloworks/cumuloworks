@@ -1,45 +1,138 @@
 ---
 title: "Privacy Policy"
 layout: ../layouts/SinglePageLayout.astro
-description: "It is Cumulowork’s policy to respect your privacy regarding any information we may collect while operating our website."
+description: "Cumuloworks, Inc. ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website cumulo.works (the "Site"). By accessing or using the Site, you agree to the terms of this Privacy Policy."
 ---
 
-## General
+> Last Update: 2024-10-02
 
-It is Cumulowork's policy to respect your privacy regarding any information we may collect while operating our website. This Privacy Policy applies to <https://cumulo.works/> (hereinafter, "us", "we", or "<https://cumulo.works/>"). We respect your privacy and are committed to protecting personally identifiable information you may provide us through the Website. We have adopted this privacy policy ("Privacy Policy") to explain what information may be collected on our Website, how we use this information, and under what circumstances we may disclose the information to third parties. This Privacy Policy applies only to information we collect through the Website and does not apply to our collection of information from other sources. This Privacy Policy, together with the Terms and conditions posted on our Website, set forth the general rules and policies governing your use of our Website. Depending on your activities when visiting our Website, you may be required to agree to additional terms and conditions.
+## Introduction
 
-## Website Visitors
+Cumuloworks, Inc. ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website cumulo.works (the "Site"). By accessing or using the Site, you agree to the terms of this Privacy Policy.
 
-Like most website operators, Cumuloworks collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. Cumulowork's purpose in collecting non-personally identifying information is to better understand how Cumulowork's visitors use its website. From time to time, Cumuloworks may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website. Cumuloworks also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users . Cumuloworks only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below.
+## Information We Collect
 
-## Gathering of Personally-Identifying Information
+We use Plausible Analytics to gather non-personal information about visitors to our Site. Plausible is a privacy-focused analytics tool that does not use cookies and does not collect personally identifiable information (PII).
 
-Certain visitors to Cumulowork's websites choose to interact with Cumuloworks in ways that require Cumuloworks to gather personally-identifying information. The amount and type of information that Cumuloworks gathers depends on the nature of the interaction. For example, we ask visitors who contact Cumuloworks at <https://cumulo.works/> to provide a name and email address.
+## Public Analytics Data
 
-## Security
+Please be aware that the aggregated analytics data collected through Plausible Analytics is publicly accessible at [plausible.io/cumulo.works](https://plausible.io/cumulo.works). The purpose of making this data publicly available is to maintain transparency regarding how our Site is used and to allow visitors and other interested parties to see the general trends in user interaction. By sharing this data, we aim to foster trust and openness, while still respecting visitor privacy by not collecting personally identifiable information (PII).
 
-The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.
+## Data Collected by Plausible Analytics
 
-## Links To External Sites
+- Page Views: The pages you visit on our Site.
 
-Our Service may contain links to external sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy and terms and conditions of every site you visit. We have no control over, and assume no responsibility for the content, privacy policies or practices of any third party sites, products or services.
+- Referrers: The website or source that led you to our Site.
 
-## Aggregated Statistics
+- Browser and Device Information: General information about the browser and device you are using (e.g., browser type, operating system).
 
-Cumuloworks may collect statistics about the behavior of visitors to its website. Cumuloworks may display this information publicly or provide it to others. However, Cumuloworks does not disclose your personally-identifying information.
+- Geographical Data: Your country of origin, based on anonymized IP addresses.
+
+## How We Use Your Information
+
+The non-personal data collected is used for the following purposes:
+
+- Improvement of Services: To understand how visitors interact with our Site so we can enhance user experience.
+
+- Analytics: To analyze trends and monitor the effectiveness of our content.
+
+## Data Sharing and Disclosure
+
+Since the analytics data is publicly available at [plausible.io/cumulo.works](https://plausible.io/cumulo.works), general usage statistics are accessible to the public. However, we do not sell, trade, or rent any personal information, as we do not collect any PII through Plausible Analytics.
+
+## Third-Party Links
+
+Our Site may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
+
+## Data Security
+
+We prioritize the security of your data. Plausible Analytics ensures data protection by not collecting PII and by anonymizing IP addresses. While we strive to use commercially acceptable means to protect your information, no method of transmission over the internet is 100% secure.
 
 ## Cookies
 
-To enrich and perfect your online experience, Cumuloworks uses "Cookies", similar technologies and services provided by others to display personalized content, appropriate advertising and store your preferences on your computer. A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns. Cumuloworks uses cookies to help Cumuloworks identify and track visitors, their usage of <https://cumulo.works/>, and their website access preferences. Cumuloworks visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using Cumulowork's websites, with the drawback that certain features of Cumulowork's websites may not function properly without the aid of cookies. By continuing to navigate our website without changing your cookie settings, you hereby acknowledge and agree to Cumuloworks's use of cookies.
+Our Site does not use cookies for analytics purposes. Plausible Analytics operates without cookies, ensuring a higher level of privacy.
 
-## Business Transfers
 
-If Cumuloworks, or substantially all of its assets, were acquired, or in the unlikely event that Cumuloworks goes out of business or enters bankruptcy, user information would be one of the assets that is transferred or acquired by a third party. You acknowledge that such transfers may occur, and that any acquirer of Cumuloworks may continue to use your personal information as set forth in this policy.
+## Your Rights
 
-## Privacy Policy Changes
+Since we do not collect personal data through Plausible Analytics, there are no personal data rights to exercise under data protection laws like the GDPR concerning this data.
 
-Although most changes are likely to be minor, Cumuloworks may change its Privacy Policy from time to time, and in Cumulowork's sole discretion. Cumuloworks encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
+## Children's Privacy
 
-## Contact Information
+Our Site is not intended for individuals under the age of 13. We do not knowingly collect personal information from children.
 
-If you have any questions about this Privacy Policy, please contact us via e-mail.
+## Changes to This Privacy Policy
+
+We may update this Privacy Policy periodically. Any changes will be reflected with a new "Last updated" date at the top of this policy. We encourage you to review this Privacy Policy regularly.
+
+## Contact Us
+
+If you have any questions or concerns about this Privacy Policy, please contact us at:
+
+Email: <mail@cumulo.works>
+
+---
+
+## はじめに
+
+Cumuloworks, Inc.（「当社」または「私たち」）は、訪問者のプライバシー保護に取り組んでいます。本プライバシーポリシーは、当社のウェブサイト cumulo.works（以下「本サイト」）を訪問する際に、当社がどのように情報を収集、使用、保護するかを説明するものです。本サイトを利用することで、本プライバシーポリシーの内容に同意したものとみなされます。
+
+## 収集する情報
+
+当社は、Plausible Analyticsを使用して、本サイトの訪問者に関する個人を特定しない情報を収集します。Plausibleは、プライバシー重視のアナリティクスツールであり、クッキーを使用せず、個人を特定できる情報（PII）を収集しません。
+
+## 公開されているアナリティクスデータ
+
+Plausible Analyticsで収集された集計データは、[plausible.io/cumulo.works](https://plausible.io/cumulo.works)で一般に公開されています。このデータを公開している目的は、本サイトの利用状況について透明性を維持し、訪問者や関心のある方々が、ユーザーの行動に関する全体的な傾向を確認できるようにするためです。このデータを共有することで、信頼とオープン性を高めることを目指していますが、個人を特定できる情報（PII）は収集されていないため、訪問者のプライバシーは保たれています。
+
+## Plausible Analyticsで収集されるデータ
+
+- ページビュー: 本サイトで訪問したページ。
+
+- 参照元: 本サイトに訪れるきっかけとなったウェブサイトやソース。
+
+- ブラウザおよびデバイス情報: 使用しているブラウザやデバイスに関する一般的な情報（例：ブラウザの種類、オペレーティングシステム）。
+
+- 地理的データ: 匿名化されたIPアドレスに基づく国情報。
+
+## 収集した情報の利用方法
+
+個人を特定しないデータは、以下の目的で使用されます。
+
+- サービスの改善: 訪問者がどのように本サイトを利用しているかを理解し、ユーザー体験を向上させるため。
+
+- アナリティクス: トレンドを分析し、コンテンツの効果を監視するため。
+
+## データの共有と開示
+
+[plausible.io/cumulo.works](https://plausible.io/cumulo.works)でアナリティクスデータが公開されているため、一般の方もサイトの利用統計を閲覧できます。ただし、Plausible Analyticsを通じて個人を特定できる情報を収集していないため、個人情報の売買や共有は行いません。
+
+## 第三者リンク
+
+本サイトには、第三者のウェブサイトへのリンクが含まれている場合があります。これらの外部サイトのプライバシー慣行については当社は責任を負いません。第三者サイトにアクセスする際は、そのプライバシーポリシーを確認することをお勧めします。
+
+## データのセキュリティ
+
+当社はデータのセキュリティを最優先に考えています。Plausible Analyticsは個人を特定できる情報を収集せず、IPアドレスを匿名化することでデータの保護を行っています。商業的に合理的な手段を講じて情報を保護するよう努めますが、インターネット上での情報伝達が完全に安全であることは保証できません。
+
+## クッキー
+
+本サイトはアナリティクス目的でクッキーを使用しません。Plausible Analyticsはクッキーを使用せず、プライバシー保護を強化しています。
+
+## 訪問者の権利
+
+Plausible Analyticsを通じて個人データを収集していないため、GDPRなどのデータ保護法に基づく個人データに関する権利は該当しません。
+
+## 児童のプライバシー
+
+本サイトは、13歳未満の個人を対象としていません。13歳未満の児童から個人情報を意図的に収集することはありません。
+
+## プライバシーポリシーの変更
+
+当社は、必要に応じて本プライバシーポリシーを更新する場合があります。変更があった場合は、上部にある「最終更新日」を新しい日付に更新します。本プライバシーポリシーを定期的に確認することをお勧めします。
+
+## お問い合わせ
+
+本プライバシーポリシーに関するご質問やご懸念がある場合は、以下の連絡先までお問い合わせください。
+
+メール: <mail@cumulo.works>
