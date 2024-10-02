@@ -81,3 +81,21 @@ const pageTitle = `${title} | Cumuloworks`;
         <Footer />
     </body>
 </html>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentDomain = window.location.hostname;
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (
+                href &&
+                href.startsWith("http") &&
+                !href.includes(currentDomain)
+            ) {
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener noreferrer");
+            }
+        });
+    });
+</script>

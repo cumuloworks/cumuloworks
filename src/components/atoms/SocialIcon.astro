@@ -5,7 +5,6 @@ const {
     href,
     icon,
     dark = false,
-    newtab = true,
     customClass = "",
 } = Astro.props;
 ---
@@ -13,7 +12,6 @@ const {
 <li class={customClass}>
     <a
         href={href}
-        {...newtab ? { target: "_blank", rel: "noopener noreferrer" } : {}}
         aria-label={`Visit ${icon.split(":")[1].replace("fa6-brands:", "")} page`}
         class="inline-block">
         <Icon
