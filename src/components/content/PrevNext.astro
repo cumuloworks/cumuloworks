@@ -9,7 +9,8 @@ const { prevItem, nextItem, base } = Astro.props;
         nextItem && (
             <a
                 href={`/${base}/${nextItem.slug}`}
-                class="flex items-center mr-auto hover:text-cumulolight transition-colors ease-out-expo group h-10">
+                class="flex items-center mr-auto hover:text-cumulolight transition-colors ease-out-expo group h-10"
+                id="nextLink">
                 <Icon
                     name="fa6-solid:arrow-left"
                     class="mr-2 size-5 group-hover:size-10 transition-all ease-out-expo"
@@ -24,7 +25,8 @@ const { prevItem, nextItem, base } = Astro.props;
         prevItem && (
             <a
                 href={`/${base}/${prevItem.slug}`}
-                class="flex items-center ml-auto hover:text-cumulolight transition-colors ease-out-expo group h-10">
+                class="flex items-center ml-auto hover:text-cumulolight transition-colors ease-out-expo group h-10"
+                id="prevLink">
                 <span class="text-sm md:text-base truncate max-w-96">
                     {prevItem.data.title}
                 </span>
@@ -36,3 +38,15 @@ const { prevItem, nextItem, base } = Astro.props;
         )
     }
 </div>
+
+<script>
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+            const nextLink = document.getElementById("nextLink");
+            if (nextLink) nextLink.click();
+        } else if (e.key === "ArrowRight") {
+            const prevLink = document.getElementById("prevLink");
+            if (prevLink) prevLink.click();
+        }
+    });
+</script>
