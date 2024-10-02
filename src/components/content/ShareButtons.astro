@@ -12,7 +12,6 @@ const encodedUrl = encodeURIComponent(url);
     </div>
     <a
         href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=cumuloworks`}
-        target="_blank"
         aria-label="Share on X (Twitter)">
         <Icon
             name="fa6-brands:x-twitter"
@@ -21,7 +20,6 @@ const encodedUrl = encodeURIComponent(url);
     </a>
     <a
         href={`https://line.me/R/msg/text/?${encodedTitle}%0A${encodedUrl}`}
-        target="_blank"
         aria-label="Share on LINE">
         <Icon
             name="fa6-brands:line"
