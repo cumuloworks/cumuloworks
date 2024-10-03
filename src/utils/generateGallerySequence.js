@@ -12,10 +12,17 @@ export const generateGallerySequence = (targetSum) => {
 	let total = 0;
 	let lastNum = null;
 
-	// Generate numbers until reach or exceed the target sum
+	// Generate numbers until reach the target sum exactly
 	while (total < targetSum) {
 		let randomNum;
-		if (lastNum !== null) {
+		const remaining = targetSum - total;
+
+		if (remaining === 1 || remaining === 2 || remaining === 3) {
+			randomNum = remaining;
+		} else if (remaining === 4) {
+			// Special case for remaining 4: always choose 2 + 2
+			randomNum = 2;
+		} else if (lastNum !== null) {
 			// Adjust weights to reduce the chance of repeating the last number
 			const weights = [1, 1, 1];
 			weights[lastNum - 1] = 1 / 3;
@@ -25,12 +32,14 @@ export const generateGallerySequence = (targetSum) => {
 			randomNum = weightedRandom([1, 2, 3], [1, 2, 1]);
 		}
 
-		// Add the number to the sequence if it doesn't exceed the target sum
-		if (total + randomNum <= targetSum) {
-			total += randomNum;
-			sequence.push(randomNum);
-			lastNum = randomNum;
+		// Ensure we don't exceed targetSum in the last iteration
+		if (total + randomNum > targetSum) {
+			randomNum = remaining;
 		}
+
+		total += randomNum;
+		sequence.push(randomNum);
+		lastNum = randomNum;
 	}
 
 	return sequence;
