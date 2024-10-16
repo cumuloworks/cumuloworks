@@ -22,7 +22,7 @@ Drone : Yoshifumi Furutachi, sustos (DRONE★VILLAGE)
 Art : Shu Nakama (sui)
 Bonder : Natsuki Aoyama
 Lyric phrase research developer : Kosetsu Tsukuda, Masataka Goto (AIST)
-Stlist, Hair & Make : Akemi Muraki
+Stylist, Hair & Make : Akemi Muraki
 Special makeup : Hiromi Yoshino
 Cast : Says Nakaoka, Marika Kai (irving), Hiroki Minami, Jester / Casting : Kei Oikawa (Oi-pro)
 CG : Shuji Hirai / CG : Kei Tada (Telesight)

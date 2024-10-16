@@ -13,7 +13,7 @@ Agency: opt
 Production: xpd
 Creative Director: Katsuyoshi Takada (opt)
 Planner: Sayuri Aizawa (opt), Hitomi Tazawa (opt), Sayaka Hokimoto (opt)
-Diector: Kei Ohta (CluB_A)
+Director: Kei Ohta (CluB_A)
 Producer: Kosuke Egami (xpd)
 Production Manager: Ryota Chiba (xpd)
 Audio: Naoya Mochizuki (IMAGICA)

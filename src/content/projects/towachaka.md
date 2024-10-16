@@ -12,7 +12,7 @@ Direction & Vocal : Vampiapple [ヴァンパイアップル]
 Music & Lyrics : Kiki [木木]
 Mix&Mastering : Patapata [ぱたぱた]
 Narration : Kuuzoku [空賊]
-Illustraton : Touji [冬至]
+Illustration : Touji [冬至]
 Logo Designer : 171eruP [171えるP]
 Video : Cumuloworks 
 ```

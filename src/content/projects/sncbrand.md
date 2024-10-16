@@ -13,5 +13,5 @@ Sony Network Communicationsの新しいビジョン・ムービー「人類の�
 Producer: Shingo Michinaga (AOI Pro.)
 Production Manager: Kenta Watanabe (AOI Pro.)
 Director: Kei Ohta (CluB_A)
-CGI (pilothouhse, VTuber): Tomoya Eguchi (Cumuloworks), Akito Osawa (Shigu)
+CGI (pilothouse, VTuber): Tomoya Eguchi (Cumuloworks), Akito Osawa (Shigu)
 ```

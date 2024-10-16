@@ -137,8 +137,8 @@ Score: 1346.76
 
 ### CrystalDiskMark
 
-Sequencial Read: 13163.59 MB/s
-Sequencial Write: 19724.72 MB/s
+Sequential Read: 13163.59 MB/s
+Sequential Write: 19724.72 MB/s
 
 ![alt text](./workstation-2024/crystal-disk-mark.png)
 
