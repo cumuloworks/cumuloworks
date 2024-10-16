@@ -7,6 +7,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import "../../styles/globals.css";
 import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import { DEFAULT_DATA } from "../../utils/default_data";
 
 export async function getStaticPaths() {
 	const collections = ["projects", "blogs", "downloads"];
@@ -41,13 +42,18 @@ const thumbnailUrl = new URL(
 	items[currentIndex].thumbnail.src,
 	Astro.url,
 ).toString();
+
+const { title, description, category, date } = {
+	...DEFAULT_DATA,
+	...entry.data,
+};
 ---
 
 <ContentLayout
-	title={entry.data.title}
-	description={entry.data.description}
-	category={categoryDictionary[entry.data.category].name}
-	date={entry.data.date}
+	{title}
+	{description}
+	category={categoryDictionary[category].name}
+	{date}
 	prevItem={prevItem}
 	nextItem={nextItem}
 	ogImage={thumbnailUrl}>

@@ -6,10 +6,8 @@ const encodedTitle = encodeURIComponent(title);
 const encodedUrl = encodeURIComponent(url);
 ---
 
-<div class="flex justify-center items-center gap-2.5">
-    <div class="h-5 font-bold">
-        <p>Share on:</p>
-    </div>
+<div class="flex justify-center items-center gap-5 font-bold">
+    <p>Share:</p>
     <a
         href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=cumuloworks`}
         aria-label="Share on X (Twitter)">
@@ -32,23 +30,22 @@ const encodedUrl = encodeURIComponent(url);
             class="w-5 h-5 text-cumulodark hover:text-cumulolight"
         />
     </button>
-
-    <script>
-        const shareButton = document.getElementById("shareButton");
-
-        if (navigator.share) {
-            shareButton.classList.remove("hidden");
-            shareButton.addEventListener("click", async () => {
-                try {
-                    await navigator.share({
-                        title: "{title}",
-                        url: "{url}",
-                    });
-                    console.log("Content shared successfully");
-                } catch (err) {
-                    console.error("Error sharing:", err);
-                }
-            });
-        }
-    </script>
 </div>
+
+<script>
+    const shareButton = document.getElementById("shareButton");
+
+    if (navigator.share) {
+        shareButton.classList.remove("hidden");
+        shareButton.addEventListener("click", async () => {
+            try {
+                await navigator.share({
+                    title: "{title}",
+                    url: "{url}",
+                });
+            } catch (err) {
+                console.error("Error sharing:", err);
+            }
+        });
+    }
+</script>

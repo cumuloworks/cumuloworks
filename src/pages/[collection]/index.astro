@@ -7,8 +7,6 @@ import "../../styles/markdown.css";
 import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 
-console.log(Astro.props);
-
 export async function getStaticPaths() {
     const collections = ["projects", "blogs", "downloads"];
     return collections.map((collection) => ({
