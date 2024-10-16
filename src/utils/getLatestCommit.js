@@ -1,9 +1,7 @@
 export async function getLatestCommit(filePath) {
-	const cleanFilePath = filePath.replace(/\/\.md$/, ".md");
-
 	const owner = "cumuloworks";
 	const repo = "cumuloworks";
-	const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(cleanFilePath)}&page=1&per_page=1`;
+	const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?path=${filePath}&page=1&per_page=1`;
 
 	const headers = {
 		Accept: "application/vnd.github.v3+json",
@@ -36,10 +34,10 @@ export async function getLatestCommit(filePath) {
 				name: data[0].author.login,
 				sha: data[0].sha,
 			};
-			console.log(`Latest commit for ${cleanFilePath}:`, commitInfo);
+			console.log(`Latest commit for ${filePath}:`, commitInfo);
 			return commitInfo;
 		}
-		console.log(`No commits found for ${cleanFilePath}. Using default values.`);
+		console.log(`No commits found for ${filePath}. Using default values.`);
 		return {
 			message: "Not committed yet.",
 			date: "2100-12-31",
@@ -48,7 +46,7 @@ export async function getLatestCommit(filePath) {
 			sha: "0000000000000000000000000000000000000000",
 		};
 	} catch (error) {
-		console.error(`Error fetching commit data for ${cleanFilePath}:`, error);
+		console.error(`Error fetching commit data for ${filePath}:`, error);
 	}
 	return null;
 }
