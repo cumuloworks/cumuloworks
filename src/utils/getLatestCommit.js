@@ -9,20 +9,36 @@ export async function getLatestCommit(filePath) {
 
 	if (import.meta.env.GITHUB_TOKEN) {
 		headers.Authorization = `token ${import.meta.env.GITHUB_TOKEN}`;
+	} else {
+		console.warn("No GitHub token found.");
 	}
 
 	try {
 		const response = await fetch(apiUrl, { headers });
+
+		// API制限に関するログを追加
+		const rateLimit = {
+			limit: response.headers.get("x-ratelimit-limit"),
+			remaining: response.headers.get("x-ratelimit-remaining"),
+			reset: new Date(
+				response.headers.get("x-ratelimit-reset") * 1000,
+			).toLocaleString(),
+		};
+		console.log("GitHub API Rate Limit:", rateLimit);
+
 		const data = await response.json();
 		if (data.length > 0) {
-			return {
+			const commitInfo = {
 				message: data[0].commit.message,
 				date: new Date(data[0].commit.author.date).toLocaleDateString(),
 				avatar: data[0].author.avatar_url,
 				name: data[0].author.login,
 				sha: data[0].sha,
 			};
+			console.log(`Latest commit for ${filePath}:`, commitInfo);
+			return commitInfo;
 		}
+		console.log(`No commits found for ${filePath}. Using default values.`);
 		return {
 			message: "Not committed yet.",
 			date: "2100-12-31",
@@ -31,7 +47,7 @@ export async function getLatestCommit(filePath) {
 			sha: "0000000000000000000000000000000000000000",
 		};
 	} catch (error) {
-		console.error("Error fetching commit data:", error);
+		console.error(`Error fetching commit data for ${filePath}:`, error);
 	}
 	return null;
 }
