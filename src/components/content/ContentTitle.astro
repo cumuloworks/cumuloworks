@@ -8,7 +8,7 @@ import ShareButtons from "./ShareButtons.astro";
 const { title, date, category } = Astro.props;
 const { pathname } = Astro.url;
 
-const latestCommit = await getLatestCommit(`src/content/${pathname}.md`);
+const latestCommit = await getLatestCommit(`src/content${pathname}.md`);
 
 const encodedTitle = encodeURIComponent(title);
 const encodedUrl = encodeURIComponent(Astro.url);
