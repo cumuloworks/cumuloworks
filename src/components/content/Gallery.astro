@@ -26,45 +26,47 @@ const preparedImages = await Promise.all(
     <>
         <div class="w-full space-y-1 mt-20">
             {
-                layoutSequence.map((numImages, rowIndex) => (
-                    <div class="w-full flex gap-1">
-                        {Array.from({ length: numImages }).map((_, colIndex) => {
-                            const imageIndex =
-                                rowIndex * Math.max(...layoutSequence) + colIndex;
-                            if (imageIndex >= preparedImages.length) return null;
-                            const image = preparedImages[imageIndex];
-                            return (
-                                <div class="w-full">
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        class="w-full h-full object-cover cursor-pointer"
-                                        loading={imageIndex < 8 ? "eager" : "lazy"}
-                                        id={image.id}
-                                        data-modal-target={image.modalId}
-                                        width={1280}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
-                ))
+                (() => {
+                    let cumulativeIndex = 0; // 累積インデックスを初期化
+                    return layoutSequence.map((numImages, rowIndex) => (
+                        <div class="w-full flex gap-1" key={`row-${rowIndex}`}>
+                            {Array.from({ length: numImages }).map((_, colIndex) => {
+                                if (cumulativeIndex >= preparedImages.length) return null;
+                                const image = preparedImages[cumulativeIndex];
+                                cumulativeIndex++; // 累積インデックスを増加
+                                return (
+                                    <div class="w-full" key={image.id}>
+                                        <Image
+                                            src={image.src}
+                                            alt={image.alt}
+                                            class="w-full h-full object-cover cursor-pointer"
+                                            loading={cumulativeIndex < 8 ? "eager" : "lazy"}
+                                            id={image.id}
+                                            data-modal-target={image.modalId}
+                                            width={1280}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ));
+                })()
             }
         </div>
 
-    {
-        preparedImages.map((image, index) => (
-            <Modal id={image.modalId} showNavigation={true}>
-                <Image
-                    src={image.src}
-                    alt={image.alt}
-                    class="w-full h-full object-contain "
-                />
-            </Modal>
-        ))
-    }
+        {
+            preparedImages.map((image, index) => (
+                <Modal id={image.modalId} showNavigation={true} key={`modal-${index}`}>
+                    <Image
+                        src={image.src}
+                        alt={image.alt}
+                        class="w-full h-full object-contain "
+                    />
+                </Modal>
+            ))
+        }
 
-     <script>
+        <script>
             const images = document.querySelectorAll('img[id^="image-"]');
             const modals = document.querySelectorAll('dialog[id^="modal-image-"]');
 
