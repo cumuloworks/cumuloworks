@@ -1,15 +1,18 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
-
+import GitHubInfo from "../components/content/GitHubInfo.astro";
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title}>
-    <article class="w-full">
+    <article class="max-w-screen-md mx-auto">
+        <h1 class="text-4xl text-center mb-10 font-bold">
+            {frontmatter.title}
+        </h1>
+        <GitHubInfo class="!max-w-screen-md mx-auto" base="pages" />
         <div class="markdown-content">
-            <h1 class="!mb-20 !mt-0">{frontmatter.title}</h1>
-            <div class="max-w-screen-md mx-auto mb-10">
+            <div class="mb-10">
                 <slot />
             </div>
         </div>
