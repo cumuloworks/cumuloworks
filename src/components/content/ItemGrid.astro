@@ -1,5 +1,5 @@
 ---
-const { base, items } = Astro.props;
+const { items } = Astro.props;
 import Card from "./Card.astro";
 ---
 
@@ -9,7 +9,6 @@ import Card from "./Card.astro";
             const eagerLoadCount = Math.ceil(items.length / 3);
             return (
                 <Card
-                    base={base}
                     item={item}
                     loading={index < eagerLoadCount ? "eager" : "lazy"}
                 />

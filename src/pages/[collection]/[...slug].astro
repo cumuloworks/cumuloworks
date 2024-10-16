@@ -9,31 +9,33 @@ import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 
 export async function getStaticPaths() {
-	const bases = ["projects", "blogs", "downloads"];
+	const collections = ["projects", "blogs", "downloads"];
 	const allPaths = await Promise.all(
-		bases.map(async (base) => {
-			const items = await getCollection(base as keyof ContentEntryMap);
+		collections.map(async (collection) => {
+			const items = await getCollection(
+				collection as keyof ContentEntryMap,
+			);
 			return items.map((entry) => ({
 				params: {
-					base,
+					collection,
 					slug: entry.slug,
 				},
-				props: { entry, base },
+				props: { entry, collection },
 			}));
 		}),
 	);
 	return allPaths.flat();
 }
 
-const { entry, base } = Astro.props;
+const { entry, collection } = Astro.props;
 const { Content } = await entry.render();
 
-const items = await getItemsWithThumbnails(base);
+const items = await getItemsWithThumbnails(collection);
 const currentIndex = items.findIndex((item) => item.slug === entry.slug);
 const prevItem = items[currentIndex + 1] || null;
 const nextItem = items[currentIndex - 1] || null;
 
-const galleryFolderPath = `/src/content/${base}/${entry.slug}/`;
+const galleryFolderPath = `/src/content/${collection}/${entry.slug}/`;
 
 const thumbnailUrl = new URL(
 	items[currentIndex].thumbnail.src,
@@ -48,7 +50,6 @@ const thumbnailUrl = new URL(
 	date={entry.data.date}
 	prevItem={prevItem}
 	nextItem={nextItem}
-	base={base}
 	ogImage={thumbnailUrl}>
 	<div slot="hero">
 		<Hero item={items[currentIndex]} />
@@ -56,5 +57,5 @@ const thumbnailUrl = new URL(
 	<div class="max-w-screen-md mx-auto">
 		<Content />
 	</div>
-		{base === "projects" && <Gallery folderPath={galleryFolderPath} />}
+	{collection === "projects" && <Gallery folderPath={galleryFolderPath} />}
 </ContentLayout>

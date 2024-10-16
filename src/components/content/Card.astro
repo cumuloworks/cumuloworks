@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { categoryDictionary } from "../../utils/categoryDictionary";
-const { base, item, loading = "eager" } = Astro.props;
+const { item, loading = "eager" } = Astro.props;
 ---
 
 <div class="grid-item group relative" data-category={item.data.category}>
     <a
-        href={`/${base}/${item.slug}`}
+        href={`/${item.collection}/${item.slug}`}
         class="relative flex justify-center items-center">
         <Image
             src={item.thumbnail}

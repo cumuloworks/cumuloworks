@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-const { prevItem, nextItem, base } = Astro.props;
+const { prevItem, nextItem } = Astro.props;
 ---
 
 <div
@@ -8,7 +8,7 @@ const { prevItem, nextItem, base } = Astro.props;
     {
         nextItem && (
             <a
-                href={`/${base}/${nextItem.slug}`}
+                href={`/${nextItem.collection}/${nextItem.slug}`}
                 class="flex items-center mr-auto hover:text-cumulolight transition-colors ease-out-expo group h-10"
                 id="nextLink">
                 <Icon
@@ -24,7 +24,7 @@ const { prevItem, nextItem, base } = Astro.props;
     {
         prevItem && (
             <a
-                href={`/${base}/${prevItem.slug}`}
+                href={`/${prevItem.collection}/${prevItem.slug}`}
                 class="flex items-center ml-auto hover:text-cumulolight transition-colors ease-out-expo group h-10"
                 id="prevLink">
                 <span class="text-sm md:text-base truncate max-w-96">

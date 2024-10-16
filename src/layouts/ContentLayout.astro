@@ -5,16 +5,8 @@ import "../styles/markdown.css";
 import ShareButtons from "../components/content/ShareButtons.astro";
 import { Image } from "astro:assets";
 
-const {
-    title,
-    description,
-    category,
-    date,
-    prevItem,
-    nextItem,
-    base,
-    ogImage,
-} = Astro.props;
+const { title, description, category, date, prevItem, nextItem, ogImage } =
+    Astro.props;
 
 const pathname = Astro.url.pathname;
 
@@ -97,6 +89,6 @@ const latestCommit = await getLatestCommit(filePath);
             <slot />
         </div>
         <ShareButtons title={title} url={Astro.url} />
-        <PrevNext prevItem={prevItem} nextItem={nextItem} base={base} />
+        <PrevNext prevItem={prevItem} nextItem={nextItem} />
     </article>
 </BaseLayout>

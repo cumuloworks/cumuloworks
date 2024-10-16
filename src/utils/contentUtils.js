@@ -1,9 +1,14 @@
 import { getCollection, getEntry } from "astro:content";
 import defaultThumb from "../assets/default_thumb.jpg";
 
-export async function getItemsWithThumbnails(base) {
-	const items = await getCollection(base);
+const DEFAULT_ITEM_DATA = {
+	title: "Undefined",
+	category: "undefined",
+	date: "2100-12-31",
+};
 
+export async function getItemsWithThumbnails(collection) {
+	const items = await getCollection(collection);
 	const images = import.meta.glob(
 		"/src/content/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
 	);
@@ -15,21 +20,17 @@ export async function getItemsWithThumbnails(base) {
 				(path) =>
 					path
 						.toLowerCase()
-						.includes(`/src/content/${base}/${item.slug}/thumb.`) &&
+						.includes(`/src/content/${collection}/${item.slug}/thumb.`) &&
 					/(jpe?g|png|webp)$/i.test(path),
 			);
 			let thumbnail = placeholderImage;
 			if (thumbnailPath) {
 				thumbnail = (await images[thumbnailPath]()).default;
 			}
-			const title = item.data.title || "Untitled";
-			const category = item.data.category || "Uncategorized";
-			const date = item.data.date || "2100-12-31";
 			return {
 				...item,
-				data: { ...item.data, title, category, date },
+				data: { ...DEFAULT_ITEM_DATA, ...item.data },
 				thumbnail,
-				base,
 			};
 		}),
 	);
@@ -39,8 +40,8 @@ export async function getItemsWithThumbnails(base) {
 	);
 }
 
-export async function getItemWithThumbnail(base, slug) {
-	const item = await getEntry(base, slug);
+export async function getItemWithThumbnail(collection, slug) {
+	const item = await getEntry(collection, slug);
 	if (!item) return null;
 
 	const images = import.meta.glob(
@@ -50,7 +51,9 @@ export async function getItemWithThumbnail(base, slug) {
 
 	const thumbnailPath = Object.keys(images).find(
 		(path) =>
-			path.toLowerCase().includes(`/src/content/${base}/${slug}/thumb.`) &&
+			path
+				.toLowerCase()
+				.includes(`/src/content/${collection}/${slug}/thumb.`) &&
 			/(jpe?g|png|webp)$/i.test(path),
 	);
 
@@ -59,14 +62,9 @@ export async function getItemWithThumbnail(base, slug) {
 		thumbnail = (await images[thumbnailPath]()).default;
 	}
 
-	const title = item.data.title || "Untitled";
-	const category = item.data.category || "Uncategorized";
-	const date = item.data.date || "2100-12-31";
-
 	return {
 		...item,
-		data: { ...item.data, title, category, date },
+		data: { ...DEFAULT_ITEM_DATA, ...item.data },
 		thumbnail,
-		base,
 	};
 }
