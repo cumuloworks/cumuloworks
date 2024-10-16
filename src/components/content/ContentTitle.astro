@@ -8,7 +8,12 @@ import ShareButtons from "./ShareButtons.astro";
 const { title, date, category } = Astro.props;
 const { pathname } = Astro.url;
 
-const latestCommit = await getLatestCommit(`src/content${pathname}.md`);
+const normalizedPath = pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
+const mdFilePath = `src/content${normalizedPath}.md`;
+
+const latestCommit = await getLatestCommit(mdFilePath);
 
 const encodedTitle = encodeURIComponent(title);
 const encodedUrl = encodeURIComponent(Astro.url);
@@ -85,7 +90,7 @@ const encodedUrl = encodeURIComponent(Astro.url);
                     {latestCommit.message}
                 </a>
                 <a
-                    href={`https://github.com/cumuloworks/cumuloworks/commits/main/src/content${pathname}.md`}
+                    href={`https://github.com/cumuloworks/cumuloworks/commits/main/src/content${normalizedPath}.md`}
                     class="text-cumulodark hover:text-cumulolight transition-colors duration-200 flex items-center mt-1"
                     target="_blank"
                     rel="noopener noreferrer">
