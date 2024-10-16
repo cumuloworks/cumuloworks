@@ -412,5 +412,6 @@
 		"Zentaro",
 		"zuuu"
 	],
-	"css.lint.unknownAtRules": "ignore"
+	"css.lint.unknownAtRules": "ignore",
+	"typescript.validate.enable": false
 }
