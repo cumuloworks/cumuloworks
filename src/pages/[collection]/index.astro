@@ -8,17 +8,17 @@ import { categoryDictionary } from "../../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../../utils/contentUtils";
 
 export async function getStaticPaths() {
-    const bases = ["projects", "blogs", "downloads"];
-    return bases.map((base) => ({
-        params: { base },
-        props: { base },
+    const collections = ["projects", "blogs", "downloads"];
+    return collections.map((collection) => ({
+        params: { collection },
+        props: { collection },
     }));
 }
 
-const { base } = Astro.props;
-const items = await getItemsWithThumbnails(base);
+const { collection } = Astro.props;
+const items = await getItemsWithThumbnails(collection);
 const categories = [...new Set(items.map((item) => item.data.category))];
-const title = base.charAt(0).toUpperCase() + base.slice(1);
+const title = collection.charAt(0).toUpperCase() + collection.slice(1);
 
 function generateCategoryStyles(categories: string[]) {
     return categories
@@ -60,10 +60,10 @@ function generateCategoryStyles(categories: string[]) {
         </div>
         <div id="items-container">
             {
-                base === "projects" ? (
-                    <ItemGrid base={base} items={items} />
+                collection === "projects" ? (
+                    <ItemGrid items={items} />
                 ) : (
-                    <ItemList base={base} items={items} />
+                    <ItemList items={items} />
                 )
             }
         </div>

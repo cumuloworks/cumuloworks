@@ -1,5 +1,5 @@
 ---
-const { base, items } = Astro.props;
+const { items } = Astro.props;
 import { Image } from "astro:assets";
 import { categoryDictionary } from "../../utils/categoryDictionary";
 ---
@@ -9,7 +9,7 @@ import { categoryDictionary } from "../../utils/categoryDictionary";
         items.map((item) => (
             <div class="grid-item" data-category={item.data.category}>
                 <a
-                    href={`/${base}/${item.slug}`}
+                    href={`/${item.collection}/${item.slug}`}
                     class="flex flex-col md:flex-row h-48 relative hover:translate-x-1 transition-transform ease-out-expo"
                     data-category={item.data.category}>
                     <Image

@@ -1,0 +1,109 @@
+---
+import { authorDictionary } from "../../utils/authorDictionary";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getLatestCommit } from "../../utils/getLatestCommit";
+import ShareButtons from "./ShareButtons.astro";
+
+const { title, date, category } = Astro.props;
+const { pathname } = Astro.url;
+
+const latestCommit = await getLatestCommit(`src/content/${pathname}.md`);
+
+const encodedTitle = encodeURIComponent(title);
+const encodedUrl = encodeURIComponent(Astro.url);
+---
+
+<div class="w-full mx-auto font-bold">
+    <h1 class="text-4xl text-center mb-5 text-gray-800">
+        {title}
+    </h1>
+    <div
+        class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-5">
+        <div class="flex items-center gap-5">
+            <p class="text-gray-600 flex items-center">
+                <Icon
+                    name="fa6-solid:calendar"
+                    class="w-5 h-5 mr-2 text-cumulodark"
+                />
+                {date}
+            </p>
+            <p
+                class="font-semibold px-5 py-1.5 bg-cumulodark text-white rounded-full">
+                {category}
+            </p>
+        </div>
+        <ShareButtons title={title} url={Astro.url} />
+    </div>
+    <div class="pb-5 font-normal border-b border-gray-200">
+        <div class="max-w-7xl mx-auto pr-2">
+            <button
+                id="authorToggle"
+                class="flex items-center justify-between w-full group">
+                <div class="flex items-center text-left">
+                    <Image
+                        src={latestCommit.avatar}
+                        alt={latestCommit.name}
+                        width={32}
+                        height={32}
+                        class="rounded-full mr-3"
+                    />
+                    <div>
+                        <p class="font-bold text-gray-800">
+                            {authorDictionary[latestCommit.name].fullName}
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            @{latestCommit.name}
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-sm text-gray-500 mr-2">
+                        Updated: {
+                            new Date(latestCommit.date)
+                                .toISOString()
+                                .split("T")[0]
+                        }
+                    </p>
+                    <Icon
+                        name="fa6-solid:chevron-down"
+                        class="size-3 text-gray-500 transition-transform duration-300 group-hover:text-cumulodark"
+                        id="authorChevron"
+                    />
+                </div>
+            </button>
+            <div id="commitInfo" class="text-sm text-gray-600 hidden mt-2.5">
+                <a
+                    class="flex items-center"
+                    href={`https://github.com/cumuloworks/cumuloworks/commit/${latestCommit.sha}`}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <Icon
+                        name="fa6-solid:code-commit"
+                        class="size-3 mr-2 text-cumulodark"
+                    />
+                    {latestCommit.message}
+                </a>
+                <a
+                    href={`https://github.com/cumuloworks/cumuloworks/commits/main/src/content${pathname}.md`}
+                    class="text-cumulodark hover:text-cumulolight transition-colors duration-200 flex items-center mt-1"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <Icon name="fa6-brands:github" class="size-3 mr-2" />
+                    View commit history
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const authorToggle = document.getElementById("authorToggle");
+    const commitInfo = document.getElementById("commitInfo");
+    const authorChevron = document.getElementById("authorChevron");
+
+    authorToggle.addEventListener("click", () => {
+        commitInfo.classList.toggle("hidden");
+        authorChevron.classList.toggle("rotate-180");
+    });
+</script>

@@ -28,4 +28,8 @@ export const categoryDictionary = {
 		name: "Others",
 		description: "Other content.",
 	},
+	undefined: {
+		name: "Uncategorized",
+		description: "Uncategorized content.",
+	},
 };
