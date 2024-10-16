@@ -3,6 +3,8 @@ import PrevNext from "../components/content/PrevNext.astro";
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
 import ShareButtons from "../components/content/ShareButtons.astro";
+import { Image } from "astro:assets";
+
 const {
     title,
     description,
@@ -13,17 +15,81 @@ const {
     base,
     ogImage,
 } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+async function getLatestCommit(filePath) {
+    const owner = "cumuloworks";
+    const repo = "cumuloworks";
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?path=${filePath}&page=1&per_page=1`;
+
+    const headers = {
+        Accept: "application/vnd.github.v3+json",
+    };
+
+    if (import.meta.env.GITHUB_TOKEN) {
+        headers.Authorization = `token ${import.meta.env.GITHUB_TOKEN}`;
+    }
+
+    try {
+        const response = await fetch(apiUrl, { headers });
+        const data = await response.json();
+        if (data.length > 0) {
+            return {
+                message: data[0].commit.message,
+                date: new Date(data[0].commit.author.date).toLocaleDateString(),
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching commit data:", error);
+    }
+    return null;
+}
+
+const filePath = `src/content/${pathname}.md`;
+const latestCommit = await getLatestCommit(filePath);
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage}>
     <article class="w-full flex flex-col gap-20">
         <slot name="hero" />
-        <div>
-            <h1 class="text-3xl font-bold text-center mb-5">{title}</h1>
-            <div
-                class="flex justify-center items-center font-bold text-xl text-center text-cumulolight space-x-4">
-                <p>{date}</p>
-                <p>{category}</p>
+        <div class="text-center space-y-5">
+            <h1 class="text-4xl font-bold text-center">{title}</h1>
+            <div class="bg-gray-300 p-10">
+                <div
+                    class="group relative flex justify-center items-center font-bold text-xl text-center text-cumulolight space-x-4">
+                    <p>{date}</p>
+                    <p
+                        class="text-sm rounded-full px-5 py-1 bg-cumulodark text-white">
+                        {category}
+                    </p>
+                    {
+                        latestCommit && (
+                            <div class="relative inline-block">
+                                <a
+                                    href={`https://github.com/cumuloworks/cumuloworks/commits/main/src/content/${pathname}.md`}
+                                    class="cursor-pointer text-cumulodark hover:text-cumulolight text-sm">
+                                    Last updated
+                                </a>
+                                <div class="hidden absolute z-10 w-96 p-4 mt-2 bg-white rounded-lg shadow-xl group-hover:block text-left">
+                                    <p class="text-sm text-gray-600">
+                                        Updated: {latestCommit.date}
+                                    </p>
+                                    <p class="text-sm text-gray-600 mt-2">
+                                        Commit: {latestCommit.message}
+                                    </p>
+                                    <a
+                                        href={`https://github.com/cumuloworks/cumuloworks/commits/main/src/content/${pathname}.md`}
+                                        class="text-blue-500 hover:underline text-sm block mt-2"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        View commit history
+                                    </a>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
         <ShareButtons title={title} url={Astro.url} />
