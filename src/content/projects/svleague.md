@@ -12,6 +12,8 @@ SV.LEAGUE オープニングマッチのオープニングムービーの制作�
 ```plaintext
 CG (Camerawork & Previz): Tomoya Eguchi (Cumuloworks, Inc.)
 CG (Camerawork): Akito Osawa (Cumuloworks, Inc.)
+
+(Other credits to be added soon.)
 ```
 
 <video src="/resources/svleague_wireframe.mp4" title="Title" autoplay loop></video>
