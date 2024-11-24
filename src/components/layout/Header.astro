@@ -11,7 +11,7 @@ const SocialIcons = [
 ];
 ---
 
-<header class="flex bg-white text-cumulodark md:min-h-60 min-h-60">
+<header class="flex bg-white text-cumulodark md:min-h-60 min-h-60 md:text-base text-sm">
     <nav
         class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5">
         <ul class="md:flex flex-1 gap-5 text-left hidden" id="nav-links">
@@ -21,11 +21,11 @@ const SocialIcons = [
                 ))
             }
         </ul>
-        <div class="flex flex-col items-center mx-auto">
+        <div class="flex flex-col items-center mx-auto px-0 md:px-10 gap-5">
             <a href="/" aria-label="Home">
                 <svg
-                    class="w-96 fill-cumulodark hover:fill-cumulolight -mt-5"
-                    viewBox="0 0 1059.27 244.1"
+                    class="w-full fill-cumulodark hover:fill-cumulolight"
+                    viewBox="0 0 918.79 105"
                     role="img"
                     aria-labelledby="logo-title">
                     <title id="logo-title">Cumuloworks Logo</title>
@@ -50,7 +50,7 @@ const SocialIcons = [
                     <a href="/about" class="hover:text-cumulolight">About</a>
                 </li>
             </ul>
-            <ul class="md:hidden flex-1 gap-5 text-left flex mt-6">
+            <ul class="md:hidden flex-1 gap-5 text-left flex">
                 {
                     SocialIcons.map((link) => (
                         <SocialIcon href={link.href} icon={link.icon} />
