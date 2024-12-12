@@ -11,6 +11,7 @@ const projects = await getItemsWithThumbnails("projects");
 
 const projectsByCategory = projects.reduce((acc, project) => {
 	const category = project.data.category || "uncategorized";
+	if (category !== "entertainment" && category !== "ads") return acc;
 	if (!acc[category]) {
 		acc[category] = {
 			projects: [],

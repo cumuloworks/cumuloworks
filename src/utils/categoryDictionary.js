@@ -32,4 +32,8 @@ export const categoryDictionary = {
 		name: "Uncategorized",
 		description: "Uncategorized content.",
 	},
+	showreel: {
+		name: "Showreel",
+		description: "Showreel.",
+	},
 };
