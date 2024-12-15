@@ -1,6 +1,6 @@
 ---
 title: 'AMEI "FME World"'
-date: '2018-01-24'
+date: 2018-01-24
 category: 'ads'
 embed: "https://www.youtube.com/watch?v=JbuBvTomS5g"
 ---

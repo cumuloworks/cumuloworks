@@ -9,7 +9,7 @@ async function processItemData(item) {
 		data: {
 			...DEFAULT_DATA,
 			...item.data,
-			date: new Date(item.data.date).toISOString().split("T")[0],
+			date: item.data.date.toISOString().split("T")[0],
 		},
 	};
 }
