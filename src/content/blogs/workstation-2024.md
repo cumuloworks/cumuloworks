@@ -1,6 +1,6 @@
 ---
 title: "Cumuloworks ワークステーション 2024"
-date: "2024-02-28"
+date: 2024-02-28
 category: "techtips"
 description: Threadripper 7980X + RTX 4090の新ワークステーションが完成しました。
 ---

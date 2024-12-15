@@ -1,6 +1,6 @@
 ---
 title: "CW Switch Languages"
-date: "2023-08-07"
+date: 2023-08-07
 category: "ae"
 description: "A script for After Effects to switch interface languages. Easily change the UI language with a simple dropdown selection. (Windows Only)"
 ---

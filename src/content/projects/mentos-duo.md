@@ -1,6 +1,6 @@
 ---
 title: "大人のプチ贅沢 メントス DUO グレープ＆ソーダ"
-date: "2024-04-02"
+date: 2024-04-02
 category: "ads"
 embed: "https://www.youtube.com/watch?v=xFwKsmZkS_o"
 ---

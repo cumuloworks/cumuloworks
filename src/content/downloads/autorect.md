@@ -1,6 +1,6 @@
 ---
 title: "autoRect"
-date: "2023-08-07"
+date: 2023-08-07
 category: "ae"
 description: "autoRect is a script for After Effects that creates shape layers matching the size of selected layers with a single click. It enhances workflow for creating text boxes, footage frames, and track mattes, offering improved usability and functionality over its predecessor, Fit Shape."
 ---

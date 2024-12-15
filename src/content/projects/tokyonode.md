@@ -1,6 +1,6 @@
 ---
 title: "TOKYO NODE Digital Signage"
-date: "2023-10-06"
+date: 2023-10-06
 category: "ads"
 embed: ""
 ---

@@ -1,6 +1,6 @@
 ---
 title: "amazarashi 『ロストボーイズ』 ライブ演出"
-date: "2022-11-24"
+date: 2022-11-24
 category: "entertainment"
 embed: ""
 ---

@@ -6,8 +6,10 @@ import Hero from "../../components/content/Hero.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import "../../styles/globals.css";
 import { categoryDictionary } from "../../utils/categoryDictionary";
-import { getItemsWithThumbnails } from "../../utils/contentUtils";
-import { DEFAULT_DATA } from "../../utils/default_data";
+import {
+	getItemsWithThumbnails,
+	getItemWithThumbnail,
+} from "../../utils/contentUtils";
 
 export async function getStaticPaths() {
 	const collections = ["projects", "blogs", "downloads"];
@@ -17,36 +19,27 @@ export async function getStaticPaths() {
 				collection as keyof ContentEntryMap,
 			);
 			return items.map((entry) => ({
-				params: {
-					collection,
-					slug: entry.slug,
-				},
-				props: { entry, collection },
+				params: { collection, slug: entry.slug },
+				props: { collection, slug: entry.slug },
 			}));
 		}),
 	);
 	return allPaths.flat();
 }
 
-const { entry, collection } = Astro.props;
-const { Content } = await entry.render();
+const { collection, slug } = Astro.props;
+const currentItem = await getItemWithThumbnail(collection, slug);
+const { Content } = await currentItem.render();
 
 const items = await getItemsWithThumbnails(collection);
-const currentIndex = items.findIndex((item) => item.slug === entry.slug);
+const currentIndex = items.findIndex((item) => item.slug === slug);
 const prevItem = items[currentIndex + 1] || null;
 const nextItem = items[currentIndex - 1] || null;
 
-const galleryFolderPath = `/src/content/${collection}/${entry.slug}/`;
+const galleryFolderPath = `/src/content/${collection}/${slug}/`;
+const thumbnailUrl = new URL(currentItem.thumbnail.src, Astro.url).toString();
 
-const thumbnailUrl = new URL(
-	items[currentIndex].thumbnail.src,
-	Astro.url,
-).toString();
-
-const { title, description, category, date } = {
-	...DEFAULT_DATA,
-	...entry.data,
-};
+const { title, description, category, date } = currentItem.data;
 ---
 
 <ContentLayout
@@ -54,11 +47,11 @@ const { title, description, category, date } = {
 	{description}
 	category={categoryDictionary[category].name}
 	{date}
-	prevItem={prevItem}
-	nextItem={nextItem}
+	{prevItem}
+	{nextItem}
 	ogImage={thumbnailUrl}>
 	<div slot="hero">
-		<Hero item={items[currentIndex]} />
+		<Hero item={currentItem} />
 	</div>
 	<div class="max-w-screen-md mx-auto">
 		<Content />

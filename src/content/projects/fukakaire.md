@@ -1,6 +1,6 @@
 ---
 title: "花譜 不可解弐REBUILDING 「未観測」"
-date: "2021-06-13"
+date: 2021-06-13
 category: "entertainment"
 embed: ""
 ---

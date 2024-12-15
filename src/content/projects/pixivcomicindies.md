@@ -1,6 +1,6 @@
 ---
 title: "pixivコミックインディーズ"
-date: "2023-05-03"
+date: 2023-05-03
 category: "ads"
 embed: "https://www.youtube.com/watch?v=W1zmV4511cI"
 ---

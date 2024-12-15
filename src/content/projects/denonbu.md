@@ -1,6 +1,6 @@
 ---
 title: "電音部PV vol.0"
-date: "2021-02-06"
+date: 2021-02-06
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=5AKsx5LXbCA"
 ---

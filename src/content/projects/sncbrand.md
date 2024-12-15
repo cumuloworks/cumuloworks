@@ -1,6 +1,6 @@
 ---
 title: "Sony Network Communications ビジョン・ムービー"
-date: "2022-05-25"
+date: 2022-05-25
 category: "ads"
 embed: "https://www.youtube.com/watch?v=AYhTG3OHEQU"
 ---

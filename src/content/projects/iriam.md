@@ -1,6 +1,6 @@
 ---
 title: "IRIAM リニューアル"
-date: "2020-09-15"
+date: 2020-09-15
 category: "ads"
 embed: "https://www.youtube.com/watch?v=bzgd6V_Y1Yc"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Cumuloworksで運用しているSynology社のストレージについて取材いただきました。#PR"
 description: "Cumuloworks, Inc.で運用するSynology社のストレージについての取材記事が掲載されました。映像クリエイターが直面するデータ管理の課題と、その解決策としての当社の取り組みについて詳しく紹介していただいています。"
-date: "2024-09-30"
+date: 2024-09-30
 category: "announcement"
 ---
 

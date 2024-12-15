@@ -1,6 +1,6 @@
 ---
 title: "IRIAM #バーチャルなってみた"
-date: "2020-12-07"
+date: 2020-12-07
 category: "ads"
 embed: "https://www.youtube.com/watch?v=QdLYsbPq7Ic"
 ---

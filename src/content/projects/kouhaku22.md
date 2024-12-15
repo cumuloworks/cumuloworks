@@ -1,6 +1,6 @@
 ---
 title: "ウタ - 新時代 NHK紅白歌合戦"
-date: "2023-01-04"
+date: 2023-01-04
 category: "entertainment"
 embed: ""
 ---

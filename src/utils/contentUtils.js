@@ -2,6 +2,30 @@ import { getCollection, getEntry } from "astro:content";
 import defaultThumb from "../assets/default_thumb.jpg";
 import { DEFAULT_DATA } from "./default_data";
 
+// 共通の処理を関数として抽出
+async function processItemData(item) {
+	return {
+		...item,
+		data: {
+			...DEFAULT_DATA,
+			...item.data,
+			date: item.data.date.toISOString().split("T")[0],
+		},
+	};
+}
+
+async function getThumbnail(images, collection, slug) {
+	const thumbnailPath = Object.keys(images).find(
+		(path) =>
+			path
+				.toLowerCase()
+				.includes(`/src/content/${collection}/${slug}/thumb.`) &&
+			/(jpe?g|png|webp)$/i.test(path),
+	);
+
+	return thumbnailPath ? (await images[thumbnailPath]()).default : defaultThumb;
+}
+
 export async function getItemsWithThumbnails(collection) {
 	const items = await getCollection(collection);
 	const images = import.meta.glob(
@@ -10,8 +34,7 @@ export async function getItemsWithThumbnails(collection) {
 
 	const itemsWithThumbnails = await Promise.all(
 		items.map(async (item) => ({
-			...item,
-			data: { ...DEFAULT_DATA, ...item.data },
+			...(await processItemData(item)),
 			thumbnail: await getThumbnail(images, collection, item.slug),
 		})),
 	);
@@ -30,20 +53,7 @@ export async function getItemWithThumbnail(collection, slug) {
 	);
 
 	return {
-		...item,
-		data: { ...DEFAULT_DATA, ...item.data },
+		...(await processItemData(item)),
 		thumbnail: await getThumbnail(images, collection, slug),
 	};
-}
-
-async function getThumbnail(images, collection, slug) {
-	const thumbnailPath = Object.keys(images).find(
-		(path) =>
-			path
-				.toLowerCase()
-				.includes(`/src/content/${collection}/${slug}/thumb.`) &&
-			/(jpe?g|png|webp)$/i.test(path),
-	);
-
-	return thumbnailPath ? (await images[thumbnailPath]()).default : defaultThumb;
 }

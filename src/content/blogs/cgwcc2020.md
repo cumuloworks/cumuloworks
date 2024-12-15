@@ -1,7 +1,7 @@
 ---
 title: "CGWORLD 2020 クリエイティブカンファレンスで講演します。"
 description: "CGWORLD 2020 クリエイティブカンファレンスにて、After Effects スクリプトについて講演します。"
-date: "2020-10-02"
+date: 2020-10-02
 category: "announcement"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "#36daysoftype"
-date: "2020-03-09"
+date: 2020-03-09
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=tEKzvT41Gvg"
 ---

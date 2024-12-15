@@ -1,6 +1,6 @@
 ---
 title: "Panasonic VIERA"
-date: "2023-07-26"
+date: 2023-07-26
 category: "ads"
 embed: "https://www.youtube.com/watch?v=qU4UhQ0nEv0"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "理芽 ニューロマンス「ラヴソング」"
-date: "2021-05-11"
+date: 2021-05-11
 category: "entertainment"
 embed: ""
 ---

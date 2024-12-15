@@ -1,7 +1,7 @@
 ---
 title: "サイトのコードをAstroで書き直しました"
 description: "サイトのコードをAstroで書き直しました。"
-date: "2024-09-23"
+date: 2024-09-23
 category: "techtips"
 ---
 
@@ -102,7 +102,7 @@ Markdownは、冒頭にfrontmatterでメタデータを記述しておく。
 ---
 title: "記事タイトル"
 description: "記事の短い説明"
-date: "2024-09-23"
+date: 2024-09-23
 category: "techtips"
 ---
 
