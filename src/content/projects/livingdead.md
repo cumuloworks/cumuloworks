@@ -1,6 +1,6 @@
 ---
 title: "amazarashi リビングデッド MV"
-date: "2018-11-29"
+date: 2018-11-29
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=TSncomnvyfc"
 ---

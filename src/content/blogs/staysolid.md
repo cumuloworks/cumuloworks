@@ -1,7 +1,7 @@
 ---
 title: "PLAYCRAFT PLAY01 “STAY” に参加しました。"
 description: "Dentsu Craft Tokyoが立ち上げた、クリエイターたちのあそび場「PLAYCRAFT」に、Cumuloworksも参加しています。"
-date: "2020-10-12"
+date: 2020-10-12
 category: "announcement"
 ---
 

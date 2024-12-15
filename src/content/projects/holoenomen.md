@@ -1,6 +1,6 @@
 ---
 title: "Omen #holoENOmen"
-date: "2021-08-14"
+date: 2021-08-14
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=BOWi6Pclr48"
 ---

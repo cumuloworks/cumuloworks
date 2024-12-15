@@ -1,6 +1,6 @@
 ---
 title: "花譜 不可解弐Q2 「人間ビデオ」「nerve」"
-date: "2021-03-12"
+date: 2021-03-12
 category: "entertainment"
 embed: ""
 ---

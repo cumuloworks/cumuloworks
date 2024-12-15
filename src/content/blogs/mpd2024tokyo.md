@@ -1,7 +1,7 @@
 ---
 title: "Cumuloworks はMotion Plus Design Tokyo 2024のパートナーです！"
 description: "Cumuloworks はMotion Plus Design Tokyo 2024のパートナーです！"
-date: "2024-06-01"
+date: 2024-06-01
 category: "announcement"
 ---
 

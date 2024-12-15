@@ -1,7 +1,7 @@
 ---
 title: "LOST CORNER クロスフェード"
 category: "entertainment"
-date: "2024-08-18"
+date: 2024-08-18
 embed: "https://www.youtube.com/watch?v=HKMP-WQI9qQ"
 ---
 

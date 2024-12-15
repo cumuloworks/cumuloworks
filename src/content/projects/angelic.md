@@ -1,6 +1,6 @@
 ---
 title: "ヰ世界情緒 ANGELIC"
-date: "2024-06-18"
+date: 2024-06-18
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=llG2lX0_Sjg"
 ---

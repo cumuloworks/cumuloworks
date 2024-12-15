@@ -1,6 +1,6 @@
 ---
 title: "Suntory TEACHER'S先生"
-date: "2022-02-07"
+date: 2022-02-07
 category: "ads"
 embed: "https://www.youtube.com/watch?v=nbH5US8coec"
 ---

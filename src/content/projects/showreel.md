@@ -3,7 +3,7 @@ title: Cumuloworks SHOWREEL 2024
 description: 2024年のワークショップやコンテンツ制作のショーリールです。
 category: showreel
 embed: https://www.youtube.com/embed/b_68zkrGBDQ
-date: "2024-12-13"
+date: 2024-12-13
 ---
 
 2023年から2024年までの作品をまとめたSHOWREELを公開しました。

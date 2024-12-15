@@ -1,6 +1,6 @@
 ---
 title: "永遠の畔でお茶会を"
-date: "2017-03-05"
+date: 2017-03-05
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=FUR-gbG1deo"
 ---

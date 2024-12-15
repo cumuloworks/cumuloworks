@@ -1,6 +1,6 @@
 ---
 title: "すとぷり ゆらゆら Music Video"
-date: "2023-08-04"
+date: 2023-08-04
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=YGZXZaGK8GE"
 ---

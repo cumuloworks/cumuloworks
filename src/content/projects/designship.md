@@ -1,6 +1,6 @@
 ---
 title: "Designship 2020"
-date: "2020-10-23"
+date: 2020-10-23
 category: "ads"
 embed: "https://www.youtube.com/watch?v=6PFSNJ29ybc"
 ---

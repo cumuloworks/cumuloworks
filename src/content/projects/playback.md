@@ -1,6 +1,6 @@
 ---
 title: "PLAYBACK"
-date: "2020-10-29"
+date: 2020-10-29
 category: "ads"
 embed: "https://www.youtube.com/watch?v=vLzeqAWoA50"
 ---

@@ -2,7 +2,7 @@
 title: "乃⽊坂46「それまでの猶予」"
 description: "乃⽊坂46「それまでの猶予」 Music Video VFXの制作を、Cumuloworks, Inc.が担当いたしました。"
 category: "entertainment"
-date: "2024-12-08"
+date: 2024-12-08
 embed: "https://youtu.be/Bb20DnsnOdE"
 ---
 

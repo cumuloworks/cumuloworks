@@ -1,6 +1,6 @@
 ---
 title: "理芽 ニューロマンス「やさしくしないで」 MV"
-date: "2021-07-22"
+date: 2021-07-22
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=nLFi_zEUXOs"
 ---

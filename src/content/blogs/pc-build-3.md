@@ -1,7 +1,7 @@
 ---
 title: "Ryzen 5 9600X でPCを組んだ"
 category: "techtips"
-date: "2024-10-12"
+date: 2024-10-12
 ---
 
 ## スペック

@@ -1,6 +1,6 @@
 ---
 title: "ASICS ファストウォーキング メソッドムービー"
-date: "2021-07-19"
+date: 2021-07-19
 category: "ads"
 embed: "https://www.youtube.com/watch?v=6nmGby8O5tw"
 ---

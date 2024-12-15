@@ -1,6 +1,6 @@
 ---
 title: "SHIBUYA QWS"
-date: "2019-08-30"
+date: 2019-08-30
 category: "ads"
 embed: ""
 ---

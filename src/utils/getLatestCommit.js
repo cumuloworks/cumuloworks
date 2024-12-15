@@ -40,7 +40,7 @@ export async function getLatestCommit(filePath) {
 		console.log(`No commits found for ${filePath}. Using default values.`);
 		return {
 			message: "Not committed yet.",
-			date: "2100-12-31",
+			date: 2100-12-31,
 			avatar: "/favicon.ico",
 			name: "cumuloworks",
 			sha: "0000000000000000000000000000000000000000",

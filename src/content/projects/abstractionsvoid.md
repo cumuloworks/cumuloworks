@@ -1,6 +1,6 @@
 ---
 title: "幸祜 - Abstractions Void"
-date: "2023-03-23"
+date: 2023-03-23
 category: "entertainment"
 embed: "https://www.youtube.com/watch?v=4enMG7U5pv4"
 ---

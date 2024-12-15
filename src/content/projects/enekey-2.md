@@ -1,6 +1,6 @@
 ---
 title: "EneKey「サイドストーリー」 元ちとせ＆さかいゆう篇"
-date: "2021-11-11"
+date: 2021-11-11
 category: "ads"
 embed: "https://www.youtube.com/watch?v=Yhs1YWsy5II"
 ---
