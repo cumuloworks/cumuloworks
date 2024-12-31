@@ -2,6 +2,7 @@
 title: "Year in Review 2024"
 date: 2024-12-31
 category: "blog"
+description: "今年もお世話になりました！2024年の振り返り・近況報告を記していきたいと思います。"
 ---
 
 今年もお世話になりました！
