@@ -1,5 +1,5 @@
 ---
-title: "LOST CORNER クロスフェード"
+title: "米津玄師 LOST CORNER"
 category: "entertainment"
 date: 2024-08-18
 embed: "https://www.youtube.com/watch?v=HKMP-WQI9qQ"

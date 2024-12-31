@@ -16,6 +16,10 @@ export const categoryDictionary = {
 		name: "Announcement",
 		description: "Announcements and other important information.",
 	},
+	blog: {
+		name: "Blog",
+		description: "Blog posts.",
+	},
 	aviutl: {
 		name: "Aviutl",
 		description: "Aviutl related content.",
