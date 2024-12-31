@@ -13,7 +13,7 @@ const projects = defineCollection({
 const blogs = defineCollection({
 	schema: z.object({
 		title: z.string(),
-		category: z.enum(["announcement", "techtips", "others"]),
+		category: z.enum(["announcement", "blog", "techtips", "others"]),
 		description: z.string().optional(),
 		date: z.date(),
 		embed: z.string().optional(),
