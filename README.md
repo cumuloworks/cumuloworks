@@ -14,7 +14,7 @@
 
 ## 🎨 Motion Design and CG Projects
 
-[![SHOWREEL](https://img.youtube.com/vi/ES8CtZN4e5g/maxresdefault.jpg)](https://youtu.be/ES8CtZN4e5g?si=bq9CFslZCCK27PAy)
+[![SHOWREEL](https://img.youtube.com/vi/b_68zkrGBDQ/maxresdefault.jpg)](https://youtu.be/b_68zkrGBDQ)
 
 ## 📺 Dev Projects
 
