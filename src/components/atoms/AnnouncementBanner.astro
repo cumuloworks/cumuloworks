@@ -1,5 +1,6 @@
 ---
 import GlassPanel from "@/components/atoms/GlassPanel.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     mode: "header" | "top";
@@ -116,6 +117,13 @@ const { mode = "top", theme = "light", class: className } = Astro.props;
                     に移管します。詳細はこちらのバナーをクリックしてください。
                 </span>
             </div>
+            <Icon
+                name="fa6-solid:arrow-right"
+                class:list={[
+                    "size-6 -rotate-45",
+                    theme === "dark" ? "text-black" : "text-white",
+                ]}
+            />
         </div>
     </GlassPanel>
 </a>
