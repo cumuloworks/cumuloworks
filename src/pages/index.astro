@@ -6,6 +6,7 @@ import TopPageInteractions from "../components/toppage/TopPageInteractions.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { categoryDictionary } from "../utils/categoryDictionary";
 import { getItemsWithThumbnails } from "../utils/contentUtils";
+import AnnouncementBanner from "../components/atoms/AnnouncementBanner.astro";
 
 const projects = await getItemsWithThumbnails("projects");
 
@@ -28,6 +29,7 @@ const projectsByCategory = projects.reduce((acc, project) => {
 	description="Cumuloworks | Director / Motion Grapher / CG Generalist"
 	limit={false}
 	header={false}>
+	<AnnouncementBanner />
 	<div
 		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b">
 		<section class="w-full h-svh bg-cumulodark relative snap-start">
