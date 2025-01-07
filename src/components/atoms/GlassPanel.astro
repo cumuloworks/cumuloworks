@@ -1,18 +1,23 @@
 ---
 interface Props {
     class?: string;
+    theme?: "dark" | "light";
 }
 
-const { class: className } = Astro.props;
+const { class: className, theme = "light" } = Astro.props;
 ---
 
-<div class:list={[
-    "bg-white/10 backdrop-blur-md",
-    "border border-white/20",
-    "shadow-lg",
-    "transition-all duration-300 ease-out",
-    "hover:bg-white/15 hover:scale-[1.01]",
-    className
-]}>
+<div
+    class:list={[
+        theme === "dark"
+            ? " border-black/20"
+            : "bg-white/10 border-white/20 hover:bg-white/15",
+        "backdrop-blur-md",
+        "border",
+        "shadow-lg",
+        "transition-all duration-300 ease-out",
+        "hover:scale-[1.01]",
+        className,
+    ]}>
     <slot />
-</div> 
+</div>

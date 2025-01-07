@@ -1,6 +1,7 @@
 ---
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
+import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
 import "@/styles/globals.css";
 
 const {
@@ -72,6 +73,9 @@ const pageTitle = `${title} | Cumuloworks`;
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         {header ? <Header /> : null}
+        <div class="px-5 w-full max-w-screen-xl mx-auto">
+            {header ? <AnnouncementBanner mode="header" theme="dark" class="mb-24" /> : null}
+        </div>
         <main
             class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}>
             <slot />
