@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { getImagesFromFolder } from "../../utils/getImagesFromFolder";
+import { getImagesFromFolder } from "@/utils/getImagesFromFolder";
 
 const { folderPath } = Astro.props;
 const slideshowImages = await getImagesFromFolder(folderPath);

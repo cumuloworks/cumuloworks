@@ -1,5 +1,5 @@
 import { getCollection, getEntry } from "astro:content";
-import defaultThumb from "../assets/default_thumb.jpg";
+import defaultThumb from "@/assets/default_thumb.jpg";
 import { DEFAULT_DATA } from "./default_data";
 
 // 共通の処理を関数として抽出

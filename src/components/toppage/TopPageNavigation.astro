@@ -1,5 +1,5 @@
 ---
-import SocialIcon from "../atoms/SocialIcon.astro";
+import SocialIcon from "@/components/atoms/SocialIcon.astro";
 
 const SocialIcons = [
     { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
@@ -20,7 +20,7 @@ const SocialIcons = [
                 ))
             }
             <SocialIcon
-                href={"/about#contact"}
+                href={"/contact"}
                 icon={"fa6-solid:envelope"}
                 dark={true}
                 customClass="lg:hidden"
@@ -43,6 +43,13 @@ const SocialIcons = [
             <li class="lg:hidden">
                 <a href="/about" class="hover:text-active">About</a>
             </li>
+            <li class="lg:hidden">
+                <a
+                    href="https://kumo.productions/"
+                    class="hover:text-active lowercase after:content-['_↗'] after:text-active"
+                    >kumo™</a
+                >
+            </li>
         </ul>
     </div>
     <div class="absolute right-8 lg:right-20 bottom-8 lg:bottom-24">
@@ -52,7 +59,16 @@ const SocialIcons = [
                 <a href="/about" class="hover:text-active">About</a>
             </li>
             <li>
-                <a href="/about#contact" class="hover:text-active">Contact</a>
+                <a href="/contact" class="hover:text-active after:text-active"
+                    >Contact</a
+                >
+            </li>
+            <li>
+                <a
+                    href="https://kumo.productions/"
+                    class="hover:text-active lowercase after:content-['_↗'] after:text-active"
+                    >kumo.productions™</a
+                >
             </li>
         </ul>
     </div>

@@ -1,6 +1,6 @@
 ---
-import Logo from "../atoms/Logo.astro";
-import SocialIcon from "../atoms/SocialIcon.astro";
+import Logo from "@/components/atoms/Logo.astro";
+import SocialIcon from "@/components/atoms/SocialIcon.astro";
 
 const SocialIcons = [
     { href: "https://x.com/cumuloworks", icon: "fa6-brands:x-twitter" },
@@ -11,7 +11,8 @@ const SocialIcons = [
 ];
 ---
 
-<header class="flex bg-white text-cumulodark md:min-h-60 min-h-60 md:text-base text-sm">
+<header
+    class="flex bg-white text-cumulodark md:min-h-60 min-h-60 md:text-base text-sm">
     <nav
         class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5">
         <ul class="md:flex flex-1 gap-5 text-left hidden" id="nav-links">
@@ -57,7 +58,7 @@ const SocialIcons = [
                     ))
                 }
                 <SocialIcon
-                    href="/about#contact"
+                    href="/contact"
                     icon="fa6-solid:envelope"
                     newtab={false}
                 />
@@ -70,7 +71,7 @@ const SocialIcons = [
                 <a href="/about" class="hover:text-cumulolight">About</a>
             </li>
             <li>
-                <a href="/about#contact" class="hover:text-cumulolight"
+                <a href="/contact" class="hover:text-cumulolight"
                     >Contact</a
                 >
             </li>
