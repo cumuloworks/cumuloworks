@@ -19,7 +19,7 @@ At this moment, if your Windows’ "Language for non-Unicode programs" setting i
 
 ## Feedback & Questions
 
-Please contact me [here](https://cumulo.works/about#contact).
+Please contact me [here](https://cumulo.works/contact).
 
 ## インストール
 
@@ -33,4 +33,4 @@ After Effectsのスクリプトメニューから実行/インストールして
 
 ## 問題の報告・質問など
 
-[コンタクトページ](https://cumulo.works/about#contact)よりお問い合わせください。
+[コンタクトページ](https://cumulo.works/contact)よりお問い合わせください。
