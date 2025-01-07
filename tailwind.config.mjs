@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-	darkMode: "class",
 	theme: {
 		fontFamily: {
 			sans: ["Inter", `"M PLUS 1p"`, "sans-serif"],
@@ -23,4 +22,7 @@ export default {
 			},
 		},
 	},
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 };
