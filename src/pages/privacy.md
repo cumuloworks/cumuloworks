@@ -14,7 +14,7 @@ We use Plausible Analytics to gather non-personal information about visitors to 
 
 ## Public Analytics Data
 
-Please be aware that the aggregated analytics data collected through Plausible Analytics is publicly accessible at [analytics.cumulo.works](https://analytics.cumulo.works/cumulo.works). The purpose of making this data publicly available is to maintain transparency regarding how our Site is used and to allow visitors and other interested parties to see the general trends in user interaction. By sharing this data, we aim to foster trust and openness, while still respecting visitor privacy by not collecting personally identifiable information (PII).
+Please be aware that the aggregated analytics data collected through Plausible Analytics is publicly accessible at [analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works). The purpose of making this data publicly available is to maintain transparency regarding how our Site is used and to allow visitors and other interested parties to see the general trends in user interaction. By sharing this data, we aim to foster trust and openness, while still respecting visitor privacy by not collecting personally identifiable information (PII).
 
 ## Data Collected by Plausible Analytics
 
@@ -36,7 +36,7 @@ The non-personal data collected is used for the following purposes:
 
 ## Data Sharing and Disclosure
 
-Since the analytics data is publicly available at [analytics.cumulo.works](https://analytics.cumulo.works/cumulo.works), general usage statistics are accessible to the public. However, we do not sell, trade, or rent any personal information, as we do not collect any PII through Plausible Analytics.
+Since the analytics data is publicly available at [analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works), general usage statistics are accessible to the public. However, we do not sell, trade, or rent any personal information, as we do not collect any PII through Plausible Analytics.
 
 ## Third-Party Links
 
@@ -80,7 +80,7 @@ Cumuloworks, Inc.（「当社」または「私たち」）は、訪問者のプ
 
 ## 公開されているアナリティクスデータ
 
-Plausible Analyticsで収集された集計データは、[analytics.cumulo.works](https://analytics.cumulo.works/cumulo.works)で一般に公開されています。このデータを公開している目的は、本サイトの利用状況について透明性を維持し、訪問者や関心のある方々が、ユーザーの行動に関する全体的な傾向を確認できるようにするためです。このデータを共有することで、信頼とオープン性を高めることを目指していますが、個人を特定できる情報（PII）は収集されていないため、訪問者のプライバシーは保たれています。
+Plausible Analyticsで収集された集計データは、[analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works)で一般に公開されています。このデータを公開している目的は、本サイトの利用状況について透明性を維持し、訪問者や関心のある方々が、ユーザーの行動に関する全体的な傾向を確認できるようにするためです。このデータを共有することで、信頼とオープン性を高めることを目指していますが、個人を特定できる情報（PII）は収集されていないため、訪問者のプライバシーは保たれています。
 
 ## Plausible Analyticsで収集されるデータ
 
@@ -102,7 +102,7 @@ Plausible Analyticsで収集された集計データは、[analytics.cumulo.work
 
 ## データの共有と開示
 
-[analytics.cumulo.works](https://analytics.cumulo.works/cumulo.works)でアナリティクスデータが公開されているため、一般の方もサイトの利用統計を閲覧できます。ただし、Plausible Analyticsを通じて個人を特定できる情報を収集していないため、個人情報の売買や共有は行いません。
+[analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works)でアナリティクスデータが公開されているため、一般の方もサイトの利用統計を閲覧できます。ただし、Plausible Analyticsを通じて個人を特定できる情報を収集していないため、個人情報の売買や共有は行いません。
 
 ## 第三者リンク
 
