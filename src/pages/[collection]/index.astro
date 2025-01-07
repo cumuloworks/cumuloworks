@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-import ItemGrid from "../../components/content/ItemGrid.astro";
-import ItemList from "../../components/content/ItemList.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/markdown.css";
-import { categoryDictionary } from "../../utils/categoryDictionary";
-import { getItemsWithThumbnails } from "../../utils/contentUtils";
+import ItemGrid from "@/components/content/ItemGrid.astro";
+import ItemList from "@/components/content/ItemList.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/markdown.css";
+import { categoryDictionary } from "@/utils/categoryDictionary";
+import { getItemsWithThumbnails } from "@/utils/contentUtils";
 
 export async function getStaticPaths() {
     const collections = ["projects", "blogs", "downloads"];

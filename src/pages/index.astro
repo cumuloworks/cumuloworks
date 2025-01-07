@@ -1,12 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import TopPageBackground from "../components/toppage/TopPageBackground.astro";
-import TopPageGallery from "../components/toppage/TopPageGallery.astro";
-import TopPageInteractions from "../components/toppage/TopPageInteractions.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { categoryDictionary } from "../utils/categoryDictionary";
-import { getItemsWithThumbnails } from "../utils/contentUtils";
-import AnnouncementBanner from "../components/atoms/AnnouncementBanner.astro";
+import TopPageBackground from "@/components/toppage/TopPageBackground.astro";
+import TopPageGallery from "@/components/toppage/TopPageGallery.astro";
+import TopPageInteractions from "@/components/toppage/TopPageInteractions.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { categoryDictionary } from "@/utils/categoryDictionary";
+import { getItemsWithThumbnails } from "@/utils/contentUtils";
+import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
 
 const projects = await getItemsWithThumbnails("projects");
 

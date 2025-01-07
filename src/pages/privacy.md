@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-layout: ../layouts/SinglePageLayout.astro
+layout: "@/layouts/SinglePageLayout.astro"
 description: 'Cumuloworks, Inc. ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website cumulo.works (the "Site"). By accessing or using the Site, you agree to the terms of this Privacy Policy.'
 ---
 
