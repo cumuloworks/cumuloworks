@@ -24,7 +24,7 @@ const { mode = "top", theme = "light", class: className } = Astro.props;
             "hover:scale-[1.01]",
         ]}>
         <div
-            class="max-w-screen-xl mx-auto px-12 py-8 flex items-center justify-between">
+            class="max-w-screen-xl mx-auto px-12 py-8 flex items-center justify-between gap-16">
             <div class="flex flex-col gap-2">
                 <div class="w-72">
                     <svg
@@ -120,7 +120,7 @@ const { mode = "top", theme = "light", class: className } = Astro.props;
             <Icon
                 name="fa6-solid:arrow-right"
                 class:list={[
-                    "size-6 -rotate-45",
+                    "size-6 -rotate-45 min-w-6 hidden sm:block",
                     theme === "dark" ? "text-black" : "text-white",
                 ]}
             />
