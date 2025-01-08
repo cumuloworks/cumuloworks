@@ -18,7 +18,10 @@ const pageTitle = `${title} | Cumuloworks`;
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=0.875" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=0.875"
+        />
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description ? description : title} />
         <title>{pageTitle}</title>
@@ -61,20 +64,22 @@ const pageTitle = `${title} | Cumuloworks`;
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=M+PLUS+1p&display=swap"
-        />
-        <link
+            href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=M+PLUS+1p&display=swap"
-            media="all"
         />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         {header ? <Header /> : null}
         <div class="px-5 w-full max-w-screen-xl mx-auto">
-            {header ? <AnnouncementBanner mode="header" theme="dark" class="mb-24" /> : null}
+            {
+                header ? (
+                    <AnnouncementBanner
+                        mode="header"
+                        theme="dark"
+                        class="mb-24"
+                    />
+                ) : null
+            }
         </div>
         <main
             class={`mx-auto flex-grow w-full ${limit ? "max-w-screen-xl px-5 mb-10" : ""}`}>
