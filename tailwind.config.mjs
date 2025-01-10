@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-	darkMode: "class",
 	theme: {
 		fontFamily: {
-			sans: ["Inter", `"M PLUS 1p"`, "sans-serif"],
-			mono: ["monospace"],
+			sans: ["Geist", "Noto Sans JP", "sans-serif"],
+			mono: ["Geist Mono", "monospace"],
 		},
 		extend: {
 			brightness: {
@@ -23,4 +22,7 @@ export default {
 			},
 		},
 	},
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 };

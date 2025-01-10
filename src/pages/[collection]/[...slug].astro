@@ -1,15 +1,15 @@
 ---
 import type { ContentEntryMap } from "astro:content";
 import { getCollection } from "astro:content";
-import Gallery from "../../components/content/Gallery.astro";
-import Hero from "../../components/content/Hero.astro";
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import "../../styles/globals.css";
-import { categoryDictionary } from "../../utils/categoryDictionary";
+import Gallery from "@/components/content/Gallery.astro";
+import Hero from "@/components/content/Hero.astro";
+import ContentLayout from "@/layouts/ContentLayout.astro";
+import "@/styles/globals.css";
+import { categoryDictionary } from "@/utils/categoryDictionary";
 import {
 	getItemsWithThumbnails,
 	getItemWithThumbnail,
-} from "../../utils/contentUtils";
+} from "@/utils/contentUtils";
 
 export async function getStaticPaths() {
 	const collections = ["projects", "blogs", "downloads"];

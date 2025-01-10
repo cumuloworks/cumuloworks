@@ -1,11 +1,11 @@
 ---
-import PrevNext from "../components/content/PrevNext.astro";
+import PrevNext from "@/components/content/PrevNext.astro";
 import BaseLayout from "./BaseLayout.astro";
-import "../styles/markdown.css";
-import ShareButtons from "../components/content/ShareButtons.astro";
-import ContentTitle from "../components/content/ContentTitle.astro";
+import "@/styles/markdown.css";
+import ShareButtons from "@/components/content/ShareButtons.astro";
+import ContentTitle from "@/components/content/ContentTitle.astro";
 import { Image } from "astro:assets";
-import { authorDictionary } from "../utils/authorDictionary";
+import { authorDictionary } from "@/utils/authorDictionary";
 
 const { title, description, category, date, prevItem, nextItem, ogImage } =
     Astro.props;
