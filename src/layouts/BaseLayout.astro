@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
 import "@/styles/globals.css";
+import Analytics from "@vercel/analytics/astro";
 
 const {
     title,
@@ -47,26 +48,13 @@ const pageTitle = `${title} | Cumuloworks`;
             content={description ? description : title}
         />
         <meta property="og:site_name" content="Cumuloworks" />
-        <script
-            defer
-            data-domain="cumulo.works"
-            src="https://analytics.kumo.productions/js/script.file-downloads.outbound-links.tagged-events.js"
-        ></script>
-        <script>
-            window.plausible =
-                window.plausible ||
-                function () {
-                    (window.plausible.q = window.plausible.q || []).push(
-                        arguments,
-                    );
-                };
-        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
             rel="stylesheet"
         />
+        <Analytics />
     </head>
     <body class="flex flex-col h-svh bg-white text-cumulodark">
         {header ? <Header /> : null}

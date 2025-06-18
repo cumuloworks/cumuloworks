@@ -16,6 +16,7 @@
 		"@astrojs/sitemap": "^3.2.1",
 		"@astrojs/tailwind": "^5.1.3",
 		"@tailwindcss/typography": "github:tailwindlabs/tailwindcss-typography",
+		"@vercel/analytics": "^1.5.0",
 		"astro": "^5.1.0",
 		"astro-icon": "^1.1.1",
 		"sharp": "^0.33.5",

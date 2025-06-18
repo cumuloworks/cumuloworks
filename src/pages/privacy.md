@@ -10,13 +10,9 @@ Cumuloworks, Inc. ("we," "us," or "our") is committed to protecting your privacy
 
 ## Information We Collect
 
-We use Plausible Analytics to gather non-personal information about visitors to our Site. Plausible is a privacy-focused analytics tool that does not use cookies and does not collect personally identifiable information (PII).
+We use Vercel Analytics to gather non-personal information about visitors to our Site. Vercel Analytics is a privacy-focused analytics tool that does not use third-party cookies and does not collect personally identifiable information (PII).
 
-## Public Analytics Data
-
-Please be aware that the aggregated analytics data collected through Plausible Analytics is publicly accessible at [analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works). The purpose of making this data publicly available is to maintain transparency regarding how our Site is used and to allow visitors and other interested parties to see the general trends in user interaction. By sharing this data, we aim to foster trust and openness, while still respecting visitor privacy by not collecting personally identifiable information (PII).
-
-## Data Collected by Plausible Analytics
+## Data Collected by Vercel Analytics
 
 - Page Views: The pages you visit on our Site.
 
@@ -36,7 +32,7 @@ The non-personal data collected is used for the following purposes:
 
 ## Data Sharing and Disclosure
 
-Since the analytics data is publicly available at [analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works), general usage statistics are accessible to the public. However, we do not sell, trade, or rent any personal information, as we do not collect any PII through Plausible Analytics.
+We do not sell, trade, or rent any personal information. Since Vercel Analytics only collects anonymized data and does not use personally identifiable information, there is no personal data to share.
 
 ## Third-Party Links
 
@@ -44,15 +40,15 @@ Our Site may contain links to third-party websites. We are not responsible for t
 
 ## Data Security
 
-We prioritize the security of your data. Plausible Analytics ensures data protection by not collecting PII and by anonymizing IP addresses. While we strive to use commercially acceptable means to protect your information, no method of transmission over the internet is 100% secure.
+We prioritize the security of your data. Vercel Analytics ensures data protection by not collecting PII and by anonymizing data. While we strive to use commercially acceptable means to protect your information, no method of transmission over the internet is 100% secure.
 
 ## Cookies
 
-Our Site does not use cookies for analytics purposes. Plausible Analytics operates without cookies, ensuring a higher level of privacy.
+Our Site does not use third-party cookies for analytics purposes. Vercel Analytics operates without third-party cookies, ensuring a higher level of privacy. Visitors are identified by a hash created from the incoming request, which is automatically discarded after 24 hours.
 
 ## Your Rights
 
-Since we do not collect personal data through Plausible Analytics, there are no personal data rights to exercise under data protection laws like the GDPR concerning this data.
+Since we do not collect personal data through Vercel Analytics, there are no personal data rights to exercise under data protection laws like the GDPR concerning this data.
 
 ## Children's Privacy
 
@@ -76,13 +72,9 @@ Cumuloworks, Inc.（「当社」または「私たち」）は、訪問者のプ
 
 ## 収集する情報
 
-当社は、Plausible Analyticsを使用して、本サイトの訪問者に関する個人を特定しない情報を収集します。Plausibleは、プライバシー重視のアナリティクスツールであり、クッキーを使用せず、個人を特定できる情報（PII）を収集しません。
+当社は、Vercel Analyticsを使用して、本サイトの訪問者に関する個人を特定しない情報を収集します。Vercel Analyticsは、プライバシー重視のアナリティクスツールであり、サードパーティクッキーを使用せず、個人を特定できる情報（PII）を収集しません。
 
-## 公開されているアナリティクスデータ
-
-Plausible Analyticsで収集された集計データは、[analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works)で一般に公開されています。このデータを公開している目的は、本サイトの利用状況について透明性を維持し、訪問者や関心のある方々が、ユーザーの行動に関する全体的な傾向を確認できるようにするためです。このデータを共有することで、信頼とオープン性を高めることを目指していますが、個人を特定できる情報（PII）は収集されていないため、訪問者のプライバシーは保たれています。
-
-## Plausible Analyticsで収集されるデータ
+## Vercel Analyticsで収集されるデータ
 
 - ページビュー: 本サイトで訪問したページ。
 
@@ -102,7 +94,7 @@ Plausible Analyticsで収集された集計データは、[analytics.kumo.produc
 
 ## データの共有と開示
 
-[analytics.kumo.productions](https://analytics.kumo.productions/cumulo.works)でアナリティクスデータが公開されているため、一般の方もサイトの利用統計を閲覧できます。ただし、Plausible Analyticsを通じて個人を特定できる情報を収集していないため、個人情報の売買や共有は行いません。
+当社は、個人情報の売買や共有は行いません。Vercel Analyticsは匿名化されたデータのみを収集し、個人を特定できる情報を使用しないため、共有すべき個人データは存在しません。
 
 ## 第三者リンク
 
@@ -110,15 +102,15 @@ Plausible Analyticsで収集された集計データは、[analytics.kumo.produc
 
 ## データのセキュリティ
 
-当社はデータのセキュリティを最優先に考えています。Plausible Analyticsは個人を特定できる情報を収集せず、IPアドレスを匿名化することでデータの保護を行っています。商業的に合理的な手段を講じて情報を保護するよう努めますが、インターネット上での情報伝達が完全に安全であることは保証できません。
+当社はデータのセキュリティを最優先に考えています。Vercel Analyticsは個人を特定できる情報を収集せず、データを匿名化することでデータの保護を行っています。商業的に合理的な手段を講じて情報を保護するよう努めますが、インターネット上での情報伝達が完全に安全であることは保証できません。
 
 ## クッキー
 
-本サイトはアナリティクス目的でクッキーを使用しません。Plausible Analyticsはクッキーを使用せず、プライバシー保護を強化しています。
+本サイトはアナリティクス目的でサードパーティクッキーを使用しません。Vercel Analyticsはサードパーティクッキーを使用せず、プライバシー保護を強化しています。訪問者は、受信リクエストから作成されるハッシュにより識別され、このハッシュは24時間後に自動的に破棄されます。
 
 ## 訪問者の権利
 
-Plausible Analyticsを通じて個人データを収集していないため、GDPRなどのデータ保護法に基づく個人データに関する権利は該当しません。
+Vercel Analyticsを通じて個人データを収集していないため、GDPRなどのデータ保護法に基づく個人データに関する権利は該当しません。
 
 ## 児童のプライバシー
 
