@@ -1,3 +1,5 @@
+@reference "./global.css";
+
 .markdown-content {
 	@apply text-cumulodark;
 }

@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans: "Geist", "Noto Sans JP", sans-serif;
+	--font-mono: "Geist Mono", monospace;
+
+	--color-cumulodark: #1d3744;
+	--color-cumulolight: #165b7a;
+	--color-inactive: #e4e4e7;
+	--color-active: #ffffff;
+
+	--ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+	--brightness-25: .25;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 0px;
+	border-radius: 8px;
+	background: #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: transparent;
+}
+
+

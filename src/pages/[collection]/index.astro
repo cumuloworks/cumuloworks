@@ -41,7 +41,7 @@ function generateCategoryStyles(categories: string[]) {
             </h1>
             <div
                 id="filter-controls"
-                class="rounded-full border border-cumulo-inactive text-sm">
+                class="rounded-full border border-inactive text-sm">
                 <button
                     data-filter="all"
                     class="filter-button px-5 py-1 rounded-full transition-all ease-out-expo hover:scale-105 active"
@@ -81,7 +81,8 @@ function generateCategoryStyles(categories: string[]) {
 
 <style is:global>
     #filter-controls button.active {
-        @apply bg-cumulodark text-active;
+        background-color: var(--color-cumulodark);
+        color: var(--color-active);
     }
 
     #items-container[data-filter="all"] .grid-item {

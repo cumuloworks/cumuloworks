@@ -71,9 +71,7 @@ const SocialIcons = [
                 <a href="/about" class="hover:text-cumulolight">About</a>
             </li>
             <li>
-                <a href="/contact" class="hover:text-cumulolight"
-                    >Contact</a
-                >
+                <a href="/contact" class="hover:text-cumulolight">Contact</a>
             </li>
         </ul>
     </nav>
@@ -96,6 +94,15 @@ const SocialIcons = [
         position: relative;
     }
     .underdot::after {
-        @apply content-['']  size-[5px] bg-cumulodark rounded-full absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 animate-pulse;
+        content: "";
+        width: 5px;
+        height: 5px;
+        background-color: var(--color-cumulodark);
+        border-radius: 9999px;
+        position: absolute;
+        bottom: -0.375rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: pulse 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
     }
 </style>
