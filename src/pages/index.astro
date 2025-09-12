@@ -1,68 +1,54 @@
 ---
-import { Icon } from "astro-icon/components";
-import TopPageBackground from "@/components/toppage/TopPageBackground.astro";
-import TopPageGallery from "@/components/toppage/TopPageGallery.astro";
-import TopPageInteractions from "@/components/toppage/TopPageInteractions.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { categoryDictionary } from "@/utils/categoryDictionary";
-import { getItemsWithThumbnails } from "@/utils/contentUtils";
-import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
+import { getCollection } from 'astro:content';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import readmeRaw from '@/../README.md?raw';
+import Layout from '@/layouts/Layout.astro';
 
-const projects = await getItemsWithThumbnails("projects");
+const projects = await getCollection('projects');
+const blogs = await getCollection('blogs');
+const downloads = await getCollection('downloads');
+const links = [
+    {
+        title: 'Privacy Policy',
+        href: '/privacy',
+    },
+    {
+        title: '特定商取引法に基づく表示',
+        href: '/scta',
+        note: '(Notation based on the Specified Commercial Transactions Act of Japan)',
+    },
+];
 
-const projectsByCategory = projects.reduce((acc, project) => {
-	const category = project.data.category || "uncategorized";
-	if (category !== "entertainment" && category !== "ads") return acc;
-	if (!acc[category]) {
-		acc[category] = {
-			projects: [],
-			description: categoryDictionary[category].description,
-		};
-	}
-	acc[category].projects.push(project);
-	return acc;
-}, {});
+function makeListMarkdown(items) {
+    return items.map((item) => `- [${item.data.title}](/${item.collection}/${item.slug})`).join('\n');
+}
+
+function makeLinksMarkdown(linkItems) {
+    return linkItems.map((item) => `- [${item.title}](${item.href})${item.note ? ` ${item.note}` : ''}`).join('\n');
+}
+
+function buildSectionMarkdown(heading, content) {
+    return `### ${heading}\n\n${content}`;
+}
+
+const sections = [
+    ['<!-- Ads -->', buildSectionMarkdown('Ads', makeListMarkdown(projects.filter((p) => p.data.category === 'ads')))],
+    ['<!-- Entertainment -->', buildSectionMarkdown('Entertainment', makeListMarkdown(projects.filter((p) => p.data.category === 'entertainment')))],
+    ['<!-- Articles -->', `## Articles\n\n${buildSectionMarkdown('Blogs', makeListMarkdown(blogs))}\n\n${buildSectionMarkdown('Downloads', makeListMarkdown(downloads))}`],
+    ['<!-- Links -->', `## Links\n\n${makeLinksMarkdown(links)}`],
+];
+
+const readmeWithInjectedLists = sections.reduce((acc, [marker, content]) => acc.replace(marker, content), readmeRaw);
+
+const markdown = await createMarkdownProcessor();
+const { code: readmeHTML } = await markdown.render(readmeWithInjectedLists);
 ---
 
-<BaseLayout
-	title="Home"
+<Layout
+	title="Cumuloworks"
 	description="Cumuloworks | Director / Motion Grapher / CG Generalist"
 	limit={false}
-	header={false}>
-	<AnnouncementBanner />
-	<div
-		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b">
-		<section class="w-full h-svh bg-cumulodark relative snap-start">
-			<TopPageBackground />
-			<TopPageInteractions />
-		</section>
-		<section
-			class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive">
-			<div
-				class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20">
-				{
-					Object.entries(projectsByCategory).map(
-						([category, projectsData]) => (
-							<TopPageGallery
-								category={categoryDictionary[category].name}
-								description={
-									categoryDictionary[category].description
-								}
-								projects={projectsData.projects}
-							/>
-						),
-					)
-				}
-			</div>
-			<a
-				href="/projects"
-				class="flex items-center gap-5 justify-center md:justify-end uppercase mb-5 group h-10"
-				>Show more projects
-				<Icon
-					name="fa6-solid:chevron-right"
-					class="size-5 group-hover:size-10 transition-all ease-out-expo"
-				/>
-			</a>
-		</section>
-	</div>
-</BaseLayout>
+	header={false}
+>
+	<div set:html={readmeHTML} />
+</Layout>

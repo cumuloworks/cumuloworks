@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-geist-sans: "Geist", "IBM Plex Sans JP", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    --font-geist-mono: "Geist Mono", "IBM Plex Sans JP", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --color-text: oklch(94.54% 0.008 228.86);
+    --color-background: oklch(16.30% 0.01 220.15);
+    --color-primary: oklch(78.93% 0.048 228.36);
+    --color-secondary: oklch(44.54% 0.066 233.7);
+    --color-accent: oklch(32.20% 0.039 231.52);
+
+    --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background-color: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 8px;
+    background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--color-background);
+}
+
+/* Font utility classes (loaded via Google Fonts in Layout.astro) */
+
+/* IBM Plex Sans JP: weight-specific classes */
+.ibm-plex-sans-jp-thin {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-extralight {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-light {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-regular {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-medium {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-semibold {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.ibm-plex-sans-jp-bold {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Geist: base class for variable font */
+.geist {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Geist Mono: base class for variable font */
+.geist-mono {
+    font-family: "Geist Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}

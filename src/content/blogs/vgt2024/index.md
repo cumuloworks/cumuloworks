@@ -1,0 +1,23 @@
+---
+title: "VGT2024にて登壇しました"
+description: "VIDEO GRAPHERS TOKYO 2024 にて、
+「快適な制作環境の作り方 - 機材・ワークフローを整えて、強固な制作基盤をつくる」
+というタイトルで登壇をさせていただきました。"
+date: 2024-07-18
+category: "announcement"
+---
+
+![](DSC08997.jpg)
+![](_Z810499.JPG)
+
+当日は、沢山の方にお越しいただき、満員となりました。
+
+誠にありがとうございました。
+
+当日の資料はGitHubにて公開しております。
+
+[GitHub Repository](https://github.com/cumuloworks/public-vgt2024/)
+
+## スライド資料
+
+<iframe src="https://cumuloworks.github.io/public-vgt2024/Vook%20VGT%202024.html" width="100%" height="100%" class="rounded-xl shadow-2xl"></iframe>

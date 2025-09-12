@@ -1,60 +1,33 @@
 ---
-import type { ContentEntryMap } from "astro:content";
-import { getCollection } from "astro:content";
-import Gallery from "@/components/content/Gallery.astro";
-import Hero from "@/components/content/Hero.astro";
-import ContentLayout from "@/layouts/ContentLayout.astro";
-import "@/styles/globals.css";
-import { categoryDictionary } from "@/utils/categoryDictionary";
-import {
-	getItemsWithThumbnails,
-	getItemWithThumbnail,
-} from "@/utils/contentUtils";
+import type { ContentEntryMap } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import Gallery from '@/components/Gallery.astro';
+import Layout from '@/layouts/Layout.astro';
 
 export async function getStaticPaths() {
-	const collections = ["projects", "blogs", "downloads"];
-	const allPaths = await Promise.all(
-		collections.map(async (collection) => {
-			const items = await getCollection(
-				collection as keyof ContentEntryMap,
-			);
-			return items.map((entry) => ({
-				params: { collection, slug: entry.slug },
-				props: { collection, slug: entry.slug },
-			}));
-		}),
-	);
-	return allPaths.flat();
+    const collections = ['projects', 'blogs', 'downloads'];
+    const allPaths = await Promise.all(
+        collections.map(async (collection) => {
+            const items = await getCollection(collection as keyof ContentEntryMap);
+            return items.map((entry) => ({
+                params: { collection, slug: entry.slug },
+                props: { collection, slug: entry.slug },
+            }));
+        })
+    );
+    return allPaths.flat();
 }
 
 const { collection, slug } = Astro.props;
-const currentItem = await getItemWithThumbnail(collection, slug);
+const currentItem = await getEntry(collection as keyof ContentEntryMap, slug);
 const { Content } = await currentItem.render();
 
-const items = await getItemsWithThumbnails(collection);
-const currentIndex = items.findIndex((item) => item.slug === slug);
-const prevItem = items[currentIndex + 1] || null;
-const nextItem = items[currentIndex - 1] || null;
-
 const galleryFolderPath = `/src/content/${collection}/${slug}/`;
-const thumbnailUrl = new URL(currentItem.thumbnail.src, Astro.url).toString();
 
-const { title, description, category, date } = currentItem.data;
+const { ...frontmatter } = currentItem.data;
 ---
 
-<ContentLayout
-	{title}
-	{description}
-	category={categoryDictionary[category].name}
-	{date}
-	{prevItem}
-	{nextItem}
-	ogImage={thumbnailUrl}>
-	<div slot="hero">
-		<Hero item={currentItem} />
-	</div>
-	<div class="max-w-screen-md mx-auto">
-		<Content />
-	</div>
+<Layout frontmatter={frontmatter}>
+	<Content />
 	{collection === "projects" && <Gallery folderPath={galleryFolderPath} />}
-</ContentLayout>
+</Layout>
