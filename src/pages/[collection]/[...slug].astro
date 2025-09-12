@@ -21,10 +21,7 @@ export async function getStaticPaths() {
 }
 
 const { collection, slug } = Astro.props;
-const currentItem = await getEntry(
-    collection as keyof ContentEntryMap,
-    slug,
-);
+const currentItem = await getEntry(collection as keyof ContentEntryMap, slug);
 const { Content } = await currentItem.render();
 
 const galleryFolderPath = `/src/content/${collection}/${slug}/`;

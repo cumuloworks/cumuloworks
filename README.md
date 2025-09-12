@@ -16,10 +16,13 @@
     <a href="#tools--sites">Tools / Sites</a>
     </li>
     <li>
-      <a href="#blogs">Blogs</a>
+      <a href="#articles">Articles</a>
     </li>
     <li>
       <a href="#talks-and-interviews">Talks and Interviews</a>
+    </li>
+    <li>
+      <a href="#links">Links</a>
     </li>
   </ul>
 </details>
@@ -58,7 +61,7 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 - [Facebook](https://www.facebook.com/cumuloworks/)
 - [mail@cumulo.works](mailto:mail@cumulo.works)
 
-For video production inquiries, please visit [kumo.productions™](https://kumo.productions/) for more information!
+For video production inquiries, please visit [kumo.productions™](https://kumo.productions/).
 
 ## Motion Design / CGI
 
@@ -80,7 +83,7 @@ As of 2025, all video production services have been transferred from Cumuloworks
 
 ## Tools / Sites
 
-### [autoParallax 2](./src/content/downloads/autoparallax2.md)
+### [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
 
 After Effects script for easily creating parallax effect animations with 3D layers.
 
@@ -113,8 +116,6 @@ Web Development (JAMstack + Cloudflare Pages + Astro)
 Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
-
-## Articles
 
 <!-- Articles -->
 
