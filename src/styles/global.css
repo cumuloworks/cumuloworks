@@ -6,15 +6,14 @@
     --font-geist-mono: "Geist Mono", "IBM Plex Sans JP", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     --color-text: oklch(94.54% 0.008 228.86);
-    --color-background: oklch(16.30% 0.010 220.15);
+    --color-background: oklch(16.30% 0.01 220.15);
     --color-primary: oklch(78.93% 0.048 228.36);
-    --color-secondary: oklch(44.54% 0.066 233.70);
+    --color-secondary: oklch(44.54% 0.066 233.7);
     --color-accent: oklch(32.20% 0.039 231.52);
 
     --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
-
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -33,7 +32,7 @@
     background: var(--color-primary);
 }
 
-::-webkit-scrollbar-thumb:window-zinc-300 {
+::-webkit-scrollbar-thumb:window-inactive {
     background: var(--color-background);
 }
 

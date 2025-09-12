@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import { getImagesFromFolder } from "@/utils/getImagesFromFolder";
+import { Image } from 'astro:assets';
 
 const { folderPath } = Astro.props;
 
@@ -10,27 +9,23 @@ const preparedImages = await Promise.all(
     galleryImages.map(async (image, index) => {
         return {
             src: image,
-            alt:
-                image.src.split("/").pop()?.split(".")[0] || `gallery-${index}`,
+            alt: image.src.split('/').pop()?.split('.')[0] || `gallery-${index}`,
             id: `image-${index}`,
         };
-    }),
+    })
 );
 
 async function getImagesFromFolder(folderPath) {
-    const images = import.meta.glob(
-        "/src/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
-        {
-            eager: true,
-        },
-    );
+    const images = import.meta.glob('/src/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)', {
+        eager: true,
+    });
     const filteredImages = Object.entries(images)
         .filter(([path]) => {
             const isInFolder = path.startsWith(folderPath);
             const isNotThumb = !/thumb\.(jpg|jpeg|png|gif|webp)$/i.test(path);
             return isInFolder && isNotThumb;
         })
-        .map(([path, imageModule]) => {
+        .map(([_path, imageModule]) => {
             return imageModule.default;
         });
     return filteredImages;

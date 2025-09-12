@@ -2,9 +2,10 @@
 import "@/styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import Icon from "@/assets/icon.svg?raw";
+import kumoLogo from "@/assets/logotype_primary_TM_wt.svg?raw";
 
 interface Props {
-    frontmatter: Astro.Frontmatter<any>;
+    frontmatter: Astro.Frontmatter;
 }
 
 const { frontmatter } = Astro.props as Props;
@@ -19,7 +20,7 @@ function getEmbedType(url: string | undefined | null) {
 
 function getYoutubeId(url: string) {
     const regExp =
-        /^.*(youtu.be\/.|v\/.|u\/\w\/.|embed\/.|watch\?v=|\&v=)([^#\&\?]*).*/;
+        /^.*(youtu.be\/.|v\/.|u\/\w\/.|embed\/.|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
 }
@@ -93,13 +94,24 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
     <body
         class="h-svh bg-background text-text font-geist-sans p-8 overflow-x-hidden overflow-y-scroll"
     >
-        <header class="flex flex-col gap-6 mb-16">
+        <header class="flex justify-between items-center gap-6 mb-16 flex-wrap">
             <a
                 href="/"
                 aria-label="Cumuloworks"
                 class="fill-text hover:fill-accent transition-colors duration-300 w-24"
             >
                 <span set:html={Icon} />
+            </a>
+            <a
+                href="https://kumo.productions/"
+                aria-label="kumo.productions™"
+                class="fill-text hover:fill-accent w-48 md:w-72 leading-1 md:leading-4"
+            >
+                <span set:html={kumoLogo} />
+                <span class="text-[6px] md:text-[9px]"
+                    >kumo.productions™ is a video production studio based in
+                    Tokyo.</span
+                >
             </a>
         </header>
         <div

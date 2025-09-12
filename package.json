@@ -8,7 +8,9 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"check": "biome check --write src --unsafe",
+		"lint": "biome check src",
+		"lint:fix": "biome check src --write",
+		"lint:unsafe": "biome check src --write --unsafe",
 		"markdownlint": "markdownlint-cli2 src/**/*.md --config ./.markdownlint.json",
 		"markdownlint:fix": "markdownlint-cli2 src/**/*.md --config ./.markdownlint.json --fix"
 	},
@@ -25,6 +27,7 @@
 	"devDependencies": {
 		"@astrojs/markdown-remark": "^6.3.6",
 		"@biomejs/biome": "^2.2.4",
+		"@cumuloworks/configs": "^1.0.7",
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/fa6-solid": "^1.2.4"
 	}

@@ -53,12 +53,12 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productionsâ„
 
 ## Social & Contact
 
+- [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=ffffff&size=24)](https://x.com/cumuloworks) [X](https://x.com/cumuloworks)
+- [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=ffffff&size=24)](https://www.instagram.com/cumuloworks/) [Instagram](https://www.instagram.com/cumuloworks/)
+- [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=ffffff&size=24)](https://www.youtube.com/@cumuloworks) [YouTube](https://www.youtube.com/@cumuloworks)
+- [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=ffffff&size=24)](https://github.com/cumuloworks) [GitHub](https://github.com/cumuloworks)
+- [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=ffffff&size=24)](https://www.facebook.com/cumuloworks/) [Facebook](https://www.facebook.com/cumuloworks/)
 - [Website](https://cumulo.works)
-- [X](https://x.com/cumuloworks)
-- [Instagram](https://www.instagram.com/cumuloworks/)
-- [YouTube](https://www.youtube.com/@cumuloworks)
-- [GitHub](https://github.com/cumuloworks)
-- [Facebook](https://www.facebook.com/cumuloworks/)
 - [mail@cumulo.works](mailto:mail@cumulo.works)
 
 For video production inquiries, please visit [kumo.productionsâ„¢](https://kumo.productions/).
