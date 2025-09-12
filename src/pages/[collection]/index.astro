@@ -1,70 +1,9 @@
 ---
-import { Icon } from "astro-icon/components";
-import ItemGrid from "@/components/content/ItemGrid.astro";
-import ItemList from "@/components/content/ItemList.astro";
-import Layout from "@/layouts/Layout.astro";
-import { categoryDictionary } from "@/utils/categoryDictionary";
-import { getItemsWithThumbnails } from "@/utils/contentUtils";
-
 export async function getStaticPaths() {
     const collections = ["projects", "blogs", "downloads"];
-    return collections.map((collection) => ({
-        params: { collection },
-        props: { collection },
-    }));
+    return collections.map((collection) => ({ params: { collection } }));
 }
 
-const { collection } = Astro.props;
-const items = await getItemsWithThumbnails(collection);
-const categories = [...new Set(items.map((item) => item.data.category))];
-const title = collection.charAt(0).toUpperCase() + collection.slice(1);
-
-function generateCategoryStyles(categories: string[]) {
-    return categories
-        .map(
-            (category) =>
-                `#items-container[data-filter="${category}"] .grid-item:not([data-category="${category}"]) {
-            display: none;
-        }`,
-        )
-        .join("\n");
-}
+const { collection } = Astro.params;
+return Astro.redirect(`/#${collection}`);
 ---
-
-<Layout title={title}>
-    <div class="w-full max-w-screen-xl mx-auto mb-10">
-        <div
-            class="w-full flex flex-col md:flex-row items-center justify-between mb-10 gap-5">
-            <h1 class="text-center uppercase text-3xl md:text-4xl font-bold">
-                {title}
-            </h1>
-            <div
-                id="filter-controls"
-                class="rounded-full border border-cumulo-gray-200 text-sm">
-                <button
-                    data-filter="all"
-                    class="filter-button px-5 py-1 rounded-full transition-all ease-out-expo hover:scale-105 active"
-                    >All</button
-                >
-                {
-                    categories.map((category: string) => (
-                        <button
-                            data-filter={category}
-                            class="filter-button px-5 py-1 rounded-full transition-all ease-out-expo hover:scale-105">
-                            {categoryDictionary[category].name}
-                        </button>
-                    ))
-                }
-            </div>
-        </div>
-        <div id="items-container">
-            {
-                collection === "projects" ? (
-                    <ItemGrid items={items} />
-                ) : (
-                    <ItemList items={items} />
-                )
-            }
-        </div>
-    </div>
-</Layout>

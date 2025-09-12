@@ -1,35 +1,35 @@
 import { getCollection, getEntry } from "astro:content";
 import defaultThumb from "@/assets/default_thumb.jpg";
-import { DEFAULT_DATA } from "./default_data";
 
 // 共通の処理を関数として抽出
 async function processItemData(item) {
+	const dateObj = item.data.date;
+	const dateString = dateObj instanceof Date
+		? dateObj.toISOString().split("T")[0]
+		: String(dateObj);
 	return {
 		...item,
 		data: {
-			...DEFAULT_DATA,
 			...item.data,
-			date: item.data.date.toISOString().split("T")[0],
+			// 表示互換性のため date は文字列を保持
+			date: dateString,
+			// ソートや計算用に Date オブジェクトも保持
+			dateObj,
+			dateString,
 		},
 	};
 }
 
 async function getThumbnail(images, collection, slug) {
-	const thumbnailPath = Object.keys(images).find(
-		(path) =>
-			path
-				.toLowerCase()
-				.includes(`/src/content/${collection}/${slug}/thumb.`) &&
-			/(jpe?g|png|webp)$/i.test(path),
-	);
-
+	const key = `/src/content/${collection}/${slug}/thumb.`;
+	const thumbnailPath = Object.keys(images).find((path) => path.includes(key));
 	return thumbnailPath ? (await images[thumbnailPath]()).default : defaultThumb;
 }
 
 export async function getItemsWithThumbnails(collection) {
 	const items = await getCollection(collection);
 	const images = import.meta.glob(
-		"/src/content/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
+		"/src/content/**/thumb.(png|jpg|jpeg|webp|PNG|JPG|JPEG|WEBP)",
 	);
 
 	const itemsWithThumbnails = await Promise.all(
@@ -40,7 +40,7 @@ export async function getItemsWithThumbnails(collection) {
 	);
 
 	return itemsWithThumbnails.sort(
-		(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+		(a, b) => b.data.dateObj.getTime() - a.data.dateObj.getTime(),
 	);
 }
 
@@ -49,7 +49,7 @@ export async function getItemWithThumbnail(collection, slug) {
 	if (!item) return null;
 
 	const images = import.meta.glob(
-		"/src/content/**/*.(png|jpg|jpeg|gif|webp|PNG|JPG|JPEG|GIF|WEBP)",
+		"/src/content/**/thumb.(png|jpg|jpeg|webp|PNG|JPG|JPEG|WEBP)",
 	);
 
 	return {

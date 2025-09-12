@@ -18,12 +18,13 @@ export default defineConfig({
         service: {
             entrypoint: "astro/assets/services/sharp",
         },
+        domains: ["api.microlink.io", "img.youtube.com"],
     },
     output: "static",
     site: "https://cumulo.works",
     markdown: {
         shikiConfig: {
-            theme: "github-light",
+            theme: "github-dark",
         },
     },
     vite: {

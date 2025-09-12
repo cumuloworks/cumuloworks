@@ -4,7 +4,6 @@ import { getCollection } from "astro:content";
 import Gallery from "@/components/content/Gallery.astro";
 import Hero from "@/components/content/Hero.astro";
 import Layout from "@/layouts/Layout.astro";
-import { categoryDictionary } from "@/utils/categoryDictionary";
 import {
 	getItemsWithThumbnails,
 	getItemWithThumbnail,
@@ -36,22 +35,11 @@ const prevItem = items[currentIndex + 1] || null;
 const nextItem = items[currentIndex - 1] || null;
 
 const galleryFolderPath = `/src/content/${collection}/${slug}/`;
-const thumbnailUrl = new URL(currentItem.thumbnail.src, Astro.url).toString();
 
-const { title, description, category, date } = currentItem.data;
+const { ...frontmatter } = currentItem.data;
 ---
 
-<Layout
-	{title}
-	{description}
-	category={categoryDictionary[category].name}
-	{date}
-	{prevItem}
-	{nextItem}
-	ogImage={thumbnailUrl}
->
-	<div class="max-w-screen-md mx-auto">
-		<Content />
-	</div>
+<Layout frontmatter={frontmatter}>
+	<Content />
 	{collection === "projects" && <Gallery folderPath={galleryFolderPath} />}
 </Layout>

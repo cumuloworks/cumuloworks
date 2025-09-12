@@ -23,6 +23,7 @@
 		"tailwindcss": "^4.1.13"
 	},
 	"devDependencies": {
+		"@astrojs/markdown-remark": "^6.3.6",
 		"@biomejs/biome": "^2.2.4",
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/fa6-solid": "^1.2.4"

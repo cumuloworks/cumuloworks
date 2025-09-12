@@ -1,19 +1,15 @@
 ---
-import Footer from "@/components/layout/Footer.astro";
-import Header from "@/components/layout/Header.astro";
-import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
 import "@/styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import Icon from "@/assets/icon.svg?raw";
 
-const {
-    title,
-    description,
-    limit = true,
-    ogImage,
-    header = true,
-} = Astro.props;
-const pageTitle = `${title} | Cumuloworks`;
+interface Props {
+    frontmatter: Astro.Frontmatter<any>;
+}
+
+const { frontmatter } = Astro.props as Props;
+
+console.log(frontmatter);
 ---
 
 <html lang="en">
@@ -25,29 +21,28 @@ const pageTitle = `${title} | Cumuloworks`;
             content="width=device-width, initial-scale=0.875"
         />
         <meta name="generator" content={Astro.generator} />
-        <meta name="description" content={description ? description : title} />
-        <title>{pageTitle}</title>
+        <meta name="description" content={frontmatter?.description} />
+        <title>
+            {[frontmatter?.title, "Cumuloworks"].filter(Boolean).join(" | ")}
+        </title>
 
-        <meta property="og:title" content={pageTitle} />
+        <meta
+            property="og:title"
+            content={[frontmatter?.title || "Cumuloworks"]}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
-        <meta
-            property="og:description"
-            content={description ? description : title}
-        />
+        <meta property="og:description" content={frontmatter?.description} />
         <meta
             property="og:image"
-            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+            content={new URL("/default_ogp.jpg", Astro.url)}
         />
         <meta
             property="twitter:image"
-            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+            content={new URL("/default_ogp.jpg", Astro.url)}
         />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-            property="description"
-            content={description ? description : title}
-        />
+        <meta property="description" content={frontmatter?.description} />
         <meta property="og:site_name" content="Cumuloworks" /><link
             rel="preconnect"
             href="https://fonts.googleapis.com"
@@ -80,6 +75,7 @@ const pageTitle = `${title} | Cumuloworks`;
                 "prose-blockquote:border-accent",
                 "prose-blockquote:not-italic",
                 "prose-blockquote:text-justify",
+                "prose-p:text-justify",
                 "prose-p:after:content-none",
                 "prose-p:before:content-none",
                 "prose-img:inline-block",
@@ -109,6 +105,7 @@ const pageTitle = `${title} | Cumuloworks`;
                 "prose-a:hover:text-accent",
             ]}
         >
+            {frontmatter?.title && <h1>{frontmatter.title}</h1>}
             <slot />
         </div>
     </body>

@@ -4,22 +4,22 @@
   <summary class="marker:content-none cursor-pointer"><h2>Menu</h2></summary>
   <ul>
     <li>
-  <a href="#profile">Profile</a>
-  </li>
-  <li>
-  <a href="#social--contact">Social & Contact</a>
-  </li>
-  <li>
-  <a href="#motion-design--cgi">Motion Design / CGI</a>
-  </li>
-  <li>
-  <a href="#tools--sites">Tools / Sites</a>
+     <a href="#profile">Profile</a>
     </li>
     <li>
-    <a href="#articles">Articles</a>
+      <a href="#social--contact">Social & Contact</a>
     </li>
     <li>
-    <a href="#talks-and-interviews">Talks and Interviews</a>
+      <a href="#motion-design--cgi">Motion Design / CGI</a>
+    </li>
+    <li>
+    <a href="#tools--sites">Tools / Sites</a>
+    </li>
+    <li>
+      <a href="#blogs">Blogs</a>
+    </li>
+    <li>
+      <a href="#talks-and-interviews">Talks and Interviews</a>
     </li>
   </ul>
 </details>
@@ -62,26 +62,21 @@ For video production inquiries, please visit [kumo.productions™](https://kumo.
 
 ## Motion Design / CGI
 
-### [Cumuloworks SHOWREEL 2024](https://www.youtube.com/watch?v=b_68zkrGBDQ)
+### [kumo.productions™ Launch SHOWREEL 2025](https://www.youtube.com/watch?v=8aNl_7fvrrk)
+
+[![kumo.productions™ Launch SHOWREEL 2025](https://img.youtube.com/vi/8aNl_7fvrrk/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aNl_7fvrrk)
+
+Since 2025, all video production services are transferred from Cumuloworks to [kumo.productions™](https://kumo.productions/).
+
+**More projects are on [**kumo.productions™**](https://kumo.productions/en/projects)**
+
+### [Cumuloworks SHOWREEL 2024](https://www.youtube.com/watch?v=b_68zkrGBDQ) (Projects before 2025)
 
 [![Cumuloworks SHOWREEL 2024](https://img.youtube.com/vi/b_68zkrGBDQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=b_68zkrGBDQ)
 
-### Ads
+<!-- Ads -->
 
-### Music Videos
-
-- [Mori Calliope - Holy嫉妬 Music Video](./src/content/projects/holyshitto.md)
-- [Angelic](./src/content/projects/angelic.md)
-- [EneKey「サイドストーリー」 山崎まさよし×ともわか篇](./src/content/projects/enekey-1.md)
-- [ヰ世界情緒 ANGELIC](./src/content/projects/angelic.md)
-- [IRIAM リニューアル](./src/content/projects/iriam.md)
-- [まもレール](./src/content/projects/mamorail.md)
-- [YOASOBI 「ミスター」 teaser](./src/content/projects/yoasobi-mr-teaser.md)
-- [TOKYO NODE Digital Signage](./src/content/projects/tokyonode.md)
-- [Abstractions Void](./src/content/projects/abstractionsvoid.md)
-- [SV.LEAGUE オープニングムービー](./src/content/projects/svleague.md)
-- [米津玄師 LOST CORNER](./src/content/projects/lost-corner.md)
-- [すとぷり ゆらゆら Music Video](./src/content/projects/yurayuramv.md)
+<!-- Entertainment -->
 
 ## Tools / Sites
 
@@ -115,13 +110,13 @@ Web Development (JAMstack + Cloudflare Pages + Astro)
 
 ### [reika.work](https://reika.work)
 
-[![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
-
 Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
+
+[![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
 
 ## Articles
 
-- [Website using Astro](https://cumulo.works/blogs/website-astro)
+<!-- Articles -->
 
 ## Talks and Interviews
 
@@ -142,3 +137,5 @@ Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 ### 2020
 
 - CGWORLD 2020 クリエイティブカンファレンス [「After Effectsスクリプトを書いて、制作を楽しく効率化しよう。」](https://cgworld.jp/special/cgwcc2020/schedule/cumuloworks/index.html)
+
+<!-- Links -->
