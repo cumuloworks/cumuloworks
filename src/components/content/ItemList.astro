@@ -4,7 +4,7 @@ import { categoryDictionary } from "@/utils/categoryDictionary";
 const { items } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 gap-5 text-cumulodark">
+<div class="grid grid-cols-1 gap-5 text-dark">
     {
         items.map((item) => (
             <div class="grid-item" data-category={item.data.category}>
@@ -27,7 +27,7 @@ const { items } = Astro.props;
                         </p>
                         <p class="text-sm mt-4">{item.data.description}</p>
                     </div>
-                    <div class="text-inactive w-full p-2 text-center flex md:hidden flex-col justify-center items-center flex-grow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div class="text-gray-200 w-full p-2 text-center flex md:hidden flex-col justify-center items-center flex-grow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <p class="font-bold text-lg">{item.data.title}</p>
                         <p>
                             {item.data.date} |{" "}

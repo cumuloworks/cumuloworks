@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-layout: "@/layouts/SinglePageLayout.astro"
+layout: "@/layouts/Layout.astro"
 ---
 
 ## お知らせ

@@ -12,7 +12,7 @@ const SocialIcons = [
 ---
 
 <header
-    class="flex bg-white text-cumulodark md:min-h-60 min-h-60 md:text-base text-sm">
+    class="flex bg-white text-dark md:min-h-60 min-h-60 md:text-base text-sm">
     <nav
         class="flex w-full justify-between items-center mx-auto font-bold uppercase max-w-screen-xl px-5">
         <ul class="md:flex flex-1 gap-5 text-left hidden" id="nav-links">
@@ -25,7 +25,7 @@ const SocialIcons = [
         <div class="flex flex-col items-center mx-auto px-0 md:px-10 gap-5">
             <a href="/" aria-label="Home">
                 <svg
-                    class="w-full fill-cumulodark hover:fill-cumulolight"
+                    class="w-full fill-dark hover:fill-light"
                     viewBox="0 0 918.79 105"
                     role="img"
                     aria-labelledby="logo-title">
@@ -35,20 +35,20 @@ const SocialIcons = [
             </a>
             <ul class="flex gap-5" id="page-links">
                 <li>
-                    <a href="/projects" class="hover:text-cumulolight">
+                    <a href="/projects" class="hover:text-light">
                         Projects
                     </a>
                 </li>
                 <li>
-                    <a href="/blogs" class="hover:text-cumulolight">Blogs</a>
+                    <a href="/blogs" class="hover:text-light">Blogs</a>
                 </li>
                 <li>
-                    <a href="/downloads" class="hover:text-cumulolight">
+                    <a href="/downloads" class="hover:text-light">
                         Downloads
                     </a>
                 </li>
                 <li class="block md:hidden">
-                    <a href="/about" class="hover:text-cumulolight">About</a>
+                    <a href="/about" class="hover:text-light">About</a>
                 </li>
             </ul>
             <ul class="md:hidden flex-1 gap-5 text-left flex">
@@ -68,10 +68,10 @@ const SocialIcons = [
             id="page-links"
             class="md:flex hidden flex-1 flex-col md:flex-row justify-end gap-5 text-right">
             <li>
-                <a href="/about" class="hover:text-cumulolight">About</a>
+                <a href="/about" class="hover:text-light">About</a>
             </li>
             <li>
-                <a href="/contact" class="hover:text-cumulolight"
+                <a href="/contact" class="hover:text-light"
                     >Contact</a
                 >
             </li>
@@ -96,6 +96,6 @@ const SocialIcons = [
         position: relative;
     }
     .underdot::after {
-        @apply content-['']  size-[5px] bg-cumulodark rounded-full absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 animate-pulse;
+        @apply content-['']  size-[5px] bg-dark rounded-full absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 animate-pulse;
     }
 </style>

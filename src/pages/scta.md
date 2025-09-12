@@ -1,6 +1,6 @@
 ---
 title: "特定商取引法に基づく表示"
-layout: "@/layouts/SinglePageLayout.astro"
+layout: "@/layouts/Layout.astro"
 ---
 
 ## 販売業社の名称

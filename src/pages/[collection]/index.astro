@@ -2,8 +2,7 @@
 import { Icon } from "astro-icon/components";
 import ItemGrid from "@/components/content/ItemGrid.astro";
 import ItemList from "@/components/content/ItemList.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import "@/styles/markdown.css";
+import Layout from "@/layouts/Layout.astro";
 import { categoryDictionary } from "@/utils/categoryDictionary";
 import { getItemsWithThumbnails } from "@/utils/contentUtils";
 
@@ -32,7 +31,7 @@ function generateCategoryStyles(categories: string[]) {
 }
 ---
 
-<BaseLayout title={title}>
+<Layout title={title}>
     <div class="w-full max-w-screen-xl mx-auto mb-10">
         <div
             class="w-full flex flex-col md:flex-row items-center justify-between mb-10 gap-5">
@@ -41,7 +40,7 @@ function generateCategoryStyles(categories: string[]) {
             </h1>
             <div
                 id="filter-controls"
-                class="rounded-full border border-cumulo-inactive text-sm">
+                class="rounded-full border border-cumulo-gray-200 text-sm">
                 <button
                     data-filter="all"
                     class="filter-button px-5 py-1 rounded-full transition-all ease-out-expo hover:scale-105 active"
@@ -68,54 +67,4 @@ function generateCategoryStyles(categories: string[]) {
             }
         </div>
     </div>
-    <button
-        id="backToTopButton"
-        class="mx-auto flex items-center gap-5 justify-center md:justify-end uppercase group h-10"
-        >Back to the top
-        <Icon
-            name="fa6-solid:arrow-up"
-            class="size-5 group-hover:size-10 transition-all ease-out-expo"
-        />
-    </button>
-</BaseLayout>
-
-<style is:global>
-    #filter-controls button.active {
-        @apply bg-cumulodark text-active;
-    }
-
-    #items-container[data-filter="all"] .grid-item {
-        display: block;
-    }
-</style>
-
-<style is:global set:html={generateCategoryStyles(categories)}></style>
-
-<script>
-    const filterButtons = document.querySelectorAll(".filter-button");
-    const itemsContainer = document.getElementById("items-container");
-    const backToTopButton = document.getElementById("backToTopButton");
-
-    function setActiveFilter(button) {
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-        itemsContainer.dataset.filter = button.dataset.filter;
-    }
-
-    filterButtons.forEach((button) => {
-        button.addEventListener("click", () => setActiveFilter(button));
-    });
-
-    setActiveFilter(
-        document.querySelector('.filter-button[data-filter="all"]'),
-    );
-
-    if (backToTopButton) {
-        backToTopButton.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        });
-    }
-</script>
+</Layout>

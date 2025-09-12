@@ -13,7 +13,7 @@ const SocialIcons = [
 <nav class="font-bold uppercase">
     <div class="absolute left-8 lg:left-20 bottom-8 lg:bottom-24">
         <ul
-            class="grid grid-cols-2 lg:grid-cols-6 gap-5 text-center text-inactive">
+            class="grid grid-cols-2 lg:grid-cols-6 gap-5 text-center text-gray-200">
             {
                 SocialIcons.map((link) => (
                     <SocialIcon href={link.href} icon={link.icon} dark={true} />
@@ -30,23 +30,23 @@ const SocialIcons = [
     <div
         class="absolute right-8 lg:right-1/2 lg:translate-x-1/2 bottom-8 lg:bottom-24">
         <ul
-            class="flex flex-col lg:flex-row w-full gap-5 lg:gap-5 text-right lg:text-center text-inactive">
+            class="flex flex-col lg:flex-row w-full gap-5 lg:gap-5 text-right lg:text-center text-gray-200">
             <li>
-                <a href="/projects" class="hover:text-active">Projects</a>
+                <a href="/projects" class="hover:text-white">Projects</a>
             </li>
             <li>
-                <a href="/blogs" class="hover:text-active">Blogs</a>
+                <a href="/blogs" class="hover:text-white">Blogs</a>
             </li>
             <li>
-                <a href="/downloads" class="hover:text-active">Downloads</a>
+                <a href="/downloads" class="hover:text-white">Downloads</a>
             </li>
             <li class="lg:hidden">
-                <a href="/about" class="hover:text-active">About</a>
+                <a href="/about" class="hover:text-white">About</a>
             </li>
             <li class="lg:hidden">
                 <a
                     href="https://kumo.productions/"
-                    class="hover:text-active lowercase after:content-['_↗'] after:text-active"
+                    class="hover:text-white lowercase after:content-['_↗'] after:text-white"
                     >kumo™</a
                 >
             </li>
@@ -54,19 +54,19 @@ const SocialIcons = [
     </div>
     <div class="absolute right-8 lg:right-20 bottom-8 lg:bottom-24">
         <ul
-            class="hidden lg:flex flex-col lg:flex-row w-full gap-5 text-right text-inactive">
+            class="hidden lg:flex flex-col lg:flex-row w-full gap-5 text-right text-gray-200">
             <li>
-                <a href="/about" class="hover:text-active">About</a>
+                <a href="/about" class="hover:text-white">About</a>
             </li>
             <li>
-                <a href="/contact" class="hover:text-active after:text-active"
+                <a href="/contact" class="hover:text-white after:text-white"
                     >Contact</a
                 >
             </li>
             <li>
                 <a
                     href="https://kumo.productions/"
-                    class="hover:text-active lowercase after:content-['_↗'] after:text-active"
+                    class="hover:text-white lowercase after:content-['_↗'] after:text-white"
                     >kumo.productions™</a
                 >
             </li>

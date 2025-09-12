@@ -1,68 +1,13 @@
 ---
-import { Icon } from "astro-icon/components";
-import TopPageBackground from "@/components/toppage/TopPageBackground.astro";
-import TopPageGallery from "@/components/toppage/TopPageGallery.astro";
-import TopPageInteractions from "@/components/toppage/TopPageInteractions.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { categoryDictionary } from "@/utils/categoryDictionary";
-import { getItemsWithThumbnails } from "@/utils/contentUtils";
-import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
-
-const projects = await getItemsWithThumbnails("projects");
-
-const projectsByCategory = projects.reduce((acc, project) => {
-	const category = project.data.category || "uncategorized";
-	if (category !== "entertainment" && category !== "ads") return acc;
-	if (!acc[category]) {
-		acc[category] = {
-			projects: [],
-			description: categoryDictionary[category].description,
-		};
-	}
-	acc[category].projects.push(project);
-	return acc;
-}, {});
+import Layout from "@/layouts/Layout.astro";
+import README from "@/../README.md";
 ---
 
-<BaseLayout
+<Layout
 	title="Home"
 	description="Cumuloworks | Director / Motion Grapher / CG Generalist"
 	limit={false}
-	header={false}>
-	<AnnouncementBanner />
-	<div
-		class="flex flex-col snap-y snap-mandatory from-cumulodark to-black bg-gradient-to-b">
-		<section class="w-full h-svh bg-cumulodark relative snap-start">
-			<TopPageBackground />
-			<TopPageInteractions />
-		</section>
-		<section
-			class="min-h-[calc(100svh-40px)] snap-start max-w-screen-xl mx-auto p-8 flex flex-col justify-center font-bold text-inactive">
-			<div
-				class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 py-20">
-				{
-					Object.entries(projectsByCategory).map(
-						([category, projectsData]) => (
-							<TopPageGallery
-								category={categoryDictionary[category].name}
-								description={
-									categoryDictionary[category].description
-								}
-								projects={projectsData.projects}
-							/>
-						),
-					)
-				}
-			</div>
-			<a
-				href="/projects"
-				class="flex items-center gap-5 justify-center md:justify-end uppercase mb-5 group h-10"
-				>Show more projects
-				<Icon
-					name="fa6-solid:chevron-right"
-					class="size-5 group-hover:size-10 transition-all ease-out-expo"
-				/>
-			</a>
-		</section>
-	</div>
-</BaseLayout>
+	header={false}
+>
+	<README />
+</Layout>

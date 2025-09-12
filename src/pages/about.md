@@ -1,6 +1,6 @@
 ---
 title: "About"
-layout: "@/layouts/SinglePageLayout.astro"
+layout: "@/layouts/Layout.astro"
 ---
 
 ## 📸 Profile

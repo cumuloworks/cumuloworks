@@ -1,0 +1,133 @@
+---
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import AnnouncementBanner from "@/components/atoms/AnnouncementBanner.astro";
+import "@/styles/global.css";
+import Analytics from "@vercel/analytics/astro";
+import Icon from "@/assets/icon.svg?raw";
+
+const {
+    title,
+    description,
+    limit = true,
+    ogImage,
+    header = true,
+} = Astro.props;
+const pageTitle = `${title} | Cumuloworks`;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=0.875"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description ? description : title} />
+        <title>{pageTitle}</title>
+
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta
+            property="og:description"
+            content={description ? description : title}
+        />
+        <meta
+            property="og:image"
+            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+        />
+        <meta
+            property="twitter:image"
+            content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="description"
+            content={description ? description : title}
+        />
+        <meta property="og:site_name" content="Cumuloworks" /><link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700"
+            rel="stylesheet"
+        />
+        <Analytics />
+    </head>
+    <body
+        class="h-svh bg-background text-text font-geist-sans p-8 overflow-x-hidden overflow-y-scroll"
+    >
+        <header class="flex flex-col gap-6 mb-16">
+            <a
+                href="/"
+                aria-label="Cumuloworks"
+                class="fill-text hover:fill-accent transition-colors duration-300 w-24"
+            >
+                <span set:html={Icon} />
+            </a>
+        </header>
+        <div
+            class:list={[
+                "pb-8",
+                "prose",
+                "prose-invert",
+                "prose-zinc",
+                "prose-blockquote:border-accent",
+                "prose-blockquote:not-italic",
+                "prose-blockquote:text-justify",
+                "prose-p:after:content-none",
+                "prose-p:before:content-none",
+                "prose-img:inline-block",
+                "prose-img:rounded",
+                "prose-video:rounded",
+                "prose-img:max-h-54",
+                "prose-img:my-0",
+                "prose-ul:list-['->']",
+                "prose-ul:pl-5",
+                "marker:text-secondary",
+                "prose-code:before:content-none",
+                "prose-code:after:content-none",
+                "prose-a:no-underline",
+                "transition-colors",
+                "duration-300",
+                "prose-headings:font-medium",
+                "prose-h2:text-4xl",
+                "prose-h1:text-7xl",
+                "prose-headings:w-[calc(100vw-4rem)]",
+                "prose-headings:break-all",
+                "prose-h1:text-white",
+                "prose-h2:text-primary",
+                "prose-h3:mt-9",
+                "prose-h3:mb-5",
+                "prose-headings:text-secondary",
+                "prose-a:text-primary",
+                "prose-a:hover:text-accent",
+            ]}
+        >
+            <slot />
+        </div>
+    </body>
+</html>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentDomain = window.location.hostname;
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (
+                href &&
+                href.startsWith("http") &&
+                !href.includes(currentDomain)
+            ) {
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener noreferrer");
+            }
+        });
+    });
+</script>

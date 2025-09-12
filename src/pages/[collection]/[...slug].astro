@@ -3,8 +3,7 @@ import type { ContentEntryMap } from "astro:content";
 import { getCollection } from "astro:content";
 import Gallery from "@/components/content/Gallery.astro";
 import Hero from "@/components/content/Hero.astro";
-import ContentLayout from "@/layouts/ContentLayout.astro";
-import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
 import { categoryDictionary } from "@/utils/categoryDictionary";
 import {
 	getItemsWithThumbnails,
@@ -42,19 +41,17 @@ const thumbnailUrl = new URL(currentItem.thumbnail.src, Astro.url).toString();
 const { title, description, category, date } = currentItem.data;
 ---
 
-<ContentLayout
+<Layout
 	{title}
 	{description}
 	category={categoryDictionary[category].name}
 	{date}
 	{prevItem}
 	{nextItem}
-	ogImage={thumbnailUrl}>
-	<div slot="hero">
-		<Hero item={currentItem} />
-	</div>
+	ogImage={thumbnailUrl}
+>
 	<div class="max-w-screen-md mx-auto">
 		<Content />
 	</div>
 	{collection === "projects" && <Gallery folderPath={galleryFolderPath} />}
-</ContentLayout>
+</Layout>
