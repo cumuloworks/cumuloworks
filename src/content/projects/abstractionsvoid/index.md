@@ -7,7 +7,7 @@ embed: "https://www.youtube.com/watch?v=4enMG7U5pv4"
 
 Shiguのディレクションの下、一部モーションデザインなどを担当いたしました。
 
-![](./abstractionsvoid/logomotion.gif)
+![](logomotion.gif)
 
 ```plaintext
 Vocal : KOKO

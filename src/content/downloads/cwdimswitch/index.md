@@ -7,7 +7,7 @@ description: "CW Dim Switch is an After Effects script that mimics DaVinci Resol
 
 [![Gumroad Badge](https://img.shields.io/badge/Gumroad-FF90E8?logo=gumroad&logoColor=fff&style=for-the-badge)](https://cumuloworks.gumroad.com/l/cwdimswitch)
 
-![](./cwdimswitch/l74bs07in4wxglx2sehcht4lao2d.jpg)
+![](l74bs07in4wxglx2sehcht4lao2d.jpg)
 
 AE does not have that wonderful switch DaVinci Resolve has. So, me, Cumuloworks made it for you. You're welcome!
 

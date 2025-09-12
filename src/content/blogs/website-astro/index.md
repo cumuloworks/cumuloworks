@@ -155,7 +155,7 @@ Paragraph...
 
 ちなみに、このサイトは全記事で600枚くらいの画像があり、Vercelでの初回のビルドは20分以上かかった。2回目以降はキャッシュが効いて差分のみの処理となり、30秒以内にビルドが終わる。
 
-![alt text](./website-astro/image-5.png)
+![alt text](image-5.png)
 
 ### ページネーションの排除
 
@@ -179,7 +179,7 @@ Paragraph...
 
 サムネイルはiframeと違いSSGの対象なので、表示が高速になる。
 
-![alt text](./website-astro/image-2.png)
+![alt text](image-2.png)
 
 ### トップページの動画
 
@@ -191,7 +191,7 @@ SafariはAV1をサポートしていないので、H.264版にフォールバッ
 
 ロードするたびにJavaScriptで再生位置がランダムになるので、過去4年に制作した映像がランダムで見られるような仕組みになっている。
 
-![alt text](./website-astro/image-3.png)
+![alt text](image-3.png)
 
 ## その他
 
@@ -203,8 +203,8 @@ JavaScriptで、画像の総数をターゲットに[1,3,2,3,1,2,3]というよ�
 
 これは以前にReactで実装した時のコードをほぼそのまま流用している。
 
-![alt text](./website-astro/image-4.png)
-![alt text](./website-astro/image-1.png)
+![alt text](image-4.png)
+![alt text](image-1.png)
 
 シンプルなモーダルもつけた。
 
@@ -220,9 +220,9 @@ JavaScriptで、画像の総数をターゲットに[1,3,2,3,1,2,3]というよ�
 
 基本的にMarkdownから取得した内容を反映し、画像は各記事のサムネイルか、それ以外ではデフォルト画像になるように設定した。
 
-![alt text](./website-astro/image-6.png)
-![alt text](./website-astro/image-7.png)
-![alt text](./website-astro/image-8.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
 
 ### サイトマップ
 
@@ -242,7 +242,7 @@ Markdownlintを使用して各記事のMarkdownをLintしている。
 
 これにより、記事によってMarkdownの書き方が一貫しないということを避けられる。
 
-![](./website-astro/image.png)
+![](image.png)
 
 （例えば、改行の使い方、ヘディングの使い方など。例えば、# の直後に ### が来ると警告になる。）
 
@@ -252,19 +252,19 @@ Markdownlintを使用して各記事のMarkdownをLintしている。
 
 ### トップページ モバイル
 
-![alt text](./website-astro/image-9.png)
+![alt text](image-9.png)
 
 ### トップページ デスクトップ
 
-![alt text](./website-astro/image-10.png)
+![alt text](image-10.png)
 
 ### プロジェクトページ モバイル
 
-![alt text](./website-astro/image-11.png)
+![alt text](image-11.png)
 
 ### プロジェクトページ デスクトップ
 
-![alt text](./website-astro/image-12.png)
+![alt text](image-12.png)
 
 ## 今後
 

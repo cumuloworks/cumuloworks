@@ -32,7 +32,7 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 
 > He began creating motion graphics under the name Cumuloworks during his high school years. After gaining two years of experience at [Naname Inc.](https://nanameinc.jp/), he officially established Cumuloworks, Inc. in 2020. Within kumo.productions™, he focuses on motion design and CGI, delivering a diverse range of projects including commercials, music videos, and live stage productions. He is also committed to research and development, particularly in creating tools for video production and improving workflows.
 
-**Professionally use** – Daily tools for motion design, editing, and rendering
+**Used professionally** – Daily tools for motion design, editing, and rendering
 
 ![Adobe After Effects](https://img.shields.io/badge/After%20Effects-blueviolet.svg?logo=Adobe%20After%20Effects&logoColor=white)
 ![Cinema 4D](https://img.shields.io/badge/Cinema%204D-navy.svg?logo=Cinema%204D&logoColor=white)
@@ -66,9 +66,9 @@ For video production inquiries, please visit [kumo.productions™](https://kumo.
 
 [![kumo.productions™ Launch SHOWREEL 2025](https://img.youtube.com/vi/8aNl_7fvrrk/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aNl_7fvrrk)
 
-Since 2025, all video production services are transferred from Cumuloworks to [kumo.productions™](https://kumo.productions/).
+As of 2025, all video production services have been transferred from Cumuloworks to [kumo.productions™](https://kumo.productions/).
 
-**More projects are on [**kumo.productions™**](https://kumo.productions/en/projects)**
+**More projects are available on [**kumo.productions™**](https://kumo.productions/en/projects)**
 
 ### [Cumuloworks SHOWREEL 2024](https://www.youtube.com/watch?v=b_68zkrGBDQ) (Projects before 2025)
 
@@ -88,7 +88,7 @@ After Effects script for easily creating parallax effect animations with 3D laye
 
 Tools for writing and previewing travel itineraries in Markdown.
 
-My first open source project and remark plugin [`remark-itinerary`](https://www.npmjs.com/package/remark-itinerary) is on npm.
+My first open-source project, the remark plugin [`remark-itinerary`](https://www.npmjs.com/package/remark-itinerary), is on npm.
 
 (Framework: Astro + React)
 
@@ -102,7 +102,7 @@ My personal website. (JAMstack - Cloudflare Pages + Astro)
 
 ### [kumo.productions™](https://kumo.productions)
 
-A website for my video productions studio, kumo.productions™.
+A website for my video production studio, kumo.productions™.
 
 Web Development (JAMstack + Cloudflare Pages + Astro)
 

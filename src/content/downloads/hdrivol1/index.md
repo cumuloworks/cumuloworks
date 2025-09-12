@@ -27,19 +27,19 @@ Vol.1のフルバージョンには8K解像度の'sunny', 'coldfront', 'overcast
 
 再配布は禁止です。
 
-![](./hdrivol1/samplescene_aurora_default.jpg)
-![](./hdrivol1/samplescene_aurora_sky.jpg)
+![](samplescene_aurora_default.jpg)
+![](samplescene_aurora_sky.jpg)
 
-![](./hdrivol1/samplescene_coldfront_default.jpg)
-![](./hdrivol1/samplescene_coldfront_sky.jpg)
-![](./hdrivol1/samplescene_drawing_default.jpg)
+![](samplescene_coldfront_default.jpg)
+![](samplescene_coldfront_sky.jpg)
+![](samplescene_drawing_default.jpg)
 
-![](./hdrivol1/samplescene_drawing_sky.jpg)
-![](./hdrivol1/samplescene_overcast_default.jpg)
+![](samplescene_drawing_sky.jpg)
+![](samplescene_overcast_default.jpg)
 
-![](./hdrivol1/samplescene_overcast_sky.jpg)
-![](./hdrivol1/samplescene_sunny_default.jpg)
-![](./hdrivol1/samplescene_sunny_sky.jpg)
+![](samplescene_overcast_sky.jpg)
+![](samplescene_sunny_default.jpg)
+![](samplescene_sunny_sky.jpg)
 
-![](./hdrivol1/samplescene_sunset_default.jpg)
-![](./hdrivol1/samplescene_sunset_sky.jpg)
+![](samplescene_sunset_default.jpg)
+![](samplescene_sunset_sky.jpg)

@@ -5,9 +5,9 @@ date: 2021-02-14
 category: "announcement"
 ---
 
-![](./cgwmasterclass/image-1.png)
+![](image-1.png)
 
-![](./cgwmasterclass/image-2.png)
+![](image-2.png)
 
 3月20日(土)に開催される、CGWORLD MASTERCLASS ONLINE vol.3に登壇します。
 

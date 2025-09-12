@@ -19,7 +19,7 @@ autoRectはプラグインではなく、数行のエクスプレッションが
 
 60秒の説明動画を見て、どのように動作するかをご覧ください！
 
-![](./autorect/gif_202208171629.gif)
+![](gif_202208171629.gif)
 
 Fit Shape からの## アップグレードは無料です。
 
@@ -47,7 +47,7 @@ Gumroadで購入した方 … 購入時にメールで送られてくるライ�
 
 BOOTHで購入した方 … 購入時にメールで送られてくる注文番号を入力してください。
 
-![](./autorect/CLIP_220818_213023.jpg)
+![](CLIP_220818_213023.jpg)
 
 各部名称
 
@@ -121,7 +121,7 @@ Layer X, skipped. (E13) … レイヤーXはautoRectではないので、Bakeボ
 
 ## Settings Panel | 設定画面
 
-![](./autorect/CLIP_220818_213033.jpg)
+![](CLIP_220818_213033.jpg)
 
 Default Stroke Color, Default Stroke Width, Default Fill Color
 
@@ -149,7 +149,7 @@ autoRect作成後、調整レイヤースイッチ・トラックマットスイ
 
 ## autoRect pseudo effect | autoRect pseudoエフェクト
 
-![](./autorect/CLIP_220818_213040.jpg)
+![](CLIP_220818_213040.jpg)
 
 Expand X
 

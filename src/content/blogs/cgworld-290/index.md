@@ -5,7 +5,7 @@ date: 2022-09-08
 category: "announcement"
 ---
 
-![](./cgworld-290/cgw.jpg)
+![](cgw.jpg)
 
 9月9日発売のCGWORLD 290号に、Cumuloworksがディレクション・制作をしたミュージックビデオ「ARCADIA」の制作模様が掲載されました。
 

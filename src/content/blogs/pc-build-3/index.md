@@ -30,7 +30,7 @@ CHA_FAN : Arctic P14 PWM
 
 ガラスは少しスモークのかかった感じで、すべて光らないパーツで構成すると、かなり落ち着いた雰囲気になる。
 
-![alt text](pc-build-3/angle-3.png)
+![alt text](angle-3.png)
 
 ### CPUとCPUファン
 
@@ -38,7 +38,7 @@ Ryzen 5なので、NH-D9Lで十分冷やせそう。(10分負荷で85℃程度)
 
 NH-U12Sはケースに入らないので、Ryzen 7以降は厳しいかもしれない。
 
-![alt text](pc-build-3/occt-2.png)
+![alt text](occt-2.png)
 
 ### GPU
 
@@ -52,7 +52,7 @@ NH-U12Sはケースに入らないので、Ryzen 7以降は厳しいかもしれ
 
 これだと、負荷時でも天面のガラスが熱くなる感じは無かった。
 
-![alt text](pc-build-3/airflow.png)
+![alt text](airflow.png)
 
 ## ベンチマーク
 
@@ -62,15 +62,15 @@ CPU (Multi Core): 16665 pts
 
 CPU (Single Core): 2161 pts
 
-![cinebench](pc-build-3/cinebench.png)
+![cinebench](cinebench.png)
 
 ### Octane Bench
 
 Score: 641.92 pts
 
-![octanebench](pc-build-3/ocatnebench.png)
+![octanebench](ocatnebench.png)
 
 ### OCCT
 
-![alt text](pc-build-3/occt-1.png)
-![alt text](pc-build-3/occt-2.png)
+![alt text](occt-1.png)
+![alt text](occt-2.png)

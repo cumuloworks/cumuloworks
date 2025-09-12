@@ -31,9 +31,9 @@ description: "今年もお世話になりました！2024年の振り返り・�
 
 他にも広告・イベントなど多様な案件を手掛けさせていただきました。
 
-![alt text](../projects/kaf-kaika/thumb.jpg)
-![alt text](../projects/angelic/thumb.png)
-![alt text](../projects/mentos-duo/thumb.png)
+![alt text](../../projects/kaf-kaika/thumb.jpg)
+![alt text](../../projects/angelic/thumb.png)
+![alt text](../../projects/mentos-duo/thumb.png)
 
 ## 機材屋と化す
 
@@ -53,18 +53,18 @@ description: "今年もお世話になりました！2024年の振り返り・�
 
 64コア128スレッドCPU、384GBメモリという、過去最高スペックになりました。
 
-![alt text](./year-in-review-2024/computer-new-ws-1.png)
-![alt text](./year-in-review-2024/computer-new-ws-2.png)
+![alt text](computer-new-ws-1.png)
+![alt text](computer-new-ws-2.png)
 
 旧ワークステーションは小さく組み直しました。
 
-![alt text](./year-in-review-2024/computer-old-ws.png)
+![alt text](computer-old-ws.png)
 
 他にも、友人のPCを3台組みました。
 
-![alt text](./year-in-review-2024/computer-friend-1.png)
-![alt text](./year-in-review-2024/computer-friend-2.png)
-![alt text](./year-in-review-2024/computer-friend-3.png)
+![alt text](computer-friend-1.png)
+![alt text](computer-friend-2.png)
+![alt text](computer-friend-3.png)
 
 ## コーディングにハマる
 
@@ -88,7 +88,7 @@ GitHubリポジトリにマークダウンを直接配置しCMSとして使う�
 
 それに代わるソリューションをずっと探していましたが、最終的に自分で作ることにしました。
 
-![alt text](./year-in-review-2024/company-app.JPG)
+![alt text](company-app.JPG)
 
 これまでNotion、LTOデータベース、Googleスプレッドシートなどで管理していたプロジェクト情報を、1つのデータベースで管理できるようになりました。
 
@@ -100,7 +100,7 @@ GitHubリポジトリにマークダウンを直接配置しCMSとして使う�
 
 来年は機能を仕上げつつ安定化をして、制作の基盤として本格的に導入できるようなものに仕上げていきたいと考えています。
 
-![alt text](./year-in-review-2024/company-github.png)
+![alt text](company-github.png)
 
 ## ワークフローのドキュメント化
 
@@ -108,7 +108,7 @@ GitHubリポジトリにマークダウンを直接配置しCMSとして使う�
 
 社内で暗黙のルールになっていたファイルの命名規則やワークフローの取り決めを、明文化して直ぐに参照できるようにしました。
 
-![alt text](./year-in-review-2024/company-documentation.JPG)
+![alt text](company-documentation.JPG)
 
 マークダウンで記述したものをGitHubリポジトリにまとめ、VitePressを使ってCloudflare Pagesでアクセス制御されたWebサイトとして公開される仕組みを整えました。
 
@@ -142,8 +142,8 @@ KMNZの再結成が驚いたし嬉しかった。LITAさんがどれだけ色々
 
 操作は少しむずかしいが、とても良く出来たプロダクトなので、オススメ。
 
-![alt text](./year-in-review-2024/purchased-synth-1.png)
-![alt text](./year-in-review-2024/purchased-synth-2.png)
+![alt text](purchased-synth-1.png)
+![alt text](purchased-synth-2.png)
 
 ### HermanMiller
 
@@ -151,7 +151,7 @@ KMNZの再結成が驚いたし嬉しかった。LITAさんがどれだけ色々
 
 何の変哲もない椅子に見えて、めちゃくちゃ座り心地が良い。
 
-![alt text](./year-in-review-2024/purchased-chair.png)
+![alt text](purchased-chair.png)
 
 ### Keyboard Altar I
 
@@ -159,7 +159,7 @@ Electronic Materials OfficeのAltar Iというキーボード。1年越しに届
 
 無機質なタイポグラフィとアクセントカラーがかっこいい。
 
-![alt text](./year-in-review-2024/purchased-keyboard.png)
+![alt text](purchased-keyboard.png)
 
 ## 行った場所
 
@@ -167,18 +167,18 @@ Electronic Materials OfficeのAltar Iというキーボード。1年越しに届
 
 5年ぶり海外、トルコは10年ぶりの訪問
 
-![alt text](./year-in-review-2024/travel-istanbul-1.png)
-![alt text](./year-in-review-2024/travel-istanbul-2.png)
+![alt text](travel-istanbul-1.png)
+![alt text](travel-istanbul-2.png)
 
 ### 軽井沢
 
 久しぶりに積もった雪を見た。友達6人でコテージ借りるという初の試み、めちゃめちゃ楽しかった。
 
-![alt text](./year-in-review-2024/travel-karuizawa.png)
+![alt text](travel-karuizawa.png)
 
 ### 羽田ANAハンガー
 
-![alt text](./year-in-review-2024/travel-ana.png)
+![alt text](travel-ana.png)
 
 高校生ぶりに、整備場見学。多分結構ラッキーで、いろんなANAのフリートを見られて興奮。
 

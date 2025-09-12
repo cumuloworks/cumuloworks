@@ -1,12 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import readmeRaw from "@/../README.md?raw";
-import { getItemsWithThumbnails } from "@/utils/contentUtils";
+import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 
-const projects = await getItemsWithThumbnails("projects");
-const blogs = await getItemsWithThumbnails("blogs");
-const downloads = await getItemsWithThumbnails("downloads");
+const projects = await getCollection("projects");
+const blogs = await getCollection("blogs");
+const downloads = await getCollection("downloads");
 const links = [
 	{
 		title: "Privacy Policy",

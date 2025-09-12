@@ -1,13 +1,8 @@
 ---
 import type { ContentEntryMap } from "astro:content";
-import { getCollection } from "astro:content";
-import Gallery from "@/components/content/Gallery.astro";
-import Hero from "@/components/content/Hero.astro";
+import { getCollection, getEntry } from "astro:content";
+import Gallery from "@/components/Gallery.astro";
 import Layout from "@/layouts/Layout.astro";
-import {
-	getItemsWithThumbnails,
-	getItemWithThumbnail,
-} from "@/utils/contentUtils";
 
 export async function getStaticPaths() {
 	const collections = ["projects", "blogs", "downloads"];
@@ -26,13 +21,11 @@ export async function getStaticPaths() {
 }
 
 const { collection, slug } = Astro.props;
-const currentItem = await getItemWithThumbnail(collection, slug);
+const currentItem = await getEntry(
+    collection as keyof ContentEntryMap,
+    slug,
+);
 const { Content } = await currentItem.render();
-
-const items = await getItemsWithThumbnails(collection);
-const currentIndex = items.findIndex((item) => item.slug === slug);
-const prevItem = items[currentIndex + 1] || null;
-const nextItem = items[currentIndex - 1] || null;
 
 const galleryFolderPath = `/src/content/${collection}/${slug}/`;
 
