@@ -71,10 +71,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:description" content={frontmatter?.description} />
-        <meta
-            property="og:image"
-            content={new URL("/ogp.png", Astro.url)}
-        />
+        <meta property="og:image" content={new URL("/ogp.png", Astro.url)} />
         <meta
             property="twitter:image"
             content={new URL("/ogp.png", Astro.url)}
@@ -93,10 +90,36 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <Analytics />
     </head>
     <body
-        class="min-h-svh bg-background font-geist-sans overflow-x-hidden overflow-y-scroll"
+        class="min-h-svh bg-gradient-to-r from-background via-[#1d3744] to-background font-geist-sans overflow-x-hidden overflow-y-scroll relative"
     >
         <div
-            class="min-h-svh max-w-screen-lg mx-auto bg-background text-text px-8 py-12"
+            class="pointer-events-none fixed inset-0 z-0 mix-blend-overlay"
+            aria-hidden="true"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+            >
+                <filter id="noiseFilter">
+                    <feTurbulence
+                        id="noiseTurbulence"
+                        type="fractalNoise"
+                        baseFrequency="0.8"
+                        numOctaves="4"
+                        seed="0"
+                        stitchTiles="stitch"></feTurbulence>
+                </filter>
+                <rect
+                    width="100%"
+                    height="100%"
+                    filter="url(#noiseFilter)"
+                    opacity="1"></rect>
+            </svg>
+        </div>
+        <div
+            class="min-h-svh max-w-screen-lg mx-auto relative z-10 bg-background backdrop-blur-2xl text-text px-8 py-12"
         >
             <header
                 class="flex justify-between items-center gap-6 mb-16 flex-wrap"
@@ -212,5 +235,17 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
                 link.setAttribute("rel", "noopener noreferrer");
             }
         });
+
+        // Animate SVG noise each frame using requestAnimationFrame
+        const turb = document.getElementById("noiseTurbulence");
+        if (turb && "setAttribute" in turb) {
+            let seed = 0;
+            const tick = () => {
+                seed = (seed + 1) % 1000;
+                turb.setAttribute("seed", String(seed));
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        }
     });
 </script>

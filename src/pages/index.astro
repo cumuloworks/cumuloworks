@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import { getMarkdownProcessor } from '@/utils/markdown';
 import readmeRaw from '@/../README.md?raw';
 import Layout from '@/layouts/Layout.astro';
 
@@ -40,7 +40,7 @@ const sections = [
 
 const readmeWithInjectedLists = sections.reduce((acc, [marker, content]) => acc.replace(marker, content), readmeRaw);
 
-const markdown = await createMarkdownProcessor();
+const markdown = await getMarkdownProcessor();
 const { code: readmeHTML } = await markdown.render(readmeWithInjectedLists);
 ---
 

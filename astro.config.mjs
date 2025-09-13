@@ -13,7 +13,7 @@ export default defineConfig({
         service: {
             entrypoint: "astro/assets/services/sharp",
         },
-        domains: ["api.microlink.io", "img.youtube.com"],
+        domains: ["api.microlink.io", "img.youtube.com", "img.shields.io"],
     },
     output: "static",
     site: "https://cumulo.works",
