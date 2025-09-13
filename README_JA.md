@@ -4,41 +4,41 @@
   <summary class="marker:content-none cursor-pointer"><h2>Menu</h2></summary>
   <ul>
     <li>
-     <a href="#profile">Profile</a>
+     <a href="#プロフィール">プロフィール</a>
     </li>
     <li>
-      <a href="#social--contact">Social & Contact</a>
+      <a href="#snsと連絡先">SNSと連絡先</a>
     </li>
     <li>
-      <a href="#motion-design--cgi">Motion Design / CGI</a>
+      <a href="#モーションデザイン3dcg">モーションデザイン・3DCG</a>
     </li>
     <li>
-    <a href="#tools--sites">Tools / Sites</a>
+    <a href="#ツールサイト">ツール・サイト</a>
     </li>
     <li>
-      <a href="#articles">Articles</a>
+      <a href="#記事">記事</a>
     </li>
     <li>
-      <a href="#talks-and-interviews">Talks and Interviews</a>
+      <a href="#講演とインタビュー">講演とインタビュー</a>
     </li>
     <li>
-      <a href="#links">Links</a>
+      <a href="#リンク">リンク</a>
     </li>
     <li>
-      <a href="/ja">日本語</a>
+      <a href="/">English</a>
     </li>
   </ul>
 </details>
 
-## Profile
+## プロフィール
 
 👋 Hello!
 
 Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions™**](https://kumo.productions/) / Motion Designer / CG Generalist / Indie Developer**
 
-> He began creating motion graphics under the name Cumuloworks during his high school years. After gaining two years of experience at [Naname Inc.](https://nanameinc.jp/), he officially established Cumuloworks, Inc. in 2020. Within kumo.productions™, he focuses on motion design and CGI, delivering a diverse range of projects including commercials, music videos, and live stage productions. He is also committed to research and development, particularly in creating tools for video production and improving workflows.
+> 高校生の頃、Cumuloworksという名前でモーショングラフィックスの制作を始める。株式会社ナナメで2年半の経験を積んだのち、Cumuloworks, Inc.として2020年に法人化。kumo.productions™では、モーションデザイン・3DCGを中心に、コマーシャル・ミュージックビデオ・ライブ演出などを広範に手掛ける。映像制作に関連するツールの開発や、効率的なワークフローの研究開発にも取り組んでいる。
 
-**Used professionally** – Daily tools for motion design, editing, and rendering
+**プロフェッショナル** – モーションデザイン・編集・レンダリング用途で日常的に使用するツール
 
 ![Adobe After Effects](https://img.shields.io/badge/After%20Effects-blueviolet.svg?logo=Adobe%20After%20Effects&logoColor=white)
 ![Cinema 4D](https://img.shields.io/badge/Cinema%204D-navy.svg?logo=Cinema%204D&logoColor=white)
@@ -46,7 +46,7 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 ![DaVinci Resolve](https://img.shields.io/badge/DaVinci%20Resolve-slategray.svg?logo=DaVinci%20Resolve&logoColor=white)
 ![Marvelous Designer](https://img.shields.io/badge/Marvelous%20Designer-gold.svg?logo=Marvelous%20Designer&logoColor=black)
 
-**Experienced with** – Tools for web and desktop application development
+**経験のあるツール** – Webおよびデスクトップアプリケーション開発用のツール
 
 ![Node.js](https://img.shields.io/badge/Node.js-green.svg?logo=Node.js&logoColor=white)
 ![Astro](https://img.shields.io/badge/Astro-black.svg?logo=Astro&logoColor=white)
@@ -54,29 +54,29 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 ![Electron](https://img.shields.io/badge/Electron-steelblue.svg?logo=Electron&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-lightseagreen.svg?logo=TailwindCSS&logoColor=white)
 
-## Social & Contact
+## SNSと連絡先
 
 - [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=ffffff&size=24)](https://x.com/cumuloworks) [X](https://x.com/cumuloworks)
 - [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=ffffff&size=24)](https://www.instagram.com/cumuloworks/) [Instagram](https://www.instagram.com/cumuloworks/)
 - [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=ffffff&size=24)](https://www.youtube.com/@cumuloworks) [YouTube](https://www.youtube.com/@cumuloworks)
 - [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=ffffff&size=24)](https://github.com/cumuloworks) [GitHub](https://github.com/cumuloworks)
 - [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=ffffff&size=24)](https://www.facebook.com/cumuloworks/) [Facebook](https://www.facebook.com/cumuloworks/)
-- [Website](https://cumulo.works)
+- [ウェブサイト](https://cumulo.works)
 - [mail@cumulo.works](mailto:mail@cumulo.works)
 
-For video production inquiries, please visit [kumo.productions™](https://kumo.productions/).
+映像制作に関するお問い合わせは、[kumo.productions™](https://kumo.productions/) を御覧ください。
 
-## Motion Design / CGI
+## モーションデザイン・3DCG
 
 ### [kumo.productions™ Launch SHOWREEL 2025](https://www.youtube.com/watch?v=8aNl_7fvrrk)
 
 [![kumo.productions™ Launch SHOWREEL 2025](https://img.youtube.com/vi/8aNl_7fvrrk/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aNl_7fvrrk)
 
-As of 2025, all video production services have been transferred from Cumuloworks to [kumo.productions™](https://kumo.productions/).
+2025年から、Cumuloworksの映像制作サービスはすべて [kumo.productions™](https://kumo.productions/) に移管しました。
 
-**More projects are available on [**kumo.productions™**](https://kumo.productions/en/projects)**
+**最近のプロジェクトはこちら [**kumo.productions™**](https://kumo.productions/en/projects)**
 
-### [Cumuloworks SHOWREEL 2024](https://www.youtube.com/watch?v=b_68zkrGBDQ) (Projects before 2025)
+### [Cumuloworks SHOWREEL 2024](https://www.youtube.com/watch?v=b_68zkrGBDQ) (2025年以前のプロジェクト)
 
 [![Cumuloworks SHOWREEL 2024](https://img.youtube.com/vi/b_68zkrGBDQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=b_68zkrGBDQ)
 
@@ -84,17 +84,17 @@ As of 2025, all video production services have been transferred from Cumuloworks
 
 <!-- Entertainment -->
 
-## Tools / Sites
+## ツール・サイト
 
 ### [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
 
-After Effects script for easily creating parallax effect animations with 3D layers.
+After Effectsで3Dレイヤーを使ったパララックス効果のアニメーションを簡単に作成するスクリプト。
 
 ### [TripMD](https://tripmd.dev)
 
-Tools for writing and previewing travel itineraries in Markdown.
+Markdownで旅程を書いて、プレビューできるツール。
 
-My first open-source project, the remark plugin [`remark-itinerary`](https://www.npmjs.com/package/remark-itinerary), is on npm.
+初めてのオープンソースプロジェクト。remarkプラグイン [`remark-itinerary`](https://www.npmjs.com/package/remark-itinerary) をnpmで公開中。
 
 (Framework: Astro + React)
 
@@ -102,27 +102,27 @@ My first open-source project, the remark plugin [`remark-itinerary`](https://www
 
 ### [cumulo.works](https://cumulo.works)
 
-My personal website. (JAMstack + Vercel + Astro)
+個人のポートフォリオウェブサイト。 (JAMstack + Cloudflare Pages + Astro)
 
 [![cumulo.works](https://api.microlink.io/?url=https://cumulo.works&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://cumulo.works)
 
 ### [kumo.productions™](https://kumo.productions)
 
-A website for my video production studio, kumo.productions™.
+自身の映像制作スタジオkumo.productions™のポートフォリオウェブサイト。
 
-Web Development (JAMstack + Vercel + Astro)
+ウェブ開発 (JAMstack + Vercel + Astro)
 
 [![kumo.productions™](https://api.microlink.io/?url=https://kumo.productions&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://kumo.productions)
 
 ### [reika.work](https://reika.work)
 
-Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
+ウェブ開発 (JAMstack + Cloudflare Pages + microCMS + Astro)
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
 
 <!-- Articles -->
 
-## Talks and Interviews
+## 講演とインタビュー
 
 ### 2024
 

@@ -34,17 +34,17 @@ async function getImagesFromFolder(folderPath) {
 
 {
     galleryImages.length > 0 && (
-        <div class="not-prose w-screen mt-20 -ml-8 overflow-x-scroll overflow-y-hidden ">
-            <div class="flex">
+        <div class="not-prose mt-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
                 {preparedImages.map((image, index) => (
                     <div
-                        class="flex-none h-[calc(min(50vw,360px))] flex items-center justify-center"
+                        class="w-full"
                         key={image.id}
                     >
                         <Image
                             src={image.src}
                             alt={image.alt}
-                            class="h-[calc(min(50vw,360px))] w-auto object-contain"
+                            class="w-full h-auto object-contain"
                             loading={index < 4 ? "eager" : "lazy"}
                             id={image.id}
                             width={1280}

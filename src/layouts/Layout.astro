@@ -2,13 +2,14 @@
 import "@/styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import Icon from "@/assets/icon.svg?raw";
-import kumoLogo from "@/assets/logotype_primary_TM_wt.svg?raw";
+import kumoLogo from "@kumoproductions/branding/logotype/svg/logotype_tertiary_TM_wt.svg?raw";
 
 interface Props {
     frontmatter: Astro.Frontmatter;
+    lang: "en" | "ja";
 }
 
-const { frontmatter } = Astro.props as Props;
+const { frontmatter, lang = "en" } = Astro.props as Props;
 
 function getEmbedType(url: string | undefined | null) {
     if (!url) return null;
@@ -49,7 +50,7 @@ function getEmbedId(url?: string) {
 const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
 ---
 
-<html lang="en">
+<html lang={lang}>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -92,102 +93,106 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <Analytics />
     </head>
     <body
-        class="h-svh bg-background text-text font-geist-sans p-8 overflow-x-hidden overflow-y-scroll"
+        class="min-h-svh bg-background font-geist-sans overflow-x-hidden overflow-y-scroll"
     >
-        <header class="flex justify-between items-center gap-6 mb-16 flex-wrap">
-            <a
-                href="/"
-                aria-label="Cumuloworks"
-                class="fill-text hover:fill-accent transition-colors duration-300 w-24"
-            >
-                <span set:html={Icon} />
-            </a>
-            <a
-                href="https://kumo.productions/"
-                aria-label="kumo.productions™"
-                class="fill-text hover:fill-accent w-48 md:w-72 leading-1 md:leading-4"
-            >
-                <span set:html={kumoLogo} />
-                <span class="text-[6px] md:text-[9px]"
-                    >kumo.productions™ is a video production studio based in
-                    Tokyo.</span
-                >
-            </a>
-        </header>
         <div
-            class:list={[
-                "pb-8",
-                "prose",
-                "prose-invert",
-                "prose-zinc",
-                "prose-blockquote:border-accent",
-                "prose-blockquote:not-italic",
-                "prose-blockquote:text-justify",
-                "prose-p:text-justify",
-                "prose-p:after:content-none",
-                "prose-p:before:content-none",
-                "prose-img:inline-block",
-                "prose-img:rounded",
-                "prose-video:rounded",
-                "prose-img:max-h-54",
-                "prose-img:w-auto",
-                "prose-img:my-0",
-                "prose-ul:list-['->']",
-                "prose-ul:pl-5",
-                "marker:text-secondary",
-                "prose-code:before:content-none",
-                "prose-code:after:content-none",
-                "prose-a:no-underline",
-                "transition-colors",
-                "duration-300",
-                "prose-headings:font-medium",
-                "prose-headings:tracking-tight",
-                "prose-h2:text-4xl",
-                "prose-h1:text-7xl",
-                "prose-headings:w-[calc(100vw-4rem)]",
-                "prose-headings:break-all",
-                "prose-h1:text-white",
-                "prose-h2:text-primary",
-                "prose-h3:mt-9",
-                "prose-h3:mb-5",
-                "prose-headings:text-secondary",
-                "prose-a:text-primary",
-                "prose-a:hover:text-accent",
-            ]}
+            class="min-h-svh max-w-screen-lg mx-auto bg-background text-text px-8 py-12"
         >
-            {frontmatter?.title && <h1>{frontmatter.title}</h1>}
-            {
-                type === "youtube" && id && (
-                    <div class="w-full aspect-video">
-                        <iframe
-                            src={`https://www.youtube.com/embed/${id}`}
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                            width="100%"
-                            height="100%"
-                        />
-                    </div>
-                )
-            }
-            {
-                type === "twitter" && id && (
-                    <div class="w-full">
-                        <blockquote
-                            class="twitter-tweet"
-                            data-media-max-width="1920"
-                        >
-                            <a href={`https://twitter.com/i/status/${id}`} />
-                        </blockquote>
-                        <script
-                            async
-                            src="https://platform.twitter.com/widgets.js"
-                            charset="utf-8"
-                        />
-                    </div>
-                )
-            }
-            <slot />
+            <header
+                class="flex justify-between items-center gap-6 mb-16 flex-wrap"
+            >
+                <a
+                    href="/"
+                    aria-label="Cumuloworks"
+                    class="fill-text hover:fill-accent transition-colors duration-300 w-24"
+                >
+                    <span set:html={Icon} />
+                </a>
+                <a
+                    href="https://kumo.productions/"
+                    aria-label="kumo.productions™"
+                    class="fill-text hover:fill-accent w-36 flex items-center gap-2"
+                >
+                    <span class="inline-block w-full" set:html={kumoLogo} />
+                    <span class="font-medium text-sm">-></span>
+                </a>
+            </header>
+            <div
+                class:list={[
+                    "prose",
+                    "prose-invert",
+                    "prose-zinc",
+                    "max-w-screen-lg",
+                    "prose-blockquote:border-accent",
+                    "prose-blockquote:not-italic",
+                    "prose-blockquote:text-justify",
+                    "prose-p:text-justify",
+                    "prose-p:after:content-none",
+                    "prose-p:before:content-none",
+                    "prose-img:inline-block",
+                    "prose-img:rounded",
+                    "prose-video:rounded",
+                    "prose-img:max-h-54",
+                    "prose-img:w-auto",
+                    "prose-img:my-0",
+                    "prose-ul:list-['->']",
+                    "prose-ul:pl-5",
+                    "marker:text-secondary",
+                    "prose-code:before:content-none",
+                    "prose-code:after:content-none",
+                    "prose-a:no-underline",
+                    "transition-colors",
+                    "duration-300",
+                    "prose-headings:font-medium",
+                    "prose-headings:tracking-tight",
+                    "prose-h2:text-4xl",
+                    "prose-h1:text-7xl",
+                    "prose-headings:break-all",
+                    "prose-h1:text-white",
+                    "prose-h2:text-primary",
+                    "prose-h3:mt-9",
+                    "prose-h3:mb-5",
+                    "prose-headings:text-secondary",
+                    "prose-a:text-primary",
+                    "prose-a:hover:text-accent",
+                ]}
+            >
+                {frontmatter?.title && <h1>{frontmatter.title}</h1>}
+                {
+                    type === "youtube" && id && (
+                        <div class="w-full aspect-video">
+                            <iframe
+                                src={`https://www.youtube.com/embed/${id}`}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                width="100%"
+                                height="100%"
+                            />
+                        </div>
+                    )
+                }
+                {
+                    type === "twitter" && id && (
+                        <div class="w-full">
+                            <blockquote
+                                class="twitter-tweet"
+                                data-media-max-width="1920"
+                            >
+                                <a
+                                    href={`https://twitter.com/i/status/${id}`}
+                                />
+                            </blockquote>
+                            <script
+                                async
+                                src="https://platform.twitter.com/widgets.js"
+                                charset="utf-8"
+                            />
+                        </div>
+                    )
+                }
+                <slot />
+            </div>
         </div>
     </body>
 </html>

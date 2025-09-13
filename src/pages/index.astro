@@ -20,7 +20,7 @@ const links = [
 ];
 
 function makeListMarkdown(items) {
-    return items.map((item) => `- [${item.data.title}](/${item.collection}/${item.slug})`).join('\n');
+    return items.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`).join('\n');
 }
 
 function makeLinksMarkdown(linkItems) {
@@ -47,8 +47,6 @@ const { code: readmeHTML } = await markdown.render(readmeWithInjectedLists);
 <Layout
 	title="Cumuloworks"
 	description="Cumuloworks | Director / Motion Grapher / CG Generalist"
-	limit={false}
-	header={false}
 >
 	<div set:html={readmeHTML} />
 </Layout>

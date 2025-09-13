@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.5.1",
+		"@kumoproductions/branding": "github:kumoproductions/branding",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.13",
 		"@vercel/analytics": "^1.5.0",

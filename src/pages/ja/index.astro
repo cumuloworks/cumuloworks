@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import readmeRaw from "@/../README_JA.md?raw";
+import Layout from "@/layouts/Layout.astro";
+
+const projects = await getCollection("projects");
+const blogs = await getCollection("blogs");
+const downloads = await getCollection("downloads");
+const links = [
+    {
+        title: "プライバシーポリシー",
+        href: "/privacy",
+    },
+    {
+        title: "特定商取引法に基づく表示",
+        href: "/scta",
+    },
+];
+
+function makeListMarkdown(items) {
+    return items
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map(
+            (item) =>
+                `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`,
+        )
+        .join("\n");
+}
+
+function makeLinksMarkdown(linkItems) {
+    return linkItems
+        .map(
+            (item) =>
+                `- [${item.title}](${item.href})${item.note ? ` ${item.note}` : ""}`,
+        )
+        .join("\n");
+}
+
+function buildSectionMarkdown(heading, content) {
+    return `### ${heading}\n\n${content}`;
+}
+
+const sections = [
+    [
+        "<!-- Ads -->",
+        buildSectionMarkdown(
+            "コマーシャル",
+            makeListMarkdown(projects.filter((p) => p.data.category === "ads")),
+        ),
+    ],
+    [
+        "<!-- Entertainment -->",
+        buildSectionMarkdown(
+            "エンターテイメント",
+            makeListMarkdown(
+                projects.filter((p) => p.data.category === "entertainment"),
+            ),
+        ),
+    ],
+    [
+        "<!-- Articles -->",
+        `## 記事\n\n${buildSectionMarkdown("ブログ", makeListMarkdown(blogs))}\n\n${buildSectionMarkdown("ダウンロード", makeListMarkdown(downloads))}`,
+    ],
+    ["<!-- Links -->", `## リンク\n\n${makeLinksMarkdown(links)}`],
+];
+
+const readmeWithInjectedLists = sections.reduce(
+    (acc, [marker, content]) => acc.replace(marker, content),
+    readmeRaw,
+);
+
+const markdown = await createMarkdownProcessor();
+const { code: readmeHTML } = await markdown.render(readmeWithInjectedLists);
+---
+
+<Layout
+    title="Cumuloworks"
+    description="Cumuloworks | Director / Motion Grapher / CG Generalist"
+    lang="ja"
+>
+    <div set:html={readmeHTML} />
+</Layout>
