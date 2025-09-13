@@ -21,15 +21,12 @@
 		"@tailwindcss/vite": "^4.1.13",
 		"@vercel/analytics": "^1.5.0",
 		"astro": "^5.13.7",
-		"astro-icon": "^1.1.5",
 		"sharp": "^0.34.3",
 		"tailwindcss": "^4.1.13"
 	},
 	"devDependencies": {
 		"@astrojs/markdown-remark": "^6.3.6",
 		"@biomejs/biome": "^2.2.4",
-		"@cumuloworks/configs": "^1.0.7",
-		"@iconify-json/fa6-brands": "^1.2.6",
-		"@iconify-json/fa6-solid": "^1.2.4"
+		"@cumuloworks/configs": "^1.0.7"
 	}
 }

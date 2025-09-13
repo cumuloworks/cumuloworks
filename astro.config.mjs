@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -8,10 +7,6 @@ export default defineConfig({
         prefetchAll: true,
     },
     integrations: [
-        icon({
-            "fa6-solid": ["*"],
-            "fa6-brands": ["*"],
-        }),
         sitemap(),
     ],
     image: {
