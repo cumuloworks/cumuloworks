@@ -73,11 +73,11 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <meta property="og:description" content={frontmatter?.description} />
         <meta
             property="og:image"
-            content={new URL("/default_ogp.jpg", Astro.url)}
+            content={new URL("/ogp.png", Astro.url)}
         />
         <meta
             property="twitter:image"
-            content={new URL("/default_ogp.jpg", Astro.url)}
+            content={new URL("/ogp.png", Astro.url)}
         />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="description" content={frontmatter?.description} />
