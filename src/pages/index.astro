@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { getMarkdownProcessor } from '@/utils/markdown';
 import readmeRaw from '@/../README.md?raw';
 import Layout from '@/layouts/Layout.astro';
+import { getMarkdownProcessor } from '@/utils/markdown';
 
 const projects = await getCollection('projects');
 const blogs = await getCollection('blogs');
@@ -20,7 +20,10 @@ const links = [
 ];
 
 function makeListMarkdown(items) {
-    return items.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`).join('\n');
+    return items
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`)
+        .join('\n');
 }
 
 function makeLinksMarkdown(linkItems) {
@@ -33,8 +36,17 @@ function buildSectionMarkdown(heading, content) {
 
 const sections = [
     ['<!-- Ads -->', buildSectionMarkdown('Ads', makeListMarkdown(projects.filter((p) => p.data.category === 'ads')))],
-    ['<!-- Entertainment -->', buildSectionMarkdown('Entertainment', makeListMarkdown(projects.filter((p) => p.data.category === 'entertainment')))],
-    ['<!-- Articles -->', `## Articles\n\n${buildSectionMarkdown('Blogs', makeListMarkdown(blogs))}\n\n${buildSectionMarkdown('Downloads', makeListMarkdown(downloads))}`],
+    [
+        '<!-- Entertainment -->',
+        buildSectionMarkdown(
+            'Entertainment',
+            makeListMarkdown(projects.filter((p) => p.data.category === 'entertainment'))
+        ),
+    ],
+    [
+        '<!-- Articles -->',
+        `## Articles\n\n${buildSectionMarkdown('Blogs', makeListMarkdown(blogs))}\n\n${buildSectionMarkdown('Downloads', makeListMarkdown(downloads))}`,
+    ],
     ['<!-- Links -->', `## Links\n\n${makeLinksMarkdown(links)}`],
 ];
 

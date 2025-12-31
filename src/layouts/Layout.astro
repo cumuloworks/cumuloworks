@@ -1,8 +1,8 @@
 ---
 import "@/styles/global.css";
+import kumoLogo from "@kumoproductions/branding/logotype/svg/logotype_tertiary_TM_bk.svg?raw";
 import Analytics from "@vercel/analytics/astro";
 import Icon from "@/assets/icon.svg?raw";
-import kumoLogo from "@kumoproductions/branding/logotype/svg/logotype_tertiary_TM_wt.svg?raw";
 
 interface Props {
     frontmatter: Astro.Frontmatter;
@@ -90,7 +90,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <Analytics />
     </head>
     <body
-        class="min-h-svh bg-gradient-to-r from-background via-[#1d3744] to-background font-geist-sans overflow-x-hidden overflow-y-scroll relative"
+        class="min-h-svh font-geist-sans overflow-x-hidden overflow-y-scroll relative"
     >
         <div
             class="pointer-events-none fixed inset-0 z-0 mix-blend-overlay"
@@ -119,7 +119,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
             </svg>
         </div>
         <div
-            class="min-h-svh max-w-screen-lg mx-auto relative z-10 bg-background backdrop-blur-2xl text-text px-8 py-12"
+            class="min-h-svh max-w-[90vw] mx-auto relative z-10 text-text px-8 py-12"
         >
             <header
                 class="flex justify-between items-center gap-6 mb-16 flex-wrap"
@@ -134,7 +134,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
                 <a
                     href="https://kumo.productions/"
                     aria-label="kumo.productions™"
-                    class="fill-text hover:fill-accent w-36 flex items-center gap-2"
+                    class="fill-text hover:fill-secondary w-36 flex items-center gap-2"
                 >
                     <span class="inline-block w-full" set:html={kumoLogo} />
                     <span class="font-medium text-sm">-></span>
@@ -143,10 +143,9 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
             <div
                 class:list={[
                     "prose",
-                    "prose-invert",
                     "prose-zinc",
-                    "max-w-screen-lg",
-                    "prose-blockquote:border-accent",
+                    "max-w-[90vw]",
+                    "prose-blockquote:border-secondary",
                     "prose-blockquote:not-italic",
                     "prose-blockquote:text-justify",
                     "prose-p:text-justify",
@@ -171,13 +170,13 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
                     "prose-h2:text-4xl",
                     "prose-h1:text-7xl",
                     "prose-headings:break-all",
-                    "prose-h1:text-white",
+                    "prose-h1:text-text",
                     "prose-h2:text-primary",
                     "prose-h3:mt-9",
                     "prose-h3:mb-5",
                     "prose-headings:text-secondary",
-                    "prose-a:text-primary",
-                    "prose-a:hover:text-accent",
+                    "prose-a:text-secondary",
+                    "prose-a:hover:text-secondary",
                 ]}
             >
                 {frontmatter?.title && <h1>{frontmatter.title}</h1>}

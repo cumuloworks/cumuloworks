@@ -1,34 +1,32 @@
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
     prefetch: {
         prefetchAll: true,
     },
-    integrations: [
-        sitemap(),
-    ],
+    integrations: [sitemap()],
     image: {
         service: {
-            entrypoint: "astro/assets/services/sharp",
+            entrypoint: 'astro/assets/services/sharp',
         },
-        domains: ["api.microlink.io", "img.youtube.com", "img.shields.io"],
+        domains: ['api.microlink.io', 'img.youtube.com', 'img.shields.io'],
     },
-    output: "static",
-    site: "https://cumulo.works",
+    output: 'static',
+    site: 'https://cumulo.works',
     markdown: {
         shikiConfig: {
-            theme: "github-dark",
+            theme: 'github-dark',
         },
     },
     vite: {
-      resolve: {
-          alias: {
-              "@": "/src",
-          },
-      },
+        resolve: {
+            alias: {
+                '@': '/src',
+            },
+        },
 
-      plugins: [tailwindcss()],
+        plugins: [tailwindcss()],
     },
 });

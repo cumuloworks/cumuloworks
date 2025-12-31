@@ -1,4 +1,4 @@
-import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 
 let markdownProcessorPromise: ReturnType<typeof createMarkdownProcessor> | null = null;
 
@@ -8,5 +8,3 @@ export async function getMarkdownProcessor() {
     }
     return markdownProcessorPromise;
 }
-
-

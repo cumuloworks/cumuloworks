@@ -58,12 +58,12 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productionsâ„
 
 | Icon | Service | Username |
 | --- | --- | --- |
-| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=ffffff&size=24)](https://x.com/cumuloworks) | X | [@cumuloworks](https://x.com/cumuloworks) |
-| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=ffffff&size=24)](https://www.instagram.com/cumuloworks/) | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/) |
-| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=ffffff&size=24)](https://www.youtube.com/@cumuloworks) | YouTube | [@cumuloworks](https://www.youtube.com/@cumuloworks) |
-| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=ffffff&size=24)](https://github.com/cumuloworks) | GitHub | [@cumuloworks](https://github.com/cumuloworks) |
-| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=ffffff&size=24)](https://www.facebook.com/cumuloworks/) | Facebook | [@cumuloworks](https://www.facebook.com/cumuloworks/) |
-| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=ffffff&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify | [@cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
+| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=165b7a&size=24)](https://x.com/cumuloworks) | X | [@cumuloworks](https://x.com/cumuloworks) |
+| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=165b7a&size=24)](https://www.instagram.com/cumuloworks/) | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/) |
+| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=165b7a&size=24)](https://www.youtube.com/@cumuloworks) | YouTube | [@cumuloworks](https://www.youtube.com/@cumuloworks) |
+| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=165b7a&size=24)](https://github.com/cumuloworks) | GitHub | [@cumuloworks](https://github.com/cumuloworks) |
+| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=165b7a&size=24)](https://www.facebook.com/cumuloworks/) | Facebook | [@cumuloworks](https://www.facebook.com/cumuloworks/) |
+| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=165b7a&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify | [@cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
 |  | Website | [cumulo.works](https://cumulo.works) |
 |  | Email | [mail@cumulo.works](mailto:mail@cumulo.works) |
 
