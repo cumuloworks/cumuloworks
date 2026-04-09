@@ -1,6 +1,8 @@
+import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 const projects = defineCollection({
+    loader: glob({ pattern: '**/index.md', base: './src/content/projects' }),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -11,6 +13,7 @@ const projects = defineCollection({
 });
 
 const blogs = defineCollection({
+    loader: glob({ pattern: '**/index.md', base: './src/content/blogs' }),
     schema: z.object({
         title: z.string(),
         category: z.enum(['announcement', 'blog', 'techtips', 'others']),
@@ -21,6 +24,7 @@ const blogs = defineCollection({
 });
 
 const downloads = defineCollection({
+    loader: glob({ pattern: '**/index.md', base: './src/content/downloads' }),
     schema: z.object({
         title: z.string(),
         category: z.enum(['aviutl', 'ae', 'others']),

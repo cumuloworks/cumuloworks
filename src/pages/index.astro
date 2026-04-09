@@ -10,7 +10,7 @@ const downloads = await getCollection('downloads');
 function makeListMarkdown(items) {
     return items
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-        .map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`)
+        .map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.id})`)
         .join('\n');
 }
 

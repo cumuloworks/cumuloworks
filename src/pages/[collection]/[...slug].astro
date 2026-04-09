@@ -1,6 +1,6 @@
 ---
 import type { ContentEntryMap } from 'astro:content';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Gallery from '@/components/Gallery.astro';
 import Layout from '@/layouts/Layout.astro';
 
@@ -10,8 +10,8 @@ export async function getStaticPaths() {
         collections.map(async (collection) => {
             const items = await getCollection(collection as keyof ContentEntryMap);
             return items.map((entry) => ({
-                params: { collection, slug: entry.slug },
-                props: { collection, slug: entry.slug },
+                params: { collection, slug: entry.id },
+                props: { collection, slug: entry.id },
             }));
         })
     );
@@ -20,7 +20,10 @@ export async function getStaticPaths() {
 
 const { collection, slug } = Astro.props;
 const currentItem = await getEntry(collection as keyof ContentEntryMap, slug);
-const { Content } = await currentItem.render();
+if (!currentItem) {
+    throw new Error(`Entry not found: ${collection}/${slug}`);
+}
+const { Content } = await render(currentItem);
 
 const galleryFolderPath = `/src/content/${collection}/${slug}/`;
 
