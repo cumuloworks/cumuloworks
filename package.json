@@ -17,12 +17,9 @@
     "dependencies": {
         "@astrojs/sitemap": "^3.6.0",
         "@kumoproductions/branding": "github:kumoproductions/branding",
-        "@tailwindcss/typography": "^0.5.19",
-        "@tailwindcss/vite": "^4.1.18",
         "@vercel/analytics": "^1.6.1",
         "astro": "^5.16.6",
-        "sharp": "^0.34.5",
-        "tailwindcss": "^4.1.18"
+        "sharp": "^0.34.5"
     },
     "devDependencies": {
         "@astrojs/markdown-remark": "^6.3.10",

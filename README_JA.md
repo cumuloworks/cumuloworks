@@ -1,7 +1,7 @@
 # About Cumuloworks
 
 <details open>
-  <summary class="marker:content-none cursor-pointer"><h2>Menu</h2></summary>
+  <summary><h2>Menu</h2></summary>
   <ul>
     <li>
      <a href="#プロフィール">プロフィール</a>
@@ -20,9 +20,6 @@
     </li>
     <li>
       <a href="#講演とインタビュー">講演とインタビュー</a>
-    </li>
-    <li>
-      <a href="#リンク">リンク</a>
     </li>
     <li>
       <a href="/">English</a>
@@ -123,6 +120,20 @@ Markdownで旅程を書いて、プレビューできるツール。
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
 
+### [fc.hoshimiyatoto.com](https://fc.hoshimiyatoto.com)
+
+星宮ととの公式ファンクラブサイト。ブログ、ライブアーカイブ、チケット情報、有料会員プランなどを提供。
+
+フロントエンド開発 (Next.js)
+
+[![fc.hoshimiyatoto.com](https://api.microlink.io/?url=https://fc.hoshimiyatoto.com&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://fc.hoshimiyatoto.com)
+
+### [player.drop.mov](https://player.drop.mov)
+
+動画（HLS/プログレッシブ）、音声、画像、PDFに対応した、統一されたプレイバックコントロールとカスタマイズ可能なテーマを備えるオープンソースのReactメディアプレイヤーコンポーネント。
+
+[![player.drop.mov](https://api.microlink.io/?url=https://player.drop.mov&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://player.drop.mov)
+
 <!-- Articles -->
 
 ## 講演とインタビュー
@@ -144,8 +155,6 @@ Markdownで旅程を書いて、プレビューできるツール。
 ### 2020
 
 - CGWORLD 2020 クリエイティブカンファレンス [「After Effectsスクリプトを書いて、制作を楽しく効率化しよう。」](https://cgworld.jp/special/cgwcc2020/schedule/cumuloworks/index.html)
-
-<!-- Links -->
 
 ---
 

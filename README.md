@@ -1,7 +1,7 @@
 # About Cumuloworks
 
 <details open>
-  <summary class="marker:content-none cursor-pointer"><h2>Menu</h2></summary>
+  <summary><h2>Menu</h2></summary>
   <ul>
     <li>
      <a href="#profile">Profile</a>
@@ -20,9 +20,6 @@
     </li>
     <li>
       <a href="#talks-and-interviews">Talks and Interviews</a>
-    </li>
-    <li>
-      <a href="#links">Links</a>
     </li>
     <li>
       <a href="/ja">日本語</a>
@@ -123,6 +120,20 @@ Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
 
+### [fc.hoshimiyatoto.com](https://fc.hoshimiyatoto.com)
+
+Official fan club website for Hoshimiya Toto, offering blogs, live archives, ticket information, and paid membership plans.
+
+Frontend Development (Next.js)
+
+[![fc.hoshimiyatoto.com](https://api.microlink.io/?url=https://fc.hoshimiyatoto.com&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://fc.hoshimiyatoto.com)
+
+### [player.drop.mov](https://player.drop.mov)
+
+An open-source React media player component supporting video (HLS/progressive), audio, image, and PDF formats with unified playback controls and customizable theming.
+
+[![player.drop.mov](https://api.microlink.io/?url=https://player.drop.mov&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://player.drop.mov)
+
 <!-- Articles -->
 
 ## Talks and Interviews
@@ -144,8 +155,6 @@ Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 ### 2020
 
 - CGWORLD 2020 クリエイティブカンファレンス [「After Effectsスクリプトを書いて、制作を楽しく効率化しよう。」](https://cgworld.jp/special/cgwcc2020/schedule/cumuloworks/index.html)
-
-<!-- Links -->
 
 ---
 

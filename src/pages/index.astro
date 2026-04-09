@@ -7,27 +7,11 @@ import { getMarkdownProcessor } from '@/utils/markdown';
 const projects = await getCollection('projects');
 const blogs = await getCollection('blogs');
 const downloads = await getCollection('downloads');
-const links = [
-    {
-        title: 'Privacy Policy',
-        href: '/privacy',
-    },
-    {
-        title: '特定商取引法に基づく表示',
-        href: '/scta',
-        note: '(Notation based on the Specified Commercial Transactions Act of Japan)',
-    },
-];
-
 function makeListMarkdown(items) {
     return items
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
         .map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`)
         .join('\n');
-}
-
-function makeLinksMarkdown(linkItems) {
-    return linkItems.map((item) => `- [${item.title}](${item.href})${item.note ? ` ${item.note}` : ''}`).join('\n');
 }
 
 function buildSectionMarkdown(heading, content) {
@@ -47,7 +31,6 @@ const sections = [
         '<!-- Articles -->',
         `## Articles\n\n${buildSectionMarkdown('Blogs', makeListMarkdown(blogs))}\n\n${buildSectionMarkdown('Downloads', makeListMarkdown(downloads))}`,
     ],
-    ['<!-- Links -->', `## Links\n\n${makeLinksMarkdown(links)}`],
 ];
 
 const readmeWithInjectedLists = sections.reduce((acc, [marker, content]) => acc.replace(marker, content), readmeRaw);

@@ -5,8 +5,6 @@
         "includes": ["**", "!**/*.html"]
     },
     "css": {
-        "parser": {
-            "tailwindDirectives": true
-        }
+        "parser": {}
     }
 }

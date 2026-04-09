@@ -1,6 +1,6 @@
 ---
 import "@/styles/global.css";
-import kumoLogo from "@kumoproductions/branding/logotype/svg/logotype_tertiary_TM_bk.svg?raw";
+import kumoLogo from "@kumoproductions/branding/logotype/svg/logotype_tertiary_TM_wt.svg?raw";
 import Analytics from "@vercel/analytics/astro";
 import Icon from "@/assets/icon.svg?raw";
 
@@ -21,7 +21,7 @@ function getEmbedType(url: string | undefined | null) {
 
 function getYoutubeId(url: string) {
     const regExp =
-        /^.*(youtu.be\/.|v\/.|u\/\w\/.|embed\/.|watch\?v=|&v=)([^#&?]*).*/;
+        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
 }
@@ -56,7 +56,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta
             name="viewport"
-            content="width=device-width, initial-scale=0.875"
+            content="width=device-width, initial-scale=1"
         />
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={frontmatter?.description} />
@@ -78,125 +78,48 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
         />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="description" content={frontmatter?.description} />
-        <meta property="og:site_name" content="Cumuloworks" /><link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-        />
+        <meta property="og:site_name" content="Cumuloworks" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700"
+            href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
             rel="stylesheet"
         />
         <Analytics />
     </head>
-    <body
-        class="min-h-svh font-geist-sans overflow-x-hidden overflow-y-scroll relative"
-    >
-        <div
-            class="pointer-events-none fixed inset-0 z-0 mix-blend-overlay"
-            aria-hidden="true"
-        >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                preserveAspectRatio="none"
-            >
-                <filter id="noiseFilter">
-                    <feTurbulence
-                        id="noiseTurbulence"
-                        type="fractalNoise"
-                        baseFrequency="0.8"
-                        numOctaves="4"
-                        seed="0"
-                        stitchTiles="stitch"></feTurbulence>
-                </filter>
-                <rect
-                    width="100%"
-                    height="100%"
-                    filter="url(#noiseFilter)"
-                    opacity="1"></rect>
-            </svg>
-        </div>
-        <div
-            class="min-h-svh max-w-[90vw] mx-auto relative z-10 text-text px-8 py-12"
-        >
-            <header
-                class="flex justify-between items-center gap-6 mb-16 flex-wrap"
-            >
-                <a
-                    href="/"
-                    aria-label="Cumuloworks"
-                    class="fill-text hover:fill-accent transition-colors duration-300 w-24"
-                >
+    <body>
+        <div class="page-shell">
+            <header class="site-header">
+                <a href="/" aria-label="Cumuloworks" class="site-logo">
                     <span set:html={Icon} />
                 </a>
                 <a
                     href="https://kumo.productions/"
                     aria-label="kumo.productions™"
-                    class="fill-text hover:fill-secondary w-36 flex items-center gap-2"
+                    class="site-header-affiliate"
                 >
-                    <span class="inline-block w-full" set:html={kumoLogo} />
-                    <span class="font-medium text-sm">-></span>
+                    <span set:html={kumoLogo} />
+                    <span class="arrow">&rarr;</span>
                 </a>
             </header>
-            <div
-                class:list={[
-                    "prose",
-                    "prose-zinc",
-                    "max-w-[90vw]",
-                    "prose-blockquote:border-secondary",
-                    "prose-blockquote:not-italic",
-                    "prose-blockquote:text-justify",
-                    "prose-p:text-justify",
-                    "prose-p:after:content-none",
-                    "prose-p:before:content-none",
-                    "prose-img:inline-block",
-                    "prose-img:rounded",
-                    "prose-video:rounded",
-                    "prose-img:max-h-54",
-                    "prose-img:w-auto",
-                    "prose-img:my-0",
-                    "prose-ul:list-['->']",
-                    "prose-ul:pl-5",
-                    "marker:text-secondary",
-                    "prose-code:before:content-none",
-                    "prose-code:after:content-none",
-                    "prose-a:no-underline",
-                    "transition-colors",
-                    "duration-300",
-                    "prose-headings:font-medium",
-                    "prose-headings:tracking-tight",
-                    "prose-h2:text-4xl",
-                    "prose-h1:text-7xl",
-                    "prose-headings:break-all",
-                    "prose-h1:text-text",
-                    "prose-h2:text-primary",
-                    "prose-h3:mt-9",
-                    "prose-h3:mb-5",
-                    "prose-headings:text-secondary",
-                    "prose-a:text-secondary",
-                    "prose-a:hover:text-secondary",
-                ]}
-            >
-                {frontmatter?.title && <h1>{frontmatter.title}</h1>}
+
+            <main class="article-content">
+                {frontmatter?.title && <h1 class="page-title">{frontmatter.title}</h1>}
                 {
                     type === "youtube" && id && (
-                        <div class="w-full aspect-video">
+                        <div class="embed-youtube">
                             <iframe
                                 src={`https://www.youtube.com/embed/${id}`}
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen
-                                width="100%"
-                                height="100%"
                             />
                         </div>
                     )
                 }
                 {
                     type === "twitter" && id && (
-                        <div class="w-full">
+                        <div class="embed-twitter">
                             <blockquote
                                 class="twitter-tweet"
                                 data-media-max-width="1920"
@@ -214,7 +137,7 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
                     )
                 }
                 <slot />
-            </div>
+            </main>
         </div>
     </body>
 </html>
@@ -235,16 +158,5 @@ const { type, id } = getEmbedId(frontmatter?.embed as string | undefined);
             }
         });
 
-        // Animate SVG noise each frame using requestAnimationFrame
-        const turb = document.getElementById("noiseTurbulence");
-        if (turb && "setAttribute" in turb) {
-            let seed = 0;
-            const tick = () => {
-                seed = (seed + 1) % 1000;
-                turb.setAttribute("seed", String(seed));
-                requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-        }
     });
 </script>
