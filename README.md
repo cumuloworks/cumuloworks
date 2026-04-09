@@ -1,7 +1,7 @@
 # About Cumuloworks
 
 <details open>
-  <summary class="marker:content-none cursor-pointer"><h2>Menu</h2></summary>
+  <summary><h2>Menu</h2></summary>
   <ul>
     <li>
      <a href="#profile">Profile</a>
@@ -20,9 +20,6 @@
     </li>
     <li>
       <a href="#talks-and-interviews">Talks and Interviews</a>
-    </li>
-    <li>
-      <a href="#links">Links</a>
     </li>
     <li>
       <a href="/ja">日本語</a>
@@ -58,12 +55,12 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 
 | Icon | Service | Username |
 | --- | --- | --- |
-| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=ffffff&size=24)](https://x.com/cumuloworks) | X | [@cumuloworks](https://x.com/cumuloworks) |
-| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=ffffff&size=24)](https://www.instagram.com/cumuloworks/) | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/) |
-| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=ffffff&size=24)](https://www.youtube.com/@cumuloworks) | YouTube | [@cumuloworks](https://www.youtube.com/@cumuloworks) |
-| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=ffffff&size=24)](https://github.com/cumuloworks) | GitHub | [@cumuloworks](https://github.com/cumuloworks) |
-| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=ffffff&size=24)](https://www.facebook.com/cumuloworks/) | Facebook | [@cumuloworks](https://www.facebook.com/cumuloworks/) |
-| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=ffffff&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify | [@cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
+| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=165b7a&size=24)](https://x.com/cumuloworks) | X | [@cumuloworks](https://x.com/cumuloworks) |
+| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=165b7a&size=24)](https://www.instagram.com/cumuloworks/) | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/) |
+| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=165b7a&size=24)](https://www.youtube.com/@cumuloworks) | YouTube | [@cumuloworks](https://www.youtube.com/@cumuloworks) |
+| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=165b7a&size=24)](https://github.com/cumuloworks) | GitHub | [@cumuloworks](https://github.com/cumuloworks) |
+| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=165b7a&size=24)](https://www.facebook.com/cumuloworks/) | Facebook | [@cumuloworks](https://www.facebook.com/cumuloworks/) |
+| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=165b7a&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify | [@cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
 |  | Website | [cumulo.works](https://cumulo.works) |
 |  | Email | [mail@cumulo.works](mailto:mail@cumulo.works) |
 
@@ -123,6 +120,20 @@ Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
 
+### [fc.hoshimiyatoto.com](https://fc.hoshimiyatoto.com)
+
+Official fan club website for Hoshimiya Toto, offering blogs, live archives, ticket information, and paid membership plans.
+
+Frontend Development (Next.js)
+
+[![fc.hoshimiyatoto.com](https://api.microlink.io/?url=https://fc.hoshimiyatoto.com&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://fc.hoshimiyatoto.com)
+
+### [player.drop.mov](https://player.drop.mov)
+
+An open-source React media player component supporting video (HLS/progressive), audio, image, and PDF formats with unified playback controls and customizable theming.
+
+[![player.drop.mov](https://api.microlink.io/?url=https://player.drop.mov&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://player.drop.mov)
+
 <!-- Articles -->
 
 ## Talks and Interviews
@@ -144,8 +155,6 @@ Web Development (JAMstack + Cloudflare Pages + microCMS + Astro)
 ### 2020
 
 - CGWORLD 2020 クリエイティブカンファレンス [「After Effectsスクリプトを書いて、制作を楽しく効率化しよう。」](https://cgworld.jp/special/cgwcc2020/schedule/cumuloworks/index.html)
-
-<!-- Links -->
 
 ---
 

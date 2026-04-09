@@ -34,17 +34,13 @@ async function getImagesFromFolder(folderPath) {
 
 {
     galleryImages.length > 0 && (
-        <div class="not-prose mt-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <div class="gallery">
+            <div class="gallery-grid">
                 {preparedImages.map((image, index) => (
-                    <div
-                        class="w-full"
-                        key={image.id}
-                    >
+                    <div class="gallery-item" key={image.id}>
                         <Image
                             src={image.src}
                             alt={image.alt}
-                            class="w-full h-auto object-contain"
                             loading={index < 4 ? "eager" : "lazy"}
                             id={image.id}
                             width={1280}

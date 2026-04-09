@@ -1,40 +1,17 @@
 ---
-import { getCollection } from "astro:content";
-import { getMarkdownProcessor } from "@/utils/markdown";
-import readmeRaw from "@/../README_JA.md?raw";
-import Layout from "@/layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import readmeRaw from '@/../README_JA.md?raw';
+import Layout from '@/layouts/Layout.astro';
+import { getMarkdownProcessor } from '@/utils/markdown';
 
-const projects = await getCollection("projects");
-const blogs = await getCollection("blogs");
-const downloads = await getCollection("downloads");
-const links = [
-    {
-        title: "プライバシーポリシー",
-        href: "/privacy",
-    },
-    {
-        title: "特定商取引法に基づく表示",
-        href: "/scta",
-    },
-];
-
+const projects = await getCollection('projects');
+const blogs = await getCollection('blogs');
+const downloads = await getCollection('downloads');
 function makeListMarkdown(items) {
     return items
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-        .map(
-            (item) =>
-                `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`,
-        )
-        .join("\n");
-}
-
-function makeLinksMarkdown(linkItems) {
-    return linkItems
-        .map(
-            (item) =>
-                `- [${item.title}](${item.href})${item.note ? ` ${item.note}` : ""}`,
-        )
-        .join("\n");
+        .map((item) => `- [${item.data.title} (${item.data.date.getFullYear()})](/${item.collection}/${item.slug})`)
+        .join('\n');
 }
 
 function buildSectionMarkdown(heading, content) {
@@ -43,32 +20,23 @@ function buildSectionMarkdown(heading, content) {
 
 const sections = [
     [
-        "<!-- Ads -->",
+        '<!-- Ads -->',
+        buildSectionMarkdown('コマーシャル', makeListMarkdown(projects.filter((p) => p.data.category === 'ads'))),
+    ],
+    [
+        '<!-- Entertainment -->',
         buildSectionMarkdown(
-            "コマーシャル",
-            makeListMarkdown(projects.filter((p) => p.data.category === "ads")),
+            'エンターテイメント',
+            makeListMarkdown(projects.filter((p) => p.data.category === 'entertainment'))
         ),
     ],
     [
-        "<!-- Entertainment -->",
-        buildSectionMarkdown(
-            "エンターテイメント",
-            makeListMarkdown(
-                projects.filter((p) => p.data.category === "entertainment"),
-            ),
-        ),
+        '<!-- Articles -->',
+        `## 記事\n\n${buildSectionMarkdown('ブログ', makeListMarkdown(blogs))}\n\n${buildSectionMarkdown('ダウンロード', makeListMarkdown(downloads))}`,
     ],
-    [
-        "<!-- Articles -->",
-        `## 記事\n\n${buildSectionMarkdown("ブログ", makeListMarkdown(blogs))}\n\n${buildSectionMarkdown("ダウンロード", makeListMarkdown(downloads))}`,
-    ],
-    ["<!-- Links -->", `## リンク\n\n${makeLinksMarkdown(links)}`],
 ];
 
-const readmeWithInjectedLists = sections.reduce(
-    (acc, [marker, content]) => acc.replace(marker, content),
-    readmeRaw,
-);
+const readmeWithInjectedLists = sections.reduce((acc, [marker, content]) => acc.replace(marker, content), readmeRaw);
 
 const markdown = await getMarkdownProcessor();
 const { code: readmeHTML } = await markdown.render(readmeWithInjectedLists);
