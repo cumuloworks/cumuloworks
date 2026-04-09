@@ -24,7 +24,11 @@
     "pnpm": {
         "overrides": {
             "vite": "^8.0.0"
-        }
+        },
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "sharp"
+        ]
     },
     "devDependencies": {
         "@astrojs/markdown-remark": "^7.1.0",
