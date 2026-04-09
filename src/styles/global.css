@@ -133,7 +133,7 @@ a:hover { color: var(--muted); }
 
 /* h2 */
 .article-content h2 {
-    font-size: 0.8125rem;
+    font-size: 1.125rem;
     font-weight: 500;
     color: var(--cream);
     margin-top: 4rem;
