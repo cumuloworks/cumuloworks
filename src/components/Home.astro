@@ -1,0 +1,503 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import profilePic from '@/assets/profile_pic.jpg';
+import DetailBody from '@/components/DetailBody.astro';
+import LangToggle from '@/components/LangToggle.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import Socials from '@/components/Socials.astro';
+import { bi, copy, devTools, lucide, profile, studioReel, talks } from '@/data/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const byDateDesc = (a, b) => b.data.date.getTime() - a.data.date.getTime();
+const yt = (url) => url?.match(/(?:youtu\.be\/|\/embed\/|watch\?v=|&v=|\/v\/)([\w-]{11})/)?.[1] ?? null;
+
+const allProjects = await getCollection('projects');
+
+// Per-project thumbnails (src/content/projects/<id>/thumb.<ext>).
+const thumbModules = import.meta.glob<import('astro').ImageMetadata>(
+    '/src/content/projects/**/thumb.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+    { eager: true, import: 'default' }
+);
+const thumbMap = Object.fromEntries(
+    Object.entries(thumbModules).map(([path, img]) => [path.match(/\/projects\/(.+)\/thumb\./)?.[1] ?? path, img])
+);
+
+const workEntries = allProjects
+    .filter((p) => p.data.category === 'entertainment' || p.data.category === 'ads')
+    .sort(byDateDesc);
+const entCount = workEntries.filter((p) => p.data.category === 'entertainment').length;
+const adsCount = workEntries.filter((p) => p.data.category === 'ads').length;
+
+const showreels = allProjects
+    .filter((p) => p.data.category === 'showreel')
+    .sort(byDateDesc)
+    .map((p) => {
+        const year = p.data.date.getFullYear();
+        const id = yt(p.data.embed);
+        return {
+            title: p.data.title,
+            yt: id,
+            url: p.data.embed ? `https://www.youtube.com/watch?v=${id}` : `/projects/${p.id}`,
+            eyebrow: { en: `Showreel · ${year}`, ja: `ショーリール · ${year}` },
+        };
+    });
+
+const reels = [studioReel, ...showreels];
+
+const downloadEntries = (await getCollection('downloads')).sort(byDateDesc);
+const blogEntries = (await getCollection('blogs')).sort(byDateDesc);
+---
+
+<BaseLayout title="Tomoya Eguchi">
+    {/* ===================== TOP UTILITY ===================== */}
+    <div class="topbar">
+        <LangToggle />
+    </div>
+
+    {/* ===================== FIRST VIEW (narrow, centered) ===================== */}
+    <div class="shell">
+        <header class="profile reveal" id="profile">
+            <div class="avatar-ring">
+                <Image
+                    src={profilePic}
+                    alt={profile.name}
+                    width={264}
+                    densities={[1, 2]}
+                    loading="eager"
+                    fetchpriority="high"
+                />
+            </div>
+            <h1 class="p-name">{profile.name}</h1>
+            <p class="p-handle">{profile.handle}</p>
+            <div class="p-roles">
+                {
+                    profile.roles.map((r, i) => (
+                        <Fragment>
+                            {i > 0 && <span class="d">·</span>}
+                            <span set:html={bi(r)} />
+                        </Fragment>
+                    ))
+                }
+            </div>
+            <p class="p-bio prose" set:html={bi(profile.bio)} />
+            <p class="p-about prose" set:html={bi(profile.about)} />
+        </header>
+        <div class="reveal" id="contact"><Socials /></div>
+    </div>
+
+    {/* ===================== EDITORIAL BODY (wide) ===================== */}
+    <main class="wide">
+        {/* SYSTEMS */}
+        <section class="chapter reveal" id="systems">
+            <h2 class="chapter-h">
+                <span class="hl"><span class="en">Things I build</span><span class="ja">つくっているもの</span></span>
+            </h2>
+            <div class="chapter-lede" set:html={bi(copy.dev)} />
+            <div class="proj-list">
+                {
+                    devTools.map((d) => (
+                        <div class="proj">
+                            {!d.shot ? (
+                                <div class="proj-thumb ph">
+                                    <span>{d.phLabel ?? 'tool'}</span>
+                                </div>
+                            ) : typeof d.shot === 'string' ? (
+                                <div class="proj-thumb">
+                                    <img src={d.shot} alt={d.title} loading="lazy" referrerpolicy="no-referrer" />
+                                </div>
+                            ) : (
+                                <div class="proj-thumb">
+                                    <Image src={d.shot} alt={d.title} width={300} densities={[1, 2]} loading="lazy" />
+                                </div>
+                            )}
+                            <div class="proj-main">
+                                <h3>
+                                    <a href={d.url} target="_blank" rel="noopener">
+                                        {d.title} <span class="ar" set:html={lucide.upRight} />
+                                    </a>
+                                </h3>
+                                {d.oss && <span class="proj-tag">OSS</span>}
+                                <p class="proj-desc" set:html={bi(d.desc)} />
+                                <div class="proj-stack">
+                                    {d.stack.map((s, i) => (
+                                        <Fragment>
+                                            {i > 0 && <span class="d">·</span>}
+                                            {s}
+                                        </Fragment>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="mini-head dl-head">
+                <span class="en">More scripts &amp; assets</span><span class="ja">その他のスクリプト・素材</span>
+            </div>
+            <div class="acc-list" data-acc-group>
+                {
+                    downloadEntries.map((d) => (
+                        <div class="acc" data-path={`/downloads/${d.id}`}>
+                            <a
+                                class="acc-head acc-line"
+                                href={`/downloads/${d.id}`}
+                                data-astro-prefetch="false"
+                                aria-expanded="false"
+                            >
+                                <span class="yr">{d.data.date.getFullYear()}</span>
+                                <span class="tx">{d.data.title}</span>
+                                <span class="acc-chevron" set:html={lucide.chevron} />
+                            </a>
+                            <div class="acc-panel">
+                                <div class="acc-body">
+                                    <div class="acc-inner">
+                                        <DetailBody entry={d} collection="downloads" lazy={true} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        {/* MOTION */}
+        <section class="chapter reveal" id="motion">
+            <h2 class="chapter-h">
+                <span class="hl"><span class="en">Things I make</span><span class="ja">うごかしているもの</span></span>
+            </h2>
+            <div class="chapter-lede" set:html={bi(copy.vid)} />
+            <div class="reels at-start" data-carousel>
+                <div class="reel-track">
+                    {
+                        reels.map((r) => (
+                            <div class="reel" data-yt={r.yt} data-title={r.title}>
+                                <button type="button" class="reel-frame reel-facade" aria-label={`Play ${r.title}`}>
+                                    <img
+                                        src={`https://img.youtube.com/vi/${r.yt}/maxresdefault.jpg`}
+                                        alt={r.title}
+                                        loading="lazy"
+                                    />
+                                    <span class="play" set:html={lucide.play} />
+                                </button>
+                            </div>
+                        ))
+                    }
+                </div>
+                {
+                    reels.length > 1 && (
+                        <>
+                            <button type="button" class="reel-arrow prev" data-reel-prev aria-label="Previous showreel">
+                                <span set:html={lucide.left} />
+                            </button>
+                            <button type="button" class="reel-arrow next" data-reel-next aria-label="Next showreel">
+                                <span class="flip" set:html={lucide.left} />
+                            </button>
+                            <div class="reel-dots" role="tablist" aria-label="Showreels">
+                                {reels.map((r, i) => (
+                                    <button
+                                        type="button"
+                                        class={`reel-dot${i === 0 ? ' active' : ''}`}
+                                        data-reel-dot={i}
+                                        aria-label={`Show ${r.title}`}
+                                        aria-selected={i === 0 ? 'true' : 'false'}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
+            </div>
+            <div class="filters" role="group" aria-label="Filter">
+                <button type="button" data-filter="All" class="active" aria-pressed="true"
+                    ><span class="en">Everything</span><span class="ja">すべて</span><span class="ct">({workEntries.length})</span
+                    ></button
+                >
+                <button type="button" data-filter="Entertainment" aria-pressed="false"
+                    ><span class="en">Music &amp; entertainment</span><span class="ja">音楽・エンタメ</span><span
+                        class="ct">({entCount})</span
+                    ></button
+                >
+                <button type="button" data-filter="Ads" aria-pressed="false"
+                    ><span class="en">Ads &amp; commercials</span><span class="ja">広告・CM</span><span class="ct"
+                        >({adsCount})</span
+                    ></button
+                >
+            </div>
+            <div class="works" data-acc-group>
+                {
+                    workEntries.map((w) => {
+                        const cat = w.data.category === 'ads' ? 'Ads' : 'Entertainment';
+                        const thumb = thumbMap[w.id];
+                        return (
+                            <div class="acc" data-path={`/projects/${w.id}`} data-cat={cat}>
+                                <a
+                                    class="acc-head work-row"
+                                    href={`/projects/${w.id}`}
+                                    data-astro-prefetch="false"
+                                    aria-expanded="false"
+                                >
+                                    <span class="work-thumb">
+                                        {thumb && (
+                                            <Image src={thumb} alt={w.data.title} width={160} height={90} loading="lazy" />
+                                        )}
+                                    </span>
+                                    <span class="wy">{w.data.date.getFullYear()}</span>
+                                    <span class="wt">{w.data.title}</span>
+                                    <span class="wc">
+                                        <span class="en">{cat === 'Ads' ? 'Ad' : 'Music'}</span>
+                                        <span class="ja">{cat === 'Ads' ? '広告' : '音楽'}</span>
+                                    </span>
+                                    <span class="acc-chevron" set:html={lucide.chevron} />
+                                </a>
+                                <div class="acc-panel">
+                                    <div class="acc-body">
+                                        <div class="acc-inner">
+                                            <DetailBody entry={w} collection="projects" lazy={true} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+            <a class="more" href="https://kumo.productions/en/projects" target="_blank" rel="noopener">
+                <span class="u"
+                    ><span class="en">see more over on kumo.productions™</span><span class="ja"
+                        >kumo.productions™ で続きを見る</span
+                    ></span
+                >
+                <span set:html={lucide.upRight} />
+            </a>
+        </section>
+
+        {/* WRITING */}
+        <section class="chapter reveal" id="writing">
+            <h2 class="chapter-h">
+                <span class="hl"><span class="en">Things I write</span><span class="ja">書いたり</span></span>
+            </h2>
+            <div class="chapter-lede" set:html={bi(copy.write)} />
+            <div class="acc-list" data-acc-group>
+                {
+                    blogEntries.map((x) => (
+                        <div class="acc" data-path={`/blogs/${x.id}`}>
+                            <a
+                                class="acc-head acc-line"
+                                href={`/blogs/${x.id}`}
+                                data-astro-prefetch="false"
+                                aria-expanded="false"
+                            >
+                                <span class="yr">{x.data.date.getFullYear()}</span>
+                                <span class="tx">{x.data.title}</span>
+                                <span class="acc-chevron" set:html={lucide.chevron} />
+                            </a>
+                            <div class="acc-panel">
+                                <div class="acc-body">
+                                    <div class="acc-inner">
+                                        <DetailBody entry={x} collection="blogs" lazy={true} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        {/* TALKS */}
+        <section class="chapter reveal" id="talks">
+            <h2 class="chapter-h">
+                <span class="hl"><span class="en">Things I say</span><span class="ja">話したり</span></span>
+            </h2>
+            <div class="chapter-lede" set:html={bi(copy.say)} />
+            <div class="talk-list">
+                {
+                    talks.map((x) => (
+                        <a href={x.url} target="_blank" rel="noopener">
+                            <span class="tt">
+                                {x.t}
+                                <span class="ar" set:html={lucide.upRight} />
+                            </span>
+                            <span class="tmeta">
+                                <span class="ty">{x.y}</span>
+                                <span class="tsep">·</span>
+                                <span class="tsrc">{x.src}</span>
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+
+    <SiteFooter />
+</BaseLayout>
+
+<script>
+    // Work-index category filter.
+    const btns = document.querySelectorAll<HTMLButtonElement>('.filters button');
+    btns.forEach((b) =>
+        b.addEventListener('click', () => {
+            btns.forEach((x) => {
+                x.classList.remove('active');
+                x.setAttribute('aria-pressed', 'false');
+            });
+            b.classList.add('active');
+            b.setAttribute('aria-pressed', 'true');
+            const f = b.dataset.filter;
+            document.querySelectorAll<HTMLElement>('.works .acc').forEach((r) =>
+                r.classList.toggle('hidden', !(f === 'All' || r.dataset.cat === f))
+            );
+        })
+    );
+
+    // ----- Showreel carousel (scroll-snap + arrows + dots) -----
+    const carousel = document.querySelector<HTMLElement>('[data-carousel]');
+    if (carousel) {
+        const track = carousel.querySelector<HTMLElement>('.reel-track')!;
+        const dots = [...carousel.querySelectorAll<HTMLButtonElement>('.reel-dot')];
+        const count = track.querySelectorAll('.reel').length;
+        const slides = [...track.querySelectorAll<HTMLElement>('.reel')];
+        const prevBtn = carousel.querySelector<HTMLButtonElement>('[data-reel-prev]');
+        const nextBtn = carousel.querySelector<HTMLButtonElement>('[data-reel-next]');
+        const step = () => (slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth);
+        const indexOf = () => Math.round(track.scrollLeft / step());
+        const goTo = (i: number) => {
+            const clamped = Math.max(0, Math.min(count - 1, i));
+            track.scrollTo({ left: clamped * step(), behavior: 'smooth' });
+        };
+        const sync = () => {
+            const cur = indexOf();
+            dots.forEach((d, i) => {
+                const on = i === cur;
+                d.classList.toggle('active', on);
+                d.setAttribute('aria-selected', String(on));
+            });
+            prevBtn?.toggleAttribute('hidden', cur <= 0);
+            nextBtn?.toggleAttribute('hidden', cur >= count - 1);
+            carousel.classList.toggle('at-start', cur <= 0);
+            carousel.classList.toggle('at-end', cur >= count - 1);
+            slides.forEach((reel, i) => {
+                if (i === cur) return;
+                const frame = reel.querySelector<HTMLIFrameElement>('iframe');
+                frame?.contentWindow?.postMessage(
+                    '{"event":"command","func":"pauseVideo","args":""}',
+                    '*'
+                );
+            });
+        };
+        prevBtn?.addEventListener('click', () => goTo(indexOf() - 1));
+        nextBtn?.addEventListener('click', () => goTo(indexOf() + 1));
+        dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+        let raf = 0;
+        track.addEventListener('scroll', () => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(sync);
+        });
+        track.querySelectorAll<HTMLButtonElement>('.reel-facade').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const reel = btn.closest<HTMLElement>('.reel');
+                if (!reel) return;
+                const iframe = document.createElement('iframe');
+                iframe.className = 'reel-frame';
+                iframe.src = `https://www.youtube.com/embed/${reel.dataset.yt}?autoplay=1&enablejsapi=1`;
+                iframe.title = reel.dataset.title ?? '';
+                iframe.allow =
+                    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+                btn.replaceWith(iframe);
+            });
+        });
+        sync();
+    }
+
+    // ----- Inline accordion with SPA-style path sync -----
+    // Content is pre-rendered inline; only the iframe is deferred until expand.
+    const accs = [...document.querySelectorAll<HTMLElement>('.acc')];
+    const norm = (p: string) => p.replace(/\/+$/, '') || '/';
+
+    // Arrived via the 404 fallback redirect? Restore the clean URL.
+    try {
+        const stored = sessionStorage.getItem('cw-open');
+        if (stored) {
+            sessionStorage.removeItem('cw-open');
+            history.replaceState({ path: stored }, '', stored);
+        }
+    } catch {}
+
+    function hydrate(acc: HTMLElement) {
+        acc.querySelectorAll<HTMLIFrameElement>('iframe[data-src]').forEach((f) => {
+            f.src = f.dataset.src!;
+            f.removeAttribute('data-src');
+        });
+    }
+
+    function setOpen(acc: HTMLElement, open: boolean) {
+        acc.classList.toggle('open', open);
+        acc.querySelector('.acc-head')?.setAttribute('aria-expanded', String(open));
+        if (open) hydrate(acc);
+    }
+
+    function openAcc(acc: HTMLElement, push = true) {
+        acc.closest('[data-acc-group]')
+            ?.querySelectorAll<HTMLElement>('.acc.open')
+            .forEach((o) => {
+                if (o !== acc) setOpen(o, false);
+            });
+        setOpen(acc, true);
+        if (push && norm(location.pathname) !== acc.dataset.path) {
+            history.pushState({ path: acc.dataset.path }, '', acc.dataset.path);
+        }
+    }
+
+    function closeAcc(acc: HTMLElement, push = true) {
+        setOpen(acc, false);
+        if (push && norm(location.pathname) !== '/') history.pushState({ path: '/' }, '', '/');
+    }
+
+    accs.forEach((acc) => {
+        acc.querySelector('.acc-head')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (acc.classList.contains('open')) closeAcc(acc);
+            else openAcc(acc);
+        });
+    });
+
+    // Sync open state to the current path (deep-link on load + back/forward).
+    function syncToPath() {
+        const target = accs.find((a) => a.dataset.path === norm(location.pathname));
+        accs.forEach((a) => {
+            if (a !== target && a.classList.contains('open')) setOpen(a, false);
+        });
+        if (target && !target.classList.contains('open')) setOpen(target, true);
+        return target;
+    }
+
+    const deepLinked = syncToPath();
+    if (deepLinked) requestAnimationFrame(() => deepLinked.scrollIntoView({ block: 'center' }));
+    window.addEventListener('popstate', syncToPath);
+
+    // Scroll reveal (with a fail-safe so nothing stays hidden).
+    const els = [...document.querySelectorAll<HTMLElement>('.reveal')];
+    document.documentElement.classList.add('anim-ready');
+    requestAnimationFrame(() =>
+        els.forEach((n) => {
+            if (n.getBoundingClientRect().top < window.innerHeight * 0.96) n.classList.add('in');
+        })
+    );
+    const io = new IntersectionObserver(
+        (entries) =>
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            }),
+        { threshold: 0.04, rootMargin: '0px 0px -4% 0px' }
+    );
+    els.forEach((n) => io.observe(n));
+    setTimeout(() => document.documentElement.classList.add('reveal-off'), 1500);
+</script>

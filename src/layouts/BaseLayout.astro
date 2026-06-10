@@ -1,0 +1,119 @@
+---
+import '@/styles/global.css';
+import Analytics from '@vercel/analytics/astro';
+import { socials } from '@/data/site';
+
+interface Props {
+    title?: string;
+    description?: string;
+    lang?: 'en' | 'ja';
+}
+
+const {
+    title,
+    description = 'Tomoya Eguchi (Cumuloworks) — motion designer, CG artist & software developer.',
+    lang = 'en',
+} = Astro.props as Props;
+
+const fullTitle = [title, 'Cumuloworks'].filter(Boolean).join(' — ');
+const ogImage = new URL('/ogp.png', Astro.site ?? Astro.url);
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Tomoya Eguchi',
+    url: (Astro.site ?? Astro.url).toString(),
+    image: new URL('/profile_pic.jpg', Astro.site ?? Astro.url).toString(),
+    jobTitle: 'Motion Designer, CG Artist & Software Developer',
+    worksFor: { '@type': 'Organization', name: 'kumo.productions', url: 'https://kumo.productions/' },
+    sameAs: socials.map((s) => s.url),
+};
+---
+
+<!doctype html>
+<html lang={lang} data-lang={lang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="theme-color" content="#1d3744" />
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={Astro.url} />
+
+        <meta property="og:title" content={title || 'Cumuloworks'} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Cumuloworks" />
+        <meta property="og:site_name" content="Cumuloworks" />
+        <meta property="og:locale" content={lang === 'ja' ? 'ja_JP' : 'en_US'} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title || 'Cumuloworks'} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        {/* Set language before paint to avoid a flash of the wrong language. */}
+        <script is:inline>
+            (function () {
+                var l = 'en';
+                try {
+                    l = localStorage.getItem('cw-lang') || 'en';
+                } catch (e) {}
+                document.documentElement.setAttribute('data-lang', l);
+                document.documentElement.lang = l;
+            })();
+        </script>
+
+        <Analytics />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
+
+<script>
+    // Language toggle (shared across pages) + external-link hardening.
+    function applyLang(lang: string) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang;
+        try {
+            localStorage.setItem('cw-lang', lang);
+        } catch (e) {}
+        document.querySelectorAll<HTMLButtonElement>('.lang button').forEach((b) => {
+            const on = b.dataset.lang === lang;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-pressed', String(on));
+        });
+    }
+
+    const current = document.documentElement.getAttribute('data-lang') || 'en';
+    applyLang(current);
+
+    document.querySelectorAll<HTMLButtonElement>('.lang button').forEach((b) => {
+        b.addEventListener('click', () => b.dataset.lang && applyLang(b.dataset.lang));
+    });
+
+    // Open off-site links in a new tab.
+    const host = window.location.hostname;
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((a) => {
+        if (!a.href.includes(host)) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+</script>

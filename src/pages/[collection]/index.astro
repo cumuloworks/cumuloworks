@@ -1,9 +1,0 @@
----
-export async function getStaticPaths() {
-    const collections = ['projects', 'blogs', 'downloads'];
-    return collections.map((collection) => ({ params: { collection } }));
-}
-
-const { collection } = Astro.params;
-return Astro.redirect(`/#${collection}`);
----

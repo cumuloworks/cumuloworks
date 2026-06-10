@@ -1,0 +1,31 @@
+---
+import wordmarkWhite from '@/assets/typography_white.svg?raw';
+import { bi, email, footerNote, lucide, socials } from '@/data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+    <div class="wide">
+        <div class="footer-row">
+            <p class="f-note prose" set:html={bi(footerNote)} />
+            <div class="f-soc">
+                {
+                    socials.map((s) => (
+                        <a href={s.url} target="_blank" rel="noopener">
+                            {s.name} <span class="ar" set:html={lucide.upRight} />
+                        </a>
+                    ))
+                }
+                <a href={`mailto:${email}`}>Email <span class="ar" set:html={lucide.upRight} /></a>
+            </div>
+        </div>
+        <a class="f-wordmark" href="/" aria-label="Cumuloworks" set:html={wordmarkWhite}></a>
+        <div class="footer-bottom">
+            <span>© {year} Cumuloworks</span>
+            <span class="f-bottom-links">
+                <a href="https://kumo.productions/" target="_blank" rel="noopener">kumo.productions™</a>
+            </span>
+        </div>
+    </div>
+</footer>

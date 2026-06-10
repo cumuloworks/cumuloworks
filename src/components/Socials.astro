@@ -1,0 +1,29 @@
+---
+import { email, socialIcons, socials } from '@/data/site';
+---
+
+<nav class="socials" aria-label="Social links">
+    {
+        socials.map((s) => {
+            const label = `${s.name} · ${s.handle}`;
+            return (
+                <a
+                    class={`sbtn ${s.id}`}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={label}
+                    data-label={label}
+                    set:html={socialIcons[s.id]}
+                />
+            );
+        })
+    }
+    <a
+        class="sbtn mail"
+        href={`mailto:${email}`}
+        aria-label={`Email · ${email}`}
+        data-label={`Email · ${email}`}
+        set:html={socialIcons.mail}
+    />
+</nav>

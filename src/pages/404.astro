@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import LangToggle from '@/components/LangToggle.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Valid inline deep-link paths. On hosts without the Vercel rewrite (local
+// preview, other static hosts) a direct hit on one of these falls through to
+// this 404 page; the script below bounces it back to the homepage, which opens
+// the matching accordion. Genuinely unknown URLs show the 404 below.
+const projects = await getCollection('projects');
+const validPaths = [
+    ...projects
+        .filter((p) => p.data.category === 'entertainment' || p.data.category === 'ads')
+        .map((p) => `/projects/${p.id}`),
+    ...(await getCollection('downloads')).map((d) => `/downloads/${d.id}`),
+    ...(await getCollection('blogs')).map((b) => `/blogs/${b.id}`),
+];
+---
+
+<BaseLayout title="Not found">
+    {/* Runs first in <body>: for a known deep-link we redirect home before the
+       404 below ever paints (it stays `hidden`), so there's no flash of "Not
+       found" mid-redirect. Only genuinely unknown URLs reveal the 404. */}
+    <script is:inline define:vars={{ validPaths }}>
+        (function () {
+            var p = location.pathname.replace(/\/+$/, '') || '/';
+            if (validPaths.indexOf(p) !== -1) {
+                try {
+                    sessionStorage.setItem('cw-open', p);
+                } catch (e) {}
+                location.replace('/');
+                return;
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+                var nf = document.querySelector('.notfound');
+                if (nf) nf.hidden = false;
+            });
+        })();
+    </script>
+
+    <div class="topbar">
+        <LangToggle />
+    </div>
+
+    <main class="notfound" hidden>
+        <p class="nf-code">404</p>
+        <h1 class="nf-title">
+            <span class="en">This page doesn’t exist.</span><span class="ja">ページが見つかりません。</span>
+        </h1>
+        <p class="nf-sub">
+            <span class="en">The page may have moved, or the link may be broken.</span>
+            <span class="ja">ページが移動したか、リンクが切れている可能性があります。</span>
+        </p>
+        <a class="nf-home" href="/">
+            <span class="en">Back to home</span><span class="ja">ホームへ戻る</span>
+        </a>
+    </main>
+
+    <SiteFooter />
+</BaseLayout>

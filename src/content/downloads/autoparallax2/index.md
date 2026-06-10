@@ -3,11 +3,9 @@ title: "autoParallax 2"
 date: 2023-08-01
 category: "ae"
 description: "A script for After Effects that simplifies creating parallax effect animations using 3D layers. It maintains the original layout by canceling apparent size changes when moving along the Z-axis, allowing for easy creation of parallax effects."
+booth: "https://booth.pm/ja/items/1234415"
+gumroad: "https://cumuloworks.gumroad.com/l/autoparallax2"
 ---
-
-[<img src="https://asset.booth.pm/static-images/banner/200x40_01.png" alt="autoParallax 2">](https://booth.pm/ja/items/1234415)
-
-[![Gumroad Badge](https://img.shields.io/badge/Gumroad-FF90E8?logo=gumroad&logoColor=fff&style=for-the-badge)](https://cumuloworks.gumroad.com/l/autoparallax2)
 
 ## autoParallaxとは
 

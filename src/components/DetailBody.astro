@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import Gallery from '@/components/Gallery.astro';
+import { lucide } from '@/data/site';
+
+type AnyEntry = CollectionEntry<'projects'> | CollectionEntry<'blogs'> | CollectionEntry<'downloads'>;
+
+interface Props {
+    entry: AnyEntry;
+    collection: string;
+    /** Defer the iframe until the panel is expanded (accordion). */
+    lazy?: boolean;
+}
+
+const { entry, collection, lazy = false } = Astro.props;
+const { Content } = await render(entry);
+
+const embed = (entry.data as { embed?: string }).embed;
+const isYoutube = !!embed && (embed.includes('youtube') || embed.includes('youtu.be'));
+const isTwitter = !!embed && (embed.includes('twitter.com') || embed.includes('x.com'));
+
+const ytId = isYoutube ? embed!.match(/(?:youtu\.be\/|\/embed\/|watch\?v=|&v=|\/v\/)([\w-]{11})/)?.[1] : null;
+const twId = isTwitter ? embed!.match(/(?:twitter\.com\/\w+\/status\/|x\.com\/\w+\/status\/)(\d+)/)?.[1] : null;
+const ytSrc = ytId ? `https://www.youtube.com/embed/${ytId}` : null;
+
+// Per-entry thumbnails. For projects/blogs/downloads, when an entry has no
+// embed, fall back to its thumb so the detail panel still leads with a visual.
+const thumbModules = import.meta.glob<import('astro').ImageMetadata>(
+    '/src/content/**/thumb.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+    { eager: true, import: 'default' }
+);
+const thumbMap = Object.fromEntries(
+    Object.entries(thumbModules).map(([path, img]) => [path.match(/\/content\/(.+)\/thumb\./)?.[1] ?? path, img])
+);
+const fallbackThumb =
+    ['projects', 'blogs', 'downloads'].includes(collection) && !ytSrc && !twId
+        ? thumbMap[`${collection}/${entry.id}`]
+        : null;
+
+const galleryFolderPath = `/src/content/${collection}/${entry.id}/`;
+const buy = entry.data as { booth?: string; gumroad?: string };
+const iframeAllow =
+    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+---
+
+{
+    ytSrc && (
+        <div class="embed-youtube">
+            {lazy ? (
+                <iframe data-src={ytSrc} title={entry.data.title} allow={iframeAllow} allowfullscreen />
+            ) : (
+                <iframe src={ytSrc} title={entry.data.title} allow={iframeAllow} allowfullscreen />
+            )}
+        </div>
+    )
+}
+{
+    twId && !lazy && (
+        <div class="embed-twitter">
+            <blockquote class="twitter-tweet" data-media-max-width="1920">
+                <a href={`https://twitter.com/i/status/${twId}`} />
+            </blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
+        </div>
+    )
+}
+{
+    fallbackThumb && (
+        <div class="embed-thumb">
+            <Image
+                src={fallbackThumb}
+                alt={entry.data.title}
+                widths={[480, 768, 920, 1280]}
+                sizes="(max-width: 1000px) 100vw, 920px"
+                loading="lazy"
+            />
+        </div>
+    )
+}
+{
+    collection === 'downloads' && (buy.booth || buy.gumroad) && (
+        <div class="buy-row">
+            {buy.booth && (
+                <a class="buy-btn booth" href={buy.booth} target="_blank" rel="noopener">
+                    <span class="en">Buy on BOOTH</span>
+                    <span class="ja">BOOTHで購入</span>
+                    <span class="ar" set:html={lucide.upRight} />
+                </a>
+            )}
+            {buy.gumroad && (
+                <a class="buy-btn gumroad" href={buy.gumroad} target="_blank" rel="noopener">
+                    <span class="en">Buy on Gumroad</span>
+                    <span class="ja">Gumroadで購入</span>
+                    <span class="ar" set:html={lucide.upRight} />
+                </a>
+            )}
+        </div>
+    )
+}
+
+<div class="article-content">
+    <Content />
+</div>
+
+{collection === 'projects' && <Gallery folderPath={galleryFolderPath} />}

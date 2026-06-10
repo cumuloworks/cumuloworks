@@ -30,6 +30,8 @@ const downloads = defineCollection({
         category: z.enum(['aviutl', 'ae', 'others']),
         date: z.date(),
         link: z.string().optional(),
+        booth: z.string().optional(),
+        gumroad: z.string().optional(),
     }),
 });
 
