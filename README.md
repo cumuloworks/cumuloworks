@@ -153,6 +153,22 @@ As of 2025, all video production services have been transferred from Cumuloworks
 
 <!-- GEN:tools:START -->
 
+### [SeqLens](https://seqlens.app)
+
+Native desktop app to detect, monitor, search and export image sequences across millions of render files for VFX and post-production.
+
+(Electron + C++ + Fullstack + VFX)
+
+[![SeqLens](https://seqlens.app/ogp.png)](https://seqlens.app)
+
+### [mcp-cinema4d](https://github.com/kumoproductions/mcp-cinema4d)
+
+TypeScript MCP server for Cinema 4D: generic entity CRUD, parameter-level access, undo-grouped batch ops and security controls.
+
+(TypeScript + MCP + Cinema 4D + Open Source)
+
+[![mcp-cinema4d](https://opengraph.githubassets.com/1/kumoproductions/mcp-cinema4d)](https://github.com/kumoproductions/mcp-cinema4d)
+
 ### [player.drop.mov](https://player.drop.mov)
 
 Open-source React media player supporting video, audio, image and PDF.
