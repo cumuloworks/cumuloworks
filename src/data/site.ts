@@ -89,6 +89,27 @@ export type DevTool = {
 
 export const devTools: DevTool[] = [
     {
+        title: 'SeqLens',
+        url: 'https://seqlens.app',
+        shot: 'https://seqlens.app/ogp.png',
+        desc: {
+            en: 'Native desktop app to detect, monitor, search and export image sequences across millions of render files for VFX and post-production.',
+            ja: 'VFX・ポスプロ向けに、数百万のレンダーファイルから連番画像を検出・監視・検索・書き出しするネイティブデスクトップアプリ。',
+        },
+        stack: ['Electron', 'C++', 'Fullstack', 'VFX'],
+    },
+    {
+        title: 'mcp-cinema4d',
+        url: 'https://github.com/kumoproductions/mcp-cinema4d',
+        shot: 'https://opengraph.githubassets.com/1/kumoproductions/mcp-cinema4d',
+        oss: true,
+        desc: {
+            en: 'TypeScript MCP server for Cinema 4D: generic entity CRUD, parameter-level access, undo-grouped batch ops and security controls.',
+            ja: 'Cinema 4D 向けの TypeScript 製 MCP サーバー。汎用エンティティ CRUD・パラメータ単位アクセス・undo 単位のバッチ操作・セキュリティ制御に対応。',
+        },
+        stack: ['TypeScript', 'MCP', 'Cinema 4D', 'Open Source'],
+    },
+    {
         title: 'player.drop.mov',
         url: 'https://player.drop.mov',
         shot: 'https://api.microlink.io/?url=https://player.drop.mov&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2',
