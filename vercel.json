@@ -1,8 +1,8 @@
 {
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "rewrites": [
-        { "source": "/projects/:path*", "destination": "/" },
-        { "source": "/downloads/:path*", "destination": "/" },
-        { "source": "/blogs/:path*", "destination": "/" }
-    ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/projects/:path*", "destination": "/" },
+    { "source": "/downloads/:path*", "destination": "/" },
+    { "source": "/blogs/:path*", "destination": "/" }
+  ]
 }

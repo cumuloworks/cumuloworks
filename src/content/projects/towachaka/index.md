@@ -14,5 +14,5 @@ Mix&Mastering : Patapata [ぱたぱた]
 Narration : Kuuzoku [空賊]
 Illustration : Touji [冬至]
 Logo Designer : 171eruP [171えるP]
-Video : Cumuloworks 
+Video : Cumuloworks
 ```

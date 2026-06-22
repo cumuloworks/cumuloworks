@@ -1,4 +1,0 @@
-{
-    "extends": "@cumuloworks/configs/.markdownlint.json",
-    "MD033": false
-}

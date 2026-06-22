@@ -34,7 +34,9 @@
 Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions™**](https://kumo.productions/) / Motion Designer / CG Generalist / Indie Developer**
 
 <!-- GEN:about:START -->
+
 > He began creating motion graphics under the name Cumuloworks during his high school years. After gaining two years of experience at [Naname Inc.](https://nanameinc.jp/), he officially established Cumuloworks, Inc. in 2020. In 2025, he launched [kumo.productions™](https://kumo.productions/), where he focuses on motion design and CG, delivering a diverse range of projects including commercials, music videos, and live stage productions. He is also committed to research and development, particularly in creating tools for video production and improving workflows.
+
 <!-- GEN:about:END -->
 
 **Used professionally** – Daily tools for motion design, editing, and rendering
@@ -56,16 +58,18 @@ Tomoya Eguchi (Cumuloworks) is the **Executive Director of [**kumo.productions�
 ## Social & Contact
 
 <!-- GEN:social:START -->
-| Icon | Service | Username |
-| --- | --- | --- |
-| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=165b7a&size=24)](https://x.com/cumuloworks) | X | [@cumuloworks](https://x.com/cumuloworks) |
-| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=165b7a&size=24)](https://www.instagram.com/cumuloworks/) | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/) |
-| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=165b7a&size=24)](https://www.youtube.com/@cumuloworks) | YouTube | [@cumuloworks](https://www.youtube.com/@cumuloworks) |
-| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=165b7a&size=24)](https://github.com/cumuloworks) | GitHub | [@cumuloworks](https://github.com/cumuloworks) |
-| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=165b7a&size=24)](https://www.facebook.com/cumuloworks/) | Facebook | [Cumuloworks](https://www.facebook.com/cumuloworks/) |
-| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=165b7a&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify | [cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
-|  | Website | [cumulo.works](https://cumulo.works) |
-|  | Email | [mail@cumulo.works](mailto:mail@cumulo.works) |
+
+| Icon                                                                                                                                                         | Service   | Username                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ---------------------------------------------------------------------------- |
+| [![X](https://www.readmecodegen.com/api/social-icon?name=x&color=165b7a&size=24)](https://x.com/cumuloworks)                                                 | X         | [@cumuloworks](https://x.com/cumuloworks)                                    |
+| [![Instagram](https://www.readmecodegen.com/api/social-icon?name=instagram&color=165b7a&size=24)](https://www.instagram.com/cumuloworks/)                    | Instagram | [@cumuloworks](https://www.instagram.com/cumuloworks/)                       |
+| [![YouTube](https://www.readmecodegen.com/api/social-icon?name=youtube&color=165b7a&size=24)](https://www.youtube.com/@cumuloworks)                          | YouTube   | [@cumuloworks](https://www.youtube.com/@cumuloworks)                         |
+| [![GitHub](https://www.readmecodegen.com/api/social-icon?name=github&color=165b7a&size=24)](https://github.com/cumuloworks)                                  | GitHub    | [@cumuloworks](https://github.com/cumuloworks)                               |
+| [![Facebook](https://www.readmecodegen.com/api/social-icon?name=facebook&color=165b7a&size=24)](https://www.facebook.com/cumuloworks/)                       | Facebook  | [Cumuloworks](https://www.facebook.com/cumuloworks/)                         |
+| [![Spotify](https://www.readmecodegen.com/api/social-icon?name=spotify&color=165b7a&size=24)](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) | Spotify   | [cumuloworks](https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c) |
+|                                                                                                                                                              | Website   | [cumulo.works](https://cumulo.works)                                         |
+|                                                                                                                                                              | Email     | [mail@cumulo.works](mailto:mail@cumulo.works)                                |
+
 <!-- GEN:social:END -->
 
 For video production inquiries, please visit [kumo.productions™](https://kumo.productions/).
@@ -85,6 +89,7 @@ As of 2025, all video production services have been transferred from Cumuloworks
 [![Cumuloworks SHOWREEL 2024](https://img.youtube.com/vi/b_68zkrGBDQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=b_68zkrGBDQ)
 
 <!-- GEN:ads:START -->
+
 - [SV.LEAGUE オープニングムービー](https://cumulo.works/projects/svleague)
 - [FREUDE by BMW](https://cumulo.works/projects/freude-by-bmw)
 - [JR西日本グループ コンセプトムービー](https://cumulo.works/projects/jr-west-movie)
@@ -115,6 +120,7 @@ As of 2025, all video production services have been transferred from Cumuloworks
 <!-- GEN:ads:END -->
 
 <!-- GEN:entertainment:START -->
+
 - [乃⽊坂46「それまでの猶予」](https://cumulo.works/projects/soremadenoyuuyo)
 - [米津玄師 LOST CORNER](https://cumulo.works/projects/lost-corner)
 - [ヰ世界情緒 ANGELIC](https://cumulo.works/projects/angelic)
@@ -146,6 +152,7 @@ As of 2025, all video production services have been transferred from Cumuloworks
 ## Tools / Sites
 
 <!-- GEN:tools:START -->
+
 ### [player.drop.mov](https://player.drop.mov)
 
 Open-source React media player supporting video, audio, image and PDF.
@@ -191,9 +198,11 @@ Portfolio site built on a headless CMS. Web development.
 After Effects script for building parallax animations from 3D layers.
 
 (After Effects + ExtendScript + Tool)
+
 <!-- GEN:tools:END -->
 
 <!-- GEN:articles:START -->
+
 - [Year in Review 2024](https://cumulo.works/blogs/year-in-review-2024)
 - [Ryzen 5 9600X でPCを組んだ](https://cumulo.works/blogs/pc-build-3)
 - [Cumuloworksで運用しているSynology社のストレージについて取材いただきました。#PR](https://cumulo.works/blogs/vook-synology)
@@ -213,6 +222,7 @@ After Effects script for building parallax animations from 3D layers.
 ## Talks and Interviews
 
 <!-- GEN:talks:START -->
+
 ### 2024
 
 - Vook [ストレージ容量の限界がクリエイティブを妨げる⁉](https://vook.vc/n/7699)

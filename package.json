@@ -1,38 +1,40 @@
 {
-    "name": "cumuloworks",
-    "type": "module",
-    "version": "0.0.1",
-    "scripts": {
-        "dev": "astro dev",
-        "start": "astro dev",
-        "build": "astro build",
-        "preview": "astro preview",
-        "astro": "astro",
-        "check": "biome check src",
-        "fix": "biome check src --write",
-        "fix:unsafe": "biome check src --write --unsafe",
-        "markdownlint": "markdownlint-cli2 src/**/*.md --config ./.markdownlint.json",
-        "markdownlint:fix": "markdownlint-cli2 src/**/*.md --config ./.markdownlint.json --fix"
+  "name": "cumuloworks",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "oxlint && oxfmt --check .",
+    "fix": "oxlint --fix && oxfmt .",
+    "lint": "oxlint",
+    "format": "oxfmt .",
+    "prepare": "lefthook install"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@kumoproductions/branding": "github:kumoproductions/branding",
+    "@vercel/analytics": "^2.0.1",
+    "astro": "^6.4.8",
+    "sharp": "^0.35.2"
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "^7.2.0",
+    "lefthook": "^2.1.9",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "^8.0.0"
     },
-    "dependencies": {
-        "@astrojs/sitemap": "^3.7.2",
-        "@kumoproductions/branding": "github:kumoproductions/branding",
-        "@vercel/analytics": "^1.6.1",
-        "astro": "^6.1.5",
-        "sharp": "^0.34.5"
-    },
-    "pnpm": {
-        "overrides": {
-            "vite": "^8.0.0"
-        },
-        "onlyBuiltDependencies": [
-            "esbuild",
-            "sharp"
-        ]
-    },
-    "devDependencies": {
-        "@astrojs/markdown-remark": "^7.1.0",
-        "@biomejs/biome": "^2.3.10",
-        "@cumuloworks/configs": "^1.1.2"
-    }
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lefthook",
+      "sharp"
+    ]
+  }
 }

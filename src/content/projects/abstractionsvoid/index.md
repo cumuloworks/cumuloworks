@@ -15,7 +15,7 @@ Vocal : KOKO
 MIX : 大川誠
 -
 Producer : Masayuki Kanmori (THINKR)
-Director : SHIGU / Akito Osawa 
+Director : SHIGU / Akito Osawa
 Technical CG Designer  :Reflex
 Character Animator : STUDIO_MOCA
 Graphic Designer : Ikimono

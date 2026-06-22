@@ -10,5 +10,5 @@ MINI JOHN COOPER WORKSのムービーの一部VFXを担当しました。
 ```plaintext
 Agency: AOI Pro.
 Director: Kei Ohta
-VFX (Drone): Tomoya Eguchi (Cumuloworks) 
+VFX (Drone): Tomoya Eguchi (Cumuloworks)
 ```

@@ -11,5 +11,5 @@ embed: "https://www.youtube.com/watch?v=irsOzMyTTBo"
 Art Director : Mao ShimojoIcon Design : Ryoka Adachi
 Director / Motion Graphics : Cumuloworks
 Motion Graphics : Shigu
-Music : cute girls doing cute things – Lucky 
+Music : cute girls doing cute things – Lucky
 ```

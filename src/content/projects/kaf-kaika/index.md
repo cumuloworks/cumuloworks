@@ -27,7 +27,7 @@ Match Move Artist: Sho Watanabe (UNDEFINED)
 Production Manager：Yuzo Morota,Kentaro Iwaki (THINKR)
 Producer ：Daichi Yanagita (THINKR),Hideyuki Negishi (THINKR)
 
-Executive Producer：PIEDPIPER 
+Executive Producer：PIEDPIPER
 
-Produced by KAMITSUBAKI STUDIO 
+Produced by KAMITSUBAKI STUDIO
 ```
