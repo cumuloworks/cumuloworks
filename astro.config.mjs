@@ -1,32 +1,38 @@
+import { satteri } from "@astrojs/markdown-satteri";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
 /**
  * Defer iframes embedded in markdown until their accordion panel is opened
  * (the homepage hydrates `iframe[data-src]` on expand) and lazy-load images.
+ *
+ * Ported to a Sätteri HAST plugin: markdown images become real `<img>`
+ * elements (handled by the element visitor), while iframes are authored as
+ * raw HTML in the markdown and stay as `raw` nodes (handled by the raw
+ * visitor with a string rewrite).
  */
-function rehypeLazyEmbeds() {
-  const walk = (node) => {
-    // Raw HTML embeds (e.g. <iframe> written directly in markdown).
-    if (node.type === "raw" && typeof node.value === "string" && node.value.includes("<iframe")) {
-      node.value = node.value.replace(
-        /<iframe\b([^>]*?)\ssrc=/gi,
-        '<iframe$1 loading="lazy" data-src=',
-      );
-    }
-    // Parsed elements.
-    if (node.tagName === "iframe" && node.properties?.src) {
-      node.properties.dataSrc = node.properties.src;
-      node.properties.src = undefined;
-      node.properties.loading = "lazy";
-    }
-    if (node.tagName === "img" && node.properties && !node.properties.loading) {
-      node.properties.loading = "lazy";
-    }
-    for (const child of node.children || []) walk(child);
-  };
-  return (tree) => walk(tree);
-}
+const lazyEmbeds = {
+  name: "lazy-embeds",
+  element: {
+    filter: ["img", "iframe"],
+    visit(node, ctx) {
+      if (node.tagName === "iframe" && node.properties?.src) {
+        ctx.setProperty(node, "dataSrc", node.properties.src);
+        ctx.setProperty(node, "src", undefined);
+        ctx.setProperty(node, "loading", "lazy");
+      } else if (node.tagName === "img" && !node.properties?.loading) {
+        ctx.setProperty(node, "loading", "lazy");
+      }
+    },
+  },
+  raw(node) {
+    if (typeof node.value !== "string" || !node.value.includes("<iframe")) return;
+    return {
+      type: "raw",
+      value: node.value.replace(/<iframe\b([^>]*?)\ssrc=/gi, '<iframe$1 loading="lazy" data-src='),
+    };
+  },
+};
 
 export default defineConfig({
   // Aggressive load optimisation: prefetch every same-origin link as it enters
@@ -55,9 +61,11 @@ export default defineConfig({
     shikiConfig: {
       // Light theme to match the editorial light design (credits and code
       // blocks read as quiet light blocks rather than heavy dark boxes).
+      // shikiConfig is honoured by the Sätteri pipeline's built-in highlighter.
       theme: "github-light",
     },
-    rehypePlugins: [rehypeLazyEmbeds],
+    // Astro 7's native Sätteri processor, extended with our lazy-embed plugin.
+    processor: satteri({ hastPlugins: [lazyEmbeds] }),
   },
   vite: {
     resolve: {
