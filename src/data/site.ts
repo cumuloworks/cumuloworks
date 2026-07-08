@@ -6,7 +6,6 @@
    ============================================================ */
 
 import type { ImageMetadata } from "astro";
-import autoparallaxShot from "@/assets/autoparallax.webp";
 
 export type Bi = { en: string; ja: string };
 
@@ -114,6 +113,16 @@ export const devTools: DevTool[] = [
     stack: ["Electron", "C++", "Fullstack", "VFX"],
   },
   {
+    title: "autoParallax 2",
+    url: "https://autoparallax.cumulo.works",
+    shot: "https://autoparallax.cumulo.works/ogp.png",
+    desc: {
+      en: "After Effects script that turns 2D layers into camera-ready 3D parallax setups in one click. 1,000+ copies sold on Gumroad and BOOTH.",
+      ja: "2Dレイヤーをワンクリックでカメラ対応の3Dパララックスに変換するAfter Effectsスクリプト。GumroadとBOOTHで累計1,000本以上を販売。",
+    },
+    stack: ["After Effects", "ExtendScript", "Tool"],
+  },
+  {
     title: "mcp-cinema4d",
     url: "https://github.com/kumoproductions/mcp-cinema4d",
     shot: "https://opengraph.githubassets.com/1/kumoproductions/mcp-cinema4d",
@@ -175,16 +184,6 @@ export const devTools: DevTool[] = [
       ja: "ヘッドレスCMSによるポートフォリオサイト。Web開発。",
     },
     stack: ["Astro", "microCMS", "Cloudflare"],
-  },
-  {
-    title: "autoParallax 2",
-    url: "https://cumulo.works/downloads/autoparallax2",
-    shot: autoparallaxShot,
-    desc: {
-      en: "After Effects script for building parallax animations from 3D layers.",
-      ja: "3DレイヤーからパララックスアニメーションをつくるAfter Effectsスクリプト。",
-    },
-    stack: ["After Effects", "ExtendScript", "Tool"],
   },
 ];
 

@@ -161,6 +161,14 @@ Native desktop app to detect, monitor, search and export image sequences across 
 
 [![SeqLens](https://seqlens.app/ogp.png)](https://seqlens.app)
 
+### [autoParallax 2](https://autoparallax.cumulo.works)
+
+After Effects script that turns 2D layers into camera-ready 3D parallax setups in one click. 1,000+ copies sold on Gumroad and BOOTH.
+
+(After Effects + ExtendScript + Tool)
+
+[![autoParallax 2](https://autoparallax.cumulo.works/ogp.png)](https://autoparallax.cumulo.works)
+
 ### [mcp-cinema4d](https://github.com/kumoproductions/mcp-cinema4d)
 
 TypeScript MCP server for Cinema 4D: generic entity CRUD, parameter-level access, undo-grouped batch ops and security controls.
@@ -208,12 +216,6 @@ Portfolio site built on a headless CMS. Web development.
 (Astro + microCMS + Cloudflare)
 
 [![reika.work](https://api.microlink.io/?url=https://reika.work&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2)](https://reika.work)
-
-### [autoParallax 2](https://cumulo.works/downloads/autoparallax2)
-
-After Effects script for building parallax animations from 3D layers.
-
-(After Effects + ExtendScript + Tool)
 
 <!-- GEN:tools:END -->
 

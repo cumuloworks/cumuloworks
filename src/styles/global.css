@@ -1031,6 +1031,9 @@ html[data-lang="ja"] .talk-list .tt {
   width: 15px;
   height: 15px;
 }
+.buy-btn.site {
+  background: var(--ink);
+}
 .buy-btn.booth {
   background: #fc4d50;
 }

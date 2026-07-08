@@ -40,7 +40,7 @@ const fallbackThumb =
         : null;
 
 const galleryFolderPath = `/src/content/${collection}/${entry.id}/`;
-const buy = entry.data as { booth?: string; gumroad?: string };
+const buy = entry.data as { link?: string; booth?: string; gumroad?: string };
 const iframeAllow =
     'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 ---
@@ -80,8 +80,15 @@ const iframeAllow =
     )
 }
 {
-    collection === 'downloads' && (buy.booth || buy.gumroad) && (
+    collection === 'downloads' && (buy.link || buy.booth || buy.gumroad) && (
         <div class="buy-row">
+            {buy.link && (
+                <a class="buy-btn site" href={buy.link} target="_blank" rel="noopener">
+                    <span class="en">Official site</span>
+                    <span class="ja">公式サイト</span>
+                    <span class="ar" set:html={lucide.upRight} />
+                </a>
+            )}
             {buy.booth && (
                 <a class="buy-btn booth" href={buy.booth} target="_blank" rel="noopener">
                     <span class="en">Buy on BOOTH</span>
