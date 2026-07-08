@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/downloads/autoparallax2",
+      "destination": "https://autoparallax.cumulo.works",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/projects/:path*", "destination": "/" },
     { "source": "/downloads/:path*", "destination": "/" },

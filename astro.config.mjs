@@ -49,6 +49,11 @@ export default defineConfig({
   // Only the homepage is a real content page; /about, /en, /ja, etc. are
   // redirects, and /projects|blogs|downloads/* are rewrites to the homepage.
   integrations: [sitemap({ filter: (page) => page === "https://cumulo.works/" })],
+  // autoParallax now lives on its own site. Vercel 301s this path before the
+  // downloads rewrite; this entry covers dev and non-Vercel hosts.
+  redirects: {
+    "/downloads/autoparallax2": "https://autoparallax.cumulo.works",
+  },
   image: {
     service: {
       entrypoint: "astro/assets/services/sharp",
