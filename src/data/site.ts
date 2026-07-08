@@ -166,12 +166,12 @@ export const devTools: DevTool[] = [
     stack: ["Astro", "JAMstack", "Vercel"],
   },
   {
-    title: "fc.hoshimiyatoto.com",
-    url: "https://fc.hoshimiyatoto.com",
-    shot: "https://api.microlink.io/?url=https://fc.hoshimiyatoto.com&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2",
+    title: "hoshimiyatoto.com",
+    url: "https://hoshimiyatoto.com",
+    shot: "https://api.microlink.io/?url=https://hoshimiyatoto.com&screenshot=true&meta=false&embed=screenshot.url&waitUntil=networkidle2",
     desc: {
-      en: "Official fan club site for Hoshimiya Toto: blogs, live archives, ticketing and paid membership. Frontend development.",
-      ja: "星宮とと公式ファンクラブサイト。ブログ・ライブアーカイブ・チケット・有料会員機能。フロントエンド開発。",
+      en: "Official site for Hoshimiya Toto integrating the fan club: blogs, live archives, in-site streaming, shop, digital ticketing and paid membership. Frontend development.",
+      ja: "星宮とと公式サイト。ファンクラブを統合し、ブログ・ライブアーカイブ・サイト内配信視聴・ショップ・デジタルチケット・有料会員機能を提供。フロントエンド開発。",
     },
     stack: ["Next.js", "Frontend"],
   },
