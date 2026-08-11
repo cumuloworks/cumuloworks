@@ -123,6 +123,17 @@ export const devTools: DevTool[] = [
     stack: ["After Effects", "ExtendScript", "Tool"],
   },
   {
+    title: "mcp-aftereffects",
+    url: "https://github.com/kumoproductions/mcp-aftereffects",
+    shot: "https://opengraph.githubassets.com/1/kumoproductions/mcp-aftereffects",
+    oss: true,
+    desc: {
+      en: "TypeScript MCP server for After Effects: inspect and edit comps, layers, effects and keyframes, set expressions and render frames.",
+      ja: "After Effects 向けの TypeScript 製 MCP サーバー。コンポジション・レイヤー・エフェクト・キーフレームの検査と編集、エクスプレッション設定、フレームレンダリングに対応。",
+    },
+    stack: ["TypeScript", "MCP", "After Effects", "Open Source"],
+  },
+  {
     title: "mcp-cinema4d",
     url: "https://github.com/kumoproductions/mcp-cinema4d",
     shot: "https://opengraph.githubassets.com/1/kumoproductions/mcp-cinema4d",

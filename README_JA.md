@@ -162,6 +162,14 @@ VFX・ポスプロ向けに、数百万のレンダーファイルから連番�
 
 [![autoParallax 2](https://autoparallax.cumulo.works/ogp.png)](https://autoparallax.cumulo.works)
 
+### [mcp-aftereffects](https://github.com/kumoproductions/mcp-aftereffects)
+
+After Effects 向けの TypeScript 製 MCP サーバー。コンポジション・レイヤー・エフェクト・キーフレームの検査と編集、エクスプレッション設定、フレームレンダリングに対応。
+
+(TypeScript + MCP + After Effects + Open Source)
+
+[![mcp-aftereffects](https://opengraph.githubassets.com/1/kumoproductions/mcp-aftereffects)](https://github.com/kumoproductions/mcp-aftereffects)
+
 ### [mcp-cinema4d](https://github.com/kumoproductions/mcp-cinema4d)
 
 Cinema 4D 向けの TypeScript 製 MCP サーバー。汎用エンティティ CRUD・パラメータ単位アクセス・undo 単位のバッチ操作・セキュリティ制御に対応。

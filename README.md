@@ -162,6 +162,14 @@ After Effects script that turns 2D layers into camera-ready 3D parallax setups i
 
 [![autoParallax 2](https://autoparallax.cumulo.works/ogp.png)](https://autoparallax.cumulo.works)
 
+### [mcp-aftereffects](https://github.com/kumoproductions/mcp-aftereffects)
+
+TypeScript MCP server for After Effects: inspect and edit comps, layers, effects and keyframes, set expressions and render frames.
+
+(TypeScript + MCP + After Effects + Open Source)
+
+[![mcp-aftereffects](https://opengraph.githubassets.com/1/kumoproductions/mcp-aftereffects)](https://github.com/kumoproductions/mcp-aftereffects)
+
 ### [mcp-cinema4d](https://github.com/kumoproductions/mcp-cinema4d)
 
 TypeScript MCP server for Cinema 4D: generic entity CRUD, parameter-level access, undo-grouped batch ops and security controls.
