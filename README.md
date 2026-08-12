@@ -4,6 +4,8 @@
 
 # Tomoya Eguchi
 
+<sub>@cumuloworks</sub>
+
 **Motion Designer · CG Artist · Software Developer**
 
 Executive Director at [kumo.productions™](https://kumo.productions/)

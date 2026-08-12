@@ -4,6 +4,9 @@ pre-commit:
   jobs:
     - name: format
       glob: "*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,json,jsonc,css,md,mdx,html}"
+      exclude:
+        # Ignored via .prettierignore; passing it alone makes oxfmt exit 2.
+        - README.md
       run: npx oxfmt {staged_files}
       stage_fixed: true
     - name: lint
