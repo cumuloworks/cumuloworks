@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/cumuloworks.png" width="110" alt="Tomoya Eguchi" />
+<img src="public/avatar.jpg" width="110" alt="Tomoya Eguchi" />
 
 # Tomoya Eguchi
 
