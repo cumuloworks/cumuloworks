@@ -2,7 +2,9 @@
 
 <img src="https://github.com/cumuloworks.png" width="110" alt="Tomoya Eguchi" />
 
-# Tomoya Eguchi<br /><sub><sub>@cumuloworks</sub></sub>
+# Tomoya Eguchi
+
+<sub>@cumuloworks</sub>
 
 **Motion Designer · CG Artist · Software Developer**
 
