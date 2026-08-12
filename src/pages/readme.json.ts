@@ -20,9 +20,9 @@ function replaceBlock(md: string, key: string, body: string): string {
 const htmlToMd = (s: string): string =>
   s.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/g, "[$2]($1)");
 
-/** Profile bio paragraph (plain — the table cell provides the framing). */
+/** Profile bio paragraph; <sub> renders it small on GitHub, where CSS is stripped. */
 function aboutBlock(lang: Lang): string {
-  return htmlToMd(profile.about[lang]);
+  return `<sub>${htmlToMd(profile.about[lang])}</sub>`;
 }
 
 /** Icon links; SVGs live in public/icons/social/ (grey works on both GitHub themes). */

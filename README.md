@@ -26,14 +26,14 @@ Executive Director at [kumo.productions™](https://kumo.productions/)
 <td width="50%" valign="top">
 
 <!-- GEN:about-en:START -->
-He began creating motion graphics under the name Cumuloworks during his high school years. After gaining two years of experience at [Naname Inc.](https://nanameinc.jp/), he officially established Cumuloworks, Inc. in 2020. In 2025, he launched [kumo.productions™](https://kumo.productions/), where he focuses on motion design and CG, delivering a diverse range of projects including commercials, music videos, and live stage productions. He is also committed to research and development, particularly in creating tools for video production and improving workflows.
+<sub>He began creating motion graphics under the name Cumuloworks during his high school years. After gaining two years of experience at [Naname Inc.](https://nanameinc.jp/), he officially established Cumuloworks, Inc. in 2020. In 2025, he launched [kumo.productions™](https://kumo.productions/), where he focuses on motion design and CG, delivering a diverse range of projects including commercials, music videos, and live stage productions. He is also committed to research and development, particularly in creating tools for video production and improving workflows.</sub>
 <!-- GEN:about-en:END -->
 
 </td>
 <td width="50%" valign="top">
 
 <!-- GEN:about-ja:START -->
-高校生の頃、Cumuloworksという名前でモーショングラフィックスの制作を始める。[株式会社ナナメ](https://nanameinc.jp/)で2年半の経験を積んだのち、Cumuloworks, Inc.として2020年に法人化。2025年には [kumo.productions™](https://kumo.productions/) を立ち上げ、モーションデザイン・3DCGを中心に、コマーシャル・ミュージックビデオ・ライブ演出などを広範に手掛ける。映像制作に関連するツールの開発や、効率的なワークフローの研究開発にも取り組んでいる。
+<sub>高校生の頃、Cumuloworksという名前でモーショングラフィックスの制作を始める。[株式会社ナナメ](https://nanameinc.jp/)で2年半の経験を積んだのち、Cumuloworks, Inc.として2020年に法人化。2025年には [kumo.productions™](https://kumo.productions/) を立ち上げ、モーションデザイン・3DCGを中心に、コマーシャル・ミュージックビデオ・ライブ演出などを広範に手掛ける。映像制作に関連するツールの開発や、効率的なワークフローの研究開発にも取り組んでいる。</sub>
 <!-- GEN:about-ja:END -->
 
 </td>
