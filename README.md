@@ -10,7 +10,7 @@
 
 Executive Director at [kumo.productions™](https://kumo.productions/)
 
-**[cumulo.works ↗](https://cumulo.works)**
+**[cumulo.works](https://cumulo.works)**
 
 <!-- GEN:social:START -->
 <a href="https://x.com/cumuloworks" title="X"><img src="public/icons/social/x.svg" width="24" alt="X" /></a>&nbsp;&nbsp;
