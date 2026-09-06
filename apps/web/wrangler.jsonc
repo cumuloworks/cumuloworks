@@ -10,5 +10,9 @@
   "routes": [
     { "pattern": "cumulo.works", "custom_domain": true },
     { "pattern": "www.cumulo.works", "custom_domain": true },
+    // The old domain and its www are redirected to cumulo.works by zone
+    // Redirect Rules; the Worker only needs to own the hostnames.
+    { "pattern": "cumuloworks.com", "custom_domain": true },
+    { "pattern": "www.cumuloworks.com", "custom_domain": true },
   ],
 }
