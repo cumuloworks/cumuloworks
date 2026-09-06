@@ -80,8 +80,12 @@ pnpm --filter @cumuloworks/brand avatar
 ## Deployment
 
 Static output on Cloudflare Workers (`wrangler.jsonc`, assets only, custom
-domain `brand.cumulo.works`). Headers live in `public/_headers`. Workers Builds
-deploys `main`; to deploy by hand:
+domain `brand.cumulo.works`). Headers live in `public/_headers`.
+
+Workers Builds deploys every push to `main` for both Workers, each with its
+app directory as the root: `cumuloworks-brand` from `/apps/brand` and
+`cumuloworks-web` from `/apps/web`, running `pnpm run build` then
+`npx wrangler deploy`. To deploy by hand:
 
 ```sh
 pnpm --filter @cumuloworks/brand build && pnpm --filter @cumuloworks/brand exec wrangler deploy
