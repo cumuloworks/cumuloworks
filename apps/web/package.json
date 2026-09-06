@@ -18,7 +18,6 @@
     "@astrojs/markdown-satteri": "0.3.5",
     "@astrojs/sitemap": "^3.7.3",
     "@cumuloworks/brand": "workspace:*",
-    "@kumoproductions/branding": "github:kumoproductions/branding",
     "astro": "^7.2.0",
     "sharp": "^0.35.3"
   },

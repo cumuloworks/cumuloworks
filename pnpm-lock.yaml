@@ -53,9 +53,6 @@ importers:
       '@cumuloworks/brand':
         specifier: workspace:*
         version: link:../brand
-      '@kumoproductions/branding':
-        specifier: github:kumoproductions/branding
-        version: git+https://git@github.com:kumoproductions/branding.git#95754b95041e1c2e7c8f069ba43ad35d9d136fbc
       astro:
         specifier: ^7.2.0
         version: 7.2.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0)
@@ -780,10 +777,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
-
-  '@kumoproductions/branding@git+https://git@github.com:kumoproductions/branding.git#95754b95041e1c2e7c8f069ba43ad35d9d136fbc':
-    resolution: {commit: 95754b95041e1c2e7c8f069ba43ad35d9d136fbc, repo: git@github.com:kumoproductions/branding.git, type: git}
-    version: 1.0.0
 
   '@napi-rs/wasm-runtime@1.2.2':
     resolution: {integrity: sha512-JfB4kuJQjaoHuCTseIINHtHWeJnvgEcxjwA5t/Y00ZgaOO1Crz3fjT/p8kT28zA/Caz7oiUMn3d6H2yOVCVwuw==}
@@ -2831,8 +2824,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@kumoproductions/branding@git+https://git@github.com:kumoproductions/branding.git#95754b95041e1c2e7c8f069ba43ad35d9d136fbc': {}
 
   '@napi-rs/wasm-runtime@1.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
