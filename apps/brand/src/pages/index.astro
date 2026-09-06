@@ -1,0 +1,724 @@
+---
+import '@/styles/brand.css';
+import wordmark from '../../assets/type.svg?raw';
+import { PORTRAIT_IDS, SIZES, VARIANT_NAMES, VARIANTS } from '@/brand';
+import Bi from '@/components/Bi.astro';
+import { MOTION, type MotionFormat, transcode } from '@/motion';
+
+const year = new Date().getFullYear();
+
+const upRight =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+const down =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
+
+const sections = [
+  ['icon', 'Icon'],
+  ['gradient', 'Gradient'],
+  ['mark', 'Mark'],
+  ['wordmark', 'Wordmark'],
+  ['color', 'Color'],
+  ['typography', 'Typography'],
+  ['motion', 'Motion'],
+  ['portraits', 'Portraits'],
+  ['usage', 'Usage'],
+  ['naming', 'Naming'],
+  ['downloads', 'Downloads'],
+  ['license', 'License'],
+];
+const num = (id: string) =>
+  String(sections.findIndex(([s]) => s === id) + 1).padStart(2, '0');
+
+// Encoded once here and reused by the /motion endpoints, so the weights shown
+// are the weights served.
+const motion = MOTION.animated_icon;
+const files = await Promise.all(
+  (Object.keys(motion.formats) as MotionFormat[]).flatMap((format) =>
+    motion.formats[format].map(async (width) => ({
+      format,
+      width,
+      href: `/motion/animated_icon-${width}.${format}`,
+      bytes: (await transcode('animated_icon', width, format)).byteLength,
+    }))
+  )
+);
+const mb = (n: number) => `${(n / 1_048_576).toFixed(n < 1_048_576 ? 2 : 1)} MB`;
+
+const hexToRgb = (hex: string) =>
+  hex
+    .slice(1)
+    .match(/../g)!
+    .map((h) => parseInt(h, 16))
+    .join(', ');
+
+const gradientStops = [
+  ['#7abebf', 'Gradient teal'],
+  ['#8bcad3', 'Gradient aqua'],
+  ['#e5f0f6', 'Gradient highlight'],
+  ['#6ea3cb', 'Gradient periwinkle'],
+];
+const palette = [
+  ['#1d3744', 'Ink', 'Text, dark surfaces', 'テキスト、暗い面'],
+  ['#2f7e98', 'Denim', 'Links', 'リンク'],
+  ['#7be4d5', 'Mint', 'Accent, highlights', 'アクセント、ハイライト'],
+  ['#e9edf1', 'Paper', 'Background', '背景'],
+];
+---
+
+<!doctype html>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cumuloworks brand guidelines</title>
+    <meta
+      name="description"
+      content="Brand guidelines and assets for cumuloworks — icon, gradient, mark, wordmark, color, typography, motion and portraits."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1d3744" />
+    <link rel="icon" href="/i/icon-64.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/i/icon-256.png" />
+    <meta property="og:title" content="cumuloworks brand guidelines" />
+    <meta property="og:image" content="/i/icon-1024.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    {/* Set the language before paint; shares the site's key so both agree. */}
+    <script is:inline>
+      (function () {
+        var l = 'en';
+        try {
+          l = localStorage.getItem('cw-lang') || 'en';
+        } catch (e) {}
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.lang = l;
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="doc-head">
+      <div class="in">
+        <a class="brand" href="#top">
+          <img src="/i/mark_ink-128.png" width="22" height="18" alt="" />
+          cumuloworks
+        </a>
+        <span class="label"><Bi en="Brand guidelines" ja="ブランドガイドライン" /></span>
+        <span class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="sep">/</span><button
+            type="button"
+            data-lang="ja"
+            aria-pressed="false">JA</button
+          >
+        </span>
+        <a class="site" href="https://cumulo.works" target="_blank" rel="noopener">
+          cumulo.works <span class="ar" set:html={upRight} />
+        </a>
+      </div>
+    </header>
+
+    <div class="layout" id="top">
+      <nav class="toc" aria-label="Contents">
+        <ol>
+          {
+            sections.map(([id, label], i) => (
+              <li>
+                <a href={`#${id}`} data-toc={id}>
+                  <span class="n">{String(i + 1).padStart(2, '0')}</span>
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+
+      <main class="doc">
+        <section class="intro" id="intro">
+          <span class="label">cumuloworks · {year}</span>
+          <h1>Brand guidelines</h1>
+          <p class="lede">
+            <Bi
+              en="How cumuloworks is identified — the icon, mark, wordmark, color and type, with every asset in the sizes you'd need. Everything on this page is rendered from one set of sources; <a href=&quot;https://cumulo.works&quot;>cumulo.works</a> is built from the same set."
+              ja="cumuloworks を示す要素 — アイコン、マーク、ワードマーク、カラー、タイポグラフィ — と、必要なサイズのすべてのアセット。このページの内容はひとつのソース群からレンダリングされ、<a href=&quot;https://cumulo.works&quot;>cumulo.works</a> も同じソースから組み立てられています。"
+            />
+          </p>
+          <div class="kv">
+            <img src="/i/icon-1024.png" width="1024" height="1024" alt="The cumuloworks icon" fetchpriority="high" />
+            <div class="banner">
+              <img class="bg" src="/i/gradient-2048.jpg" width="2048" height="2048" alt="" fetchpriority="high" />
+              <div class="over" set:html={wordmark} />
+            </div>
+          </div>
+        </section>
+
+        {/* 01 ICON */}
+        <section class="sec" id="icon">
+          <div class="sec-h"><span class="n">{num('icon')}</span><h2>Icon</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The primary identifier: the mark in white over the gradient. It is composed in After Effects the way it is described here — a <a href=&quot;#gradient&quot;>Gradient</a> comp underneath, the mark on top with a soft teal glow — and published in two crops."
+              ja="最も基本となる識別子。グラデーションの上に白いマークを重ねたもので、After Effects 上でもこの説明どおりに構成されています — 下に <a href=&quot;#gradient&quot;>Gradient</a> コンポ、その上にマークとやわらかいティール色のグロー。2 種類のトリミングで公開しています。"
+            />
+          </p>
+          <div class="cards">
+            <div class="card span">
+              <div class="view">
+                <figure>
+                  <img src="/i/icon-512.png" width="200" height="200" alt="Icon, square" />
+                  <figcaption><Bi en="Square · tiles, app icons" ja="正方形 · タイル、アプリアイコン" /></figcaption>
+                </figure>
+                <figure>
+                  <img class="circle" src="/i/icon_masked-512.png" width="200" height="200" alt="Icon, circular" />
+                  <figcaption><Bi en="Circular · avatars" ja="円形 · アバター" /></figcaption>
+                </figure>
+              </div>
+              <div class="meta">
+                <span><b>Icon</b><span class="spec">2048 × 2048 · <Bi en="rendered from the Icon comp" ja="Icon コンポからレンダリング" /></span></span>
+                <span class="dl">
+                  <a href="/i/icon-2048.png" download>PNG</a>
+                  <a href="/i/icon-2048.jpg" download>JPG</a>
+                  <a href="/i/icon-2048.webp" download>WebP</a>
+                  <a href="/i/icon_masked-2048.png" download><Bi en="Circular PNG" ja="円形 PNG" /></a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            <Bi
+              en="Use the circular crop by default and the square tile where the platform applies its own shape. Both crops are cut from the same master, so the gradient matches between them."
+              ja="基本は円形を使い、プラットフォーム側で形が決まる場合は正方形を使います。どちらも同じマスターから切り出しているため、グラデーションは一致します。"
+            />
+          </p>
+        </section>
+
+        {/* 02 GRADIENT */}
+        <section class="sec" id="gradient">
+          <div class="sec-h"><span class="n">{num('gradient')}</span><h2>Gradient</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The background on its own. It is <a href=&quot;#portraits&quot;>portrait 05</a> blurred until only its colour remains, then pushed through curl noise. Use it behind the white mark or wordmark on covers, headers and backgrounds."
+              ja="背景単体。<a href=&quot;#portraits&quot;>ポートレート 05</a> を色だけが残るまでぼかし、カールノイズを通したものです。カバーやヘッダー、背景で、白いマークやワードマークの下に敷いて使います。"
+            />
+          </p>
+          <div class="banner">
+            <img class="bg" src="/i/gradient-2048.jpg" width="2048" height="2048" alt="The gradient, cropped wide" loading="lazy" />
+            <div class="over" set:html={wordmark} />
+          </div>
+          <div class="banner-meta">
+            <span>2048 × 2048 · <Bi en="rendered from the Gradient comp" ja="Gradient コンポからレンダリング" /></span>
+            <span class="dl">
+              <a href="/i/gradient-2048.png" download>PNG</a>
+              <a href="/i/gradient-2048.jpg" download>JPG</a>
+              <a href="/i/gradient-2048.webp" download>WebP</a>
+            </span>
+          </div>
+        </section>
+
+        {/* 03 MARK */}
+        <section class="sec" id="mark">
+          <div class="sec-h"><span class="n">{num('mark')}</span><h2>Mark</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The bare <code>cml.</code> mark, from vector, in white or ink. For embroidery, single-colour print, or wherever the gradient cannot be carried."
+              ja="ベクターの <code>cml.</code> マーク単体。白またはインク色。刺繍や単色印刷など、グラデーションを再現できない場面で使います。"
+            />
+          </p>
+          <div class="cards">
+            <div class="card">
+              <div class="view ink">
+                <img src="/i/mark-512.png" width="200" height="159" alt="Mark, white" loading="lazy" />
+              </div>
+              <div class="meta">
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="インク上" /></span></span>
+                <span class="dl">
+                  <a href="/assets/mark.svg" download>SVG</a>
+                  <a href="/i/mark-2048.png" download>PNG</a>
+                </span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="view checker">
+                <img src="/i/mark_ink-512.png" width="200" height="159" alt="Mark, ink" loading="lazy" />
+              </div>
+              <div class="meta">
+                <span><b><Bi en="Ink" ja="インク" /></b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
+                <span class="dl">
+                  <a href="/i/mark_ink-2048.png" download>PNG</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 04 WORDMARK */}
+        <section class="sec" id="wordmark">
+          <div class="sec-h"><span class="n">{num('wordmark')}</span><h2>Wordmark</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="<em>cumuloworks</em> set in the mark's lettering. Always lowercase; never re-set in another typeface."
+              ja="マークと同じレタリングで組んだ <em>cumuloworks</em>。常に小文字で、別の書体で組み直してはいけません。"
+            />
+          </p>
+          <div class="cards">
+            <div class="card span">
+              <div class="view ink wide">
+                <img src="/i/type-1024.png" width="560" height="63" alt="Wordmark, white" loading="lazy" />
+              </div>
+              <div class="meta">
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="インク上" /></span></span>
+                <span class="dl">
+                  <a href="/assets/type.svg" download>SVG</a>
+                  <a href="/i/type-2048.png" download>PNG</a>
+                </span>
+              </div>
+            </div>
+            <div class="card span">
+              <div class="view checker wide">
+                <img src="/i/type_ink-1024.png" width="560" height="63" alt="Wordmark, ink" loading="lazy" />
+              </div>
+              <div class="meta">
+                <span><b><Bi en="Ink" ja="インク" /></b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
+                <span class="dl">
+                  <a href="/i/type_ink-2048.png" download>PNG</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 05 COLOR */}
+        <section class="sec" id="color">
+          <div class="sec-h"><span class="n">{num('color')}</span><h2>Color</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The gradient runs from teal through a pale highlight into periwinkle; the four stops below are its reference values. The flat palette is what interfaces and documents are built on. Click a swatch to copy the hex."
+              ja="グラデーションはティールから淡いハイライトを経てペリウィンクルへ。下の 4 色がその基準値です。フラットなパレットはインターフェースやドキュメントの基調色。スウォッチをクリックすると hex をコピーできます。"
+            />
+          </p>
+          <div class="sub"><Bi en="Gradient" ja="グラデーション" /></div>
+          <div
+            class="ramp"
+            style={`background: linear-gradient(90deg, ${gradientStops.map(([hex]) => hex).join(', ')})`}
+          />
+          <div class="swatches">
+            {
+              gradientStops.map(([hex, name]) => (
+                <button class="swatch" type="button" data-hex={hex}>
+                  <div class="chip" style={`background:${hex}`} />
+                  <div class="hex">
+                    <b>{hex}</b>
+                    <span>{name}</span>
+                    <small>rgb({hexToRgb(hex)})</small>
+                  </div>
+                </button>
+              ))
+            }
+          </div>
+          <div class="sub"><Bi en="Palette" ja="パレット" /></div>
+          <div class="swatches">
+            {
+              palette.map(([hex, name, en, ja]) => (
+                <button class="swatch" type="button" data-hex={hex}>
+                  <div class="chip" style={`background:${hex}`} />
+                  <div class="hex">
+                    <b>{hex}</b>
+                    <span>{name} · <Bi en={en} ja={ja} /></span>
+                    <small>rgb({hexToRgb(hex)})</small>
+                  </div>
+                </button>
+              ))
+            }
+          </div>
+        </section>
+
+        {/* 06 TYPOGRAPHY */}
+        <section class="sec" id="typography">
+          <div class="sec-h"><span class="n">{num('typography')}</span><h2>Typography</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="Two faces: the lettering of the mark and wordmark, which exists only as outlines, and LINE Seed JP for everything set as text."
+              ja="書体は 2 つ。アウトラインとしてのみ存在するマーク／ワードマークのレタリングと、テキストとして組むすべてに使う LINE Seed JP です。"
+            />
+          </p>
+          <div class="type-rows">
+            <div class="type-row">
+              <div>
+                <b><Bi en="Mark &amp; wordmark lettering" ja="マーク・ワードマークのレタリング" /></b>
+                <small>
+                  <Bi
+                    en="Geometric, outlined in the SVGs — not served as a font. Never re-set the name in another face and call it the wordmark."
+                    ja="ジオメトリックな造形で、SVG にアウトラインとして収録。フォントとしては提供しません。別の書体で名前を組んでワードマークと呼ばないでください。"
+                  />
+                </small>
+              </div>
+              <img src="/i/type_ink-512.png" width="512" height="58" alt="cumuloworks in the wordmark lettering" loading="lazy" />
+            </div>
+            <div class="type-row">
+              <div>
+                <b>LINE Seed JP</b>
+                <small>
+                  <Bi
+                    en="Text and interfaces, Latin and Japanese. Regular 400 and Bold 700, served from Google Fonts."
+                    ja="テキストとインターフェース、欧文と和文。Regular 400 と Bold 700 を Google Fonts から配信。"
+                  />
+                </small>
+              </div>
+              <div class="specimen">
+                <div class="big">Motion design, CG &amp; software — <b>モーションデザイン・3DCG</b></div>
+                <div class="sm">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 あいうえお 雲・空・光</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 07 MOTION */}
+        <section class="sec" id="motion">
+          <div class="sec-h"><span class="n">{num('motion')}</span><h2>Motion</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The mark drawing itself in over the moving gradient, 4.7 seconds, rendered from the Animated Icon comp. Every file below is derived from that one render."
+              ja="動くグラデーションの上でマークが描かれていく 4.7 秒。Animated Icon コンポからレンダリングし、下のファイルはすべてその 1 本から派生しています。"
+            />
+          </p>
+          <div class="motion">
+            <div class="player">
+              <video
+                src="/motion/animated_icon-1024.mp4"
+                poster="/i/icon-1024.png"
+                width="1024"
+                height="1024"
+                controls
+                loop
+                muted
+                playsinline
+                preload="metadata"></video>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><Bi en="Format" ja="形式" /></th>
+                  <th><Bi en="Size" ja="サイズ" /></th>
+                  <th><Bi en="Weight" ja="容量" /></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  files.map((f) => (
+                    <tr>
+                      <td class="mono">{f.format}</td>
+                      <td>{f.width} × {f.width}</td>
+                      <td class="num">{mb(f.bytes)}</td>
+                      <td>
+                        <a class="get" href={f.href} download>
+                          <Bi en="Download" ja="ダウンロード" /> <span class="ar" set:html={down} />
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="note">
+            <Bi
+              en="MP4 wherever video plays; WebM for the web; GIF only where nothing else is accepted — avatars and chat — at 15 fps."
+              ja="動画が再生できる場所では MP4、Web では WebM、GIF はそれ以外が受け付けられない場面（アバターやチャット）だけに。15 fps です。"
+            />
+          </p>
+        </section>
+
+        {/* 08 PORTRAITS */}
+        <section class="sec" id="portraits">
+          <div class="sec-h"><span class="n">{num('portraits')}</span><h2>Portraits</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="Portraits of Tomoya Eguchi. <strong>They may not be used without his permission</strong> — ask at <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> before any use, press included. Any of the ten works as the plain photo or as a logo portrait: a square, face-weighted crop with the mark over the chest, in a square or circular cut."
+              ja="江口智也のポートレート。<strong>本人の許可なく使用することはできません。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へご連絡ください。10 点のどれも、写真そのままでも、ロゴポートレート（顔を基準に正方形にトリミングし、胸元にマークを重ねたもの。正方形または円形）としても使えます。"
+            />
+          </p>
+          <div class="portraits">
+            {
+              PORTRAIT_IDS.map((id) => (
+                <div class="card pcard">
+                  <div class="view photo">
+                    <img src={`/i/portrait_${id}-512.jpg`} width="512" height="768" alt={`Portrait ${id}`} loading="lazy" />
+                    <img class="logo" src={`/i/portrait_${id}_logo-512.jpg`} width="512" height="512" alt={`Logo portrait ${id}`} loading="lazy" />
+                  </div>
+                  <div class="meta">
+                    <b>{id}</b>
+                    <span class="dl">
+                      <a href={`/i/portrait_${id}-2048.jpg`} download><Bi en="Photo" ja="写真" /></a>
+                      <a href={`/i/portrait_${id}_logo-2048.jpg`} download><Bi en="Logo" ja="ロゴ" /></a>
+                      <a href={`/i/portrait_${id}_logo_masked-2048.png`} download><Bi en="Circular" ja="円形" /></a>
+                    </span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+          <p class="note">
+            <Bi
+              en="Hover a card for the logo portrait. 05 is the photo behind the gradient and the one on cumulo.works."
+              ja="カードにカーソルを重ねるとロゴポートレートが表示されます。05 はグラデーションの元になった写真で、cumulo.works でも使っています。"
+            />
+          </p>
+        </section>
+
+        {/* 09 USAGE */}
+        <section class="sec" id="usage">
+          <div class="sec-h"><span class="n">{num('usage')}</span><h2>Usage</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="Clear space, crops and the things that keep the identity consistent wherever it appears."
+              ja="余白、トリミング、そしてどこに置いても一貫性を保つためのルール。"
+            />
+          </p>
+          <div class="usage">
+            <div class="usage-diagram">
+              <div class="clearspace">
+                <img src="/i/icon_masked-256.png" width="96" height="96" alt="Circular icon with its required clear space marked by a dashed line" loading="lazy" />
+              </div>
+            </div>
+            <ul class="rules">
+              <li class="label">Do</li>
+              <li><Bi en="Use the circular icon by default; the square tile where the platform crops its own shape." ja="基本は円形アイコン。プラットフォーム側で形が決まる場合は正方形タイルを使う。" /></li>
+              <li><Bi en="Keep clear space of at least the height of the <code>l</code> on all sides." ja="四方に <code>l</code> の高さ以上の余白を確保する。" /></li>
+              <li><Bi en="Drop to the flat mark when the gradient can't reproduce." ja="グラデーションが再現できない場合はフラットなマークに切り替える。" /></li>
+              <li><Bi en="Take files from this page rather than re-exporting them." ja="ファイルは書き出し直さず、このページから取得する。" /></li>
+            </ul>
+            <ul class="rules dont">
+              <li class="label">Don't</li>
+              <li><Bi en="Recolor the gradient, or approximate it with another one." ja="グラデーションの色を変えたり、別のグラデーションで代用しない。" /></li>
+              <li><Bi en="Stretch, rotate, add effects, or rearrange the letters." ja="引き伸ばし、回転、エフェクトの追加、文字の並べ替えをしない。" /></li>
+              <li><Bi en="Pair the icon with the wordmark in one lockup." ja="アイコンとワードマークをひとつのロックアップに組み合わせない。" /></li>
+              <li><Bi en="Re-set the name in another typeface as a substitute wordmark." ja="別の書体で名前を組んでワードマークの代わりにしない。" /></li>
+              <li><Bi en="Use a portrait without permission." ja="許可なくポートレートを使用しない。" /></li>
+            </ul>
+          </div>
+        </section>
+
+        {/* 10 NAMING */}
+        <section class="sec" id="naming">
+          <div class="sec-h"><span class="n">{num('naming')}</span><h2>Naming</h2></div>
+          <div class="defs">
+            <div class="def">
+              <b>cumuloworks</b>
+              <span>
+                <Bi
+                  en="One word, no space and no inner capital — never “Cumulo Works” or “CumuloWorks”. The wordmark is always lowercase; in running prose “Cumuloworks” is fine."
+                  ja="1 語で、スペースや途中の大文字は入れない — “Cumulo Works” や “CumuloWorks” は不可。ワードマークは常に小文字。文章中では “Cumuloworks” も可。"
+                />
+              </span>
+            </div>
+            <div class="def">
+              <b>cml.</b>
+              <span>
+                <Bi
+                  en="The abbreviation, as drawn in the mark — with the full stop. Also used as the username where the full name isn't available."
+                  ja="マークに描かれているとおりの略称（ピリオド付き）。フルネームが使えない場面ではユーザーネームとしても使います。"
+                />
+              </span>
+            </div>
+            <div class="def">
+              <b>cumulo.works</b>
+              <span><Bi en="The site. Written as the domain, without a protocol or trailing slash." ja="サイト。プロトコルや末尾のスラッシュを付けず、ドメインのまま表記。" /></span>
+            </div>
+            <div class="def">
+              <b>@cumuloworks</b>
+              <span><Bi en="The handle, the same on every network." ja="ハンドル。どのネットワークでも同じ。" /></span>
+            </div>
+            <div class="def">
+              <b>Cumuloworks, Inc.</b>
+              <span>
+                <Bi
+                  en="The former name of kumo.productions, Inc. For anything about the company, follow the kumo.productions brand at <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a>."
+                  ja="kumo.productions, Inc. の旧称。会社としての表記やブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> の kumo.productions ブランディングに従ってください。"
+                />
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* 11 DOWNLOADS */}
+        <section class="sec" id="downloads">
+          <div class="sec-h"><span class="n">{num('downloads')}</span><h2>Downloads</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en={`Every variant is published at ${SIZES.join(', ')} px as <code>/i/&lt;variant&gt;-&lt;width&gt;.&lt;format&gt;</code>; the vectors are in <code>/assets</code> when you'd rather scale them yourself. Pick a file below or build the URL directly.`}
+              ja={`すべてのバリアントを ${SIZES.join('、')} px で <code>/i/&lt;variant&gt;-&lt;width&gt;.&lt;format&gt;</code> として公開しています。自分でスケールしたい場合は <code>/assets</code> のベクターを使ってください。下で選ぶか、URL を直接組み立てられます。`}
+            />
+          </p>
+          <div class="gen">
+            <div class="gen-controls">
+              <select id="g-asset" aria-label="Asset">
+                {
+                  VARIANT_NAMES.map((name) => (
+                    <option value={name} selected={name === 'icon_masked'}>
+                      {VARIANTS[name].label}
+                    </option>
+                  ))
+                }
+              </select>
+              <select id="g-w" aria-label="Width">
+                {SIZES.map((size) => <option selected={size === 512}>{size}</option>)}
+              </select>
+              <select id="g-f" aria-label="Format"></select>
+            </div>
+            <div class="gen-preview" id="g-panel">
+              <img id="g-img" src="/i/icon_masked-512.png" alt="Generated preview" />
+            </div>
+            <div class="gen-out">
+              <span class="url" id="g-url"></span>
+              <span class="acts">
+                <button id="g-copy" type="button">
+                  <span class="idle"><Bi en="Copy URL" ja="URL をコピー" /></span>
+                  <span class="done"><Bi en="Copied" ja="コピーしました" /></span>
+                </button>
+                <a id="g-dl" href="/i/icon_masked-512.png" download><Bi en="Download" ja="ダウンロード" /></a>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* 12 LICENSE */}
+        <section class="sec" id="license">
+          <div class="sec-h"><span class="n">{num('license')}</span><h2>License</h2></div>
+          <p class="license">
+            <Bi
+              en={`These assets identify cumuloworks. You're welcome to use them unmodified when referring or linking to cumulo.works — in articles, talks, or directories. Don't alter them, and don't use them to represent anything else. Portraits are the exception: they need permission first. Questions go to <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>. © ${year} Cumuloworks.`}
+              ja={`これらのアセットは cumuloworks を示すためのものです。記事・登壇・ディレクトリなどで cumulo.works に言及・リンクする際は、改変せずに使用できます。改変したり、他のものを表すために使わないでください。ポートレートは例外で、事前の許可が必要です。ご質問は <a href="mailto:mail@cumulo.works">mail@cumulo.works</a> へ。© ${year} Cumuloworks`}
+            />
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <footer class="doc-foot">
+      <div class="in">
+        <span>© {year} Cumuloworks</span>
+        <span>
+          <Bi en="Icon, gradient and motion rendered from" ja="アイコン・グラデーション・モーションは" /> <code>branding.aep</code><Bi en="" ja=" からレンダリング" /> ·
+          <a href="https://cumulo.works">cumulo.works</a> ·
+          <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>
+        </span>
+      </div>
+    </footer>
+
+    <script
+      is:inline
+      define:vars={{
+        FORMATS: Object.fromEntries(VARIANT_NAMES.map((n) => [n, VARIANTS[n].formats])),
+        DARK: VARIANT_NAMES.filter((n) => 'onDark' in VARIANTS[n]),
+      }}
+    >
+      // Language toggle, shared key with the site.
+      function applyLang(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang;
+        try {
+          localStorage.setItem('cw-lang', lang);
+        } catch (e) {}
+        for (const b of document.querySelectorAll('.lang button')) {
+          const on = b.dataset.lang === lang;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', String(on));
+        }
+      }
+      applyLang(document.documentElement.getAttribute('data-lang') || 'en');
+      for (const b of document.querySelectorAll('.lang button')) {
+        b.addEventListener('click', () => applyLang(b.dataset.lang));
+      }
+
+      // Swatches copy their hex.
+      for (const b of document.querySelectorAll('.swatch')) {
+        b.addEventListener('click', async () => {
+          await navigator.clipboard.writeText(b.dataset.hex);
+          b.classList.add('copied');
+          setTimeout(() => b.classList.remove('copied'), 900);
+        });
+      }
+
+      // URL builder.
+      const gen = {
+        asset: document.getElementById('g-asset'),
+        w: document.getElementById('g-w'),
+        f: document.getElementById('g-f'),
+        panel: document.getElementById('g-panel'),
+        img: document.getElementById('g-img'),
+        url: document.getElementById('g-url'),
+        copy: document.getElementById('g-copy'),
+        dl: document.getElementById('g-dl'),
+      };
+
+      function syncFormats() {
+        const allowed = FORMATS[gen.asset.value];
+        const keep = allowed.includes(gen.f.value) ? gen.f.value : allowed[0];
+        gen.f.replaceChildren(
+          ...allowed.map((f) => {
+            const o = document.createElement('option');
+            o.value = f;
+            o.textContent = f;
+            o.selected = f === keep;
+            return o;
+          })
+        );
+      }
+
+      function update() {
+        syncFormats();
+        const stem = gen.asset.value;
+        const path = `/i/${stem}-${gen.w.value}.${gen.f.value}`;
+        // White-on-white would be invisible, so those variants preview on ink.
+        gen.panel.classList.toggle('ink', DARK.includes(stem));
+        gen.img.src = path;
+        gen.url.textContent = location.origin + path;
+        gen.dl.href = path;
+      }
+
+      for (const el of [gen.asset, gen.w, gen.f]) {
+        el.addEventListener('change', update);
+      }
+      gen.copy.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(gen.url.textContent);
+        gen.copy.classList.add('copied');
+        setTimeout(() => gen.copy.classList.remove('copied'), 900);
+      });
+      update();
+
+      // Contents: highlight the section in view and keep the hash in sync.
+      const links = new Map(
+        [...document.querySelectorAll('[data-toc]')].map((a) => [a.dataset.toc, a])
+      );
+      function activate(id) {
+        for (const a of links.values()) a.classList.remove('active');
+        links.get(id)?.classList.add('active');
+        const next = links.has(id) ? `#${id}` : '';
+        if (location.hash !== next) {
+          history.replaceState(null, '', next || location.pathname + location.search);
+        }
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) if (e.isIntersecting) activate(e.target.id);
+        },
+        { rootMargin: '-20% 0px -70% 0px' }
+      );
+      // Land on the linked section before the observer takes over, so the
+      // initial jump isn't overwritten while the page is still laying out.
+      const initial = location.hash.slice(1);
+      if (links.has(initial)) {
+        activate(initial);
+        document.getElementById(initial).scrollIntoView({ behavior: 'instant' });
+      }
+      setTimeout(() => {
+        io.observe(document.getElementById('intro'));
+        for (const id of links.keys()) io.observe(document.getElementById(id));
+      }, 500);
+    </script>
+  </body>
+</html>

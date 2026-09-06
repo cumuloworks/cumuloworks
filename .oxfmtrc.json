@@ -1,0 +1,26 @@
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "endOfLine": "lf",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "insertFinalNewline": true,
+  "sortImports": true,
+  "sortPackageJson": true,
+  "sortTailwindcss": true,
+  "ignorePatterns": [
+    "README.md",
+    "node_modules",
+    "dist",
+    "public",
+    ".astro",
+    ".turbo",
+    ".vercel",
+    "out",
+    "pnpm-lock.yaml"
+  ]
+}

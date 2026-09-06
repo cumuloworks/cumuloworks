@@ -23,3 +23,12 @@ pnpm-debug.log*
 .idea/
 .vercel
 .env*.local
+
+# After Effects auto-save next to the project file
+apps/brand/ae/Adobe After Effects Auto-Save/
+apps/brand/ae/render/
+
+# wrangler local state
+.wrangler/
+# After Effects render logs next to the project file
+apps/brand/ae/*Logs/

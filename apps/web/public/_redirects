@@ -1,0 +1,7 @@
+# autoParallax moved to its own site; listed first so it wins over the rewrite.
+/downloads/autoparallax2  https://autoparallax.cumulo.works  301
+
+# Project, download and blog URLs are rendered by the homepage.
+/projects/*   /  200
+/downloads/*  /  200
+/blogs/*      /  200

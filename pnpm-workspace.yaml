@@ -1,0 +1,13 @@
+packages:
+  - apps/*
+  - packages/*
+
+overrides:
+  vite: ^8.0.16
+
+onlyBuiltDependencies:
+  - esbuild
+  - ffmpeg-static
+  - lefthook
+  - sharp
+  - workerd

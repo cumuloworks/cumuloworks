@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "cumuloworks-brand",
+  "account_id": "d4c91a1108b91355b25550f061d21b2d",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+  },
+  "routes": [{ "pattern": "brand.cumulo.works", "custom_domain": true }],
+}

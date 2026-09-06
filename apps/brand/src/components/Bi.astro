@@ -1,0 +1,11 @@
+---
+// Bilingual copy: both languages are rendered and CSS shows one, keyed off
+// <html data-lang>, so the switch is instant and the page stays static.
+interface Props {
+  en: string;
+  ja: string;
+}
+const { en, ja } = Astro.props;
+---
+
+<span class="en" set:html={en} /><span class="ja" set:html={ja} />

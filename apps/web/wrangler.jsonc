@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "cumuloworks-web",
+  "account_id": "d4c91a1108b91355b25550f061d21b2d",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+  "routes": [
+    { "pattern": "cumulo.works", "custom_domain": true },
+    { "pattern": "www.cumulo.works", "custom_domain": true },
+  ],
+}

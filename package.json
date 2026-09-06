@@ -1,40 +1,29 @@
 {
   "name": "cumuloworks",
   "version": "0.0.1",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "check": "oxlint && oxfmt --check .",
-    "fix": "oxlint --fix && oxfmt .",
-    "lint": "oxlint",
-    "format": "oxfmt .",
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @cumuloworks/web dev",
+    "dev:brand": "pnpm --filter @cumuloworks/brand dev",
+    "build": "pnpm -r build",
+    "check": "pnpm -r check",
+    "fix": "pnpm -r fix",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "typecheck": "pnpm -r typecheck",
     "prepare": "lefthook install"
-  },
-  "dependencies": {
-    "@astrojs/markdown-satteri": "0.3.5",
-    "@astrojs/sitemap": "^3.7.3",
-    "@kumoproductions/branding": "github:kumoproductions/branding",
-    "@vercel/analytics": "^2.0.1",
-    "astro": "^7.2.0",
-    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "lefthook": "^2.1.9",
     "oxfmt": "^0.55.0",
-    "oxlint": "^1.70.0"
+    "oxlint": "^1.70.0",
+    "portless": "^0.15.5",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.129.0"
   },
-  "pnpm": {
-    "overrides": {
-      "vite": "^8.0.16"
-    },
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lefthook",
-      "sharp"
-    ]
-  }
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.33.2"
 }

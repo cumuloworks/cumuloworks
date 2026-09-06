@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://cumulo.works"><img src="public/avatar.webp" width="110" alt="Tomoya Eguchi" /></a>
+<a href="https://cumulo.works"><img src="apps/brand/public/avatar.webp" width="110" alt="Tomoya Eguchi" /></a>
 
 # Tomoya Eguchi
 
@@ -13,14 +13,14 @@ Executive Director at [kumo.productions™](https://kumo.productions/)
 **[cumulo.works](https://cumulo.works)**
 
 <!-- GEN:social:START -->
-<a href="https://x.com/cumuloworks" title="X"><img src="public/icons/social/x.svg" width="24" alt="X" /></a>&nbsp;&nbsp;
-<a href="https://www.instagram.com/cumuloworks/" title="Instagram"><img src="public/icons/social/instagram.svg" width="24" alt="Instagram" /></a>&nbsp;&nbsp;
-<a href="https://www.youtube.com/@cumuloworks" title="YouTube"><img src="public/icons/social/youtube.svg" width="24" alt="YouTube" /></a>&nbsp;&nbsp;
-<a href="https://github.com/cumuloworks" title="GitHub"><img src="public/icons/social/github.svg" width="24" alt="GitHub" /></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/cumuloworks/" title="Facebook"><img src="public/icons/social/facebook.svg" width="24" alt="Facebook" /></a>&nbsp;&nbsp;
-<a href="https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c" title="Spotify"><img src="public/icons/social/spotify.svg" width="24" alt="Spotify" /></a>&nbsp;&nbsp;
-<a href="https://cumulo.works" title="cumulo.works"><img src="public/icons/social/globe.svg" width="24" alt="cumulo.works" /></a>&nbsp;&nbsp;
-<a href="mailto:mail@cumulo.works" title="mail@cumulo.works"><img src="public/icons/social/mail.svg" width="24" alt="mail@cumulo.works" /></a>
+<a href="https://x.com/cumuloworks" title="X"><img src="apps/web/public/icons/social/x.svg" width="24" alt="X" /></a>&nbsp;&nbsp;
+<a href="https://www.instagram.com/cumuloworks/" title="Instagram"><img src="apps/web/public/icons/social/instagram.svg" width="24" alt="Instagram" /></a>&nbsp;&nbsp;
+<a href="https://www.youtube.com/@cumuloworks" title="YouTube"><img src="apps/web/public/icons/social/youtube.svg" width="24" alt="YouTube" /></a>&nbsp;&nbsp;
+<a href="https://github.com/cumuloworks" title="GitHub"><img src="apps/web/public/icons/social/github.svg" width="24" alt="GitHub" /></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/cumuloworks/" title="Facebook"><img src="apps/web/public/icons/social/facebook.svg" width="24" alt="Facebook" /></a>&nbsp;&nbsp;
+<a href="https://open.spotify.com/user/cumuloworks?si=8e48b38729d9443c" title="Spotify"><img src="apps/web/public/icons/social/spotify.svg" width="24" alt="Spotify" /></a>&nbsp;&nbsp;
+<a href="https://cumulo.works" title="cumulo.works"><img src="apps/web/public/icons/social/globe.svg" width="24" alt="cumulo.works" /></a>&nbsp;&nbsp;
+<a href="mailto:mail@cumulo.works" title="mail@cumulo.works"><img src="apps/web/public/icons/social/mail.svg" width="24" alt="mail@cumulo.works" /></a>
 <!-- GEN:social:END -->
 
 </div>
