@@ -164,12 +164,10 @@ html[data-lang='ja'] body {
   width: 22px;
 }
 .doc-head .label {
-  padding-left: 18px;
-  border-left: 1px solid var(--line-2);
+  padding-left: 6px;
 }
 .doc-head .site {
-  padding-left: 18px;
-  border-left: 1px solid var(--line-2);
+  padding-left: 6px;
   font-size: 13.5px;
   color: var(--muted);
   display: inline-flex;
