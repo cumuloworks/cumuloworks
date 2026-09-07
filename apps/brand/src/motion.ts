@@ -13,7 +13,6 @@ const run = promisify(execFile);
 export type MotionFormat = 'mp4' | 'webm' | 'gif';
 
 export interface Motion {
-  label: string;
   /** Master render under assets/, straight out of After Effects. */
   src: string;
   /** Master width; the same width is served as a byte-for-byte copy. */
@@ -25,7 +24,6 @@ export interface Motion {
 /** Everything published under /motion. The "Animated Icon" comp is the source. */
 export const MOTION = {
   animated_icon: {
-    label: 'animated icon',
     src: 'animated-icon.mp4',
     width: 2048,
     formats: {

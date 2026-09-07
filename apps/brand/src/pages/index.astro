@@ -1,7 +1,14 @@
 ---
 import '@/styles/brand.css';
 import wordmark from '../../assets/type.svg?raw';
-import { PORTRAIT_IDS, SIZES, VARIANT_NAMES, VARIANTS } from '@/brand';
+import {
+  PORTRAIT_IDS,
+  SIZES,
+  type Variant,
+  type VariantName,
+  VARIANTS,
+  vectorSize,
+} from '@/brand';
 import Bi from '@/components/Bi.astro';
 import { MOTION, type MotionFormat, transcode } from '@/motion';
 
@@ -9,9 +16,6 @@ const year = new Date().getFullYear();
 
 const upRight =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>';
-const down =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
-
 const sections = [
   ['icon', 'Icon'],
   ['gradient', 'Gradient'],
@@ -29,20 +33,116 @@ const sections = [
 const num = (id: string) =>
   String(sections.findIndex(([s]) => s === id) + 1).padStart(2, '0');
 
-// Encoded once here and reused by the /motion endpoints, so the weights shown
-// are the weights served.
+// Motion weights come from the same encodes the /motion endpoints serve.
 const motion = MOTION.animated_icon;
-const files = await Promise.all(
+const motionBytes: Record<string, number> = {};
+await Promise.all(
   (Object.keys(motion.formats) as MotionFormat[]).flatMap((format) =>
-    motion.formats[format].map(async (width) => ({
-      format,
-      width,
-      href: `/motion/animated_icon-${width}.${format}`,
-      bytes: (await transcode('animated_icon', width, format)).byteLength,
-    }))
+    motion.formats[format].map(async (width) => {
+      motionBytes[`${width}.${format}`] = (
+        await transcode('animated_icon', width, format)
+      ).byteLength;
+    })
   )
 );
-const mb = (n: number) => `${(n / 1_048_576).toFixed(n < 1_048_576 ? 2 : 1)} MB`;
+
+const mark = await vectorSize('mark.svg');
+const type = await vectorSize('type.svg');
+
+/**
+ * What the download picker offers, as category → variant → format → widths.
+ * Portrait variants carry a `{s}` placeholder for the subject.
+ */
+const FORMAT_LABELS = {
+  png: 'PNG',
+  jpg: 'JPG',
+  webp: 'WebP',
+  svg: 'SVG',
+  mp4: 'MP4',
+  webm: 'WebM',
+  gif: 'GIF',
+};
+const image = (name: VariantName, en: string, ja: string, ratio = 1) => {
+  const v: Variant = VARIANTS[name];
+  return {
+    stem: name as string,
+    en,
+    ja,
+    ratio,
+    base: '/i',
+    onDark: v.onDark === true,
+    formats: Object.fromEntries(v.formats.map((f) => [f, SIZES])),
+  };
+};
+const portrait = (
+  suffix: '' | '_logo' | '_logo_masked',
+  en: string,
+  ja: string,
+  ratio = 1
+) => ({
+  ...image(`portrait_01${suffix}`, en, ja, ratio),
+  stem: `portrait_{s}${suffix}`,
+});
+const catalog = [
+  {
+    id: 'icon',
+    label: 'Icon',
+    variants: [
+      image('icon_masked', 'Circular', '円形'),
+      image('icon', 'Square', '正方形'),
+    ],
+  },
+  {
+    id: 'gradient',
+    label: 'Gradient',
+    variants: [image('gradient', 'Gradient', 'グラデーション')],
+  },
+  {
+    id: 'mark',
+    label: 'Mark',
+    vector: '/assets/mark.svg',
+    variants: [
+      image('mark', 'White', '白', mark.height / mark.width),
+      image('mark_ink', 'Ink', 'Ink', mark.height / mark.width),
+    ],
+  },
+  {
+    id: 'wordmark',
+    label: 'Wordmark',
+    vector: '/assets/type.svg',
+    variants: [
+      image('type', 'White', '白', type.height / type.width),
+      image('type_ink', 'Ink', 'Ink', type.height / type.width),
+    ],
+  },
+  {
+    id: 'motion',
+    label: 'Motion',
+    variants: [
+      {
+        stem: 'animated_icon',
+        en: 'Animated icon',
+        ja: 'アニメーションアイコン',
+        ratio: 1,
+        base: '/motion',
+        video: true,
+        formats: motion.formats,
+        bytes: motionBytes,
+      },
+    ],
+  },
+  {
+    id: 'portraits',
+    label: 'Portraits',
+    permission: true,
+    subjects: PORTRAIT_IDS,
+    variants: [
+      portrait('', 'Photo', '写真', 1.5),
+      portrait('_logo', 'With mark', 'マーク入り'),
+      portrait('_logo_masked', 'With mark, circular', 'マーク入り・円形'),
+    ],
+  },
+];
 
 const hexToRgb = (hex: string) =>
   hex
@@ -58,10 +158,50 @@ const gradientStops = [
   ['#6ea3cb', 'Gradient periwinkle'],
 ];
 const palette = [
-  ['#1d3744', 'Ink', 'Text, dark surfaces', 'テキスト、暗い面'],
+  ['#1d3744', 'Ink', 'Text, dark backgrounds', 'テキスト、暗い背景'],
   ['#2f7e98', 'Denim', 'Links', 'リンク'],
   ['#7be4d5', 'Mint', 'Accent, highlights', 'アクセント、ハイライト'],
   ['#e9edf1', 'Paper', 'Background', '背景'],
+];
+
+// Letter bounds follow the SVG artwork and the visible l in the 2048 px icon.
+const clearSpaceExamples = [
+  {
+    label: 'Icon — square',
+    src: '/i/icon-512.png',
+    width: 96,
+    height: 96,
+    lTop: 52.78,
+    lHeight: 17.34,
+    lRight: 31.27,
+  },
+  {
+    label: 'Icon — circular',
+    src: '/i/icon_masked-512.png',
+    width: 96,
+    height: 96,
+    lTop: 52.78,
+    lHeight: 17.34,
+    lRight: 31.27,
+  },
+  {
+    label: 'Mark',
+    src: '/i/mark_ink-512.png',
+    width: 96,
+    height: (96 * mark.height) / mark.width,
+    lTop: (96 * 273.02) / mark.width,
+    lHeight: (96 * 195.36) / mark.width,
+    lRight: (96 * 107.64) / mark.width,
+  },
+  {
+    label: 'Wordmark',
+    src: '/i/type_ink-1024.png',
+    width: 150,
+    height: (150 * type.height) / type.width,
+    lTop: 0,
+    lHeight: (150 * type.height) / type.width,
+    lRight: (150 * 401.48) / type.width,
+  },
 ];
 ---
 
@@ -103,7 +243,7 @@ const palette = [
     <header class="doc-head">
       <div class="in">
         <a class="brand" href="#top">
-          <img src="/i/mark_ink-128.png" width="22" height="18" alt="" />
+          <img src="/i/mark_ink-128.png" width="32" height="25" alt="" />
           Cumuloworks
         </a>
         <span class="label"><Bi en="Brand guidelines" ja="ブランドガイドライン" /></span>
@@ -142,8 +282,8 @@ const palette = [
           <h1>Brand guidelines</h1>
           <p class="lede">
             <Bi
-              en="How Cumuloworks is identified — the icon, mark, wordmark, color and typography — with the rules for using them and every asset in the sizes you'd need."
-              ja="Cumuloworks のアイデンティティを構成する要素と、その使用ルール、各サイズのアセット。"
+              en="Guidelines and assets for representing Cumuloworks consistently."
+              ja="Cumuloworks のブランド要素、使用基準、ダウンロード素材をまとめています。"
             />
           </p>
           <div class="kv">
@@ -160,8 +300,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('icon')}</span><h2>Icon</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The primary identifier: the mark in white over the <a href=&quot;#gradient&quot;>gradient</a>. It is provided in two crops."
-              ja="基本の識別子。<a href=&quot;#gradient&quot;>グラデーション</a>上の白いマーク。正方形と円形の 2 種。"
+              en="The primary Cumuloworks icon combines the white mark with the <a href=&quot;#gradient&quot;>gradient</a>. Square and circular versions are available."
+              ja="白いマークと<a href=&quot;#gradient&quot;>グラデーション</a>を組み合わせた、Cumuloworks の基本アイコンです。正方形と円形の 2 種類を提供しています。"
             />
           </p>
           <div class="cards">
@@ -169,28 +309,22 @@ const palette = [
               <div class="view">
                 <figure>
                   <img src="/i/icon-512.png" width="200" height="200" alt="Icon, square" />
-                  <figcaption><Bi en="Square · tiles, app icons" ja="正方形 · タイル、アプリアイコン" /></figcaption>
+                  <figcaption><Bi en="Square · tiles, app icons" ja="正方形はタイルやアプリアイコンに使用します。" /></figcaption>
                 </figure>
                 <figure>
                   <img class="circle" src="/i/icon_masked-512.png" width="200" height="200" alt="Icon, circular" />
-                  <figcaption><Bi en="Circular · avatars" ja="円形 · アバター" /></figcaption>
+                  <figcaption><Bi en="Circular · avatars" ja="円形はアバターに使用します。" /></figcaption>
                 </figure>
               </div>
               <div class="meta">
-                <span><b>Icon</b><span class="spec">2048 × 2048 · PNG / JPG / WebP</span></span>
-                <span class="dl">
-                  <a href="/i/icon-2048.png" download>PNG</a>
-                  <a href="/i/icon-2048.jpg" download>JPG</a>
-                  <a href="/i/icon-2048.webp" download>WebP</a>
-                  <a href="/i/icon_masked-2048.png" download><Bi en="Circular PNG" ja="円形 PNG" /></a>
-                </span>
+                <span><b>Icon</b><span class="spec">2048 × 2048 px · PNG / JPG / WebP</span></span>
               </div>
             </div>
           </div>
           <p class="note">
             <Bi
-              en="Use the circular crop by default and the square tile where the platform applies its own shape."
-              ja="原則として円形を使用すること。プラットフォーム側で形状が決まる場合は正方形を使用すること。"
+              en="Use the circular icon by default. Use the square version where the platform applies its own shape. Follow the <a href=&quot;#usage&quot;>clear space and minimum size rules</a>."
+              ja="原則として円形アイコンを使用してください。掲載先が形状を適用する場合は正方形を使用してください。<a href=&quot;#usage&quot;>余白と最小表示サイズの基準</a>に従ってください。"
             />
           </p>
         </section>
@@ -200,8 +334,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('gradient')}</span><h2>Gradient</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The gradient on its own. Use it behind the white mark or wordmark on covers, headers and backgrounds; never place ink-coloured elements on it."
-              ja="グラデーション単体。カバー・ヘッダー・背景で、白いマークやワードマークの下地として使用すること。インク色の要素を重ねないこと。"
+              en="Use the gradient as a background for the white mark or wordmark on covers and headers. You may crop the background image to fit the layout, preserving its proportions. Do not place Ink-colored elements over it."
+              ja="カバーやヘッダーでは、白いマークやワードマークの背景として使用してください。背景画像は縦横比を保ち、レイアウトに合わせて切り抜けます。Ink の要素は重ねないでください。"
             />
           </p>
           <div class="banner">
@@ -209,12 +343,7 @@ const palette = [
             <div class="over" set:html={wordmark} />
           </div>
           <div class="banner-meta">
-            <span>2048 × 2048 · PNG / JPG / WebP</span>
-            <span class="dl">
-              <a href="/i/gradient-2048.png" download>PNG</a>
-              <a href="/i/gradient-2048.jpg" download>JPG</a>
-              <a href="/i/gradient-2048.webp" download>WebP</a>
-            </span>
+            <span>2048 × 2048 px · PNG / JPG / WebP</span>
           </div>
         </section>
 
@@ -223,8 +352,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('mark')}</span><h2>Mark</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The bare <code>cml.</code> mark, from vector, in white or ink. For embroidery, single-colour print, or wherever the gradient cannot be carried."
-              ja="<code>cml.</code> マーク単体（ベクター）。白またはインク色。刺繍・単色印刷など、グラデーションを再現できない場合に使用すること。"
+              en="The solid-color <code>cml.</code> mark is available in white and Ink. Use it when the gradient cannot be reproduced, such as in embroidery or single-color printing. Use Ink on light backgrounds and white on dark backgrounds."
+              ja="白と Ink の単色マークです。刺繍や単色印刷など、グラデーションを再現できない場合に使用してください。明るい背景では Ink、暗い背景では白を使用してください。"
             />
           </p>
           <div class="cards">
@@ -233,11 +362,7 @@ const palette = [
                 <img src="/i/mark-512.png" width="200" height="159" alt="Mark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="· インク上" /></span></span>
-                <span class="dl">
-                  <a href="/assets/mark.svg" download>SVG</a>
-                  <a href="/i/mark-2048.png" download>PNG</a>
-                </span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on Ink" ja="Ink 背景" /></span></span>
               </div>
             </div>
             <div class="card">
@@ -245,10 +370,7 @@ const palette = [
                 <img src="/i/mark_ink-512.png" width="200" height="159" alt="Mark, ink" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="Ink" ja="インク" /></b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
-                <span class="dl">
-                  <a href="/i/mark_ink-2048.png" download>PNG</a>
-                </span>
+                <span><b>Ink</b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
               </div>
             </div>
           </div>
@@ -259,8 +381,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('wordmark')}</span><h2>Wordmark</h2></div>
           <p class="sec-lede">
             <Bi
-              en="<em>cumuloworks</em> set in the mark's lettering. Always lowercase; never re-set in another typeface."
-              ja="マークと同じレタリングによるワードマーク。常に小文字。別の書体で組み直さないこと。"
+              en="The wordmark uses lowercase lettering. Use the supplied artwork; do not recreate it with a typeface. Use Ink on light backgrounds and white on dark backgrounds. For the name in text, follow <a href=&quot;#naming&quot;>Naming</a>."
+              ja="小文字のレタリングによるワードマークです。提供データを使用し、別の書体で再現しないでください。明るい背景では Ink、暗い背景では白を使用してください。文中の名称は<a href=&quot;#naming&quot;>表記ルール</a>に従ってください。"
             />
           </p>
           <div class="cards">
@@ -269,11 +391,7 @@ const palette = [
                 <img src="/i/type-1024.png" width="560" height="63" alt="Wordmark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="· インク上" /></span></span>
-                <span class="dl">
-                  <a href="/assets/type.svg" download>SVG</a>
-                  <a href="/i/type-2048.png" download>PNG</a>
-                </span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on Ink" ja="Ink 背景" /></span></span>
               </div>
             </div>
             <div class="card span">
@@ -281,10 +399,7 @@ const palette = [
                 <img src="/i/type_ink-1024.png" width="560" height="63" alt="Wordmark, ink" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="Ink" ja="インク" /></b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
-                <span class="dl">
-                  <a href="/i/type_ink-2048.png" download>PNG</a>
-                </span>
+                <span><b>Ink</b><span class="spec">#1d3744 · <Bi en="transparent" ja="透過" /></span></span>
               </div>
             </div>
           </div>
@@ -295,11 +410,11 @@ const palette = [
           <div class="sec-h"><span class="n">{num('color')}</span><h2>Color</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The gradient runs from teal through a pale highlight into periwinkle; the four stops below are its reference values. The flat palette is what interfaces and documents are built on. Click a swatch to copy the hex."
-              ja="グラデーションはティールからハイライトを経てペリウィンクルへ。下の 4 色が基準値。フラットパレットはインターフェースとドキュメントの基調色。クリックで hex をコピー。"
+              en="The four reference colors describe the gradient's palette. Use the supplied gradient image. The core colors define the palette for Cumuloworks interfaces and documents."
+              ja="上段の 4 色はグラデーションの参考色です。グラデーションは提供画像を使用してください。下段は Cumuloworks のインターフェースや資料に使う基本色です。"
             />
           </p>
-          <div class="sub"><Bi en="Gradient" ja="グラデーション" /></div>
+          <div class="sub"><Bi en="Gradient reference colors" ja="グラデーションの参考色" /></div>
           <div
             class="ramp"
             style={`background: linear-gradient(90deg, ${gradientStops.map(([hex]) => hex).join(', ')})`}
@@ -318,7 +433,7 @@ const palette = [
               ))
             }
           </div>
-          <div class="sub"><Bi en="Palette" ja="パレット" /></div>
+          <div class="sub"><Bi en="Core colors" ja="基本色" /></div>
           <div class="swatches">
             {
               palette.map(([hex, name, en, ja]) => (
@@ -333,6 +448,9 @@ const palette = [
               ))
             }
           </div>
+          <p class="note">
+            <Bi en="The white mark and wordmark use White (#ffffff; RGB 255, 255, 255). Paper (#e9edf1) is a background color. Click a swatch to copy its HEX value." ja="白いマークとワードマークには White（#ffffff・RGB 255, 255, 255）を使用します。Paper（#e9edf1）は背景色です。色見本をクリックすると HEX 値をコピーできます。" />
+          </p>
         </section>
 
         {/* 06 TYPOGRAPHY */}
@@ -340,8 +458,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('typography')}</span><h2>Typography</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Two faces: the lettering of the mark and wordmark, which exists only as artwork, and LINE Seed JP for everything set as text."
-              ja="書体は 2 つ。マーク／ワードマークのレタリングと、テキスト用の LINE Seed JP。"
+              en="Use LINE Seed JP for text and documents created as part of the Cumuloworks brand. This requirement does not apply to independent articles about Cumuloworks. The logo lettering is separate artwork."
+              ja="Cumuloworks のブランド表現として作る文章・資料には LINE Seed JP を使用してください。第三者による紹介記事には、この指定は適用しません。ロゴのレタリングは独立した図形です。"
             />
           </p>
           <div class="type-rows">
@@ -350,8 +468,8 @@ const palette = [
                 <b><Bi en="Mark &amp; wordmark lettering" ja="マーク・ワードマークのレタリング" /></b>
                 <small>
                   <Bi
-                    en="Geometric lettering that exists only as artwork — it is not available as a font. Never re-set the name in another face and call it the wordmark."
-                    ja="アートワークとしてのみ存在し、フォントとしては提供しない。別の書体で名前を組んでワードマークとしないこと。"
+                    en="The mark and wordmark are provided as artwork, not as a font. Use the supplied files without recreating the lettering."
+                    ja="マークとワードマークは図形データとして提供しています。フォントとしては提供していません。レタリングを再現せず、提供ファイルを使用してください。"
                   />
                 </small>
               </div>
@@ -362,14 +480,36 @@ const palette = [
                 <b>LINE Seed JP</b>
                 <small>
                   <Bi
-                    en="Text and interfaces, Latin and Japanese. Regular 400 and Bold 700, served from Google Fonts."
-                    ja="テキストとインターフェースに使用。Regular 400 / Bold 700。Google Fonts から配信。"
+                    en="For Latin and Japanese text, use Regular 400 for body text and Bold 700 for headings and emphasis. See the <a href=&quot;https://seed.line.me/&quot;>official LINE Seed site</a> for downloads and the SIL Open Font License 1.1."
+                    ja="欧文・和文ともに、本文には Regular 400、見出し・強調には Bold 700 を使用してください。入手先と SIL Open Font License 1.1 は<a href=&quot;https://seed.line.me/&quot;>公式 LINE Seed サイト</a>で確認してください。"
                   />
                 </small>
               </div>
               <div class="specimen">
                 <div class="big">Motion design, CG &amp; software — <b>モーションデザイン・3DCG</b></div>
                 <div class="sm">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 あいうえお 雲・空・光</div>
+              </div>
+            </div>
+            <div class="type-row">
+              <div>
+                <b><Bi en="Highlight underline" ja="下線ハイライト" /></b>
+                <small>
+                  <Bi
+                    en="Links and the current item are marked with a highlighter band, not a text underline. The band is the text's background, <code>linear-gradient(transparent 62%, color 0)</code>, so it sits behind the lower 38% of the line and follows line breaks with <code>box-decoration-break: clone</code>. Links in running text rest in Mint soft (#c2efe7) and fill with Mint (#7be4d5) on hover. In navigation, hover shows the Mint soft band and the current item the Mint band. Do not use it for emphasis, and do not place it on the gradient."
+                    ja="リンクと現在の項目は、文字の下線ではなくマーカー状の帯で示します。帯はテキストの背景 <code>linear-gradient(transparent 62%, 色 0)</code> として行の下 38% に敷き、<code>box-decoration-break: clone</code> で折り返しに追従させてください。本文中のリンクは通常時に Mint soft（#c2efe7）の帯、ホバー時は Mint（#7be4d5）で全体を塗ります。ナビゲーションでは、ホバーに Mint soft の帯、現在の項目に Mint の帯を使用してください。強調の目的やグラデーション上では使用しないでください。"
+                  />
+                </small>
+              </div>
+              <div class="specimen highlight">
+                <p>
+                  <Bi
+                    en="In running text, <a href=&quot;#color&quot;>a link</a> rests in Mint soft and fills on hover."
+                    ja="本文中の<a href=&quot;#color&quot;>リンク</a>は通常時 Mint soft、ホバーで Mint に塗られます。"
+                  />
+                </p>
+                <p class="nav" aria-label="Navigation example">
+                  <span>Icon</span><span>Gradient</span><span class="current">Mark</span><span>Wordmark</span>
+                </p>
               </div>
             </div>
           </div>
@@ -380,54 +520,26 @@ const palette = [
           <div class="sec-h"><span class="n">{num('motion')}</span><h2>Motion</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The animated icon: the mark drawing itself in over the moving gradient, 4.7 seconds, looping. Use it as-is — don't retime, crop or re-encode it."
-              ja="アニメーションアイコン。4.7 秒ループ。そのまま使用し、速度変更・トリミング・再エンコードをしないこと。"
+              en="The animated icon loops every 4.7 seconds. Use the supplied files as-is. Do not change the speed, composition or aspect ratio."
+              ja="4.7 秒でループするアニメーションアイコンです。提供ファイルをそのまま使用してください。速度・構成・縦横比を変更しないでください。"
             />
           </p>
-          <div class="motion">
-            <div class="player">
-              <video
-                src="/motion/animated_icon-1024.mp4"
-                poster="/i/icon-1024.png"
-                width="1024"
-                height="1024"
-                controls
-                loop
-                muted
-                playsinline
-                preload="metadata"></video>
-            </div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th><Bi en="Format" ja="形式" /></th>
-                  <th><Bi en="Size" ja="サイズ" /></th>
-                  <th><Bi en="Weight" ja="容量" /></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  files.map((f) => (
-                    <tr>
-                      <td class="mono">{f.format}</td>
-                      <td>{f.width} × {f.width}</td>
-                      <td class="num">{mb(f.bytes)}</td>
-                      <td>
-                        <a class="get" href={f.href} download>
-                          <Bi en="Download" ja="ダウンロード" /> <span class="ar" set:html={down} />
-                        </a>
-                      </td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
+          <div class="player">
+            <video
+              src="/motion/animated_icon-1024.mp4"
+              poster="/i/icon-1024.png"
+              width="1024"
+              height="1024"
+              controls
+              loop
+              muted
+              playsinline
+              preload="metadata"></video>
           </div>
           <p class="note">
             <Bi
-              en="MP4 wherever video plays; WebM for the web; GIF only where nothing else is accepted — avatars and chat — at 15 fps."
-              ja="動画が使える場所では MP4、Web では WebM を使用すること。GIF はアバターやチャットなど他形式が使えない場合のみ（15 fps）。"
+              en="Use MP4 by default. Choose WebM or GIF according to the formats supported by the destination. GIF files play at 15 fps."
+              ja="原則として MP4 を使用してください。掲載先の対応形式に応じて WebM または GIF を選んでください。GIF は 15 fps です。"
             />
           </p>
         </section>
@@ -437,8 +549,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('portraits')}</span><h2>Portraits</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Portraits of Cumuloworks. <strong>They may not be used without permission from Cumuloworks</strong> — ask at <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> before any use, press included. Each is available as the plain photo or as a logo portrait, a square crop with the mark over the chest, in a square or circular cut."
-              ja="Cumuloworks のポートレート。<strong>Cumuloworks の許可なく使用しないこと。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へ連絡すること。各写真は、そのままの写真と、胸元にマークを重ねたロゴポートレート（正方形・円形）を提供。"
+              en="<strong>You must obtain permission from Cumuloworks before using any portrait, including for press coverage.</strong> Contact <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a>. Each portrait is available as a photo and with the mark in square and circular versions."
+              ja="<strong>ポートレートの使用には、報道用途を含め Cumuloworks の事前許可が必要です。</strong><a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へ連絡してください。各写真は、写真のみとマーク入り（正方形・円形）を提供しています。"
             />
           </p>
           <div class="portraits">
@@ -447,22 +559,17 @@ const palette = [
                 <div class="card pcard">
                   <div class="view photo">
                     <img src={`/i/portrait_${id}-512.jpg`} width="512" height="768" alt={`Portrait ${id}`} loading="lazy" />
-                    <img class="logo" src={`/i/portrait_${id}_logo-512.jpg`} width="512" height="512" alt={`Logo portrait ${id}`} loading="lazy" />
+                    <img class="logo" src={`/i/portrait_${id}_logo-512.jpg`} width="512" height="512" alt={`Portrait ${id} with mark`} loading="lazy" />
                   </div>
                   <div class="meta">
                     <b>{id}</b>
-                    <span class="dl">
-                      <a href={`/i/portrait_${id}-2048.jpg`} download><Bi en="Photo" ja="写真" /></a>
-                      <a href={`/i/portrait_${id}_logo-2048.jpg`} download><Bi en="Logo" ja="ロゴ" /></a>
-                      <a href={`/i/portrait_${id}_logo_masked-2048.png`} download><Bi en="Circular" ja="円形" /></a>
-                    </span>
                   </div>
                 </div>
               ))
             }
           </div>
           <p class="note">
-            <Bi en="Hover a card to preview its logo portrait." ja="カードにカーソルを重ねるとロゴポートレートをプレビュー。" />
+            <Bi en="Hover over a card to preview the square portrait with the mark." ja="カードにカーソルを重ねると、正方形のマーク入り写真を確認できます。" />
           </p>
         </section>
 
@@ -471,30 +578,78 @@ const palette = [
           <div class="sec-h"><span class="n">{num('usage')}</span><h2>Usage</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Clear space, crops and the things that keep the identity consistent wherever it appears."
-              ja="余白・トリミング・一貫性のためのルール。"
+              en="Follow these rules for clear space, minimum display sizes and backgrounds."
+              ja="余白・最小表示サイズ・背景は、以下の基準に従ってください。"
             />
           </p>
+          <h3 class="sub"><Bi en="Clear space" ja="余白" /></h3>
+          <p class="note">
+            <Bi
+              en="Keep at least x of clear space on all four sides. For either icon shape, x is the height of the l in the mark inside the icon; measure outward from the square or circular edge. For the standalone mark, use its l height and measure from the mark's outer edges. For the wordmark, use the height of its own l and measure from the wordmark's outer edges. Keep text and other graphics outside this area."
+              ja="四方に x 以上の余白を確保してください。アイコンの x は内部のマークにある l の高さです。正方形・円形の外縁から外側に測ってください。単体のマークはマーク内の l、ワードマークはワードマーク内の l の高さを基準に、それぞれの外縁から測ってください。余白内に文字や他の図形を配置しないでください。"
+            />
+          </p>
+          <div class="usage-diagram">
+            {clearSpaceExamples.map((example) => {
+              const x = example.lHeight;
+              const left = (210 - example.width) / 2;
+              const top = (180 - example.height) / 2;
+              const right = left + example.width;
+              const isWordmark = example.label === 'Wordmark';
+              const guide = left + example.lRight + (isWordmark ? -3 : 4);
+              const lTop = top + example.lTop;
+              return (
+                <figure class="clearspace">
+                  <svg viewBox="0 0 210 180" role="img" aria-label={example.label + ': x is the height of l; dashed boundary shows minimum clear space'}>
+                    <image href={example.src} x={left} y={top} width={example.width} height={example.height} />
+                    <rect class="space-boundary" x={left - x} y={top - x} width={example.width + 2 * x} height={example.height + 2 * x} />
+                    <path class="space-measure" d={
+                      `M${guide - 3} ${lTop}h6 M${guide} ${lTop}v${x} M${guide - 3} ${lTop + x}h6 ` +
+                      `M${right - 3} ${top - x}h6 M${right} ${top - x}v${x} M${right - 3} ${top}h6 ` +
+                      `M${right} ${top + example.height / 2 - 3}v6 M${right} ${top + example.height / 2}h${x} M${right + x} ${top + example.height / 2 - 3}v6`
+                    } />
+                    {isWordmark ? (
+                      <>
+                        <path class="space-measure" d={`M${guide} ${lTop + x}v10`} />
+                        <text x={guide} y={lTop + 2 * x + 16} text-anchor="middle">x</text>
+                      </>
+                    ) : <text x={guide + 5} y={lTop + x / 2 + 3}>x</text>}
+                    <text x={right + 5} y={top - x / 2 + 3}>x</text>
+                    <text x={right + x / 2} y={top + example.height / 2 - 6} text-anchor="middle">x</text>
+                  </svg>
+                  <figcaption>{example.label}</figcaption>
+                </figure>
+              );
+            })}
+          </div>
+          <h3 class="sub"><Bi en="Minimum display sizes" ja="最小表示サイズ" /></h3>
+          <p class="note">
+            <Bi en="Use these minimum widths on screen, measured in CSS pixels without clear space. For a circular icon, width means diameter. Preserve the aspect ratio. These are display sizes, not download resolutions." ja="画面上では、余白を含まない横幅を次の値以上にしてください。単位は CSS px、円形アイコンは直径です。縦横比を保ってください。ダウンロード画像の解像度ではなく、表示サイズの基準です。" />
+          </p>
+          <div class="defs">
+            <div class="def"><b>Icon</b><span><Bi en="48 px wide · square or circular" ja="横幅 48 px・正方形／円形" /></span></div>
+            <div class="def"><b>Mark</b><span><Bi en="32 px wide" ja="横幅 32 px" /></span></div>
+            <div class="def"><b>Wordmark</b><span><Bi en="128 px wide" ja="横幅 128 px" /></span></div>
+          </div>
+          <h3 class="sub"><Bi en="Backgrounds" ja="背景" /></h3>
+          <p class="note">
+            <Bi en="Use Ink marks and wordmarks on light backgrounds, and white on dark backgrounds. On the gradient, use white only. Do not place marks or wordmarks on backgrounds that obscure their shapes or lettering." ja="明るい背景では Ink、暗い背景では白のマーク・ワードマークを使用してください。グラデーション上では白のみを使用してください。形や文字が見えにくくなる背景には配置しないでください。" />
+          </p>
           <div class="usage">
-            <div class="usage-diagram">
-              <div class="clearspace">
-                <img src="/i/icon_masked-256.png" width="96" height="96" alt="Circular icon with its required clear space marked by a dashed line" loading="lazy" />
-              </div>
-            </div>
             <ul class="rules">
-              <li class="label">Do</li>
-              <li><Bi en="Use the circular icon by default; the square tile where the platform crops its own shape." ja="原則として円形アイコンを使用すること。プラットフォーム側で形状が決まる場合は正方形タイル。" /></li>
-              <li><Bi en="Keep clear space of at least the height of the <code>l</code> on all sides." ja="四方に <code>l</code> の高さ以上の余白を確保すること。" /></li>
-              <li><Bi en="Drop to the flat mark when the gradient can't reproduce." ja="グラデーションを再現できない場合はフラットなマークを使用すること。" /></li>
-              <li><Bi en="Use the files from this page rather than tracing or re-exporting them." ja="トレースや書き出し直しをせず、このページのファイルを使用すること。" /></li>
+              <li class="label"><Bi en="Do" ja="使用原則" /></li>
+              <li><Bi en="Use the supplied files and variants." ja="提供ファイルとバリエーションを使用してください。" /></li>
+              <li><Bi en="Scale assets proportionally and keep the required clear space." ja="縦横比を保って拡大縮小し、必要な余白を確保してください。" /></li>
+              <li><Bi en="Use the solid-color mark when the gradient cannot be reproduced." ja="グラデーションを再現できない場合は、単色マークを使用してください。" /></li>
             </ul>
             <ul class="rules dont">
-              <li class="label">Don't</li>
-              <li><Bi en="Recolor the gradient, or approximate it with another one." ja="グラデーションの色を変更したり、別のグラデーションで代用しないこと。" /></li>
-              <li><Bi en="Stretch, rotate, add effects, or rearrange the letters." ja="引き伸ばし・回転・エフェクト追加・文字の並べ替えをしないこと。" /></li>
-              <li><Bi en="Pair the icon with the wordmark in one lockup." ja="アイコンとワードマークをひとつのロックアップに組み合わせないこと。" /></li>
-              <li><Bi en="Re-set the name in another typeface as a substitute wordmark." ja="別の書体で名前を組み、ワードマークの代用としないこと。" /></li>
-              <li><Bi en="Use a portrait without permission." ja="許可なくポートレートを使用しないこと。" /></li>
+              <li class="label"><Bi en="Don't" ja="禁止事項" /></li>
+              <li><Bi en="Do not recolor the gradient or substitute another gradient." ja="グラデーションの色を変更したり、別のグラデーションで代用しないでください。" /></li>
+              <li><Bi en="Do not distort or rotate assets, add effects, or rearrange the lettering." ja="変形・回転・効果の追加・文字の並べ替えをしないでください。" /></li>
+              <li><Bi en="Do not crop icons, marks or wordmarks beyond the supplied variants, except for icon shapes applied by the platform. You may crop the standalone gradient background." ja="アイコン・マーク・ワードマークは、提供する形状以外に切り抜かないでください。ただし、掲載先がアイコンに適用する形状は例外です。背景用のグラデーション単体は切り抜けます。" /></li>
+              <li><Bi en="Do not combine the icon and wordmark into a single logo." ja="アイコンとワードマークを組み合わせて、一体のロゴにしないでください。" /></li>
+              <li><Bi en="Do not recreate the wordmark with a typeface." ja="ワードマークを別の書体で再現しないでください。" /></li>
+              <li><Bi en="Do not use portraits without prior permission." ja="事前の許可なくポートレートを使用しないでください。" /></li>
             </ul>
           </div>
         </section>
@@ -507,8 +662,8 @@ const palette = [
               <b>Cumuloworks</b>
               <span>
                 <Bi
-                  en="One word with a capital C in running text — never “Cumulo Works” or “CumuloWorks”. The lowercase <em>cumuloworks</em> is reserved for the wordmark."
-                  ja="1 語で、文中では頭文字を大文字にすること。“Cumulo Works” “CumuloWorks” は不可。小文字の <em>cumuloworks</em> はワードマークのみ。"
+                  en="Write Cumuloworks as one word with a capital C in text. Do not use “Cumulo Works” or “CumuloWorks”. Lowercase is reserved for the wordmark, domains and handles."
+                  ja="文中では Cumuloworks と、頭文字を大文字にした 1 語で表記してください。「Cumulo Works」「CumuloWorks」と表記しないでください。小文字はワードマーク・ドメイン・ハンドルに限ります。"
                 />
               </span>
             </div>
@@ -516,25 +671,25 @@ const palette = [
               <b>cml.</b>
               <span>
                 <Bi
-                  en="The abbreviation, as drawn in the mark — with the full stop. Also used as the username where the full name isn't available."
-                  ja="略称（ピリオド付き）。フルネームが使えない場合はユーザーネームとしても使用。"
+                  en="The abbreviation and username. Include the period."
+                  ja="略称・ユーザーネームです。ピリオドを含めて表記してください。"
                 />
               </span>
             </div>
             <div class="def">
               <b>cumulo.works</b>
-              <span><Bi en="The site. Written as the domain, without a protocol or trailing slash." ja="サイト。プロトコルや末尾のスラッシュを付けず、ドメインのまま表記すること。" /></span>
+              <span><Bi en="The website address. Display it as the domain, without a protocol or trailing slash." ja="Web サイトのアドレスです。表示するときはプロトコルや末尾のスラッシュを付けず、ドメインのまま表記してください。" /></span>
             </div>
             <div class="def">
               <b>@cumuloworks</b>
-              <span><Bi en="The handle, the same on every network." ja="ハンドル。全ネットワーク共通。" /></span>
+              <span><Bi en="The social media handle." ja="SNS のハンドルです。" /></span>
             </div>
             <div class="def">
               <b>Cumuloworks, Inc.</b>
               <span>
                 <Bi
-                  en="The former name of kumo.productions, Inc. For anything about the company, follow the kumo.productions brand at <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a>."
-                  ja="kumo.productions, Inc. の旧称。会社としての表記・ブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> に従うこと。"
+                  en="The former name of kumo.productions, Inc. For the company's name and brand, follow <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a>."
+                  ja="kumo.productions, Inc. の旧称です。会社としての表記・ブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> に従ってください。"
                 />
               </span>
             </div>
@@ -546,38 +701,104 @@ const palette = [
           <div class="sec-h"><span class="n">{num('downloads')}</span><h2>Downloads</h2></div>
           <p class="sec-lede">
             <Bi
-              en={`Every asset is available at ${SIZES.join(', ')} px. Pick the asset, size and format below to download it or copy a direct link; the mark and wordmark are also available as SVG above.`}
-              ja={`全アセットを ${SIZES.join('、')} px で提供。アセット・サイズ・形式を選んでダウンロード、または直接リンクをコピー。マークとワードマークの SVG は各セクションから。`}
+              en="Pick a category, variant and format, then tick the sizes you need. A single file downloads directly; several are bundled into a ZIP. Portraits require prior permission."
+              ja="カテゴリ・バリアント・形式を選び、必要なサイズにチェックを入れてください。1 ファイルならそのまま、複数なら ZIP にまとめてダウンロードできます。ポートレートの使用には事前の許可が必要です。"
             />
           </p>
-          <div class="gen">
-            <div class="gen-controls">
-              <select id="g-asset" aria-label="Asset">
+          <div class="picker" id="dl">
+            <div class="step">
+              <span class="lbl" id="dl-l-cat"><Bi en="Category" ja="カテゴリ" /></span>
+              <div class="opts" role="radiogroup" aria-labelledby="dl-l-cat">
                 {
-                  VARIANT_NAMES.map((name) => (
-                    <option value={name} selected={name === 'icon_masked'}>
-                      {VARIANTS[name].label}
-                    </option>
+                  catalog.map((c, i) => (
+                    <label class="opt">
+                      <input type="radio" name="dl-cat" value={c.id} checked={i === 0} />
+                      {c.label}
+                    </label>
                   ))
                 }
-              </select>
-              <select id="g-w" aria-label="Width">
-                {SIZES.map((size) => <option selected={size === 512}>{size}</option>)}
-              </select>
-              <select id="g-f" aria-label="Format"></select>
+              </div>
             </div>
-            <div class="gen-preview" id="g-panel">
-              <img id="g-img" src="/i/icon_masked-512.png" alt="Generated preview" />
+            <div class="step" id="dl-subjects" hidden>
+              <span class="lbl" id="dl-l-subject"><Bi en="Portrait" ja="ポートレート" /></span>
+              <div class="opts" role="radiogroup" aria-labelledby="dl-l-subject">
+                {
+                  PORTRAIT_IDS.map((id, i) => (
+                    <label class="opt subject">
+                      <input type="radio" name="dl-subject" value={id} checked={i === 0} />
+                      <img src={`/i/portrait_${id}-128.jpg`} width="128" height="192" alt={`Portrait ${id}`} loading="lazy" />
+                      <span>{id}</span>
+                    </label>
+                  ))
+                }
+              </div>
             </div>
-            <div class="gen-out">
-              <span class="url" id="g-url"></span>
-              <span class="acts">
-                <button id="g-copy" type="button">
-                  <span class="idle"><Bi en="Copy URL" ja="URL をコピー" /></span>
-                  <span class="done"><Bi en="Copied" ja="コピーしました" /></span>
-                </button>
-                <a id="g-dl" href="/i/icon_masked-512.png" download><Bi en="Download" ja="ダウンロード" /></a>
-              </span>
+            <div class="step">
+              <span class="lbl" id="dl-l-var"><Bi en="Variant" ja="バリアント" /></span>
+              <div class="opts" role="radiogroup" aria-labelledby="dl-l-var">
+                {
+                  catalog.flatMap((c, i) =>
+                    c.variants.map((v, j) => (
+                      <label class="opt" hidden={i !== 0}>
+                        <input type="radio" name="dl-var" value={v.stem} checked={i === 0 && j === 0} />
+                        <Bi en={v.en} ja={v.ja} />
+                      </label>
+                    ))
+                  )
+                }
+              </div>
+            </div>
+            <div class="step">
+              <span class="lbl" id="dl-l-fmt"><Bi en="Format" ja="形式" /></span>
+              <div class="opts" role="radiogroup" aria-labelledby="dl-l-fmt">
+                {
+                  Object.entries(FORMAT_LABELS).map(([f, label]) => (
+                    <label class="opt" hidden={f !== 'png'}>
+                      <input type="radio" name="dl-fmt" value={f} checked={f === 'png'} />
+                      {label}
+                    </label>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="step">
+              <span class="lbl" id="dl-l-size"><Bi en="Sizes" ja="サイズ" /></span>
+              <div class="opts" role="group" aria-labelledby="dl-l-size">
+                {
+                  SIZES.map((s) => (
+                    <label class="opt chk">
+                      <input type="checkbox" name="dl-size" value={s} checked={s === SIZES[SIZES.length - 1]} />
+                      {s}
+                    </label>
+                  ))
+                }
+                <button class="all" id="dl-all" type="button"><Bi en="All sizes" ja="すべて選択" /></button>
+                <span class="vector" id="dl-vector" hidden><Bi en="Vector · any size" ja="ベクター・任意のサイズ" /></span>
+              </div>
+            </div>
+            <p class="note" id="dl-permission" hidden>
+              <Bi
+                en="Portraits require prior permission from Cumuloworks. See <a href=&quot;#portraits&quot;>Portraits</a>."
+                ja="ポートレートの使用には Cumuloworks の事前許可が必要です。<a href=&quot;#portraits&quot;>Portraits</a> を確認してください。"
+              />
+            </p>
+            <div class="result">
+              <div class="preview" id="dl-preview"></div>
+              <div class="out">
+                <ul class="files" id="dl-files"></ul>
+                <div class="acts">
+                  <a class="btn" id="dl-get" href="/" download><Bi en="Download" ja="ダウンロード" /></a>
+                  <button class="btn" id="dl-zip" type="button" hidden>
+                    <span class="idle"><Bi en="Download ZIP" ja="ZIP でダウンロード" /> <span id="dl-count"></span></span>
+                    <span class="busy"><Bi en="Preparing…" ja="準備中…" /></span>
+                  </button>
+                  <button class="btn ghost" id="dl-copy" type="button">
+                    <span class="idle one"><Bi en="Copy URL" ja="URL をコピー" /></span>
+                    <span class="idle many"><Bi en="Copy URLs" ja="URL をまとめてコピー" /></span>
+                    <span class="done"><Bi en="Copied" ja="コピーしました" /></span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -585,10 +806,11 @@ const palette = [
         {/* 12 LICENSE */}
         <section class="sec" id="license">
           <div class="sec-h"><span class="n">{num('license')}</span><h2>License</h2></div>
+          <div class="sub"><Bi en="Terms of use" ja="使用条件" /></div>
           <p class="license">
             <Bi
-              en={`These assets identify Cumuloworks. You're welcome to use them unmodified when referring or linking to cumulo.works — in articles, talks, or directories. Don't alter them, and don't use them to represent anything else. Portraits are the exception: they need permission first. Questions go to <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>. © ${year} Cumuloworks.`}
-              ja={`これらのアセットは Cumuloworks を示すためのもの。記事・登壇・ディレクトリなどで cumulo.works に言及・リンクする際は、改変せずに使用可。改変や、他のものを表す目的での使用は不可。ポートレートは別途許可が必要。問い合わせは <a href="mailto:mail@cumulo.works">mail@cumulo.works</a> まで。© ${year} Cumuloworks`}
+              en={`You may use these assets when referring to Cumuloworks or linking to cumulo.works, including in articles, presentations and directories, subject to these guidelines. Do not modify them beyond the uses described here, or use them to represent another person, organization, product or service. Do not imply a partnership, endorsement or official status that does not exist. Portraits require prior permission from Cumuloworks, including for press coverage. For questions or uses not covered here, contact <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>. © ${year} Cumuloworks.`}
+              ja={`Cumuloworks を紹介する記事・登壇資料・リンク集などや、cumulo.works へのリンクに、本ガイドラインに従って素材を使用できます。記載された使い方を超えて改変したり、他の人物・組織・製品・サービスを表すために使用したりしないでください。実際にはない提携・推薦・公式性を示唆しないでください。ポートレートは、報道用途を含め Cumuloworks の事前許可が必要です。不明点や記載のない用途は <a href="mailto:mail@cumulo.works">mail@cumulo.works</a> へ問い合わせてください。© ${year} Cumuloworks`}
             />
           </p>
         </section>
@@ -605,13 +827,158 @@ const palette = [
       </div>
     </footer>
 
-    <script
-      is:inline
-      define:vars={{
-        FORMATS: Object.fromEntries(VARIANT_NAMES.map((n) => [n, VARIANTS[n].formats])),
-        DARK: VARIANT_NAMES.filter((n) => 'onDark' in VARIANTS[n]),
-      }}
-    >
+    <script type="application/json" id="dl-catalog" is:inline set:html={JSON.stringify(catalog)} />
+    <script>
+      import { zipSync } from 'fflate';
+
+      interface Variant {
+        stem: string;
+        ratio: number;
+        base: string;
+        onDark?: boolean;
+        video?: boolean;
+        formats: Record<string, number[]>;
+        bytes?: Record<string, number>;
+      }
+      interface Category {
+        id: string;
+        vector?: string;
+        permission?: boolean;
+        subjects?: string[];
+        variants: Variant[];
+      }
+      interface Entry {
+        href: string;
+        file: string;
+        dims: string;
+        bytes?: number;
+      }
+
+      const catalog = JSON.parse(document.getElementById('dl-catalog')!.textContent!) as Category[];
+      const root = document.getElementById('dl')!;
+      const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+      const inputs = (name: string) => [...root.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`)];
+      const bi = (en: string, ja: string) => `<span class="en">${en}</span><span class="ja">${ja}</span>`;
+      const mb = (n: number) => `${(n / 1_048_576).toFixed(n < 1_048_576 ? 2 : 1)} MB`;
+      const flash = (b: HTMLElement, cls: string) => {
+        b.classList.add(cls);
+        setTimeout(() => b.classList.remove(cls), 900);
+      };
+
+      // Show only the allowed options and keep the checked one among them.
+      function choose(name: string, allowed: string[]): string {
+        const all = inputs(name);
+        for (const i of all) i.closest('label')!.hidden = !allowed.includes(i.value);
+        let on = all.find((i) => i.checked && allowed.includes(i.value));
+        if (!on) {
+          on = all.find((i) => i.value === allowed[0])!;
+          on.checked = true;
+        }
+        return on.value;
+      }
+
+      let entries: Entry[] = [];
+      let zipName = '';
+
+      function sync() {
+        const cat = catalog.find((c) => c.id === choose('dl-cat', catalog.map((c) => c.id)))!;
+        el('dl-subjects').hidden = !cat.subjects;
+        const subject = cat.subjects ? choose('dl-subject', cat.subjects) : '';
+        const stem = choose('dl-var', cat.variants.map((v) => v.stem));
+        const variant = cat.variants.find((v) => v.stem === stem)!;
+        const name = stem.replace('{s}', subject);
+        const format = choose('dl-fmt', [...Object.keys(variant.formats), ...(cat.vector ? ['svg'] : [])]);
+        const vector = format === 'svg';
+        const widths = vector ? [] : variant.formats[format];
+
+        const boxes = inputs('dl-size');
+        for (const b of boxes) b.closest('label')!.hidden = !widths.includes(Number(b.value));
+        el('dl-all').hidden = vector;
+        el('dl-vector').hidden = !vector;
+        let picked = boxes.filter((b) => b.checked && widths.includes(Number(b.value)));
+        if (!vector && picked.length === 0) {
+          const largest = boxes.find((b) => Number(b.value) === Math.max(...widths))!;
+          largest.checked = true;
+          picked = [largest];
+        }
+        el('dl-permission').hidden = !cat.permission;
+
+        entries = vector
+          ? [{ href: cat.vector!, file: cat.vector!.slice(cat.vector!.lastIndexOf('/') + 1), dims: bi('Vector', 'ベクター') }]
+          : picked
+              .map((b) => Number(b.value))
+              .sort((a, b) => a - b)
+              .map((w) => ({
+                href: `${variant.base}/${name}-${w}.${format}`,
+                file: `${name}-${w}.${format}`,
+                dims: `${w} × ${Math.round(w * variant.ratio)} px`,
+                bytes: variant.bytes?.[`${w}.${format}`],
+              }));
+        zipName = `cumuloworks-${name}-${format}.zip`;
+
+        // The preview shows the variant, not the chosen size; 512 is plenty on screen.
+        const preview = el('dl-preview');
+        preview.classList.toggle('ink', variant.onDark === true);
+        const still =
+          !variant.video && format in variant.formats ? format : 'png' in variant.formats ? 'png' : Object.keys(variant.formats)[0];
+        preview.innerHTML = variant.video
+          ? `<video src="${variant.base}/${name}-512.mp4" autoplay muted loop playsinline></video>`
+          : `<img src="${variant.base}/${name}-512.${still}" alt="" />`;
+
+        el('dl-files').innerHTML = entries
+          .map(
+            (e) =>
+              `<li><span class="f">${e.file}</span><span class="d">${e.dims}${e.bytes ? ` · ${mb(e.bytes)}` : ''}</span>` +
+              `<a href="${e.href}" download>${bi('Download', 'ダウンロード')}</a></li>`
+          )
+          .join('');
+
+        const single = entries.length === 1;
+        const get = el<HTMLAnchorElement>('dl-get');
+        get.hidden = !single;
+        get.href = entries[0].href;
+        el('dl-zip').hidden = single;
+        el('dl-count').textContent = `(${entries.length})`;
+        el('dl-copy').classList.toggle('many', !single);
+      }
+
+      root.addEventListener('change', sync);
+      el('dl-all').addEventListener('click', () => {
+        for (const b of inputs('dl-size')) if (!b.closest('label')!.hidden) b.checked = true;
+        sync();
+      });
+      el('dl-copy').addEventListener('click', async () => {
+        await navigator.clipboard.writeText(entries.map((e) => location.origin + e.href).join('\n'));
+        flash(el('dl-copy'), 'copied');
+      });
+      el('dl-zip').addEventListener('click', async () => {
+        const btn = el<HTMLButtonElement>('dl-zip');
+        btn.disabled = true;
+        btn.classList.add('busy');
+        try {
+          const files = await Promise.all(
+            entries.map(async (e) => {
+              const res = await fetch(e.href);
+              if (!res.ok) throw new Error(`${e.href}: HTTP ${res.status}`);
+              return [e.file, new Uint8Array(await res.arrayBuffer())] as const;
+            })
+          );
+          // Everything is already compressed, so store rather than deflate.
+          const bytes = zipSync(
+            Object.fromEntries(files.map(([file, data]) => [file, [data, { level: 0 }] as [Uint8Array, { level: 0 }]]))
+          );
+          const url = URL.createObjectURL(new Blob([bytes], { type: 'application/zip' }));
+          Object.assign(document.createElement('a'), { href: url, download: zipName }).click();
+          setTimeout(() => URL.revokeObjectURL(url), 10_000);
+        } finally {
+          btn.disabled = false;
+          btn.classList.remove('busy');
+        }
+      });
+      sync();
+    </script>
+
+    <script is:inline>
       // Language toggle, shared key with the site.
       function applyLang(lang) {
         document.documentElement.setAttribute('data-lang', lang);
@@ -638,53 +1005,6 @@ const palette = [
           setTimeout(() => b.classList.remove('copied'), 900);
         });
       }
-
-      // URL builder.
-      const gen = {
-        asset: document.getElementById('g-asset'),
-        w: document.getElementById('g-w'),
-        f: document.getElementById('g-f'),
-        panel: document.getElementById('g-panel'),
-        img: document.getElementById('g-img'),
-        url: document.getElementById('g-url'),
-        copy: document.getElementById('g-copy'),
-        dl: document.getElementById('g-dl'),
-      };
-
-      function syncFormats() {
-        const allowed = FORMATS[gen.asset.value];
-        const keep = allowed.includes(gen.f.value) ? gen.f.value : allowed[0];
-        gen.f.replaceChildren(
-          ...allowed.map((f) => {
-            const o = document.createElement('option');
-            o.value = f;
-            o.textContent = f;
-            o.selected = f === keep;
-            return o;
-          })
-        );
-      }
-
-      function update() {
-        syncFormats();
-        const stem = gen.asset.value;
-        const path = `/i/${stem}-${gen.w.value}.${gen.f.value}`;
-        // White-on-white would be invisible, so those variants preview on ink.
-        gen.panel.classList.toggle('ink', DARK.includes(stem));
-        gen.img.src = path;
-        gen.url.textContent = location.origin + path;
-        gen.dl.href = path;
-      }
-
-      for (const el of [gen.asset, gen.w, gen.f]) {
-        el.addEventListener('change', update);
-      }
-      gen.copy.addEventListener('click', async () => {
-        await navigator.clipboard.writeText(gen.url.textContent);
-        gen.copy.classList.add('copied');
-        setTimeout(() => gen.copy.classList.remove('copied'), 900);
-      });
-      update();
 
       // Contents: highlight the section in view and keep the hash in sync.
       const links = new Map(

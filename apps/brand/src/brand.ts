@@ -25,7 +25,6 @@ export const SIZES = [64, 128, 256, 512, 1024, 2048] as const;
 export type Format = 'png' | 'webp' | 'jpg';
 
 export interface Variant {
-  label: string;
   /**
    * Source under assets/. SVGs are recoloured and rasterised at the target
    * size; rasters are resized.
@@ -69,18 +68,15 @@ const portraits = {} as Record<PortraitVariantName, Variant>;
 for (const id of PORTRAIT_IDS) {
   const src = `portraits/${id}.jpg`;
   portraits[`portrait_${id}`] = {
-    label: `portrait ${id}`,
     src,
     formats: ['jpg', 'webp'],
   };
   portraits[`portrait_${id}_logo`] = {
-    label: `logo portrait ${id}`,
     src,
     logo: true,
     formats: ['jpg', 'webp'],
   };
   portraits[`portrait_${id}_logo_masked`] = {
-    label: `logo portrait ${id}, circular`,
     src,
     logo: true,
     mask: true,
@@ -103,43 +99,36 @@ const LOGO_MARK_TOP = 0.42;
  */
 export const VARIANTS = {
   icon: {
-    label: 'icon, square',
     src: 'icon.png',
     formats: ['png', 'webp', 'jpg'],
   },
   icon_masked: {
-    label: 'icon, circular',
     src: 'icon.png',
     mask: true,
     formats: ['png', 'webp'],
   },
   gradient: {
-    label: 'gradient',
     src: 'gradient.png',
     formats: ['png', 'webp', 'jpg'],
   },
   mark: {
-    label: 'mark, white',
     src: 'mark.svg',
     fill: PAPER,
     formats: ['png', 'webp'],
     onDark: true,
   },
   mark_ink: {
-    label: 'mark, ink',
     src: 'mark.svg',
     fill: INK,
     formats: ['png', 'webp'],
   },
   type: {
-    label: 'wordmark, white',
     src: 'type.svg',
     fill: PAPER,
     formats: ['png', 'webp'],
     onDark: true,
   },
   type_ink: {
-    label: 'wordmark, ink',
     src: 'type.svg',
     fill: INK,
     formats: ['png', 'webp'],
@@ -149,10 +138,21 @@ export const VARIANTS = {
 
 export type VariantName = keyof typeof VARIANTS;
 
-export const VARIANT_NAMES = Object.keys(VARIANTS) as VariantName[];
-
 /** Vector sources served verbatim under /assets. */
 export const VECTORS = ['mark.svg', 'type.svg'] as const;
+
+function viewBox(file: string, raw: string): { width: number; height: number } {
+  const m = raw.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  if (!m) throw new Error(`${file} has no parsable viewBox`);
+  return { width: Number(m[1]), height: Number(m[2]) };
+}
+
+/** Intrinsic size of a vector source, from its viewBox. */
+export async function vectorSize(
+  file: string
+): Promise<{ width: number; height: number }> {
+  return viewBox(file, await readFile(assetPath(file), 'utf8'));
+}
 
 /**
  * Both vectors are monochrome, so the authored colour is dropped (a <style>
@@ -164,9 +164,7 @@ async function recolourSvg(
   fill: string
 ): Promise<{ svg: string; width: number }> {
   const raw = await readFile(assetPath(file), 'utf8');
-
-  const viewBox = raw.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
-  if (!viewBox) throw new Error(`${file} has no parsable viewBox`);
+  const { width, height } = viewBox(file, raw);
 
   const openEnd = raw.indexOf('>', raw.indexOf('<svg')) + 1;
   const body = raw
@@ -176,9 +174,9 @@ async function recolourSvg(
 
   return {
     svg:
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewBox[1]} ${viewBox[2]}">` +
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">` +
       `<g fill="${fill}">${body}</g></svg>`,
-    width: Number(viewBox[1]),
+    width,
   };
 }
 
