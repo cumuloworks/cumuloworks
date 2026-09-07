@@ -70,16 +70,16 @@ const palette = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>cumuloworks brand guidelines</title>
+    <title>Cumuloworks brand guidelines</title>
     <meta
       name="description"
-      content="Brand guidelines and assets for cumuloworks — icon, gradient, mark, wordmark, color, typography, motion and portraits."
+      content="Brand guidelines and assets for Cumuloworks — icon, gradient, mark, wordmark, color, typography, motion and portraits."
     />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#1d3744" />
     <link rel="icon" href="/i/icon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="/i/icon-256.png" />
-    <meta property="og:title" content="cumuloworks brand guidelines" />
+    <meta property="og:title" content="Cumuloworks brand guidelines" />
     <meta property="og:image" content="/i/icon-1024.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -104,7 +104,7 @@ const palette = [
       <div class="in">
         <a class="brand" href="#top">
           <img src="/i/mark_ink-128.png" width="22" height="18" alt="" />
-          cumuloworks
+          Cumuloworks
         </a>
         <span class="label"><Bi en="Brand guidelines" ja="ブランドガイドライン" /></span>
         <span class="lang" role="group" aria-label="Language">
@@ -128,7 +128,7 @@ const palette = [
               <li>
                 <a href={`#${id}`} data-toc={id}>
                   <span class="n">{String(i + 1).padStart(2, '0')}</span>
-                  {label}
+                  <span class="t">{label}</span>
                 </a>
               </li>
             ))
@@ -138,16 +138,16 @@ const palette = [
 
       <main class="doc">
         <section class="intro" id="intro">
-          <span class="label">cumuloworks · {year}</span>
+          <span class="label">Cumuloworks · {year}</span>
           <h1>Brand guidelines</h1>
           <p class="lede">
             <Bi
-              en="How cumuloworks is identified — the icon, mark, wordmark, color and typography — with the rules for using them and every asset in the sizes you'd need."
-              ja="cumuloworks を示す要素 — アイコン、マーク、ワードマーク、カラー、タイポグラフィ — の使い方のルールと、必要なサイズのすべてのアセットをまとめています。"
+              en="How Cumuloworks is identified — the icon, mark, wordmark, color and typography — with the rules for using them and every asset in the sizes you'd need."
+              ja="Cumuloworks のアイデンティティを構成する要素と、その使用ルール、各サイズのアセット。"
             />
           </p>
           <div class="kv">
-            <img src="/i/icon-1024.png" width="1024" height="1024" alt="The cumuloworks icon" fetchpriority="high" />
+            <img src="/i/icon-1024.png" width="1024" height="1024" alt="The Cumuloworks icon" fetchpriority="high" />
             <div class="banner">
               <img class="bg" src="/i/gradient-2048.jpg" width="2048" height="2048" alt="" fetchpriority="high" />
               <div class="over" set:html={wordmark} />
@@ -161,7 +161,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="The primary identifier: the mark in white over the <a href=&quot;#gradient&quot;>gradient</a>. It is provided in two crops."
-              ja="最も基本となる識別子。<a href=&quot;#gradient&quot;>グラデーション</a>の上に白いマークを重ねたもので、2 種類のトリミングで提供しています。"
+              ja="基本の識別子。<a href=&quot;#gradient&quot;>グラデーション</a>上の白いマーク。正方形と円形の 2 種。"
             />
           </p>
           <div class="cards">
@@ -190,7 +190,7 @@ const palette = [
           <p class="note">
             <Bi
               en="Use the circular crop by default and the square tile where the platform applies its own shape."
-              ja="基本は円形を使い、プラットフォーム側で形が決まる場合は正方形を使います。"
+              ja="原則として円形を使用すること。プラットフォーム側で形状が決まる場合は正方形を使用すること。"
             />
           </p>
         </section>
@@ -201,7 +201,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="The gradient on its own. Use it behind the white mark or wordmark on covers, headers and backgrounds; never place ink-coloured elements on it."
-              ja="グラデーション単体。カバーやヘッダー、背景で、白いマークやワードマークの下に敷いて使います。インク色の要素は上に置かないでください。"
+              ja="グラデーション単体。カバー・ヘッダー・背景で、白いマークやワードマークの下地として使用すること。インク色の要素を重ねないこと。"
             />
           </p>
           <div class="banner">
@@ -224,7 +224,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="The bare <code>cml.</code> mark, from vector, in white or ink. For embroidery, single-colour print, or wherever the gradient cannot be carried."
-              ja="ベクターの <code>cml.</code> マーク単体。白またはインク色。刺繍や単色印刷など、グラデーションを再現できない場面で使います。"
+              ja="<code>cml.</code> マーク単体（ベクター）。白またはインク色。刺繍・単色印刷など、グラデーションを再現できない場合に使用すること。"
             />
           </p>
           <div class="cards">
@@ -233,7 +233,7 @@ const palette = [
                 <img src="/i/mark-512.png" width="200" height="159" alt="Mark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="インク上" /></span></span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="· インク上" /></span></span>
                 <span class="dl">
                   <a href="/assets/mark.svg" download>SVG</a>
                   <a href="/i/mark-2048.png" download>PNG</a>
@@ -260,7 +260,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="<em>cumuloworks</em> set in the mark's lettering. Always lowercase; never re-set in another typeface."
-              ja="マークと同じレタリングで組んだ <em>cumuloworks</em>。常に小文字で、別の書体で組み直してはいけません。"
+              ja="マークと同じレタリングによるワードマーク。常に小文字。別の書体で組み直さないこと。"
             />
           </p>
           <div class="cards">
@@ -269,7 +269,7 @@ const palette = [
                 <img src="/i/type-1024.png" width="560" height="63" alt="Wordmark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="インク上" /></span></span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff <Bi en="on ink" ja="· インク上" /></span></span>
                 <span class="dl">
                   <a href="/assets/type.svg" download>SVG</a>
                   <a href="/i/type-2048.png" download>PNG</a>
@@ -296,7 +296,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="The gradient runs from teal through a pale highlight into periwinkle; the four stops below are its reference values. The flat palette is what interfaces and documents are built on. Click a swatch to copy the hex."
-              ja="グラデーションはティールから淡いハイライトを経てペリウィンクルへ。下の 4 色がその基準値です。フラットなパレットはインターフェースやドキュメントの基調色。スウォッチをクリックすると hex をコピーできます。"
+              ja="グラデーションはティールからハイライトを経てペリウィンクルへ。下の 4 色が基準値。フラットパレットはインターフェースとドキュメントの基調色。クリックで hex をコピー。"
             />
           </p>
           <div class="sub"><Bi en="Gradient" ja="グラデーション" /></div>
@@ -340,8 +340,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('typography')}</span><h2>Typography</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Two faces: the lettering of the mark and wordmark, which exists only as outlines, and LINE Seed JP for everything set as text."
-              ja="書体は 2 つ。アウトラインとしてのみ存在するマーク／ワードマークのレタリングと、テキストとして組むすべてに使う LINE Seed JP です。"
+              en="Two faces: the lettering of the mark and wordmark, which exists only as artwork, and LINE Seed JP for everything set as text."
+              ja="書体は 2 つ。マーク／ワードマークのレタリングと、テキスト用の LINE Seed JP。"
             />
           </p>
           <div class="type-rows">
@@ -351,7 +351,7 @@ const palette = [
                 <small>
                   <Bi
                     en="Geometric lettering that exists only as artwork — it is not available as a font. Never re-set the name in another face and call it the wordmark."
-                    ja="アートワークとしてのみ存在するジオメトリックなレタリングで、フォントとしては提供していません。別の書体で名前を組んでワードマークと呼ばないでください。"
+                    ja="アートワークとしてのみ存在し、フォントとしては提供しない。別の書体で名前を組んでワードマークとしないこと。"
                   />
                 </small>
               </div>
@@ -363,7 +363,7 @@ const palette = [
                 <small>
                   <Bi
                     en="Text and interfaces, Latin and Japanese. Regular 400 and Bold 700, served from Google Fonts."
-                    ja="テキストとインターフェース、欧文と和文。Regular 400 と Bold 700 を Google Fonts から配信。"
+                    ja="テキストとインターフェースに使用。Regular 400 / Bold 700。Google Fonts から配信。"
                   />
                 </small>
               </div>
@@ -381,7 +381,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="The animated icon: the mark drawing itself in over the moving gradient, 4.7 seconds, looping. Use it as-is — don't retime, crop or re-encode it."
-              ja="アニメーションアイコン。動くグラデーションの上でマークが描かれていく 4.7 秒のループです。そのまま使い、速度変更・トリミング・再エンコードはしないでください。"
+              ja="アニメーションアイコン。4.7 秒ループ。そのまま使用し、速度変更・トリミング・再エンコードをしないこと。"
             />
           </p>
           <div class="motion">
@@ -427,7 +427,7 @@ const palette = [
           <p class="note">
             <Bi
               en="MP4 wherever video plays; WebM for the web; GIF only where nothing else is accepted — avatars and chat — at 15 fps."
-              ja="動画が再生できる場所では MP4、Web では WebM、GIF はそれ以外が受け付けられない場面（アバターやチャット）だけに。15 fps です。"
+              ja="動画が使える場所では MP4、Web では WebM を使用すること。GIF はアバターやチャットなど他形式が使えない場合のみ（15 fps）。"
             />
           </p>
         </section>
@@ -438,7 +438,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="Portraits of Tomoya Eguchi. <strong>They may not be used without his permission</strong> — ask at <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> before any use, press included. Each is available as the plain photo or as a logo portrait, a square crop with the mark over the chest, in a square or circular cut."
-              ja="江口智也のポートレート。<strong>本人の許可なく使用することはできません。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へご連絡ください。各写真は、そのままの写真と、胸元にマークを重ねた正方形のロゴポートレート（正方形または円形）として提供しています。"
+              ja="江口智也のポートレート。<strong>本人の許可なく使用しないこと。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へ連絡すること。各写真は、そのままの写真と、胸元にマークを重ねたロゴポートレート（正方形・円形）を提供。"
             />
           </p>
           <div class="portraits">
@@ -462,10 +462,7 @@ const palette = [
             }
           </div>
           <p class="note">
-            <Bi
-              en="Hover a card to preview its logo portrait."
-              ja="カードにカーソルを重ねるとロゴポートレートをプレビューできます。"
-            />
+            <Bi en="Hover a card to preview its logo portrait." ja="カードにカーソルを重ねるとロゴポートレートをプレビュー。" />
           </p>
         </section>
 
@@ -475,7 +472,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en="Clear space, crops and the things that keep the identity consistent wherever it appears."
-              ja="余白、トリミング、そしてどこに置いても一貫性を保つためのルール。"
+              ja="余白・トリミング・一貫性のためのルール。"
             />
           </p>
           <div class="usage">
@@ -486,18 +483,18 @@ const palette = [
             </div>
             <ul class="rules">
               <li class="label">Do</li>
-              <li><Bi en="Use the circular icon by default; the square tile where the platform crops its own shape." ja="基本は円形アイコン。プラットフォーム側で形が決まる場合は正方形タイルを使う。" /></li>
-              <li><Bi en="Keep clear space of at least the height of the <code>l</code> on all sides." ja="四方に <code>l</code> の高さ以上の余白を確保する。" /></li>
-              <li><Bi en="Drop to the flat mark when the gradient can't reproduce." ja="グラデーションが再現できない場合はフラットなマークに切り替える。" /></li>
-              <li><Bi en="Use the files from this page rather than tracing or re-exporting them." ja="トレースや書き出し直しはせず、このページのファイルを使う。" /></li>
+              <li><Bi en="Use the circular icon by default; the square tile where the platform crops its own shape." ja="原則として円形アイコンを使用すること。プラットフォーム側で形状が決まる場合は正方形タイル。" /></li>
+              <li><Bi en="Keep clear space of at least the height of the <code>l</code> on all sides." ja="四方に <code>l</code> の高さ以上の余白を確保すること。" /></li>
+              <li><Bi en="Drop to the flat mark when the gradient can't reproduce." ja="グラデーションを再現できない場合はフラットなマークを使用すること。" /></li>
+              <li><Bi en="Use the files from this page rather than tracing or re-exporting them." ja="トレースや書き出し直しをせず、このページのファイルを使用すること。" /></li>
             </ul>
             <ul class="rules dont">
               <li class="label">Don't</li>
-              <li><Bi en="Recolor the gradient, or approximate it with another one." ja="グラデーションの色を変えたり、別のグラデーションで代用しない。" /></li>
-              <li><Bi en="Stretch, rotate, add effects, or rearrange the letters." ja="引き伸ばし、回転、エフェクトの追加、文字の並べ替えをしない。" /></li>
-              <li><Bi en="Pair the icon with the wordmark in one lockup." ja="アイコンとワードマークをひとつのロックアップに組み合わせない。" /></li>
-              <li><Bi en="Re-set the name in another typeface as a substitute wordmark." ja="別の書体で名前を組んでワードマークの代わりにしない。" /></li>
-              <li><Bi en="Use a portrait without permission." ja="許可なくポートレートを使用しない。" /></li>
+              <li><Bi en="Recolor the gradient, or approximate it with another one." ja="グラデーションの色を変更したり、別のグラデーションで代用しないこと。" /></li>
+              <li><Bi en="Stretch, rotate, add effects, or rearrange the letters." ja="引き伸ばし・回転・エフェクト追加・文字の並べ替えをしないこと。" /></li>
+              <li><Bi en="Pair the icon with the wordmark in one lockup." ja="アイコンとワードマークをひとつのロックアップに組み合わせないこと。" /></li>
+              <li><Bi en="Re-set the name in another typeface as a substitute wordmark." ja="別の書体で名前を組み、ワードマークの代用としないこと。" /></li>
+              <li><Bi en="Use a portrait without permission." ja="許可なくポートレートを使用しないこと。" /></li>
             </ul>
           </div>
         </section>
@@ -507,11 +504,11 @@ const palette = [
           <div class="sec-h"><span class="n">{num('naming')}</span><h2>Naming</h2></div>
           <div class="defs">
             <div class="def">
-              <b>cumuloworks</b>
+              <b>Cumuloworks</b>
               <span>
                 <Bi
-                  en="One word, no space and no inner capital — never “Cumulo Works” or “CumuloWorks”. The wordmark is always lowercase; in running prose “Cumuloworks” is fine."
-                  ja="1 語で、スペースや途中の大文字は入れない — “Cumulo Works” や “CumuloWorks” は不可。ワードマークは常に小文字。文章中では “Cumuloworks” も可。"
+                  en="One word with a capital C in running text — never “Cumulo Works” or “CumuloWorks”. The lowercase <em>cumuloworks</em> is reserved for the wordmark."
+                  ja="1 語で、文中では頭文字を大文字にすること。“Cumulo Works” “CumuloWorks” は不可。小文字の <em>cumuloworks</em> はワードマークのみ。"
                 />
               </span>
             </div>
@@ -520,24 +517,24 @@ const palette = [
               <span>
                 <Bi
                   en="The abbreviation, as drawn in the mark — with the full stop. Also used as the username where the full name isn't available."
-                  ja="マークに描かれているとおりの略称（ピリオド付き）。フルネームが使えない場面ではユーザーネームとしても使います。"
+                  ja="略称（ピリオド付き）。フルネームが使えない場合はユーザーネームとしても使用。"
                 />
               </span>
             </div>
             <div class="def">
               <b>cumulo.works</b>
-              <span><Bi en="The site. Written as the domain, without a protocol or trailing slash." ja="サイト。プロトコルや末尾のスラッシュを付けず、ドメインのまま表記。" /></span>
+              <span><Bi en="The site. Written as the domain, without a protocol or trailing slash." ja="サイト。プロトコルや末尾のスラッシュを付けず、ドメインのまま表記すること。" /></span>
             </div>
             <div class="def">
               <b>@cumuloworks</b>
-              <span><Bi en="The handle, the same on every network." ja="ハンドル。どのネットワークでも同じ。" /></span>
+              <span><Bi en="The handle, the same on every network." ja="ハンドル。全ネットワーク共通。" /></span>
             </div>
             <div class="def">
               <b>Cumuloworks, Inc.</b>
               <span>
                 <Bi
                   en="The former name of kumo.productions, Inc. For anything about the company, follow the kumo.productions brand at <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a>."
-                  ja="kumo.productions, Inc. の旧称。会社としての表記やブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> の kumo.productions ブランディングに従ってください。"
+                  ja="kumo.productions, Inc. の旧称。会社としての表記・ブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> に従うこと。"
                 />
               </span>
             </div>
@@ -550,7 +547,7 @@ const palette = [
           <p class="sec-lede">
             <Bi
               en={`Every asset is available at ${SIZES.join(', ')} px. Pick the asset, size and format below to download it or copy a direct link; the mark and wordmark are also available as SVG above.`}
-              ja={`すべてのアセットを ${SIZES.join('、')} px で提供しています。下でアセット・サイズ・形式を選んでダウンロードするか、直接リンクをコピーしてください。マークとワードマークは上の各セクションから SVG も入手できます。`}
+              ja={`全アセットを ${SIZES.join('、')} px で提供。アセット・サイズ・形式を選んでダウンロード、または直接リンクをコピー。マークとワードマークの SVG は各セクションから。`}
             />
           </p>
           <div class="gen">
@@ -590,8 +587,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('license')}</span><h2>License</h2></div>
           <p class="license">
             <Bi
-              en={`These assets identify cumuloworks. You're welcome to use them unmodified when referring or linking to cumulo.works — in articles, talks, or directories. Don't alter them, and don't use them to represent anything else. Portraits are the exception: they need permission first. Questions go to <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>. © ${year} Cumuloworks.`}
-              ja={`これらのアセットは cumuloworks を示すためのものです。記事・登壇・ディレクトリなどで cumulo.works に言及・リンクする際は、改変せずに使用できます。改変したり、他のものを表すために使わないでください。ポートレートは例外で、事前の許可が必要です。ご質問は <a href="mailto:mail@cumulo.works">mail@cumulo.works</a> へ。© ${year} Cumuloworks`}
+              en={`These assets identify Cumuloworks. You're welcome to use them unmodified when referring or linking to cumulo.works — in articles, talks, or directories. Don't alter them, and don't use them to represent anything else. Portraits are the exception: they need permission first. Questions go to <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>. © ${year} Cumuloworks.`}
+              ja={`これらのアセットは Cumuloworks を示すためのもの。記事・登壇・ディレクトリなどで cumulo.works に言及・リンクする際は、改変せずに使用可。改変や、他のものを表す目的での使用は不可。ポートレートは別途許可が必要。問い合わせは <a href="mailto:mail@cumulo.works">mail@cumulo.works</a> まで。© ${year} Cumuloworks`}
             />
           </p>
         </section>

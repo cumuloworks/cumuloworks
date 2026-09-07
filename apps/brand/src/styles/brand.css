@@ -207,13 +207,16 @@ html[data-lang='ja'] body {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  padding: 5px 10px;
-  border-radius: 6px;
+  padding: 5px 0;
   font-size: 13px;
   color: var(--muted);
-  transition:
-    color 0.15s,
-    background 0.15s;
+  transition: color 0.15s;
+}
+.toc a .t {
+  padding: 0 2px 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-image 0.15s;
 }
 .toc a .n {
   font-size: 11px;
@@ -222,12 +225,15 @@ html[data-lang='ja'] body {
 }
 .toc a:hover {
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.7);
+}
+.toc a:hover .t {
+  background-image: linear-gradient(transparent 62%, var(--mint-soft) 0);
 }
 .toc a.active {
   color: var(--ink);
-  background: var(--card);
-  box-shadow: inset 3px 0 0 var(--mint);
+}
+.toc a.active .t {
+  background-image: linear-gradient(transparent 62%, var(--mint) 0);
 }
 .toc a.active .n {
   color: var(--mint-ink);
@@ -249,9 +255,7 @@ html[data-lang='ja'] body {
   .toc ol {
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-  }
-  .toc a.active {
-    box-shadow: inset 0 -2px 0 var(--mint);
+    gap: 14px;
   }
 }
 
@@ -269,16 +273,18 @@ html[data-lang='ja'] body {
   font-size: 16.5px;
   line-height: 1.65;
   color: var(--ink-2);
-  max-width: 62ch;
   margin-top: 16px;
 }
 .intro .lede a {
   color: var(--ink);
-  border-bottom: 1px solid var(--line-2);
-  transition: border-color 0.15s;
+  background-image: linear-gradient(transparent 62%, var(--mint-soft) 0);
+  padding: 0 1px 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-image 0.15s;
 }
 .intro .lede a:hover {
-  border-color: var(--ink);
+  background-image: linear-gradient(var(--mint) 0, var(--mint) 0);
 }
 .kv {
   margin-top: 32px;
@@ -333,24 +339,29 @@ html[data-lang='ja'] body {
 }
 .sec-lede {
   color: var(--ink-2);
-  max-width: 64ch;
   margin-bottom: 24px;
 }
 .sec-lede a,
-.note a {
+.note a,
+.def a,
+.license a {
   color: var(--ink);
-  border-bottom: 1px solid var(--line-2);
-  transition: border-color 0.15s;
+  background-image: linear-gradient(transparent 62%, var(--mint-soft) 0);
+  padding: 0 1px 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-image 0.15s;
 }
 .sec-lede a:hover,
-.note a:hover {
-  border-color: var(--ink);
+.note a:hover,
+.def a:hover,
+.license a:hover {
+  background-image: linear-gradient(var(--mint) 0, var(--mint) 0);
 }
 .note {
   font-size: 13.5px;
   line-height: 1.7;
   color: var(--muted);
-  max-width: 64ch;
   margin-top: 16px;
 }
 .sub {
@@ -911,7 +922,6 @@ html[data-lang='ja'] body {
   color: var(--ink-2);
   font-size: 14.5px;
   line-height: 1.7;
-  max-width: 66ch;
 }
 
 /* ============================================================
