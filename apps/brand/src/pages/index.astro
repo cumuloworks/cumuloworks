@@ -142,8 +142,8 @@ const palette = [
           <h1>Brand guidelines</h1>
           <p class="lede">
             <Bi
-              en="How cumuloworks is identified — the icon, mark, wordmark, color and type, with every asset in the sizes you'd need. Everything on this page is rendered from one set of sources; <a href=&quot;https://cumulo.works&quot;>cumulo.works</a> is built from the same set."
-              ja="cumuloworks を示す要素 — アイコン、マーク、ワードマーク、カラー、タイポグラフィ — と、必要なサイズのすべてのアセット。このページの内容はひとつのソース群からレンダリングされ、<a href=&quot;https://cumulo.works&quot;>cumulo.works</a> も同じソースから組み立てられています。"
+              en="How cumuloworks is identified — the icon, mark, wordmark, color and typography — with the rules for using them and every asset in the sizes you'd need."
+              ja="cumuloworks を示す要素 — アイコン、マーク、ワードマーク、カラー、タイポグラフィ — の使い方のルールと、必要なサイズのすべてのアセットをまとめています。"
             />
           </p>
           <div class="kv">
@@ -160,8 +160,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('icon')}</span><h2>Icon</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The primary identifier: the mark in white over the gradient. It is composed in After Effects the way it is described here — a <a href=&quot;#gradient&quot;>Gradient</a> comp underneath, the mark on top with a soft teal glow — and published in two crops."
-              ja="最も基本となる識別子。グラデーションの上に白いマークを重ねたもので、After Effects 上でもこの説明どおりに構成されています — 下に <a href=&quot;#gradient&quot;>Gradient</a> コンポ、その上にマークとやわらかいティール色のグロー。2 種類のトリミングで公開しています。"
+              en="The primary identifier: the mark in white over the <a href=&quot;#gradient&quot;>gradient</a>. It is provided in two crops."
+              ja="最も基本となる識別子。<a href=&quot;#gradient&quot;>グラデーション</a>の上に白いマークを重ねたもので、2 種類のトリミングで提供しています。"
             />
           </p>
           <div class="cards">
@@ -177,7 +177,7 @@ const palette = [
                 </figure>
               </div>
               <div class="meta">
-                <span><b>Icon</b><span class="spec">2048 × 2048 · <Bi en="rendered from the Icon comp" ja="Icon コンポからレンダリング" /></span></span>
+                <span><b>Icon</b><span class="spec">2048 × 2048 · PNG / JPG / WebP</span></span>
                 <span class="dl">
                   <a href="/i/icon-2048.png" download>PNG</a>
                   <a href="/i/icon-2048.jpg" download>JPG</a>
@@ -189,8 +189,8 @@ const palette = [
           </div>
           <p class="note">
             <Bi
-              en="Use the circular crop by default and the square tile where the platform applies its own shape. Both crops are cut from the same master, so the gradient matches between them."
-              ja="基本は円形を使い、プラットフォーム側で形が決まる場合は正方形を使います。どちらも同じマスターから切り出しているため、グラデーションは一致します。"
+              en="Use the circular crop by default and the square tile where the platform applies its own shape."
+              ja="基本は円形を使い、プラットフォーム側で形が決まる場合は正方形を使います。"
             />
           </p>
         </section>
@@ -200,8 +200,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('gradient')}</span><h2>Gradient</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The background on its own. It is <a href=&quot;#portraits&quot;>portrait 05</a> blurred until only its colour remains, then pushed through curl noise. Use it behind the white mark or wordmark on covers, headers and backgrounds."
-              ja="背景単体。<a href=&quot;#portraits&quot;>ポートレート 05</a> を色だけが残るまでぼかし、カールノイズを通したものです。カバーやヘッダー、背景で、白いマークやワードマークの下に敷いて使います。"
+              en="The gradient on its own. Use it behind the white mark or wordmark on covers, headers and backgrounds; never place ink-coloured elements on it."
+              ja="グラデーション単体。カバーやヘッダー、背景で、白いマークやワードマークの下に敷いて使います。インク色の要素は上に置かないでください。"
             />
           </p>
           <div class="banner">
@@ -209,7 +209,7 @@ const palette = [
             <div class="over" set:html={wordmark} />
           </div>
           <div class="banner-meta">
-            <span>2048 × 2048 · <Bi en="rendered from the Gradient comp" ja="Gradient コンポからレンダリング" /></span>
+            <span>2048 × 2048 · PNG / JPG / WebP</span>
             <span class="dl">
               <a href="/i/gradient-2048.png" download>PNG</a>
               <a href="/i/gradient-2048.jpg" download>JPG</a>
@@ -350,8 +350,8 @@ const palette = [
                 <b><Bi en="Mark &amp; wordmark lettering" ja="マーク・ワードマークのレタリング" /></b>
                 <small>
                   <Bi
-                    en="Geometric, outlined in the SVGs — not served as a font. Never re-set the name in another face and call it the wordmark."
-                    ja="ジオメトリックな造形で、SVG にアウトラインとして収録。フォントとしては提供しません。別の書体で名前を組んでワードマークと呼ばないでください。"
+                    en="Geometric lettering that exists only as artwork — it is not available as a font. Never re-set the name in another face and call it the wordmark."
+                    ja="アートワークとしてのみ存在するジオメトリックなレタリングで、フォントとしては提供していません。別の書体で名前を組んでワードマークと呼ばないでください。"
                   />
                 </small>
               </div>
@@ -380,8 +380,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('motion')}</span><h2>Motion</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The mark drawing itself in over the moving gradient, 4.7 seconds, rendered from the Animated Icon comp. Every file below is derived from that one render."
-              ja="動くグラデーションの上でマークが描かれていく 4.7 秒。Animated Icon コンポからレンダリングし、下のファイルはすべてその 1 本から派生しています。"
+              en="The animated icon: the mark drawing itself in over the moving gradient, 4.7 seconds, looping. Use it as-is — don't retime, crop or re-encode it."
+              ja="アニメーションアイコン。動くグラデーションの上でマークが描かれていく 4.7 秒のループです。そのまま使い、速度変更・トリミング・再エンコードはしないでください。"
             />
           </p>
           <div class="motion">
@@ -437,8 +437,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('portraits')}</span><h2>Portraits</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Portraits of Tomoya Eguchi. <strong>They may not be used without his permission</strong> — ask at <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> before any use, press included. Any of the ten works as the plain photo or as a logo portrait: a square, face-weighted crop with the mark over the chest, in a square or circular cut."
-              ja="江口智也のポートレート。<strong>本人の許可なく使用することはできません。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へご連絡ください。10 点のどれも、写真そのままでも、ロゴポートレート（顔を基準に正方形にトリミングし、胸元にマークを重ねたもの。正方形または円形）としても使えます。"
+              en="Portraits of Tomoya Eguchi. <strong>They may not be used without his permission</strong> — ask at <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> before any use, press included. Each is available as the plain photo or as a logo portrait, a square crop with the mark over the chest, in a square or circular cut."
+              ja="江口智也のポートレート。<strong>本人の許可なく使用することはできません。</strong>報道用途を含め、使用前に <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へご連絡ください。各写真は、そのままの写真と、胸元にマークを重ねた正方形のロゴポートレート（正方形または円形）として提供しています。"
             />
           </p>
           <div class="portraits">
@@ -463,8 +463,8 @@ const palette = [
           </div>
           <p class="note">
             <Bi
-              en="Hover a card for the logo portrait. 05 is the photo behind the gradient and the one on cumulo.works."
-              ja="カードにカーソルを重ねるとロゴポートレートが表示されます。05 はグラデーションの元になった写真で、cumulo.works でも使っています。"
+              en="Hover a card to preview its logo portrait."
+              ja="カードにカーソルを重ねるとロゴポートレートをプレビューできます。"
             />
           </p>
         </section>
@@ -489,7 +489,7 @@ const palette = [
               <li><Bi en="Use the circular icon by default; the square tile where the platform crops its own shape." ja="基本は円形アイコン。プラットフォーム側で形が決まる場合は正方形タイルを使う。" /></li>
               <li><Bi en="Keep clear space of at least the height of the <code>l</code> on all sides." ja="四方に <code>l</code> の高さ以上の余白を確保する。" /></li>
               <li><Bi en="Drop to the flat mark when the gradient can't reproduce." ja="グラデーションが再現できない場合はフラットなマークに切り替える。" /></li>
-              <li><Bi en="Take files from this page rather than re-exporting them." ja="ファイルは書き出し直さず、このページから取得する。" /></li>
+              <li><Bi en="Use the files from this page rather than tracing or re-exporting them." ja="トレースや書き出し直しはせず、このページのファイルを使う。" /></li>
             </ul>
             <ul class="rules dont">
               <li class="label">Don't</li>
@@ -549,8 +549,8 @@ const palette = [
           <div class="sec-h"><span class="n">{num('downloads')}</span><h2>Downloads</h2></div>
           <p class="sec-lede">
             <Bi
-              en={`Every variant is published at ${SIZES.join(', ')} px as <code>/i/&lt;variant&gt;-&lt;width&gt;.&lt;format&gt;</code>; the vectors are in <code>/assets</code> when you'd rather scale them yourself. Pick a file below or build the URL directly.`}
-              ja={`すべてのバリアントを ${SIZES.join('、')} px で <code>/i/&lt;variant&gt;-&lt;width&gt;.&lt;format&gt;</code> として公開しています。自分でスケールしたい場合は <code>/assets</code> のベクターを使ってください。下で選ぶか、URL を直接組み立てられます。`}
+              en={`Every asset is available at ${SIZES.join(', ')} px. Pick the asset, size and format below to download it or copy a direct link; the mark and wordmark are also available as SVG above.`}
+              ja={`すべてのアセットを ${SIZES.join('、')} px で提供しています。下でアセット・サイズ・形式を選んでダウンロードするか、直接リンクをコピーしてください。マークとワードマークは上の各セクションから SVG も入手できます。`}
             />
           </p>
           <div class="gen">
@@ -602,7 +602,6 @@ const palette = [
       <div class="in">
         <span>© {year} Cumuloworks</span>
         <span>
-          <Bi en="Icon, gradient and motion rendered from" ja="アイコン・グラデーション・モーションは" /> <code>branding.aep</code><Bi en="" ja=" からレンダリング" /> ·
           <a href="https://cumulo.works">cumulo.works</a> ·
           <a href="mailto:mail@cumulo.works">mail@cumulo.works</a>
         </span>
