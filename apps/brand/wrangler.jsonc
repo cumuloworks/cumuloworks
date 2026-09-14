@@ -7,6 +7,5 @@
   "assets": {
     "directory": "./dist",
   },
-  // The brand.cumulo.works custom domain is re-added at cutover, once the
-  // cumulo.works zone is active in the Cumuloworks account.
+  "routes": [{ "pattern": "brand.cumulo.works", "custom_domain": true }],
 }
