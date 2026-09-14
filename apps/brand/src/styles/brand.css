@@ -43,6 +43,8 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   background: var(--bg);
+  /* brand scrollbar: bare thumb, transparent track; inherits everywhere */
+  scrollbar-color: var(--line-2) transparent;
 }
 body {
   color: var(--ink);
@@ -119,7 +121,6 @@ html[data-lang='ja'] body {
   gap: 7px;
   font-size: 13px;
   font-weight: 700;
-  margin-left: auto;
 }
 .lang button {
   background: none;
@@ -149,30 +150,40 @@ html[data-lang='ja'] body {
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
+/* label · centred wordmark · language + site, as three grid columns */
 .doc-head .in {
   max-width: var(--max);
   height: 100%;
   margin: 0 auto;
   padding: 0 24px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+.doc-head .label {
+  grid-column: 1;
+  justify-self: start;
+  white-space: nowrap;
+}
+.brand {
+  grid-column: 2;
+  justify-self: center;
+  display: inline-flex;
+  padding: 6px 2px;
+}
+.brand img {
+  height: 15px;
+  width: auto;
+}
+.doc-head .tail {
+  grid-column: 3;
+  justify-self: end;
+  display: inline-flex;
   align-items: center;
   gap: 18px;
 }
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 700;
-  font-size: 15px;
-}
-.brand img {
-  width: 32px;
-}
-.doc-head .label {
-  padding-left: 6px;
-}
 .doc-head .site {
-  padding-left: 6px;
   font-size: 13.5px;
   color: var(--muted);
   display: inline-flex;
@@ -182,6 +193,12 @@ html[data-lang='ja'] body {
 }
 .doc-head .site:hover {
   color: var(--ink);
+}
+@media (max-width: 640px) {
+  .doc-head .label,
+  .doc-head .site {
+    display: none;
+  }
 }
 
 /* ============================================================
@@ -252,6 +269,7 @@ html[data-lang='ja'] body {
   .toc {
     position: static;
     overflow-x: auto;
+    scrollbar-width: thin;
     margin: 0 -24px;
     padding: 0 24px;
   }
@@ -288,32 +306,6 @@ html[data-lang='ja'] body {
 }
 .intro .lede a:hover {
   background-image: linear-gradient(var(--mint) 0, var(--mint) 0);
-}
-.kv {
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 12px;
-}
-.kv img,
-.kv .banner {
-  border-radius: var(--r);
-  border: 1px solid var(--line);
-}
-.kv img {
-  width: 100%;
-  aspect-ratio: 1;
-}
-.kv .banner {
-  aspect-ratio: auto;
-}
-@media (max-width: 640px) {
-  .kv {
-    grid-template-columns: 1fr;
-  }
-  .kv .banner {
-    aspect-ratio: 5 / 2;
-  }
 }
 
 /* ============================================================
@@ -417,11 +409,13 @@ html[data-lang='ja'] body {
 .view img.circle {
   border-radius: 50%;
 }
-.view.ink {
-  background: var(--ink);
+/* white artwork sits on the gradient, echoing the banner treatment */
+.view.grad {
+  background: url('/i/gradient-1024.jpg') center / cover;
 }
-.view.ink figcaption {
-  color: var(--faint);
+.view.grad img,
+.preview.grad img {
+  filter: drop-shadow(0 2px 14px rgba(29, 55, 68, 0.12));
 }
 /* linear rather than repeating-conic: cheaper to rasterise over wide panels */
 .view.checker {
@@ -518,6 +512,74 @@ html[data-lang='ja'] body {
   color: var(--muted);
 }
 
+/* gradient as an accent: mock layouts with strips cropped from the image */
+.accents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.accent {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--faint);
+}
+.accent .mock {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.accent .mock.side {
+  flex-direction: row;
+}
+.accent .mock.pad {
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  justify-items: start;
+}
+.accent img {
+  flex: none;
+  object-fit: cover;
+}
+.accent .band {
+  width: 100%;
+  height: 26%;
+}
+.accent .rule {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  margin: 4px 0;
+  /* the image's centre is nearly white; the bottom band keeps the rule visible */
+  object-position: 50% 100%;
+}
+.accent .edge {
+  width: 11%;
+  height: 100%;
+}
+.accent .body {
+  flex: 1;
+  padding: 18px 20px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  justify-items: start;
+}
+.accent .ph {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg-2);
+}
+
 /* highlight underline specimen: the same rules the page's own links use */
 .specimen.highlight {
   display: grid;
@@ -589,12 +651,6 @@ html[data-lang='ja'] body {
 }
 
 /* ---- colour ---- */
-.ramp {
-  height: 56px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  margin-bottom: 14px;
-}
 .swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -688,6 +744,36 @@ html[data-lang='ja'] body {
   .type-row {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- interface specimens ---- */
+.specimen.ui {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.ui-scroll {
+  width: min(280px, 100%);
+  height: 108px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.ui-scroll ol {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+.ui-scroll .n {
+  margin-right: 8px;
+  font-size: 11px;
+  color: var(--faint);
 }
 
 /* ---- usage ---- */
@@ -941,8 +1027,8 @@ html[data-lang='ja'] body {
   border-radius: 10px;
   background: var(--bg-2);
 }
-.preview.ink {
-  background: var(--ink);
+.preview.grad {
+  background: url('/i/gradient-1024.jpg') center / cover;
 }
 .preview img,
 .preview video {

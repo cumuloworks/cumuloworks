@@ -23,6 +23,7 @@ const sections = [
   ['wordmark', 'Wordmark'],
   ['color', 'Color'],
   ['typography', 'Typography'],
+  ['interface', 'Interface'],
   ['motion', 'Motion'],
   ['portraits', 'Portraits'],
   ['usage', 'Usage'],
@@ -151,12 +152,6 @@ const hexToRgb = (hex: string) =>
     .map((h) => parseInt(h, 16))
     .join(', ');
 
-const gradientStops = [
-  ['#7abebf', 'Gradient teal'],
-  ['#8bcad3', 'Gradient aqua'],
-  ['#e5f0f6', 'Gradient highlight'],
-  ['#6ea3cb', 'Gradient periwinkle'],
-];
 const palette = [
   ['#1d3744', 'Ink', 'Text, dark backgrounds', 'テキスト、暗い背景'],
   ['#2f7e98', 'Denim', 'Links', 'リンク'],
@@ -242,21 +237,22 @@ const clearSpaceExamples = [
   <body>
     <header class="doc-head">
       <div class="in">
-        <a class="brand" href="#top">
-          <img src="/i/mark_ink-128.png" width="32" height="25" alt="" />
-          Cumuloworks
-        </a>
         <span class="label"><Bi en="Brand guidelines" ja="ブランドガイドライン" /></span>
-        <span class="lang" role="group" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="sep">/</span><button
-            type="button"
-            data-lang="ja"
-            aria-pressed="false">JA</button
-          >
-        </span>
-        <a class="site" href="https://cumulo.works" target="_blank" rel="noopener">
-          cumulo.works <span class="ar" set:html={upRight} />
+        <a class="brand" href="#top">
+          <img src="/i/type_ink-512.png" width="512" height="58" alt="Cumuloworks" />
         </a>
+        <span class="tail">
+          <span class="lang" role="group" aria-label="Language">
+            <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="sep">/</span><button
+              type="button"
+              data-lang="ja"
+              aria-pressed="false">JA</button
+            >
+          </span>
+          <a class="site" href="https://cumulo.works" target="_blank" rel="noopener">
+            cumulo.works <span class="ar" set:html={upRight} />
+          </a>
+        </span>
       </div>
     </header>
 
@@ -286,13 +282,6 @@ const clearSpaceExamples = [
               ja="Cumuloworks のブランド要素、使用基準、ダウンロード素材をまとめています。"
             />
           </p>
-          <div class="kv">
-            <img src="/i/icon-1024.png" width="1024" height="1024" alt="The Cumuloworks icon" fetchpriority="high" />
-            <div class="banner">
-              <img class="bg" src="/i/gradient-2048.jpg" width="2048" height="2048" alt="" fetchpriority="high" />
-              <div class="over" set:html={wordmark} />
-            </div>
-          </div>
         </section>
 
         {/* 01 ICON */}
@@ -300,8 +289,8 @@ const clearSpaceExamples = [
           <div class="sec-h"><span class="n">{num('icon')}</span><h2>Icon</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The primary Cumuloworks icon combines the white mark with the <a href=&quot;#gradient&quot;>gradient</a>. Square and circular versions are available."
-              ja="白いマークと<a href=&quot;#gradient&quot;>グラデーション</a>を組み合わせた、Cumuloworks の基本アイコンです。正方形と円形の 2 種類を提供しています。"
+              en="The primary Cumuloworks icon combines the white mark with the <a href='#gradient'>gradient</a>. Square and circular versions are available."
+              ja="白いマークと<a href='#gradient'>グラデーション</a>を組み合わせた、Cumuloworks の基本アイコンです。正方形と円形の 2 種類を提供しています。"
             />
           </p>
           <div class="cards">
@@ -323,8 +312,8 @@ const clearSpaceExamples = [
           </div>
           <p class="note">
             <Bi
-              en="Use the circular icon by default. Use the square version where the platform applies its own shape. Follow the <a href=&quot;#usage&quot;>clear space and minimum size rules</a>."
-              ja="原則として円形アイコンを使用してください。掲載先が形状を適用する場合は正方形を使用してください。<a href=&quot;#usage&quot;>余白と最小表示サイズの基準</a>に従ってください。"
+              en="Use the circular icon by default. Use the square version where the platform applies its own shape. Follow the <a href='#usage'>clear space and minimum size rules</a>."
+              ja="原則として円形アイコンを使用してください。掲載先が形状を適用する場合は正方形を使用してください。<a href='#usage'>余白と最小表示サイズの基準</a>に従ってください。"
             />
           </p>
         </section>
@@ -334,8 +323,8 @@ const clearSpaceExamples = [
           <div class="sec-h"><span class="n">{num('gradient')}</span><h2>Gradient</h2></div>
           <p class="sec-lede">
             <Bi
-              en="Use the gradient as a background for the white mark or wordmark on covers and headers. You may crop the background image to fit the layout, preserving its proportions. Do not place Ink-colored elements over it."
-              ja="カバーやヘッダーでは、白いマークやワードマークの背景として使用してください。背景画像は縦横比を保ち、レイアウトに合わせて切り抜けます。Ink の要素は重ねないでください。"
+              en="The Cumuloworks gradient is a Curl Noise pattern supplied as an image; do not create gradients of your own. Use it as a background for the white mark or wordmark on covers and headers. You may crop the background image to fit the layout, preserving its proportions. Anything placed over the gradient must be white; do not use Ink or any other color."
+              ja="Cumuloworks のグラデーションは、画像として提供する Curl Noise パターンです。独自のグラデーションを作らないでください。カバーやヘッダーでは、白いマークやワードマークの背景として使用してください。背景画像は縦横比を保ち、レイアウトに合わせて切り抜けます。グラデーションに重ねる要素は必ず白を使用し、Ink やその他の色を重ねないでください。"
             />
           </p>
           <div class="banner">
@@ -344,6 +333,47 @@ const clearSpaceExamples = [
           </div>
           <div class="banner-meta">
             <span>2048 × 2048 px · PNG / JPG / WebP</span>
+          </div>
+          <h3 class="sub"><Bi en="Decorative use" ja="あしらいとしての使用" /></h3>
+          <p class="note">
+            <Bi
+              en="In slides and documents, you may also use bands and rules cropped from the supplied image as accents. Crop without distorting the image, and do not place marks, wordmarks or text on these narrow crops."
+              ja="スライドや資料では、提供画像から切り抜いた帯や罫線を、あしらいとしても使用できます。画像を変形せずに切り抜いてください。細く切り抜いた面には、マーク・ワードマーク・文字を重ねないでください。"
+            />
+          </p>
+          <div class="accents">
+            <figure class="accent">
+              <div class="mock">
+                <img class="band" src="/i/gradient-1024.jpg" alt="" loading="lazy" />
+                <div class="body">
+                  <span class="ph" style="width: 58%"></span>
+                  <span class="ph" style="width: 86%"></span>
+                  <span class="ph" style="width: 72%"></span>
+                </div>
+              </div>
+              <figcaption><Bi en="Header band" ja="上部の帯" /></figcaption>
+            </figure>
+            <figure class="accent">
+              <div class="mock pad">
+                <span class="ph" style="width: 52%"></span>
+                <span class="ph" style="width: 80%"></span>
+                <img class="rule" src="/i/gradient-1024.jpg" alt="" loading="lazy" />
+                <span class="ph" style="width: 76%"></span>
+                <span class="ph" style="width: 60%"></span>
+              </div>
+              <figcaption><Bi en="Divider rule" ja="区切りの罫線" /></figcaption>
+            </figure>
+            <figure class="accent">
+              <div class="mock side">
+                <img class="edge" src="/i/gradient-1024.jpg" alt="" loading="lazy" />
+                <div class="body">
+                  <span class="ph" style="width: 66%"></span>
+                  <span class="ph" style="width: 88%"></span>
+                  <span class="ph" style="width: 54%"></span>
+                </div>
+              </div>
+              <figcaption><Bi en="Edge band" ja="端の帯" /></figcaption>
+            </figure>
           </div>
         </section>
 
@@ -358,11 +388,11 @@ const clearSpaceExamples = [
           </p>
           <div class="cards">
             <div class="card">
-              <div class="view ink">
+              <div class="view grad">
                 <img src="/i/mark-512.png" width="200" height="159" alt="Mark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on Ink" ja="Ink 背景" /></span></span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on the gradient" ja="グラデーション背景" /></span></span>
               </div>
             </div>
             <div class="card">
@@ -381,17 +411,17 @@ const clearSpaceExamples = [
           <div class="sec-h"><span class="n">{num('wordmark')}</span><h2>Wordmark</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The wordmark uses lowercase lettering. Use the supplied artwork; do not recreate it with a typeface. Use Ink on light backgrounds and white on dark backgrounds. For the name in text, follow <a href=&quot;#naming&quot;>Naming</a>."
-              ja="小文字のレタリングによるワードマークです。提供データを使用し、別の書体で再現しないでください。明るい背景では Ink、暗い背景では白を使用してください。文中の名称は<a href=&quot;#naming&quot;>表記ルール</a>に従ってください。"
+              en="The wordmark uses lowercase lettering. Use the supplied artwork; do not recreate it with a typeface. Use Ink on light backgrounds and white on dark backgrounds. For the name in text, follow <a href='#naming'>Naming</a>."
+              ja="小文字のレタリングによるワードマークです。提供データを使用し、別の書体で再現しないでください。明るい背景では Ink、暗い背景では白を使用してください。文中の名称は<a href='#naming'>表記ルール</a>に従ってください。"
             />
           </p>
           <div class="cards">
             <div class="card span">
-              <div class="view ink wide">
+              <div class="view grad wide">
                 <img src="/i/type-1024.png" width="560" height="63" alt="Wordmark, white" loading="lazy" />
               </div>
               <div class="meta">
-                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on Ink" ja="Ink 背景" /></span></span>
+                <span><b><Bi en="White" ja="白" /></b><span class="spec">#ffffff · <Bi en="on the gradient" ja="グラデーション背景" /></span></span>
               </div>
             </div>
             <div class="card span">
@@ -410,30 +440,10 @@ const clearSpaceExamples = [
           <div class="sec-h"><span class="n">{num('color')}</span><h2>Color</h2></div>
           <p class="sec-lede">
             <Bi
-              en="The four reference colors describe the gradient's palette. Use the supplied gradient image. The core colors define the palette for Cumuloworks interfaces and documents."
-              ja="上段の 4 色はグラデーションの参考色です。グラデーションは提供画像を使用してください。下段は Cumuloworks のインターフェースや資料に使う基本色です。"
+              en="The core colors define the palette for Cumuloworks interfaces and documents. Do not build gradients from these colors; the only gradient is the supplied <a href='#gradient'>Curl Noise pattern</a>."
+              ja="Cumuloworks のインターフェースや資料に使う基本色です。基本色からグラデーションを作らないでください。グラデーションは規定の <a href='#gradient'>Curl Noise パターン</a>（提供画像）のみを使用します。"
             />
           </p>
-          <div class="sub"><Bi en="Gradient reference colors" ja="グラデーションの参考色" /></div>
-          <div
-            class="ramp"
-            style={`background: linear-gradient(90deg, ${gradientStops.map(([hex]) => hex).join(', ')})`}
-          />
-          <div class="swatches">
-            {
-              gradientStops.map(([hex, name]) => (
-                <button class="swatch" type="button" data-hex={hex}>
-                  <div class="chip" style={`background:${hex}`} />
-                  <div class="hex">
-                    <b>{hex}</b>
-                    <span>{name}</span>
-                    <small>rgb({hexToRgb(hex)})</small>
-                  </div>
-                </button>
-              ))
-            }
-          </div>
-          <div class="sub"><Bi en="Core colors" ja="基本色" /></div>
           <div class="swatches">
             {
               palette.map(([hex, name, en, ja]) => (
@@ -480,8 +490,8 @@ const clearSpaceExamples = [
                 <b>LINE Seed JP</b>
                 <small>
                   <Bi
-                    en="For Latin and Japanese text, use Regular 400 for body text and Bold 700 for headings and emphasis. See the <a href=&quot;https://seed.line.me/&quot;>official LINE Seed site</a> for downloads and the SIL Open Font License 1.1."
-                    ja="欧文・和文ともに、本文には Regular 400、見出し・強調には Bold 700 を使用してください。入手先と SIL Open Font License 1.1 は<a href=&quot;https://seed.line.me/&quot;>公式 LINE Seed サイト</a>で確認してください。"
+                    en="For Latin and Japanese text, use Regular 400 for body text and Bold 700 for headings and emphasis. See the <a href='https://seed.line.me/'>official LINE Seed site</a> for downloads and the SIL Open Font License 1.1."
+                    ja="欧文・和文ともに、本文には Regular 400、見出し・強調には Bold 700 を使用してください。入手先と SIL Open Font License 1.1 は<a href='https://seed.line.me/'>公式 LINE Seed サイト</a>で確認してください。"
                   />
                 </small>
               </div>
@@ -503,8 +513,8 @@ const clearSpaceExamples = [
               <div class="specimen highlight">
                 <p>
                   <Bi
-                    en="In running text, <a href=&quot;#color&quot;>a link</a> rests in Mint soft and fills on hover."
-                    ja="本文中の<a href=&quot;#color&quot;>リンク</a>は通常時 Mint soft、ホバーで Mint に塗られます。"
+                    en="In running text, <a href='#color'>a link</a> rests in Mint soft and fills on hover."
+                    ja="本文中の<a href='#color'>リンク</a>は通常時 Mint soft、ホバーで Mint に塗られます。"
                   />
                 </p>
                 <p class="nav" aria-label="Navigation example">
@@ -515,7 +525,75 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 07 MOTION */}
+        {/* 07 INTERFACE */}
+        <section class="sec" id="interface">
+          <div class="sec-h"><span class="n">{num('interface')}</span><h2>Interface</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="Basic components for Cumuloworks web interfaces, built from the <a href='#color'>core colors</a>. For links and current items, use the <a href='#typography'>highlight underline</a>."
+              ja="Cumuloworks の Web インターフェースで使う基本コンポーネントです。<a href='#color'>基本色</a>で構成してください。リンクと現在の項目には<a href='#typography'>下線ハイライト</a>を使用してください。"
+            />
+          </p>
+          <div class="type-rows">
+            <div class="type-row">
+              <div>
+                <b><Bi en="Buttons" ja="ボタン" /></b>
+                <small>
+                  <Bi
+                    en="Buttons are fully rounded pills with bold labels. The primary button is Ink with white text; the secondary is transparent with an Ink border and fills with Mint soft on hover."
+                    ja="ボタンは完全な角丸のピル型に、太字のラベルを使用してください。プライマリは Ink 背景に白文字、セカンダリは透明背景に Ink の枠線で、ホバー時に Mint soft で塗られます。"
+                  />
+                </small>
+              </div>
+              <div class="specimen ui">
+                <button class="btn" type="button"><Bi en="Primary" ja="プライマリ" /></button>
+                <button class="btn ghost" type="button"><Bi en="Secondary" ja="セカンダリ" /></button>
+              </div>
+            </div>
+            <div class="type-row">
+              <div>
+                <b><Bi en="Selection pills" ja="選択チップ" /></b>
+                <small>
+                  <Bi
+                    en="Radio and checkbox options are pills with a hairline border. The selected pill fills with Mint soft and darkens its border to Ink."
+                    ja="ラジオボタンやチェックボックスの選択肢は、細い枠線のピルで表してください。選択中のピルは Mint soft で塗り、枠線を Ink にします。"
+                  />
+                </small>
+              </div>
+              <div class="specimen ui">
+                <label class="opt"><input type="radio" name="ui-pill" checked /><Bi en="Selected" ja="選択中" /></label>
+                <label class="opt"><input type="radio" name="ui-pill" /><Bi en="Default" ja="未選択" /></label>
+              </div>
+            </div>
+            <div class="type-row">
+              <div>
+                <b><Bi en="Scrollbar" ja="スクロールバー" /></b>
+                <small>
+                  <Bi
+                    en="Scrollbars use a bare thumb in <code>rgba(29, 55, 68, 0.26)</code> on a transparent track: set <code>scrollbar-color: rgba(29, 55, 68, 0.26) transparent</code>, and add <code>scrollbar-width: thin</code> on scroll areas inside the page."
+                    ja="スクロールバーは、透明なトラックに <code>rgba(29, 55, 68, 0.26)</code> のつまみだけを表示します。<code>scrollbar-color: rgba(29, 55, 68, 0.26) transparent</code> を指定し、ページ内のスクロール領域には <code>scrollbar-width: thin</code> を併用してください。"
+                  />
+                </small>
+              </div>
+              <div class="specimen ui">
+                <div class="ui-scroll" tabindex="0">
+                  <ol>
+                    {
+                      sections.map(([, label], i) => (
+                        <li>
+                          <span class="n">{String(i + 1).padStart(2, '0')}</span>
+                          {label}
+                        </li>
+                      ))
+                    }
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 08 MOTION */}
         <section class="sec" id="motion">
           <div class="sec-h"><span class="n">{num('motion')}</span><h2>Motion</h2></div>
           <p class="sec-lede">
@@ -544,13 +622,13 @@ const clearSpaceExamples = [
           </p>
         </section>
 
-        {/* 08 PORTRAITS */}
+        {/* 09 PORTRAITS */}
         <section class="sec" id="portraits">
           <div class="sec-h"><span class="n">{num('portraits')}</span><h2>Portraits</h2></div>
           <p class="sec-lede">
             <Bi
-              en="<strong>You must obtain permission from Cumuloworks before using any portrait, including for press coverage.</strong> Contact <a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a>. Each portrait is available as a photo and with the mark in square and circular versions."
-              ja="<strong>ポートレートの使用には、報道用途を含め Cumuloworks の事前許可が必要です。</strong><a href=&quot;mailto:mail@cumulo.works&quot;>mail@cumulo.works</a> へ連絡してください。各写真は、写真のみとマーク入り（正方形・円形）を提供しています。"
+              en="<strong>You must obtain permission from Cumuloworks before using any portrait, including for press coverage.</strong> Contact <a href='mailto:mail@cumulo.works'>mail@cumulo.works</a>. Each portrait is available as a photo and with the mark in square and circular versions."
+              ja="<strong>ポートレートの使用には、報道用途を含め Cumuloworks の事前許可が必要です。</strong><a href='mailto:mail@cumulo.works'>mail@cumulo.works</a> へ連絡してください。各写真は、写真のみとマーク入り（正方形・円形）を提供しています。"
             />
           </p>
           <div class="portraits">
@@ -573,7 +651,7 @@ const clearSpaceExamples = [
           </p>
         </section>
 
-        {/* 09 USAGE */}
+        {/* 10 USAGE */}
         <section class="sec" id="usage">
           <div class="sec-h"><span class="n">{num('usage')}</span><h2>Usage</h2></div>
           <p class="sec-lede">
@@ -644,7 +722,7 @@ const clearSpaceExamples = [
             </ul>
             <ul class="rules dont">
               <li class="label"><Bi en="Don't" ja="禁止事項" /></li>
-              <li><Bi en="Do not recolor the gradient or substitute another gradient." ja="グラデーションの色を変更したり、別のグラデーションで代用しないでください。" /></li>
+              <li><Bi en="Do not recolor the gradient, create your own gradient, or substitute another; use only the supplied Curl Noise pattern." ja="グラデーションの色を変更したり、独自のグラデーションを作成・代用しないでください。規定の Curl Noise パターンのみを使用してください。" /></li>
               <li><Bi en="Do not distort or rotate assets, add effects, or rearrange the lettering." ja="変形・回転・効果の追加・文字の並べ替えをしないでください。" /></li>
               <li><Bi en="Do not crop icons, marks or wordmarks beyond the supplied variants, except for icon shapes applied by the platform. You may crop the standalone gradient background." ja="アイコン・マーク・ワードマークは、提供する形状以外に切り抜かないでください。ただし、掲載先がアイコンに適用する形状は例外です。背景用のグラデーション単体は切り抜けます。" /></li>
               <li><Bi en="Do not combine the icon and wordmark into a single logo." ja="アイコンとワードマークを組み合わせて、一体のロゴにしないでください。" /></li>
@@ -654,7 +732,7 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 10 NAMING */}
+        {/* 11 NAMING */}
         <section class="sec" id="naming">
           <div class="sec-h"><span class="n">{num('naming')}</span><h2>Naming</h2></div>
           <div class="defs">
@@ -688,15 +766,15 @@ const clearSpaceExamples = [
               <b>Cumuloworks, Inc.</b>
               <span>
                 <Bi
-                  en="The former name of kumo.productions, Inc. For the company's name and brand, follow <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a>."
-                  ja="kumo.productions, Inc. の旧称です。会社としての表記・ブランドは <a href=&quot;https://brand.kumo.productions&quot;>brand.kumo.productions</a> に従ってください。"
+                  en="The former name of kumo.productions, Inc. For the company's name and brand, follow <a href='https://brand.kumo.productions'>brand.kumo.productions</a>."
+                  ja="kumo.productions, Inc. の旧称です。会社としての表記・ブランドは <a href='https://brand.kumo.productions'>brand.kumo.productions</a> に従ってください。"
                 />
               </span>
             </div>
           </div>
         </section>
 
-        {/* 11 DOWNLOADS */}
+        {/* 12 DOWNLOADS */}
         <section class="sec" id="downloads">
           <div class="sec-h"><span class="n">{num('downloads')}</span><h2>Downloads</h2></div>
           <p class="sec-lede">
@@ -778,8 +856,8 @@ const clearSpaceExamples = [
             </div>
             <p class="note" id="dl-permission" hidden>
               <Bi
-                en="Portraits require prior permission from Cumuloworks. See <a href=&quot;#portraits&quot;>Portraits</a>."
-                ja="ポートレートの使用には Cumuloworks の事前許可が必要です。<a href=&quot;#portraits&quot;>Portraits</a> を確認してください。"
+                en="Portraits require prior permission from Cumuloworks. See <a href='#portraits'>Portraits</a>."
+                ja="ポートレートの使用には Cumuloworks の事前許可が必要です。<a href='#portraits'>Portraits</a> を確認してください。"
               />
             </p>
             <div class="result">
@@ -803,7 +881,7 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 12 LICENSE */}
+        {/* 13 LICENSE */}
         <section class="sec" id="license">
           <div class="sec-h"><span class="n">{num('license')}</span><h2>License</h2></div>
           <div class="sub"><Bi en="Terms of use" ja="使用条件" /></div>
@@ -918,7 +996,7 @@ const clearSpaceExamples = [
 
         // The preview shows the variant, not the chosen size; 512 is plenty on screen.
         const preview = el('dl-preview');
-        preview.classList.toggle('ink', variant.onDark === true);
+        preview.classList.toggle('grad', variant.onDark === true);
         const still =
           !variant.video && format in variant.formats ? format : 'png' in variant.formats ? 'png' : Object.keys(variant.formats)[0];
         preview.innerHTML = variant.video
