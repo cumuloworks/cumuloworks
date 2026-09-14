@@ -5,6 +5,7 @@ import {
   type Format,
   render,
   SIZES,
+  type Variant,
   VARIANTS,
   type VariantName,
 } from '@/brand';
@@ -13,8 +14,8 @@ export const prerender = true;
 
 /** `<variant>-<width>.<format>`, e.g. mark_ink-512.webp */
 export const getStaticPaths: GetStaticPaths = () =>
-  Object.entries(VARIANTS).flatMap(([name, variant]) =>
-    SIZES.flatMap((width) =>
+  Object.entries<Variant>(VARIANTS).flatMap(([name, variant]) =>
+    (variant.widths ?? SIZES).flatMap((width) =>
       variant.formats.map((format) => ({
         params: { spec: `${name}-${width}.${format}` },
         props: { name, width, format },

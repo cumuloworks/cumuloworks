@@ -2,6 +2,7 @@
 import '@/styles/brand.css';
 import wordmark from '../../assets/type.svg?raw';
 import {
+  OG,
   PORTRAIT_IDS,
   SIZES,
   type Variant,
@@ -27,6 +28,7 @@ const sections = [
   ['motion', 'Motion'],
   ['portraits', 'Portraits'],
   ['usage', 'Usage'],
+  ['ogp', 'OGP'],
   ['naming', 'Naming'],
   ['downloads', 'Downloads'],
   ['license', 'License'],
@@ -72,7 +74,7 @@ const image = (name: VariantName, en: string, ja: string, ratio = 1) => {
     ratio,
     base: '/i',
     onDark: v.onDark === true,
-    formats: Object.fromEntries(v.formats.map((f) => [f, SIZES])),
+    formats: Object.fromEntries(v.formats.map((f) => [f, v.widths ?? SIZES])),
   };
 };
 const portrait = (
@@ -143,7 +145,28 @@ const catalog = [
       portrait('_logo_masked', 'With mark, circular', 'マーク入り・円形'),
     ],
   },
+  {
+    id: 'ogp',
+    label: 'OGP',
+    variants: [image('ogp', 'Wordmark on the gradient', 'グラデーション上のワードマーク', OG.height / OG.width)],
+  },
 ];
+// Every width the picker can tick, across the catalog.
+const widths = [...new Set(catalog.flatMap((c) => c.variants.flatMap((v) => Object.values(v.formats).flat())))].sort(
+  (a, b) => a - b
+);
+
+const ogImage = new URL(`/i/ogp-${OG.width}.png`, Astro.site).href;
+// The Open Graph layout, drawn in canvas pixels with a margin for the labels.
+const ogSafe = 80;
+const ogPad = 120;
+const ogType = {
+  width: OG.width * OG.wordmark,
+  height: (OG.width * OG.wordmark * type.height) / type.width,
+};
+// Dimension lines with end ticks, horizontal and vertical.
+const measureX = (x: number, y: number, w: number) => `M${x} ${y - 8}v16M${x} ${y}h${w}M${x + w} ${y - 8}v16`;
+const measureY = (x: number, y: number, h: number) => `M${x - 8} ${y}h16M${x} ${y}v${h}M${x - 8} ${y + h}h16`;
 
 const hexToRgb = (hex: string) =>
   hex
@@ -215,7 +238,10 @@ const clearSpaceExamples = [
     <link rel="icon" href="/i/icon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="/i/icon-256.png" />
     <meta property="og:title" content="Cumuloworks brand guidelines" />
-    <meta property="og:image" content="/i/icon-1024.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content={String(OG.width)} />
+    <meta property="og:image:height" content={String(OG.height)} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -732,7 +758,92 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 11 NAMING */}
+        {/* 11 OGP */}
+        <section class="sec" id="ogp">
+          <div class="sec-h"><span class="n">{num('ogp')}</span><h2>OGP</h2></div>
+          <p class="sec-lede">
+            <Bi
+              en="The Open Graph image appears when a link to cumulo.works is shared. It sets the white wordmark on the gradient at 1200 × 630 px. Use the supplied file as it is for the site and for pages without a title of their own."
+              ja="cumulo.works のリンクを共有したときに表示される画像です。1200 × 630 px のグラデーション上に、白いワードマークを配置しています。サイト全体と、固有のタイトルを持たないページには、提供ファイルをそのまま使用してください。"
+            />
+          </p>
+          <div class="cards">
+            <div class="card span">
+              <div class="view og">
+                <img src={`/i/ogp-${OG.width}.png`} width={OG.width} height={OG.height} alt="The Open Graph image: the white wordmark on the gradient" loading="lazy" />
+              </div>
+              <div class="meta">
+                <span><b>OGP</b><span class="spec">{OG.width} × {OG.height} px · PNG / JPG / WebP</span></span>
+              </div>
+            </div>
+          </div>
+          <h3 class="sub"><Bi en="Layout" ja="レイアウト" /></h3>
+          <p class="note">
+            <Bi
+              en="The wordmark is 50% of the canvas width and centred. Keep every element at least 80 px from the edges, as services may trim the borders of the image."
+              ja="ワードマークの横幅はカンバスの 50% で、中央に配置しています。サービスによって画像の縁が切り取られることがあるため、すべての要素は縁から 80 px 以上離してください。"
+            />
+          </p>
+          <div class="usage-diagram">
+            <figure class="clearspace wide">
+              <svg
+                viewBox={`0 0 ${OG.width + 2 * ogPad} ${OG.height + 2 * ogPad}`}
+                role="img"
+                aria-label="Open Graph layout: a 1200 × 630 canvas with the wordmark centred at half the width and an 80 px margin marked on every side">
+                <rect class="og-canvas" x={ogPad} y={ogPad} width={OG.width} height={OG.height} />
+                <rect class="space-boundary" x={ogPad + ogSafe} y={ogPad + ogSafe} width={OG.width - 2 * ogSafe} height={OG.height - 2 * ogSafe} />
+                <image
+                  href="/i/type_ink-1024.png"
+                  x={ogPad + (OG.width - ogType.width) / 2}
+                  y={ogPad + (OG.height - ogType.height) / 2}
+                  width={ogType.width}
+                  height={ogType.height}
+                />
+                <path class="space-measure" d={measureX(ogPad, ogPad - 36, OG.width)} />
+                <text x={ogPad + OG.width / 2} y={ogPad - 50} text-anchor="middle">{OG.width}</text>
+                <path class="space-measure" d={measureY(ogPad + OG.width + 36, ogPad, OG.height)} />
+                <text x={ogPad + OG.width + 52} y={ogPad + OG.height / 2 + 9}>{OG.height}</text>
+                <path class="space-measure" d={measureX(ogPad + (OG.width - ogType.width) / 2, ogPad + (OG.height + ogType.height) / 2 + 36, ogType.width)} />
+                <text x={ogPad + OG.width / 2} y={ogPad + (OG.height + ogType.height) / 2 + 76} text-anchor="middle">{ogType.width} · 50%</text>
+                <path class="space-measure" d={measureX(ogPad, ogPad + ogSafe / 2, ogSafe)} />
+                <text x={ogPad + ogSafe + 14} y={ogPad + ogSafe / 2 + 9}>{ogSafe}</text>
+              </svg>
+              <figcaption>{OG.width} × {OG.height} px</figcaption>
+            </figure>
+          </div>
+          <h3 class="sub"><Bi en="With a title" ja="タイトル付き" /></h3>
+          <p class="note">
+            <Bi
+              en="For articles and other pages with a title of their own, compose the image on the gradient: the title in LINE Seed JP Bold, in white, at the top left and the white wordmark at the bottom left, inside 80 px margins. Keep the title to three lines."
+              ja="記事など固有のタイトルを持つページでは、グラデーション上に、左上へ白いタイトル（LINE Seed JP Bold）、左下へ白いワードマークを、80 px の余白の内側に配置してください。タイトルは 3 行以内にしてください。"
+            />
+          </p>
+          <div class="cards">
+            <div class="card span">
+              <div class="view og">
+                <div class="og-frame" role="img" aria-label="Open Graph image with a title: the white title top left and the white wordmark bottom left on the gradient">
+                  <p class="title"><Bi en="Rewriting the site in Astro" ja="サイトのコードを Astro で書き直しました" /></p>
+                  <img class="type" src="/i/type-512.png" width="512" height="58" alt="" loading="lazy" />
+                </div>
+              </div>
+              <div class="meta">
+                <span><b><Bi en="With a title" ja="タイトル付き" /></b><span class="spec">{OG.width} × {OG.height} px · Gradient</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="defs">
+            <div class="def"><b><Bi en="Canvas" ja="カンバス" /></b><span><Bi en={`${OG.width} × ${OG.height} px · Gradient`} ja={`${OG.width} × ${OG.height} px・グラデーション`} /></span></div>
+            <div class="def">
+              <b><Bi en="Title" ja="タイトル" /></b>
+              <span><Bi en="LINE Seed JP Bold · 60 px · line height 1.25 · White · up to three lines" ja="LINE Seed JP Bold・60 px・行送り 1.25・白・3 行以内" /></span>
+            </div>
+            <div class="def"><b>Wordmark</b><span><Bi en="White · 240 px wide · bottom left" ja="白・横幅 240 px・左下" /></span></div>
+            <div class="def"><b><Bi en="Shadow" ja="影" /></b><span><Bi en="Ink at 12% · 2 px down · 14 px blur · on the title and the wordmark" ja="Ink 12%・下に 2 px・ぼかし 14 px・タイトルとワードマークに" /></span></div>
+            <div class="def"><b><Bi en="Margins" ja="余白" /></b><span><Bi en="80 px on every side" ja="四方 80 px" /></span></div>
+          </div>
+        </section>
+
+        {/* 12 NAMING */}
         <section class="sec" id="naming">
           <div class="sec-h"><span class="n">{num('naming')}</span><h2>Naming</h2></div>
           <div class="defs">
@@ -774,7 +885,7 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 12 DOWNLOADS */}
+        {/* 13 DOWNLOADS */}
         <section class="sec" id="downloads">
           <div class="sec-h"><span class="n">{num('downloads')}</span><h2>Downloads</h2></div>
           <p class="sec-lede">
@@ -843,9 +954,9 @@ const clearSpaceExamples = [
               <span class="lbl" id="dl-l-size"><Bi en="Sizes" ja="サイズ" /></span>
               <div class="opts" role="group" aria-labelledby="dl-l-size">
                 {
-                  SIZES.map((s) => (
+                  widths.map((s) => (
                     <label class="opt chk">
-                      <input type="checkbox" name="dl-size" value={s} checked={s === SIZES[SIZES.length - 1]} />
+                      <input type="checkbox" name="dl-size" value={s} checked={s === widths[widths.length - 1]} />
                       {s}
                     </label>
                   ))
@@ -881,7 +992,7 @@ const clearSpaceExamples = [
           </div>
         </section>
 
-        {/* 13 LICENSE */}
+        {/* 14 LICENSE */}
         <section class="sec" id="license">
           <div class="sec-h"><span class="n">{num('license')}</span><h2>License</h2></div>
           <div class="sub"><Bi en="Terms of use" ja="使用条件" /></div>
@@ -994,14 +1105,16 @@ const clearSpaceExamples = [
               }));
         zipName = `cumuloworks-${name}-${format}.zip`;
 
-        // The preview shows the variant, not the chosen size; 512 is plenty on screen.
+        // The preview shows the variant, not the chosen size; the smallest width from 512 up is plenty on screen.
         const preview = el('dl-preview');
         preview.classList.toggle('grad', variant.onDark === true);
         const still =
           !variant.video && format in variant.formats ? format : 'png' in variant.formats ? 'png' : Object.keys(variant.formats)[0];
+        const stillWidths = [...variant.formats[still]].sort((a, b) => a - b);
+        const stillWidth = stillWidths.find((w) => w >= 512) ?? stillWidths[stillWidths.length - 1];
         preview.innerHTML = variant.video
           ? `<video src="${variant.base}/${name}-512.mp4" autoplay muted loop playsinline></video>`
-          : `<img src="${variant.base}/${name}-512.${still}" alt="" />`;
+          : `<img src="${variant.base}/${name}-${stillWidth}.${still}" alt="" />`;
 
         el('dl-files').innerHTML = entries
           .map(

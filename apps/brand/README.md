@@ -28,6 +28,11 @@ code from any of the photos: a face-weighted square crop with the white mark
 over the chest. Portraits may not be used without permission from the subject;
 the page says so and the license excludes them.
 
+The Open Graph image (`ogp`) is composed in code as well: the gradient cropped
+to 1200 × 630 with the white wordmark centred at half the width, under the
+same soft shadow the page's banner gives it. It is the only variant published
+at a single width.
+
 ## Re-rendering from After Effects
 
 The render queue in `branding.aep` writes into `ae/render/` (ignored by git):
@@ -52,7 +57,8 @@ All footage the project needs lives in this package (`assets/` and
 ## URL scheme
 
 - `/i/<variant>-<width>.<format>` — every variant in `src/brand.ts` at
-  64 … 2048 px. `_masked` variants are circular with a transparent corner.
+  64 … 2048 px (`ogp` at 1200 only). `_masked` variants are circular with a
+  transparent corner.
 - `/motion/<name>-<width>.<format>` — the motion variants in `src/motion.ts`;
   the master width is served as a byte-for-byte copy of the AE render.
 - `/assets/<file>.svg` — the vectors, as authored.
@@ -62,11 +68,14 @@ Images are rasterised with sharp and the motion variants with the bundled
 
 ## Consumers
 
-`apps/web` imports the sources it needs through the package export:
+`apps/web` imports the sources it needs through the package export, and
+composes its own `/ogp.png` at build with the same render code (its Astro
+config defines `BRAND_ROOT` so the masters resolve from this package):
 
 ```ts
 import wordmark from '@cumuloworks/brand/assets/type.svg?raw';
 import portrait from '@cumuloworks/brand/assets/portraits/05.jpg';
+import { OG, render } from '@cumuloworks/brand/brand';
 ```
 
 `public/avatar.webp` is the one derived file kept in the repo — the GitHub

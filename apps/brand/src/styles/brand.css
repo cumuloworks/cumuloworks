@@ -817,6 +817,24 @@ html[data-lang='ja'] body {
   stroke: var(--denim);
   stroke-width: 1;
 }
+.clearspace.wide svg {
+  max-width: 760px;
+}
+.clearspace.wide text {
+  font-size: 26px;
+}
+.clearspace.wide .space-boundary,
+.clearspace.wide .space-measure {
+  stroke-width: 2;
+}
+.clearspace.wide .space-boundary {
+  stroke-dasharray: 10 10;
+}
+.og-canvas {
+  fill: var(--bg);
+  stroke: var(--line-2);
+  stroke-width: 2;
+}
 .rules {
   list-style: none;
   align-content: start;
@@ -854,6 +872,53 @@ html[data-lang='ja'] body {
   .usage {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- OGP ---- */
+.view.og {
+  padding: 0;
+  min-height: 0;
+}
+.view.og > img,
+.view.og .og-frame {
+  width: 100%;
+}
+/* the titled layout at 1200 × 630, scaled to the card: 12 px of the canvas per cqw */
+.og-frame {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 1200 / 630;
+  overflow: hidden;
+  background: url('/i/gradient-1024.jpg') center / cover;
+  color: #fff;
+}
+.og-frame .title,
+.og-frame .type {
+  position: absolute;
+  filter: drop-shadow(
+    0 calc(2cqw / 12) calc(14cqw / 12) rgba(29, 55, 68, 0.12)
+  );
+}
+.og-frame .title {
+  inset: calc(80cqw / 12) calc(80cqw / 12) auto;
+  font-size: calc(60cqw / 12);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+.og-frame .type {
+  left: calc(80cqw / 12);
+  bottom: calc(80cqw / 12);
+  width: calc(240cqw / 12);
+}
+.cards + .defs {
+  margin-top: 14px;
 }
 
 /* ---- plain definition rows ---- */
