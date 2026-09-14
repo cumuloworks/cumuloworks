@@ -72,10 +72,11 @@ export default defineConfig({
   integrations: [
     sitemap({ filter: (page) => page === 'https://cumulo.works/' }),
   ],
-  // autoParallax now lives on its own site. public/_redirects 301s this path
-  // at the edge before the downloads rewrite; this entry covers dev.
+  // Cross-site paths: public/_redirects 301s them at the edge (autoParallax
+  // before the downloads rewrite); these entries cover dev.
   redirects: {
     '/downloads/autoparallax2': 'https://autoparallax.cumulo.works',
+    '/brand': 'https://brand.cumulo.works',
   },
   image: {
     service: {

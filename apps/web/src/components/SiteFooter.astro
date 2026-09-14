@@ -1,6 +1,6 @@
 ---
 import wordmarkWhite from '@cumuloworks/brand/assets/type.svg?raw';
-import { bi, email, footerNote, lucide, socials } from '@/data/site';
+import { bi, brand, email, footerNote, lucide, socials } from '@/data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -24,6 +24,7 @@ const year = new Date().getFullYear();
         <div class="footer-bottom">
             <span>© {year} Cumuloworks</span>
             <span class="f-bottom-links">
+                <a href={brand.url} target="_blank" rel="noopener" set:html={bi(brand.label)} />
                 <a href="https://kumo.productions/" target="_blank" rel="noopener">kumo.productions™</a>
             </span>
         </div>

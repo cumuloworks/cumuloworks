@@ -29,6 +29,12 @@ export const profile = {
 
 export const email = 'mail@cumulo.works';
 
+/* The brand guidelines, published separately; /brand redirects there. */
+export const brand = {
+  url: 'https://brand.cumulo.works',
+  label: { en: 'Brand guidelines', ja: 'ブランドガイドライン' } as Bi,
+};
+
 export type Social = {
   id: 'x' | 'instagram' | 'youtube' | 'github' | 'facebook' | 'spotify';
   name: string;
