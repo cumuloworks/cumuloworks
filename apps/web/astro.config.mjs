@@ -1,6 +1,17 @@
+import { createRequire } from 'node:module';
+import { dirname } from 'node:path';
+
 import { satteri } from '@astrojs/markdown-satteri';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
+
+// The brand package root: its render code reads the masters from there when
+// /ogp.png is composed at build (src/pages/ogp.png.ts).
+const brandRoot = dirname(
+  dirname(
+    createRequire(import.meta.url).resolve('@cumuloworks/brand/assets/mark.svg')
+  )
+);
 
 /**
  * Defer iframes embedded in markdown until their accordion panel is opened
@@ -85,6 +96,9 @@ export default defineConfig({
     processor: satteri({ hastPlugins: [lazyEmbeds] }),
   },
   vite: {
+    define: {
+      BRAND_ROOT: JSON.stringify(brandRoot),
+    },
     resolve: {
       alias: {
         '@': '/src',

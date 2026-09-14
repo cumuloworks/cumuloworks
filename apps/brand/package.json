@@ -8,7 +8,8 @@
   ],
   "type": "module",
   "exports": {
-    "./assets/*": "./assets/*"
+    "./assets/*": "./assets/*",
+    "./brand": "./src/brand.ts"
   },
   "scripts": {
     "dev": "portless",
